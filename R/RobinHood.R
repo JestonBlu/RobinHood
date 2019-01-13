@@ -21,9 +21,9 @@ RobinHood <- function(username, password) {
 
   ##############################################################################
 
-  requireNamespace(curl)
-  requireNamespace(jsonlite)
-  requireNamespace(magrittr)
+  library(curl)
+  library(jsonlite)
+  library(magrittr)
 
   detail <- paste("grant_type=", RH$api.grantType,
                   "&client_id=", RH$api.clientID,
