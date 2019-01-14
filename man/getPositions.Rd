@@ -4,15 +4,16 @@
 \alias{getPositions}
 \title{Get Current Positions of your portfolio}
 \usage{
-getPositions(rh)
+getPositions(RH)
 }
 \arguments{
-\item{rh}{object class RobinHood}
+\item{RH}{object class RobinHood}
 }
 \description{
 Get Current Positions of your portfolio
 }
 \examples{
 # Get you current positions
-getPositions(rh)
+# RH <- RobinHood(username = 'your username', password = 'your password')
+# getPositions(RH)
 }

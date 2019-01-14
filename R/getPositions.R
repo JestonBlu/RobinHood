@@ -1,21 +1,19 @@
 #' Get Current Positions of your portfolio
 #'
 #'
-#' @param rh object class RobinHood
+#' @param RH object class RobinHood
+#' @import curl jsonlite magrittr
 #' @export
 #' @examples
 #' # Get you current positions
-#' getPositions(rh)
-getPositions <- function(rh) {
-  
-  requireNamespace("curl")
-  requireNamespace("jsonlite")
-  requireNamespace("magrittr")
+#' # RH <- RobinHood(username = 'your username', password = 'your password')
+#' # getPositions(RH)
+getPositions <- function(RH) {
   
   positions <- new_handle() %>%
     handle_setheaders("Accept" = "application/json") %>%
-    handle_setheaders("Authorization" = paste("Bearer", rh$tokens.access_token)) %>%
-    curl_fetch_memory(url = rh$user.url.positions) %$% content %>% 
+    handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
+    curl_fetch_memory(url = RH$user.url.positions) %$% content %>% 
     rawToChar %>% 
     fromJSON %$% results %>% data.frame
   
@@ -25,7 +23,7 @@ getPositions <- function(rh) {
   for (i in 1:length(instrument_id)) {
     instrument <- new_handle() %>%
       handle_setheaders("Accept" = "application/json") %>%
-      handle_setheaders("Authorization" = paste("Bearer", rh$tokens.access_token)) %>%
+      handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
       curl_fetch_memory(url = instrument_id[i]) %$% content %>% 
       rawToChar %>% fromJSON
     

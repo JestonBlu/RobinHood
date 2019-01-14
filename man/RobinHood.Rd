@@ -12,11 +12,10 @@ RobinHood(username, password)
 \item{password}{password}
 }
 \description{
-This function returns an object of S3 class RobinHood and establishes a 
+This function returns an object of S3 class RobinHood and establishes a
 connection to a RobinHood account.
 }
 \examples{
 # Connect to your robinhood account
-rh <- RobinHood(username = 'your username', password = 'your password')
-getPositions(rh)
+# RH <- RobinHood(username = 'your username', password = 'your password')
 }

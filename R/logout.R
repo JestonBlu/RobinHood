@@ -3,16 +3,14 @@
 #' Send a logout call through the RobinHood API service, this disables your token
 #' 
 #' @param RH object of class RobinHood
+#' @import curl jsonlite magrittr
 #' @export
 #' @examples
 #' # Logout
-#' logout(rh)
+#' # RH <- RobinHood(username = 'your username', password = 'your password')
+#' # logout(RH)
 logout <- function(RH) {
-  
-  requireNamespace("curl")
-  requireNamespace("jsonlite")
-  requireNamespace("magrittr")
-  
+
   detail <- paste("client_id=", RH$api.clientID,
                   "&token=", RH$tokens.refresh_token, sep = "")
   

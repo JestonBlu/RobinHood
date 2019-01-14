@@ -3,3 +3,6 @@
 export(RobinHood)
 export(getPositions)
 export(logout)
+import(curl)
+import(jsonlite)
+import(magrittr)

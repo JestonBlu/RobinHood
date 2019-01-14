@@ -1,11 +1,8 @@
 #' Get the URL for the RobinHood API Endpoints
 #' 
 #' @param endpoint which api endpoint to look up?
+#' @import curl jsonlite magrittr
 getURL = function(endpoint) {
-  
-  requireNamespace("curl")
-  requireNamespace("jsonlite")
-  requireNamespace("magrittr")
   
   api.endpoint = list(
     url = "https://api.robinhood.com/",

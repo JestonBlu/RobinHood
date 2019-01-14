@@ -5,11 +5,11 @@
 #'
 #' @param username user name or email
 #' @param password password
+#' @import curl jsonlite magrittr
 #' @export
 #' @examples
 #' # Connect to your robinhood account
-#' rh <- RobinHood(username = 'your username', password = 'your password')
-#' getPositions(rh)
+#' # RH <- RobinHood(username = 'your username', password = 'your password')
 RobinHood <- function(username, password) {
 
   # Storage for api data
@@ -20,10 +20,6 @@ RobinHood <- function(username, password) {
   )
 
   ##############################################################################
-
-  requireNamespace("curl")
-  requireNamespace("jsonlite")
-  requireNamespace("magrittr")
 
   detail <- paste("grant_type=", RH$api.grantType,
                   "&client_id=", RH$api.clientID,
