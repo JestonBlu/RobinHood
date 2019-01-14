@@ -8,7 +8,8 @@ getURL = function(endpoint) {
     url = "https://api.robinhood.com/",
     token = "oauth2/token/",
     revoke_token = "oauth2/revoke_token/",
-    accounts = "accounts/"
+    accounts = "accounts/",
+    quotes = "quotes/?symbols="
   ) 
   
   x = which(names(api.endpoint) == endpoint)

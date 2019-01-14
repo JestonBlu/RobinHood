@@ -2,5 +2,9 @@
 ![](https://img.shields.io/github/downloads/jestonblu/RobinHood/total.svg)
 
 # RobinHood
-R Interface for the RobinHood.com no commision investing site
+An R Interface for the RobinHood.com no commision investing site
 
+
+```r
+devtools::install_github("jestonblu/RobibHood")
+```
