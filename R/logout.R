@@ -8,6 +8,11 @@
 #' # Logout
 #' logout(rh)
 logout <- function(RH) {
+  
+  requireNamespace("curl")
+  requireNamespace("jsonlite")
+  requireNamespace("magrittr")
+  
   detail <- paste("client_id=", RH$api.clientID,
                   "&token=", RH$tokens.refresh_token, sep = "")
   

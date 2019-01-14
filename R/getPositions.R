@@ -7,7 +7,11 @@
 #' # Get you current positions
 #' getPositions(rh)
 getPositions <- function(rh) {
-
+  
+  requireNamespace("curl")
+  requireNamespace("jsonlite")
+  requireNamespace("magrittr")
+  
   positions <- new_handle() %>%
     handle_setheaders("Accept" = "application/json") %>%
     handle_setheaders("Authorization" = paste("Bearer", rh$tokens.access_token)) %>%

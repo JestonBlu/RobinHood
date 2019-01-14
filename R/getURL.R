@@ -3,6 +3,10 @@
 #' @param endpoint which api endpoint to look up?
 getURL = function(endpoint) {
   
+  requireNamespace("curl")
+  requireNamespace("jsonlite")
+  requireNamespace("magrittr")
+  
   api.endpoint = list(
     url = "https://api.robinhood.com/",
     token = "oauth2/token/",
