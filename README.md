@@ -4,34 +4,26 @@
 ![](https://img.shields.io/github/commit-activity/y/JestonBlu/RobinHood.svg)
 
 # RobinHood
-An R Interface for the RobinHood.com no commision investing site. This project is in early development and currently has just a few features. Once I get a basic set of usuable feature created then I will do a first release an stop making changes to the master branch. Until then things could structurally change without notice.
+An R Interface for the RobinHood.com no commision investing site. This project is in early development and currently has just a few features. Once I get a basic set of usuable feature created then I will do a first release an stop making changes to the master branch. Until then things could structurally change without notice. For pending features please see the project page.
 
-# Current Features
-  - Log in
-  - Log out
-  - Get current investment positions with last known market price
-
-# Pending Features
-  - Place order
-  - Cancel order
-  - Get quote
-  - Get research and social data for a ticker
-
+#### Install with devtools
 ```r
 devtools::install_github("jestonblu/RobinHood")
 ```
 
-# Basic Features
+
+# Current Features
 ```r
 library(RobinHood)
 
-# Generates a list of relevant API keys for your account
+# Establishes a connection with your account and generates an oauth2 token
+# Returns a list style object of relevant API keys
 RH = RobinHood(username = "username", password = "password")
 
 # Returns a data.frame of positions
 getPositions(RH)
 
-# Logout
+# Logout and revoke your oauth2 token
 logout(RH)
 
 ```
