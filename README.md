@@ -4,7 +4,7 @@
 ![](https://img.shields.io/github/commit-activity/y/JestonBlu/RobinHood.svg)
 
 # RobinHood
-An R Interface for the RobinHood.com no commision investing site. This project is in early development and currently has just a few features. Once I get a basic set of usuable feature created then I will stop doing development on the master branch and move development branches with releases
+An R Interface for the RobinHood.com no commision investing site. This project is in early development and currently has just a few features. Once I get a basic set of usuable feature created then I will do a first release an stop making changes to the master branch. Until then things could structurally change without notice.
 
 # Current Features
   - Log in
