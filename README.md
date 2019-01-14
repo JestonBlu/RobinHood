@@ -16,7 +16,7 @@ An R Interface for the RobinHood.com no commision investing site. This project i
   - Get research and social data for a ticker
 
 ```r
-devtools::install_github("jestonblu/RobibHood")
+devtools::install_github("jestonblu/RobinHood")
 ```
 
 # Basic Features
