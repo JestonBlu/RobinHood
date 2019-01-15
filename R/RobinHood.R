@@ -12,58 +12,17 @@
 #' # RH <- RobinHood(username = 'your username', password = 'your password')
 RobinHood <- function(username, password) {
 
-  # Storage for api data
-  RH = list(
-    # APIs
-    api.grantType = "password",
-    api.clientID = "c82SH0WZOsabOXGP2sxqcj34FxkvfnWRZBKlBjFS"
-  )
+  # Login to RobinHood, returns RobinHood object with access tokens
+  RH <- api_login(username, password)
 
-  ##############################################################################
-
-  detail <- paste("grant_type=", RH$api.grantType,
-                  "&client_id=", RH$api.clientID,
-                  "&username=", username,
-                  "&password=", password, sep = "")
-
-  # Log in, get access token
-  auth <- new_handle() %>%
-    handle_setopt(copypostfields = detail) %>%
-    handle_setheaders("Accept" = "application/json") %>%
-    curl_fetch_memory(url = getURL("token")) %$% content %>%
-    rawToChar %>%
-    fromJSON
-
-
-  access_token <- auth$access_token
-  refresh_token <- auth$refresh_token
-
-  # Get account id
-  user <- new_handle() %>%
-    handle_setheaders("Accept" = "application/json") %>%
-    handle_setheaders("Authorization" = paste("Bearer", access_token)) %>%
-    curl_fetch_memory(url = getURL("accounts")) %$% content %>%
-    rawToChar %>%
-    fromJSON
-
+  # Get user data for the main purpose of returning the position url
+  user <- api_user(RH)
   url_positions <- user$results$positions
 
-
   # Return object
-   RH = c(RH,
+  RH <- c(RH, url = list(positions = url_positions))
 
-         # User tokens and ids
-         tokens = list(
-           access_token = access_token,
-           refresh_token = refresh_token),
-
-         # User url
-         user.url = list(
-           positions = url_positions
-         )
-   )
-
-   class(RH) <- "RobinHood"
-
-   return(RH)
+  # Set Class and return object
+  class(RH) <- "RobinHood"
+  return(RH)
 }
