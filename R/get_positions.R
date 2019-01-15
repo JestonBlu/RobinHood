@@ -2,7 +2,7 @@
 #'
 #'
 #' @param RH object class RobinHood
-#' @import curl jsonlite magrittr
+#' @import curl jsonlite magrittr lubridate
 #' @export
 #' @examples
 #' # Get you current positions
@@ -49,7 +49,7 @@ get_positions <- function(RH) {
   positions <- merge(positions, quotes)
 
   # Convert timestamp
-  positions$updated_at <- lubridate::ymd_hms(positions$updated_at)
+  positions$updated_at <- ymd_hms(positions$updated_at)
 
   # Adjust data types
   positions$average_buy_price <- as.numeric(positions$average_buy_price)
