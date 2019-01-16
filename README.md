@@ -1,5 +1,5 @@
 ![](https://travis-ci.org/JestonBlu/RobinHood.svg?branch=master)
-![](https://img.shields.io/github/downloads/JestonBlu/RobinHood/total.svg)
+![](http://cranlogs.r-pkg.org/badges/grand-total/RobinHood)
 ![](https://img.shields.io/badge/development-active-blue.svg)
 ![](https://img.shields.io/github/commit-activity/4w/JestonBlu/RobinHood.svg)
 
