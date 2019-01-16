@@ -1,8 +1,8 @@
 Package: RobinHood
 Type: Package
 Title: Interface for the RobinHood.com no commision investing platform
-Version: 0.0
-Date: 2019-01-12
+Version: 0.1
+Date: 2019-01-16
 Author: Joseph Blubaugh
 Maintainer: Joseph Blubaugh <jestonblu@gmail.com>
 Description: An interface for the RobinHood.com no commision investing platform.
@@ -12,4 +12,5 @@ Imports:
   magrittr,
   lubridate
 License: GPL-3
+URL: https://github.com/JestonBlu/RobinHood
 RoxygenNote: 6.1.1

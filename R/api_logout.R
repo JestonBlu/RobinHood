@@ -1,6 +1,6 @@
-#' Logout of RobinHood
+#' RobinHood API Logout
 #'
-#' Send a logout call through the RobinHood API service, this disables your token
+#' Send a logout call through the RobinHood API service. This disables your oauth2 token.
 #'
 #' @param RH object of class RobinHood
 #' @import curl jsonlite magrittr
