@@ -2,6 +2,7 @@
 
 export(RobinHood)
 export(get_positions)
+export(get_quote)
 export(logout)
 import(curl)
 import(jsonlite)

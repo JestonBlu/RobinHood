@@ -4,10 +4,12 @@
 \alias{get_positions}
 \title{Get Current Positions of your portfolio}
 \usage{
-get_positions(RH)
+get_positions(RH, simple = TRUE)
 }
 \arguments{
 \item{RH}{object class RobinHood}
+
+\item{simple}{(logical) if true, return a simplified positions table, false returns all positions details}
 }
 \description{
 Get Current Positions of your portfolio

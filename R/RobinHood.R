@@ -22,6 +22,11 @@ RobinHood <- function(username, password) {
   # Return object
   RH <- c(RH, url = list(positions = url_positions))
 
+  # Check to see if connection was successful
+  if (is.null(RH$tokens.access_token)) {
+    cat("Login not successful, check username and password.")
+  }
+
   # Set Class and return object
   class(RH) <- "RobinHood"
   return(RH)
