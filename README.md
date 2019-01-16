@@ -6,7 +6,7 @@
 ## RobinHood
 An R Interface for the RobinHood.com no commision investing site.
 
-This project is in early development and currently has just a few features. Once I get a basic set of usuable feature created then I will do a first release and stop making changes to the master branch. Until then things could structurally change without notice. For pending features please see the project page.
+This project is in early development and currently has just a few features. Once I get a basic set of usuable features created then I will do a first release and stop making changes to the master branch. Until then things could structurally change without notice. For a list of the features I am working on see the project page.
 
 ## Install with devtools
 ```r
