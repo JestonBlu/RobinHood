@@ -14,7 +14,7 @@
 #' @param quantity (int) number of shares you wish to transact
 #' @param side (string) "buy" or "sell"
 #' @import curl jsonlite magrittr
-api_orders <- function(RH, client_id, account_id, instrument_id, symbol, type, time_in_force, trigger, price, stop_price, quantity, side) {
+api_orders <- function(RH, account_id, instrument_id, symbol, type, time_in_force, trigger, price, stop_price, quantity, side) {
 
   detail <- paste("account=", account_id,
                   "&instrument=", instrument_id,
