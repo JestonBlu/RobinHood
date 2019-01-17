@@ -4,6 +4,7 @@
 #'
 #' @param RH object class RobinHood
 #' @param ticker (string) of ticker symbols
+#' @param simple (logical) if TRUE (default) return less quote detail
 #' @import curl jsonlite magrittr lubridate
 #' @export
 #' @examples
