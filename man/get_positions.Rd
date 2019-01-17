@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_positions.R
 \name{get_positions}
 \alias{get_positions}
-\title{Get Current Positions of your portfolio}
+\title{Get the current instrument positions of your RobinHood account}
 \usage{
 get_positions(RH, simple = TRUE)
 }
@@ -12,7 +12,7 @@ get_positions(RH, simple = TRUE)
 \item{simple}{(logical) if true, return a simplified positions table, false returns all positions details}
 }
 \description{
-Get Current Positions of your portfolio
+Get the current instrument positions of your RobinHood account
 }
 \examples{
 # Get you current positions

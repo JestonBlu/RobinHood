@@ -2,7 +2,7 @@
 % Please edit documentation in R/api_logout.R
 \name{api_logout}
 \alias{api_logout}
-\title{Logout of RobinHood}
+\title{RobinHood API Logout}
 \usage{
 api_logout(RH)
 }
@@ -10,7 +10,7 @@ api_logout(RH)
 \item{RH}{object of class RobinHood}
 }
 \description{
-Send a logout call through the RobinHood API service, this disables your token
+Send a logout call through the RobinHood API service. This disables your oauth2 token.
 }
 \seealso{
 \code{\link{logout}}

@@ -2,9 +2,9 @@
 % Please edit documentation in R/get_quote.R
 \name{get_quote}
 \alias{get_quote}
-\title{Get Current Quote from RobinHood}
+\title{Get a current instrument quote from RobinHood}
 \usage{
-get_quote(RH, ticker)
+get_quote(RH, ticker, simple = TRUE)
 }
 \arguments{
 \item{RH}{object class RobinHood}
@@ -12,7 +12,7 @@ get_quote(RH, ticker)
 \item{ticker}{(string) of ticker symbols}
 }
 \description{
-For a string of ticker symbols, return latest quote data.
+For a string of ticker symbols, return quote data.
 }
 \examples{
 # Get you current positions

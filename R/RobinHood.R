@@ -18,9 +18,11 @@ RobinHood <- function(username, password) {
   # Get user data for the main purpose of returning the position url
   user <- api_user(RH)
   url_positions <- user$results$positions
+  url_account_id <- user$results$url
 
   # Return object
-  RH <- c(RH, url = list(positions = url_positions))
+  RH <- c(RH, url = list(positions = url_positions,
+                         account_id = url_account_id))
 
   # Check to see if connection was successful
   if (is.null(RH$tokens.access_token)) {

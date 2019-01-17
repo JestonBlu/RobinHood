@@ -1,4 +1,4 @@
-#' Get Current Positions of your portfolio
+#' Get the current instrument positions of your RobinHood account
 #'
 #'
 #' @param RH object class RobinHood
