@@ -25,14 +25,18 @@ library(RobinHood)
 RH = RobinHood(username = "username", password = "password")
 
 # Returns a data.frame of positions
-get_positions(RH)
+get_positions(RH, simple = TRUE)
 
-#  simple_name symbol quantity average_buy_price last_trade_price cost current_value          updated_at
-#1          GE     GE        1               8.5             8.73  8.5          8.73 2019-01-10 04:19:01
-#2       Zynga   ZNGA        2               0.0             4.27  0.0          8.54 2019-01-06 16:44:03
+#   simple_name symbol quantity average_buy_price last_trade_price cost current_value          updated_at
+# 1          GE     GE        1               8.5             8.73  8.5          8.73 2019-01-10 04:19:01
+# 2       Zynga   ZNGA        2               0.0             4.27  0.0          8.54 2019-01-06 16:44:03
 
 # Get quotes
-get_quote(RH, c("CAT", "GE"))
+get_quote(RH, ticker = c("CAT", "GE"), simple = TRUE)
+
+#    symbol last_trade_price last_trade_price_source
+# 1    CAT       131.660000            consolidated
+# 2     GE         8.980000            consolidated
 
 # Logout and revoke your oauth2 token
 logout(RH)
