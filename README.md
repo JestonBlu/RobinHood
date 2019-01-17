@@ -8,15 +8,14 @@
 ## RobinHood
 An R Interface for the RobinHood.com no commision investing site.
 
-This project is in early development and currently has just a few features. Once I get a basic set of usuable features created then I will do a first release and stop making changes to the master branch. Until then things could structurally change without notice. For a list of the features I am working on see the project page.
+This project is in early development. Once I get a basic set of usuable features created then I will do a first release, submit the package to CRAN, and stop making changes to the master branch. Until then things could structurally change without notice. Please see the project page for a list of features I am working on for the initial release.
 
 ## Install with devtools
 ```r
 devtools::install_github("jestonblu/RobinHood")
 ```
 
-
-## Current Features
+## Examples
 ```r
 library(RobinHood)
 
