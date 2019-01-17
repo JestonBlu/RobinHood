@@ -10,6 +10,8 @@ get_quote(RH, ticker, simple = TRUE)
 \item{RH}{object class RobinHood}
 
 \item{ticker}{(string) of ticker symbols}
+
+\item{simple}{(logical) if TRUE (default) return less quote detail}
 }
 \description{
 For a string of ticker symbols, return quote data.

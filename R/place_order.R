@@ -28,9 +28,6 @@ place_order <- function(RH, symbol, type, time_in_force, trigger, price, stop_pr
   quantity <- as.character(quantity)
   price <- as.character(price)
 
-  client_id <- RH$api_client_id
-  account_id <- RH$url.account_id
-
   ##############################################################################
   # Given a symbol, return the instrument_id
   instrument_url <- paste(api_endpoints(endpoint = "quotes"), symbol, sep = "")
@@ -40,8 +37,6 @@ place_order <- function(RH, symbol, type, time_in_force, trigger, price, stop_pr
 
   # Place an order
     orders <- api_orders(RH = RH,
-                         client_id = client_id,
-                         account_id = account_id,
                          instrument_id = instrument_id,
                          symbol = symbol,
                          type = type,

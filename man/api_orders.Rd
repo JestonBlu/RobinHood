@@ -4,13 +4,11 @@
 \alias{api_orders}
 \title{RobinHood API Orders}
 \usage{
-api_orders(RH, client_id, account_id, instrument_id, symbol, type,
-  time_in_force, trigger, price, stop_price, quantity, side)
+api_orders(RH, instrument_id, symbol, type, time_in_force, trigger, price,
+  stop_price, quantity, side)
 }
 \arguments{
 \item{RH}{object of class RobinHood}
-
-\item{account_id}{(string) URL of the account_id}
 
 \item{instrument_id}{(string) URL of the instrument_id}
 

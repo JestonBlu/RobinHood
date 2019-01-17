@@ -3,7 +3,6 @@
 #' Issues a buy or sell order and returns a list of order information
 #'
 #' @param RH object of class RobinHood
-#' @param account_id (string) URL of the account_id
 #' @param instrument_id (string) URL of the instrument_id
 #' @param symbol (string) Ticket symbol you are attempting to buy or sell
 #' @param type (string) "market" or "limit"
@@ -14,9 +13,9 @@
 #' @param quantity (int) number of shares you wish to transact
 #' @param side (string) "buy" or "sell"
 #' @import curl jsonlite magrittr
-api_orders <- function(RH, account_id, instrument_id, symbol, type, time_in_force, trigger, price, stop_price, quantity, side) {
+api_orders <- function(RH, instrument_id, symbol, type, time_in_force, trigger, price, stop_price, quantity, side) {
 
-  detail <- paste("account=", account_id,
+  detail <- paste("account=", RH$url.account_id,
                   "&instrument=", instrument_id,
                   "&symbol=", symbol,
                   "&type=", type,
