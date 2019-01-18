@@ -5,6 +5,7 @@
 #' @param RH object of class RobinHood
 #' @param market_date (string) date in the form 'yyyy-mm-dd', default today
 #' @import curl jsonlite magrittr lubridate
+#' @export
 get_market_hours <- function(RH, market_date = NULL) {
 
   # If no date is provided, use todays date
@@ -26,14 +27,14 @@ get_market_hours <- function(RH, market_date = NULL) {
   }
 
   # Keep relevant columns
-  markets = markets[, c("name", "city", "website", "timezone", "acronym")]
-  market_hours = market_hours[, c("opens_at", "closes_at", "extended_opens_at", "extended_closes_at", "is_open")]
+  markets = markets[, c("name", "acronym", "city", "website", "timezone")]
+  market_hours = market_hours[, c("opens_at", "closes_at", "extended_opens_at", "extended_closes_at", "is_open", "date")]
 
   # Adjust time format
-  market_hours$opens_at <- ymd_hms(market_hours$opens_at)
-  market_hours$closes_at <- ymd_hms(market_hours$closes_at)
-  market_hours$extended_opens_at <- ymd_hms(market_hours$extended_opens_at)
-  market_hours$extended_closes_at <- ymd_hms(market_hours$extended_closes_at)
+  market_hours$opens_at <- strftime(ymd_hms(market_hours$opens_at), format = "%H:%M:%S")
+  market_hours$closes_at <- strftime(ymd_hms(market_hours$closes_at), format = "%H:%M:%S")
+  market_hours$extended_opens_at <- strftime(ymd_hms(market_hours$extended_opens_at), format = "%H:%M:%S")
+  market_hours$extended_closes_at <- strftime(ymd_hms(market_hours$extended_closes_at), format = "%H:%M:%S")
 
   markets = cbind(markets, market_hours)
 

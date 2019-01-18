@@ -6,6 +6,7 @@
 #' @param order_url (string) url of order returned from place_order
 #' @param simple (logical) return limited info on the order (default TRUE)
 #' @import curl jsonlite magrittr
+#' @export
 get_order_status <- function(RH, order_url, simple = TRUE) {
 
   # Get Order Status
