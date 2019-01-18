@@ -46,6 +46,7 @@ cancel_order(RH, x$url)
 
 # Get market hours for a specific date
 get_market_hours(RH)
+
 #                            name     city             website   timezone acronym opens_at closes_at extended_opens_at extended_closes_at is_open       date
 # 1                    IEX Market New York  www.iextrading.com US/Eastern     IEX 08:30:00  15:00:00          08:00:00           17:00:00    TRUE 2019-01-17
 # 2                   Otc Markets New York  www.otcmarkets.com US/Eastern    OTCM 08:30:00  15:00:00          08:00:00           17:00:00    TRUE 2019-01-17
@@ -55,7 +56,44 @@ get_market_hours(RH)
 # 6          NASDAQ - All Markets New York      www.nasdaq.com US/Eastern  NASDAQ 08:30:00  15:00:00          08:00:00           17:00:00    TRUE 2019-01-17
 # 7                 BATS Exchange New York www.batstrading.com US/Eastern    BATS 08:30:00  15:00:00          08:00:00           17:00:00    TRUE 2019-01-17
 
+# You can identify instruments by popular tags
+get_tag(RH, tag = "100-most-popular")
+
+#       simple_name symbol
+# 1           Apple   AAPL
+# 2              GE     GE
+# 3 Aurora Cannabis    ACB
+# 4            Ford      F
+# 5           Group   CRON
+# 6       Microsoft   MSFT
+# 7        Facebook    FB
+
+# Get instrument fundamentals
+str(get_fundamentals(RH, 'CAT'))
+
+#'data.frame':	1 obs. of  19 variables:
+# $ open                  : chr "135.020000"
+# $ high                  : chr "137.710000"
+# $ low                   : chr "133.660000"
+# $ volume                : chr "1629664.000000"
+# $ average_volume_2_weeks: chr "4372297.200000"
+# $ average_volume        : chr "5479200.247000"
+# $ high_52_weeks         : chr "173.100000"
+# $ dividend_yield        : chr "1.967200"
+# $ low_52_weeks          : chr "112.060000"
+# $ market_cap            : chr "79392956900.000000"
+# $ pe_ratio              : chr "21.800580"
+# $ shares_outstanding    : chr "590106711.000000"
+# $ ceo                   : chr "Donald James Umpleby, III"
+# $ headquarters_city     : chr "Deerfield"
+# $ headquarters_state    : chr "Illinois"
+# $ sector                : chr "Producer Manufacturing"
+# $ industry              : chr "Trucks Or Construction Or Farm Machinery"
+# $ num_employees         : int 98400
+# $ year_founded          : int 1925
+
 # Logout and revoke your oauth2 token
 logout(RH)
+
 
 ```

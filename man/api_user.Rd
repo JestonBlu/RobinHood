@@ -2,7 +2,7 @@
 % Please edit documentation in R/api_user.R
 \name{api_user}
 \alias{api_user}
-\title{RobinHood API User}
+\title{RobinHood API: User}
 \usage{
 api_user(RH)
 }
@@ -10,5 +10,5 @@ api_user(RH)
 \item{RH}{object of class RobinHood}
 }
 \description{
-Returns a list like object of class RobinHood
+RobinHood API: User
 }
