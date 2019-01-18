@@ -2,10 +2,12 @@
 
 export(RobinHood)
 export(cancel_order)
+export(get_fundamentals)
 export(get_market_hours)
 export(get_order_status)
 export(get_positions)
 export(get_quote)
+export(get_tag)
 export(logout)
 export(place_order)
 import(curl)

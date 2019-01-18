@@ -1,8 +1,8 @@
 Package: RobinHood
 Type: Package
 Title: Interface for the RobinHood.com no commision investing platform
-Version: 0.1
-Date: 2019-01-16
+Version: 0.5
+Date: 2019-01-17
 Author: Joseph Blubaugh
 Maintainer: Joseph Blubaugh <jestonblu@gmail.com>
 Description: An interface for the RobinHood.com no commision investing platform.

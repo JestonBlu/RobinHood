@@ -4,9 +4,11 @@
 \alias{api_instruments}
 \title{RobinHood API Instruments}
 \usage{
-api_instruments(instrument_id)
+api_instruments(RH, instrument_id)
 }
 \arguments{
+\item{RH}{object of class RobinHood}
+
 \item{instrument_id}{(string) instrument_id returned from api_positions}
 }
 \description{

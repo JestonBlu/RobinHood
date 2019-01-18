@@ -12,7 +12,9 @@ api_endpoints <- function(endpoint) {
     accounts = "accounts/",
     quotes = "quotes/?symbols=",
     orders = "orders/",
-    markets = "markets/"
+    markets = "markets/",
+    fundamentals = "fundamentals/?symbols=",
+    tags = "midlands/tags/tag/"
   )
 
   x <- which(names(api.endpoint) == endpoint)
