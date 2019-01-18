@@ -3,7 +3,7 @@
 #' Returns a list like object of class RobinHood
 #' @param RH object of class RobinHood
 #' @import curl jsonlite magrittr
-api_user <- function(RH) {
+api_accounts <- function(RH) {
 
   # Get account id
   user <- new_handle() %>%
