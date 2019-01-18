@@ -37,6 +37,11 @@ get_quote(RH, ticker = c("CAT", "GE"), simple = TRUE)
 # 1    CAT       131.660000            consolidated
 # 2     GE         8.980000            consolidated
 
+# Place Order
+place_order(RH = RH, symbol = "GE", type = "market", time_in_force = "gfd",
+            trigger = "immediate", price = 8.96, quantity = 1, side = "buy")
+
+
 # Logout and revoke your oauth2 token
 logout(RH)
 
