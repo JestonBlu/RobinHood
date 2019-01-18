@@ -37,10 +37,12 @@ get_quote(RH, ticker = c("CAT", "GE"), simple = TRUE)
 # 1    CAT       131.660000            consolidated
 # 2     GE         8.980000            consolidated
 
-# Place Order
-place_order(RH = RH, symbol = "GE", type = "market", time_in_force = "gfd",
-            trigger = "immediate", price = 8.96, quantity = 1, side = "buy")
+# Place Order, should generate an email
+x = place_order(RH = RH, symbol = "GE", type = "market", time_in_force = "gfd",
+                trigger = "immediate", price = 8.96, quantity = 1, side = "buy")
 
+# Cancel your order, should also generate an email
+cancel_order(RH, x$url)
 
 # Logout and revoke your oauth2 token
 logout(RH)

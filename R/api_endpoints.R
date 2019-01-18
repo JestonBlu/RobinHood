@@ -11,7 +11,8 @@ api_endpoints <- function(endpoint) {
     revoke_token = "oauth2/revoke_token/",
     accounts = "accounts/",
     quotes = "quotes/?symbols=",
-    orders = "orders/"
+    orders = "orders/",
+    markets = "markets/"
   )
 
   x <- which(names(api.endpoint) == endpoint)
