@@ -10,5 +10,22 @@ api_user(RH)
 \item{RH}{object of class RobinHood}
 }
 \description{
-RobinHood API: User
+Backend function called by get_user() to return user data
+}
+\examples{
+# List of 14
+# $ username
+# $ first_name
+# $ last_name
+# $ id_info
+# $ url
+# $ email_verified
+# $ created_at
+# $ basic_info
+# $ email
+# $ investment_profile
+# $ id
+# $ international_info
+# $ employment
+# $ additional_info
 }

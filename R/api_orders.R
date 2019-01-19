@@ -1,4 +1,4 @@
-#' RobinHood API Orders
+#' RobinHood API: Orders
 #'
 #' Issues a buy or sell order and returns a list of order information
 #'

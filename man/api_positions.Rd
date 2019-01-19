@@ -2,7 +2,7 @@
 % Please edit documentation in R/api_positions.R
 \name{api_positions}
 \alias{api_positions}
-\title{RobinHood API Positions}
+\title{RobinHood API: Positions}
 \usage{
 api_positions(RH)
 }

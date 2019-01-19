@@ -1,4 +1,4 @@
-#' RobinHood API Positions
+#' RobinHood API: Positions
 #'
 #' Returns a data frame of position data
 #'

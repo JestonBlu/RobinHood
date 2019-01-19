@@ -2,7 +2,7 @@
 % Please edit documentation in R/api_logout.R
 \name{api_logout}
 \alias{api_logout}
-\title{RobinHood API Logout}
+\title{RobinHood API: Logout}
 \usage{
 api_logout(RH)
 }

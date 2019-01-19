@@ -2,7 +2,7 @@
 % Please edit documentation in R/api_endpoints.R
 \name{api_endpoints}
 \alias{api_endpoints}
-\title{RobinHood API Endpoints}
+\title{RobinHood API: Endpoints}
 \usage{
 api_endpoints(endpoint)
 }
@@ -10,5 +10,5 @@ api_endpoints(endpoint)
 \item{endpoint}{(string) which api endpoint to look up?}
 }
 \description{
-Returns the appropriate URL for a given endpoint
+Returns the appropriate starting URL for a given endpoint.
 }

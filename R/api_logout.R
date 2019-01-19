@@ -1,4 +1,4 @@
-#' RobinHood API Logout
+#' RobinHood API: Logout
 #'
 #' Send a logout call through the RobinHood API service. This disables your oauth2 token.
 #'

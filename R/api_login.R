@@ -1,4 +1,4 @@
-#' RobinHood API Login
+#' RobinHood API: Login
 #'
 #' Returns a list like object of class RobinHood
 #' @param username RobinHood username

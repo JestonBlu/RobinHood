@@ -2,7 +2,7 @@
 % Please edit documentation in R/api_accounts.R
 \name{api_accounts}
 \alias{api_accounts}
-\title{RobinHood API User}
+\title{RobinHood API: User}
 \usage{
 api_accounts(RH)
 }
@@ -10,5 +10,70 @@ api_accounts(RH)
 \item{RH}{object of class RobinHood}
 }
 \description{
-Returns a list like object of class RobinHood
+RobinHood API: User
+}
+\examples{
+# 'data.frame':	1 obs. of  31 variables:
+# $ rhs_account_number
+# $ deactivated
+# $ updated_at
+# $ margin_balances
+#  ..$ updated_at
+#  ..$ gold_equity_requirement
+#  ..$ outstanding_interest
+#  ..$ cash_held_for_options_collateral
+#  ..$ uncleared_nummus_deposits
+#  ..$ overnight_ratio
+#  ..$ day_trade_buying_power
+#  ..$ cash_available_for_withdrawal
+#  ..$ sma
+#  ..$ cash_held_for_nummus_restrictions
+#  ..$ marked_pattern_day_trader_date
+#  ..$ unallocated_margin_cash
+#  ..$ start_of_day_dtbp
+#  ..$ overnight_buying_power_held_for_orders
+#  ..$ day_trade_ratio
+#  ..$ cash_held_for_orders
+#  ..$ unsettled_debit
+#  ..$ created_at
+#  ..$ cash_held_for_dividends
+#  ..$ cash
+#  ..$ start_of_day_overnight_buying_power
+#  ..$ margin_limit
+#  ..$ overnight_buying_power
+#  ..$ uncleared_deposits
+#  ..$ unsettled_funds
+#  ..$ day_trade_buying_power_held_for_orders
+# $ portfolio
+# $ cash_balances
+# $ can_downgrade_to_cash
+# $ withdrawal_halted
+# $ cash_available_for_withdrawal
+# $ state
+# $ type
+# $ sma
+# $ sweep_enabled
+# $ deposit_halted
+# $ buying_power
+# $ user
+# $ max_ach_early_access_amount
+# $ option_level
+# $ instant_eligibility
+#  ..$ updated_at
+#  ..$ reason
+#  ..$ reinstatement_date
+#  ..$ reversal
+#  ..$ state
+# $ cash_held_for_orders
+# $ only_position_closing_trades
+# $ url
+# $ positions
+# $ created_at
+# $ cash
+# $ sma_held_for_orders
+# $ unsettled_debit
+# $ account_number
+# $ is_pinnacle_account
+# $ uncleared_deposits
+# $ unsettled_funds
 }

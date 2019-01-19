@@ -2,7 +2,7 @@
 % Please edit documentation in R/api_instruments.R
 \name{api_instruments}
 \alias{api_instruments}
-\title{RobinHood API Instruments}
+\title{RobinHood API: Instruments}
 \usage{
 api_instruments(RH, instrument_id)
 }

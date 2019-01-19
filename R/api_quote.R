@@ -1,4 +1,4 @@
-#' RobinHood API Quote
+#' RobinHood API: Quote
 #'
 #' Returns a list of instrument data
 #'

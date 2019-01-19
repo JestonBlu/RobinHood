@@ -2,7 +2,7 @@
 % Please edit documentation in R/api_quote.R
 \name{api_quote}
 \alias{api_quote}
-\title{RobinHood API Quote}
+\title{RobinHood API: Quote}
 \usage{
 api_quote(RH, symbols_url)
 }

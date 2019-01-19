@@ -2,7 +2,7 @@
 % Please edit documentation in R/api_orders.R
 \name{api_orders}
 \alias{api_orders}
-\title{RobinHood API Orders}
+\title{RobinHood API: Orders}
 \usage{
 api_orders(RH, action, order_url = NULL, instrument_id = NULL,
   symbol = NULL, type = NULL, time_in_force = NULL, trigger = NULL,

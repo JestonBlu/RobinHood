@@ -2,7 +2,7 @@
 % Please edit documentation in R/api_login.R
 \name{api_login}
 \alias{api_login}
-\title{RobinHood API Login}
+\title{RobinHood API: Login}
 \usage{
 api_login(username, password)
 }
