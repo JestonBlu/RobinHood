@@ -47,14 +47,25 @@ cancel_order(RH, x$url)
 # Get market hours for a specific date
 get_market_hours(RH)
 
-#                            name     city             website   timezone acronym opens_at closes_at extended_opens_at extended_closes_at is_open       date
-# 1                    IEX Market New York  www.iextrading.com US/Eastern     IEX 08:30:00  15:00:00          08:00:00           17:00:00    TRUE 2019-01-17
-# 2                   Otc Markets New York  www.otcmarkets.com US/Eastern    OTCM 08:30:00  15:00:00          08:00:00           17:00:00    TRUE 2019-01-17
-# 3                  NYSE Mkt Llc New York        www.nyse.com US/Eastern    AMEX 08:30:00  15:00:00          08:00:00           17:00:00    TRUE 2019-01-17
-# 4                     NYSE Arca New York        www.nyse.com US/Eastern    NYSE 08:30:00  15:00:00          08:00:00           17:00:00    TRUE 2019-01-17
-# 5 New York Stock Exchange, Inc. New York        www.nyse.com US/Eastern    NYSE 08:30:00  15:00:00          08:00:00           17:00:00    TRUE 2019-01-17
-# 6          NASDAQ - All Markets New York      www.nasdaq.com US/Eastern  NASDAQ 08:30:00  15:00:00          08:00:00           17:00:00    TRUE 2019-01-17
-# 7                 BATS Exchange New York www.batstrading.com US/Eastern    BATS 08:30:00  15:00:00          08:00:00           17:00:00    TRUE 2019-01-17
+#                            name     city             website   timezone acronym opens_at closes_at
+# 1                    IEX Market New York  www.iextrading.com US/Eastern     IEX 08:30:00  15:00:00
+# 2                   Otc Markets New York  www.otcmarkets.com US/Eastern    OTCM 08:30:00  15:00:00
+# 3                  NYSE Mkt Llc New York        www.nyse.com US/Eastern    AMEX 08:30:00  15:00:00
+# 4                     NYSE Arca New York        www.nyse.com US/Eastern    NYSE 08:30:00  15:00:00
+# 5 New York Stock Exchange, Inc. New York        www.nyse.com US/Eastern    NYSE 08:30:00  15:00:00
+# 6          NASDAQ - All Markets New York      www.nasdaq.com US/Eastern  NASDAQ 08:30:00  15:00:00
+# 7                 BATS Exchange New York www.batstrading.com US/Eastern    BATS 08:30:00  15:00:00
+
+#   extended_opens_at extended_closes_at is_open       date
+# 1          08:00:00           17:00:00    TRUE 2019-01-17
+# 2          08:00:00           17:00:00    TRUE 2019-01-17
+# 3          08:00:00           17:00:00    TRUE 2019-01-17
+# 4          08:00:00           17:00:00    TRUE 2019-01-17
+# 5          08:00:00           17:00:00    TRUE 2019-01-17
+# 6          08:00:00           17:00:00    TRUE 2019-01-17
+# 7          08:00:00           17:00:00    TRUE 2019-01-17
+
+
 
 # You can identify instruments by popular tags
 get_tag(RH, tag = "100-most-popular")

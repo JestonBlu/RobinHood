@@ -4,11 +4,16 @@
 \alias{api_orders}
 \title{RobinHood API Orders}
 \usage{
-api_orders(RH, instrument_id, symbol, type, time_in_force, trigger, price,
-  stop_price, quantity, side)
+api_orders(RH, action, order_url = NULL, instrument_id = NULL,
+  symbol = NULL, type = NULL, time_in_force = NULL, trigger = NULL,
+  price = NULL, stop_price = NULL, quantity, side = NULL)
 }
 \arguments{
 \item{RH}{object of class RobinHood}
+
+\item{action}{(string) one of "order", "status", or "cancel"}
+
+\item{order_url}{(string) action is "status" or "cancel", only order_url is required}
 
 \item{instrument_id}{(string) URL of the instrument_id}
 

@@ -6,7 +6,7 @@
 #' @export
 cancel_order <- function(RH, order_url) {
 
-  order_status <- api_order_cancel(RH, order_url)
+  order_status <- api_orders(RH, order_url)
 
   return(order_status)
 }
