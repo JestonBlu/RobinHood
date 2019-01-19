@@ -4,7 +4,7 @@
 \alias{api_watchlist}
 \title{RobinHood API: watchlist}
 \usage{
-api_watchlist(RH, watchlist_url, detail = NULL, delete = FALSE)
+api_watchlist(RH, watchlist_url, detail = FALSE, delete = FALSE)
 }
 \arguments{
 \item{RH}{object of class RobinHood}

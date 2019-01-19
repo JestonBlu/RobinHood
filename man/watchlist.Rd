@@ -4,7 +4,7 @@
 \alias{watchlist}
 \title{Get a current instrument quote from RobinHood}
 \usage{
-watchlist(RH, action, watchlist = NULL, ticker = NULL)
+watchlist(RH, action, watchlist = "", ticker = "")
 }
 \arguments{
 \item{RH}{object class RobinHood}

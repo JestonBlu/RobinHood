@@ -15,7 +15,7 @@ api_endpoints <- function(endpoint) {
     markets = "markets/",
     fundamentals = "fundamentals/?symbols=",
     tags = "midlands/tags/tag/",
-    watchlist = "watchlist/",
+    watchlist = "watchlists/",
     user = "user/"
   )
 
