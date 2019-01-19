@@ -92,6 +92,19 @@ str(get_fundamentals(RH, 'CAT'))
 # $ num_employees         : int 98400
 # $ year_founded          : int 1925
 
+# Watchlist commands, currently creating and removing watchlists isn't working
+watchlist(RH, action = 'get')
+# [1] "Default"
+
+watchlist(RH, action = 'get', watchlist = 'Default') # get results
+# [1] "AAPL" "TWTR" "TSLA" "NFLX" "FB"   "MSFT" "DIS"  "GPRO" "SBUX" "F"    "BABA" "BAC"  "FIT"  "GE"   "SNAP"
+
+watchlist(RH, action = 'add', watchlist = 'Default', ticker = "CAT") # returns empty list
+# [1] "Instrument added to watchlist"
+
+watchlist(RH, action = 'delete', watchlist = 'Default', ticker = 'CAT')  # returns empty list
+# [1] "Instrument removed from watchlist"
+
 # Logout and revoke your oauth2 token
 logout(RH)
 
