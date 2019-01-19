@@ -37,6 +37,7 @@ place_order <- function(RH, symbol, type, time_in_force, trigger, price, stop_pr
 
   # Place an order
     orders <- api_orders(RH = RH,
+                         action = "order",
                          instrument_id = instrument_id,
                          symbol = symbol,
                          type = type,

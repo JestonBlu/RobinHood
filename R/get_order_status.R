@@ -10,7 +10,7 @@
 get_order_status <- function(RH, order_url, simple = TRUE) {
 
   # Get Order Status
-  order_status <- api_orders(RH, order_url)
+  order_status <- api_orders(RH, action = "status", order_url)
 
   if (simple == TRUE) {
     order_status = list(updated_at = order_status$updated_at,

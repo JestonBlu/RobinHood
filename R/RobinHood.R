@@ -16,7 +16,7 @@ RobinHood <- function(username, password) {
   RH <- api_login(username, password)
 
   # Get user data for the main purpose of returning the position url
-  user <- api_user(RH)
+  user <- api_accounts(RH)
   url_positions <- user$results$positions
   url_account_id <- user$results$url
 
