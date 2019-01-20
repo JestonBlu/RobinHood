@@ -23,6 +23,9 @@ library(RobinHood)
 # Returns a list style object of relevant API keys and IDs needed to interact with your account
 RH = RobinHood(username = "username", password = "password")
 
+# Logout and revoke your oauth2 token
+logout(RH)
+
 # Returns a data.frame of positions
 get_positions(RH, simple = TRUE)
 
@@ -40,6 +43,9 @@ get_quote(RH, ticker = c("CAT", "GE"), simple = TRUE)
 # Place Order, should generate an email
 x = place_order(RH = RH, symbol = "GE", type = "market", time_in_force = "gfd",
                 trigger = "immediate", price = 8.96, quantity = 1, side = "buy")
+
+# Get orders status
+order_status(RH, x$url)
 
 # Cancel your order, should also generate an email
 cancel_order(RH, x$url)
@@ -116,8 +122,12 @@ watchlist(RH, action = 'add', watchlist = 'Default', ticker = "CAT")
 watchlist(RH, action = 'delete', watchlist = 'Default', ticker = 'CAT')
 # [1] "Instrument removed from watchlist"
 
-# Logout and revoke your oauth2 token
-logout(RH)
+# Get user info (see api_user for a list of fields)
+get_user(RH)
+
+# Get account info (see api_accounts for a list of fields)
+get_accounts(RH)
+
 
 
 ```
