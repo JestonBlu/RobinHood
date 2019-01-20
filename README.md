@@ -128,6 +128,4 @@ get_user(RH)
 # Get account info (see api_accounts for a list of fields)
 get_accounts(RH)
 
-
-
 ```

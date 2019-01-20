@@ -5,7 +5,7 @@
 #' @param RH object class RobinHood
 #' @import curl jsonlite magrittr lubridate
 #' @export
-get_user <- function(RH, ticker, limit_output = TRUE) {
+get_user <- function(RH) {
 
   user <- api_user(RH)
 
