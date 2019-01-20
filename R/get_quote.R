@@ -24,8 +24,7 @@ get_quote <- function(RH, ticker, limit_output = TRUE) {
 
   if (limit_output == TRUE) {
     quotes <- quotes[, c("symbol",
-                        "last_trade_price",
-                        "last_trade_price_source")]
+                        "last_trade_price")]
   } else {
     quotes <- quotes[, c("symbol",
                        "last_trade_price",
