@@ -4,7 +4,7 @@
 \alias{get_user}
 \title{Get user data}
 \usage{
-get_user(RH, ticker, limit_output = TRUE)
+get_user(RH)
 }
 \arguments{
 \item{RH}{object class RobinHood}

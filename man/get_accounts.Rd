@@ -4,7 +4,7 @@
 \alias{get_accounts}
 \title{Get account data}
 \usage{
-get_accounts(RH, ticker, limit_output = TRUE)
+get_accounts(RH)
 }
 \arguments{
 \item{RH}{object class RobinHood}

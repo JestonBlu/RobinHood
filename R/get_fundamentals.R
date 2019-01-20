@@ -17,6 +17,8 @@ get_fundamentals <- function(RH, ticker, include_description = FALSE) {
         fundamentals <- subset(fundamentals, select = -c(description, instrument))
     }
 
+    fundamentals <- fundamentals %>% as.list
+
     return(fundamentals)
 
 }
