@@ -12,7 +12,8 @@ api_login(username, password)
 \item{password}{(string) RobinHood password}
 }
 \description{
-Backend function called by RobinHood(). Returns a list like object of class RobinHood which stores tokens required by all other functions.
+Backend function called by RobinHood(). Returns a list like object of class RobinHood which stores tokens
+required by all other functions.
 }
 \examples{
 # data returned by api call

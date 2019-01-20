@@ -10,7 +10,7 @@ logout(RH)
 \item{RH}{object of class RobinHood}
 }
 \description{
-Send a logout call through the RobinHood API service, this disables your token
+Send a logout call through the RobinHood API service and disable your token.
 }
 \examples{
 # Logout

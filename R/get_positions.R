@@ -1,15 +1,12 @@
-#' Get the current instrument positions of your RobinHood account
+#' Get the current positions of your account
 #'
+#' Download all investment positions for your account.
 #'
 #' @param RH object class RobinHood
-#' @param simple (logical) if true, return a simplified positions table, false returns all positions details
+#' @param limit_output (logical) if true, return a simplified positions table, false returns all positions details
 #' @import curl jsonlite magrittr lubridate
 #' @export
-#' @examples
-#' # Get you current positions
-#' # RH <- RobinHood(username = 'your username', password = 'your password')
-#' # get_positions(RH)
-get_positions <- function(RH, simple = TRUE) {
+get_positions <- function(RH, limit_output = TRUE) {
 
   ##############################################################################
   # Get current positions
@@ -72,7 +69,7 @@ get_positions <- function(RH, simple = TRUE) {
   positions$cost <- with(positions, average_buy_price * quantity)
   positions$current_value <- with(positions, last_trade_price * quantity)
 
-  if (simple == TRUE) {
+  if (limit_output == TRUE) {
     # Reorder dataframe
     positions <- positions[, c("simple_name",
                                "symbol",

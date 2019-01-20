@@ -16,5 +16,7 @@ api_watchlist(RH, watchlist_url, detail = FALSE, delete = FALSE)
 \item{delete}{(logical) send delete call}
 }
 \description{
-Backend function called by watchlist(). Adds or remove instruments from the default watchlist. The create and delete watchlist features are disabled as it appears that the functionality is not currently available on the plateform.
+Backend function called by watchlist(). Adds or remove instruments from the default watchlist. The create
+and delete watchlist features are disabled as it appears that the functionality is not currently available
+on the plateform.
 }

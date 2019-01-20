@@ -12,7 +12,8 @@ api_fundamentals(RH, ticker)
 \item{ticker}{(string) vector of ticker symbols}
 }
 \description{
-Backend function called by get_fundamentals(), watchlist(). Returns a data frame of descriptive data for a given ticker symbol.
+Backend function called by get_fundamentals(), watchlist(). Returns a data frame of descriptive data for a
+given ticker symbol.
 }
 \examples{
 # data returned by api call

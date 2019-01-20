@@ -1,6 +1,7 @@
 #' RobinHood API: Login
 #'
-#' Backend function called by RobinHood(). Returns a list like object of class RobinHood which stores tokens required by all other functions.
+#' Backend function called by RobinHood(). Returns a list like object of class RobinHood which stores tokens
+#' required by all other functions.
 #' @param username (string) RobinHood username
 #' @param password (string) RobinHood password
 #' @import curl jsonlite magrittr

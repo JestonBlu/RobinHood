@@ -1,7 +1,7 @@
-#' Connect to your RobinHood Account
+#' RobinHood Account Authentication
 #'
-#' This function returns an object of S3 class RobinHood and establishes a
-#' connection to a RobinHood account.
+#' This function returns an object of S3 class RobinHood and establishes a connection to a RobinHood account.
+#' It is a required input for every other function in the package.
 #'
 #' @param username user name or email
 #' @param password password

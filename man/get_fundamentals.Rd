@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_fundamentals.R
 \name{get_fundamentals}
 \alias{get_fundamentals}
-\title{Get fundamentals for a particular symbol or list of symbols}
+\title{Get ticker fundamentals}
 \usage{
 get_fundamentals(RH, ticker, include_description = FALSE)
 }
@@ -14,5 +14,5 @@ get_fundamentals(RH, ticker, include_description = FALSE)
 \item{include_description}{(logical) include a long description of the company (default: FALSE)}
 }
 \description{
-Get fundamentals
+Get ticker fundamentals for a particular symbol or list of symbols.
 }

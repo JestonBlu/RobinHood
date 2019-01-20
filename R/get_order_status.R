@@ -1,13 +1,13 @@
 #' Get order status using the RobinHood api
 #'
-#' Returns a list of order information
+#' Returns a list of order information given a buy/sell order url.
 #'
 #' @param RH object of class RobinHood
 #' @param order_url (string) url of order returned from place_order
-#' @param simple (logical) return limited info on the order (default TRUE)
+#' @param limit_output (logical) return limited info on the order (default TRUE)
 #' @import curl jsonlite magrittr
 #' @export
-get_order_status <- function(RH, order_url, simple = TRUE) {
+get_order_status <- function(RH, order_url, limit_output = TRUE) {
 
   # Get Order Status
   order_status <- api_orders(RH, action = "status", order_url)

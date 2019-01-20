@@ -2,22 +2,17 @@
 % Please edit documentation in R/get_quote.R
 \name{get_quote}
 \alias{get_quote}
-\title{Get a current instrument quote from RobinHood}
+\title{Get a quote from RobinHood}
 \usage{
-get_quote(RH, ticker, simple = TRUE)
+get_quote(RH, ticker, limit_output = TRUE)
 }
 \arguments{
 \item{RH}{object class RobinHood}
 
 \item{ticker}{(string) of ticker symbols}
 
-\item{simple}{(logical) if TRUE (default) return less quote detail}
+\item{limit_output}{(logical) if TRUE (default) return less quote detail}
 }
 \description{
 For a string of ticker symbols, return quote data.
-}
-\examples{
-# Get you current positions
-# RH <- RobinHood(username = 'your username', password = 'your password')
-# get_quote(RH, c("CAT", "GE"))
 }

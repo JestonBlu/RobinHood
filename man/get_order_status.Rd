@@ -4,15 +4,15 @@
 \alias{get_order_status}
 \title{Get order status using the RobinHood api}
 \usage{
-get_order_status(RH, order_url, simple = TRUE)
+get_order_status(RH, order_url, limit_output = TRUE)
 }
 \arguments{
 \item{RH}{object of class RobinHood}
 
 \item{order_url}{(string) url of order returned from place_order}
 
-\item{simple}{(logical) return limited info on the order (default TRUE)}
+\item{limit_output}{(logical) return limited info on the order (default TRUE)}
 }
 \description{
-Returns a list of order information
+Returns a list of order information given a buy/sell order url.
 }

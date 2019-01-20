@@ -1,6 +1,8 @@
 #' RobinHood API: Orders
 #'
-#' Backend function called by place_order(), get_order_status(), cancel_order(). Issues a buy/sell order or returns the status of an order. When issuing a buy order use the url column in the return data to check the status or cancel the order.
+#' Backend function called by place_order(), get_order_status(), cancel_order(). Issues a buy/sell order or
+#' returns the status of an order. When issuing a buy order use the url column in the return data to check the
+#' status or cancel the order.
 #'
 #' @param RH object of class RobinHood
 #' @param action (string) one of "order", "status", or "cancel"

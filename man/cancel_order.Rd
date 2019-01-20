@@ -9,8 +9,8 @@ cancel_order(RH, order_url)
 \arguments{
 \item{RH}{object of class RobinHood}
 
-\item{order_url}{(string) url of order returned from place_order}
+\item{order_url}{(string) url of order returned from place_order()}
 }
 \description{
-Cancel an existing order on RobinHood
+Send a cancel buy order command to RobinHood. You will need to retain the buy/sell order url.
 }

@@ -1,6 +1,6 @@
-#' Get fundamentals for a particular symbol or list of symbols
+#' Get ticker fundamentals
 #'
-#' Get fundamentals
+#' Get ticker fundamentals for a particular symbol or list of symbols.
 #'
 #' @param RH object of class RobinHood
 #' @param ticker (string) vector of ticker symbols

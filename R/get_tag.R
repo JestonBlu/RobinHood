@@ -1,5 +1,6 @@
 #' Get ticker symbols for popular tags on RobinHood
 #'
+#' Geta a data frame of ticker symbols and names linked to trending tags on the RobinHood website.
 #'
 #' @param RH object class RobinHood
 #' @param tag (string) a hyphenated tag such as "100-most-popular"

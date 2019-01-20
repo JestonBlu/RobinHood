@@ -1,6 +1,6 @@
-#' Get market hours for a specific date
+#' Get market hours
 #'
-#' Get a list of markets
+#' Get a list of markets available on RobinHood with trading hours for a specific date.
 #'
 #' @param RH object of class RobinHood
 #' @param market_date (string) date in the form 'yyyy-mm-dd', default today

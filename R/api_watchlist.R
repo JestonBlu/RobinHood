@@ -1,6 +1,8 @@
 #' RobinHood API: watchlist
 #'
-#' Backend function called by watchlist(). Adds or remove instruments from the default watchlist. The create and delete watchlist features are disabled as it appears that the functionality is not currently available on the plateform.
+#' Backend function called by watchlist(). Adds or remove instruments from the default watchlist. The create
+#' and delete watchlist features are disabled as it appears that the functionality is not currently available
+#' on the plateform.
 #'
 #' @param RH object of class RobinHood
 #' @param watchlist_url (string) a single watchlist url

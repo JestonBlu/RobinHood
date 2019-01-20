@@ -27,5 +27,5 @@ place_order(RH, symbol, type, time_in_force, trigger, price,
 \item{side}{(string) "buy" or "sell"}
 }
 \description{
-Issues a buy or sell order and returns a list of order information
+Issues a buy or sell order and returns a list of order information confirming the order.
 }

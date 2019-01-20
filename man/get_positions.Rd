@@ -2,20 +2,15 @@
 % Please edit documentation in R/get_positions.R
 \name{get_positions}
 \alias{get_positions}
-\title{Get the current instrument positions of your RobinHood account}
+\title{Get the current positions of your account}
 \usage{
-get_positions(RH, simple = TRUE)
+get_positions(RH, limit_output = TRUE)
 }
 \arguments{
 \item{RH}{object class RobinHood}
 
-\item{simple}{(logical) if true, return a simplified positions table, false returns all positions details}
+\item{limit_output}{(logical) if true, return a simplified positions table, false returns all positions details}
 }
 \description{
-Get the current instrument positions of your RobinHood account
-}
-\examples{
-# Get you current positions
-# RH <- RobinHood(username = 'your username', password = 'your password')
-# get_positions(RH)
+Download all investment positions for your account.
 }

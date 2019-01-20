@@ -1,6 +1,6 @@
 #' Place a buy or sell order against your RobinHood account
 #'
-#' Issues a buy or sell order and returns a list of order information
+#' Issues a buy or sell order and returns a list of order information confirming the order.
 #'
 #' @param RH object of class RobinHood
 #' @param symbol (string) Ticket symbol you are attempting to buy or sell
