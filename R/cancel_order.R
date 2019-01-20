@@ -12,5 +12,9 @@ cancel_order <- function(RH, order_url) {
 
   if (length(order_status) == 0) order_status <- "Order Canceled"
 
+  if (length(order_status) >  1) {
+    order_status <- "You may have already canceled this order, check order_status()"
+  }
+
   return(order_status)
 }
