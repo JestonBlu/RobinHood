@@ -12,8 +12,8 @@ get_order_status <- function(RH, order_url, limit_output = TRUE) {
   # Get Order Status
   order_status <- api_orders(RH, action = "status", order_url)
 
-  if (simple == TRUE) {
-    order_status = list(updated_at = order_status$updated_at,
+  if (limit_output == TRUE) {
+    order_status <- list(updated_at = order_status$updated_at,
                         time_in_force = order_status$time_in_force,
                         state = order_status$state,
                         type = order_status$type,
