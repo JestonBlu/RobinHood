@@ -9,6 +9,8 @@ get_user <- function(RH) {
 
   user <- api_user(RH)
 
+  user$created_at <- ymd_hms(user$created_at)
+
   return(user)
 
 }
