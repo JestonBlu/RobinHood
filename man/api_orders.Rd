@@ -34,5 +34,35 @@ api_orders(RH, action, order_url = NULL, instrument_id = NULL,
 \item{side}{(string) "buy" or "sell"}
 }
 \description{
-Issues a buy or sell order and returns a list of order information
+Backend function called by place_order(), get_order_status(), cancel_order(). Issues a buy/sell order or returns the status of an order. When issuing a buy order use the url column in the return data to check the status or cancel the order.
+}
+\examples{
+# data returned by api call
+#  $ updated_at
+#  $ ref_id
+#  $ time_in_force
+#  $ fees
+#  $ cancel
+#  $ response_category
+#  $ id
+#  $ cumulative_quantity
+#  $ stop_price
+#  $ reject_reason
+#  $ instrument
+#  $ state
+#  $ trigger
+#  $ override_dtbp_checks
+#  $ type
+#  $ last_transaction_at
+#  $ price
+#  $ executions
+#  $ extended_hours
+#  $ account
+#  $ url
+#  $ created_at
+#  $ side
+#  $ override_day_trade_checks
+#  $ position
+#  $ average_price
+#  $ quantity
 }

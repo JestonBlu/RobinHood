@@ -10,10 +10,10 @@ api_accounts(RH)
 \item{RH}{object of class RobinHood}
 }
 \description{
-RobinHood API: User
+Backend function called by get_user(), returns a list of user account data.
 }
 \examples{
-# 'data.frame':	1 obs. of  31 variables:
+# data returned by api call
 # $ rhs_account_number
 # $ deactivated
 # $ updated_at

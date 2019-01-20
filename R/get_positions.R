@@ -21,10 +21,9 @@ get_positions <- function(RH, simple = TRUE) {
   instruments <- c()
 
   for (i in 1:length(instrument_id)) {
-    instrument <- api_instruments(instrument_id[i])
+    instrument <- api_instruments(RH, instrument_id[i])
 
-    x <- data.frame(simple_name = instrument$simple_name,
-                    symbol = instrument$symbol)
+    x <- data.frame(simple_name = instrument$simple_name, symbol = instrument$symbol)
 
     instruments <- rbind(instruments, x)
   }

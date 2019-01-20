@@ -12,5 +12,5 @@ api_tag(RH, tag)
 \item{tag}{(string) a hyphenated tag such as "100-most-popular"}
 }
 \description{
-Get a list of instruments for a certain trending tag on RobinHood
+Backend function called by get_tag(). Returns a list of instrument ids.
 }

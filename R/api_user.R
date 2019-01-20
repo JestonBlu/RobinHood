@@ -5,7 +5,7 @@
 #' @param RH object of class RobinHood
 #' @import curl jsonlite magrittr
 #' @examples
-#' # List of 14
+#' # data returned by api call
 #' # $ username
 #' # $ first_name
 #' # $ last_name

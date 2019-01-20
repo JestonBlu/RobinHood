@@ -1,6 +1,6 @@
 #' RobinHood API: Orders
 #'
-#' Issues a buy or sell order and returns a list of order information
+#' Backend function called by place_order(), get_order_status(), cancel_order(). Issues a buy/sell order or returns the status of an order. When issuing a buy order use the url column in the return data to check the status or cancel the order.
 #'
 #' @param RH object of class RobinHood
 #' @param action (string) one of "order", "status", or "cancel"
@@ -15,6 +15,35 @@
 #' @param quantity (int) number of shares you wish to transact
 #' @param side (string) "buy" or "sell"
 #' @import curl jsonlite magrittr
+#' @examples
+#' # data returned by api call
+#' #  $ updated_at
+#' #  $ ref_id
+#' #  $ time_in_force
+#' #  $ fees
+#' #  $ cancel
+#' #  $ response_category
+#' #  $ id
+#' #  $ cumulative_quantity
+#' #  $ stop_price
+#' #  $ reject_reason
+#' #  $ instrument
+#' #  $ state
+#' #  $ trigger
+#' #  $ override_dtbp_checks
+#' #  $ type
+#' #  $ last_transaction_at
+#' #  $ price
+#' #  $ executions
+#' #  $ extended_hours
+#' #  $ account
+#' #  $ url
+#' #  $ created_at
+#' #  $ side
+#' #  $ override_day_trade_checks
+#' #  $ position
+#' #  $ average_price
+#' #  $ quantity
 api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbol = NULL, type = NULL,
                        time_in_force = NULL, trigger = NULL, price = NULL, stop_price = NULL, quantity,
                        side = NULL) {

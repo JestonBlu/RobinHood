@@ -10,8 +10,5 @@ api_logout(RH)
 \item{RH}{object of class RobinHood}
 }
 \description{
-Send a logout call through the RobinHood API service. This disables your oauth2 token.
-}
-\seealso{
-\code{\link{logout}}
+Backend function called by logout(). Sends a logout call and disables your oauth2 token.
 }

@@ -1,6 +1,6 @@
 #' RobinHood API: Endpoints
 #'
-#' Returns the appropriate starting URL for a given endpoint.
+#' Backend function called by almost every function. Returns the appropriate starting URL for a given endpoint.
 #'
 #' @param endpoint (string) which api endpoint to look up?
 api_endpoints <- function(endpoint) {

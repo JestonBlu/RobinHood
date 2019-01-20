@@ -7,10 +7,20 @@
 api_login(username, password)
 }
 \arguments{
-\item{username}{RobinHood username}
+\item{username}{(string) RobinHood username}
 
-\item{password}{RobinHood password}
+\item{password}{(string) RobinHood password}
 }
 \description{
-Returns a list like object of class RobinHood
+Backend function called by RobinHood(). Returns a list like object of class RobinHood which stores tokens required by all other functions.
+}
+\examples{
+# data returned by api call
+#  $ api_grant_type
+#  $ api_client_id
+#  $ tokens.access_token
+#  $ tokens.refresh_token
+#  $ url.positions
+#  $ url.account_id
+#  - attr(*, "class")= chr "RobinHood"
 }

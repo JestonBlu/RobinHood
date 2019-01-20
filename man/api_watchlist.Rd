@@ -9,12 +9,12 @@ api_watchlist(RH, watchlist_url, detail = FALSE, delete = FALSE)
 \arguments{
 \item{RH}{object of class RobinHood}
 
-\item{watchlist_url}{(string) url passed from watchlist.R}
+\item{watchlist_url}{(string) a single watchlist url}
 
-\item{detail}{(string) if null use header api only, otherwise pass options}
+\item{detail}{(logical) if null use header api only, otherwise pass options}
 
-\item{delete}{(logical) send delete call?}
+\item{delete}{(logical) send delete call}
 }
 \description{
-RobinHood API: watchlist
+Backend function called by watchlist(). Adds or remove instruments from the default watchlist. The create and delete watchlist features are disabled as it appears that the functionality is not currently available on the plateform.
 }

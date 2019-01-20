@@ -1,9 +1,12 @@
 #' RobinHood API: User
 #'
+#' Backend function called by get_user(), returns a list of user account data.
+#'
+#'
 #' @param RH object of class RobinHood
 #' @import curl jsonlite magrittr
 #' @examples
-#' # 'data.frame':	1 obs. of  31 variables:
+#' # data returned by api call
 #' # $ rhs_account_number
 #' # $ deactivated
 #' # $ updated_at
@@ -68,7 +71,6 @@
 #' # $ unsettled_funds
 api_accounts <- function(RH) {
 
-  # Get account id
   accounts <- new_handle() %>%
     handle_setheaders("Accept" = "application/json") %>%
     handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%

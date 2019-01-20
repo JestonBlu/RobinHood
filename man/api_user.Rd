@@ -13,7 +13,7 @@ api_user(RH)
 Backend function called by get_user() to return user data
 }
 \examples{
-# List of 14
+# data returned by api call
 # $ username
 # $ first_name
 # $ last_name

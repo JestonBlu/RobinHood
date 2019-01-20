@@ -9,10 +9,23 @@ api_markets(RH, markets_url, type = "df")
 \arguments{
 \item{RH}{object of class RobinHood}
 
-\item{markets_url}{(string) url of the market api}
+\item{markets_url}{(string) a single market url}
 
-\item{type}{(string) 'df' or 'list'}
+\item{type}{(string) structure of data returned, 'df' or 'list'}
 }
 \description{
-Get a list of markets
+Backend function called by get_market_hours(). Returns a data frame of markets data and trading hours.
+}
+\examples{
+# data returned by api call
+# $ website
+# $ city
+# $ name
+# $ url
+# $ country
+# $ todays_hours
+# $ operating_mic
+# $ acronym
+# $ timezone
+# $ mic
 }

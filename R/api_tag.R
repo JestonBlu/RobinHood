@@ -1,6 +1,6 @@
 #' RobinHood API: Tag
 #'
-#' Get a list of instruments for a certain trending tag on RobinHood
+#' Backend function called by get_tag(). Returns a list of instrument ids.
 #'
 #' @param RH object of class RobinHood
 #' @param tag (string) a hyphenated tag such as "100-most-popular"

@@ -9,8 +9,33 @@ api_instruments(RH, instrument_id)
 \arguments{
 \item{RH}{object of class RobinHood}
 
-\item{instrument_id}{(string) instrument_id returned from api_positions}
+\item{instrument_id}{(string) a single instrument_id}
 }
 \description{
-Returns a list of instrument data
+Backend function called by get_tag(), get_position(), watchlist(). Returns a list of instrument data.
+}
+\examples{
+# data returned by api call
+#  $ margin_initial_ratio
+#  $ rhs_tradability
+#  $ id
+#  $ market
+#  $ simple_name
+#  $ min_tick_size
+#  $ maintenance_ratio
+#  $ tradability
+#  $ state
+#  $ type
+#  $ tradeable
+#  $ fundamentals
+#  $ quote
+#  $ symbol
+#  $ day_trade_ratio
+#  $ name
+#  $ tradable_chain_id
+#  $ splits
+#  $ url
+#  $ country
+#  $ bloomberg_unique
+#  $ list_date
 }
