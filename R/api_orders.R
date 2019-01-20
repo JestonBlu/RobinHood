@@ -47,7 +47,7 @@
 #' #  $ average_price
 #' #  $ quantity
 api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbol = NULL, type = NULL,
-                       time_in_force = NULL, trigger = NULL, price = NULL, stop_price = NULL, quantity,
+                       time_in_force = NULL, trigger = NULL, price = NULL, stop_price = NULL, quantity = NULL,
                        side = NULL) {
 
   if (action == "order") {
@@ -89,9 +89,7 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
     return(order_status)
   }
 
-  if (action == 'cancel') {
-    # Adjust order url to cancel
-    order_url <- paste(order_url, "cancel/", sep = "")
+  if (action == "cancel") {
 
     # Get Order Status
     order_status <- new_handle() %>%

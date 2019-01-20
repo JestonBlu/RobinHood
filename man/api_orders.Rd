@@ -6,7 +6,7 @@
 \usage{
 api_orders(RH, action, order_url = NULL, instrument_id = NULL,
   symbol = NULL, type = NULL, time_in_force = NULL, trigger = NULL,
-  price = NULL, stop_price = NULL, quantity, side = NULL)
+  price = NULL, stop_price = NULL, quantity = NULL, side = NULL)
 }
 \arguments{
 \item{RH}{object of class RobinHood}

@@ -23,8 +23,11 @@ library(RobinHood)
 # Returns a list style object of relevant API keys and IDs needed to interact with your account
 RH = RobinHood(username = "username", password = "password")
 
-# Logout and revoke your oauth2 token
-logout(RH)
+# Get user info (see api_user for a list of fields)
+get_user(RH)
+
+# Get account info (see api_accounts for a list of fields)
+get_accounts(RH)
 
 # Returns a data.frame of positions
 get_positions(RH, simple = TRUE)
@@ -32,6 +35,30 @@ get_positions(RH, simple = TRUE)
 #   simple_name symbol quantity average_buy_price last_trade_price cost current_value          updated_at
 # 1          GE     GE        1               8.5             8.73  8.5          8.73 2019-01-10 04:19:01
 # 2       Zynga   ZNGA        2               0.0             4.27  0.0          8.54 2019-01-06 16:44:03
+
+# Get instrument fundamentals
+str(get_fundamentals(RH, 'CAT'))
+
+#'data.frame':	1 obs. of  19 variables:
+# $ open                  : chr "135.020000"
+# $ high                  : chr "137.710000"
+# $ low                   : chr "133.660000"
+# $ volume                : chr "1629664.000000"
+# $ average_volume_2_weeks: chr "4372297.200000"
+# $ average_volume        : chr "5479200.247000"
+# $ high_52_weeks         : chr "173.100000"
+# $ dividend_yield        : chr "1.967200"
+# $ low_52_weeks          : chr "112.060000"
+# $ market_cap            : chr "79392956900.000000"
+# $ pe_ratio              : chr "21.800580"
+# $ shares_outstanding    : chr "590106711.000000"
+# $ ceo                   : chr "Donald James Umpleby, III"
+# $ headquarters_city     : chr "Deerfield"
+# $ headquarters_state    : chr "Illinois"
+# $ sector                : chr "Producer Manufacturing"
+# $ industry              : chr "Trucks Or Construction Or Farm Machinery"
+# $ num_employees         : int 98400
+# $ year_founded          : int 1925
 
 # Get quotes
 get_quote(RH, ticker = c("CAT", "GE"), simple = TRUE)
@@ -41,14 +68,68 @@ get_quote(RH, ticker = c("CAT", "GE"), simple = TRUE)
 # 2     GE         8.980000            consolidated
 
 # Place Order, should generate an email
-x = place_order(RH = RH, symbol = "GE", type = "market", time_in_force = "gfd",
-                trigger = "immediate", price = 8.96, quantity = 1, side = "buy")
+x = place_order(RH = RH,
+                symbol = "GE",          # Ticker symbol you want to trade
+                type = "market",        # Type of market order
+                time_in_force = "gfd",  # Time period the order is good for (gfd: good for day)
+                trigger = "immediate",  # Trigger or delay order
+                price = 8.96,           # The highest price you are willing to pay
+                quantity = 1,           # Number of shares you want
+                side = "buy")           # buy or sell
 
-# Get orders status
-order_status(RH, x$url)
+# List of 27
+# $ updated_at               :
+# $ ref_id                   :
+# $ time_in_force            :
+# $ fees                     :
+# $ cancel                   : # url to cancel an order
+# $ response_category        :
+# $ id                       :
+# $ cumulative_quantity      :
+# $ stop_price               :
+# $ reject_reason            :
+# $ instrument               :
+# $ state                    :
+# $ trigger                  :
+# $ override_dtbp_checks     :
+# $ type                     :
+# $ last_transaction_at      :
+# $ price                    :
+# $ executions               :
+# $ extended_hours           :
+# $ account                  :
+# $ url                      : # url for checking order status
+# $ created_at               :
+# $ side                     :
+# $ override_day_trade_checks:
+# $ position                 :
+# $ average_price            :
+# $ quantity                 :
 
-# Cancel your order, should also generate an email
-cancel_order(RH, x$url)
+
+# Check the status of an order
+get_order_status(RH, x$url)
+
+# $updated_at
+# [1] "2019-01-20T13:57:44.329458Z"
+#
+# $time_in_force
+# [1] "gfd"
+#
+# $state
+# [1] "queued"
+#
+# $type
+# [1] "market"
+#
+# $executions
+# list()
+
+# Cancel an order (should generate an email)
+cancel_order(RH, x$cancel)
+# One of 2 messages you may receive
+#  "Order canceled"
+# "You may have already canceled this order, check order_status()"
 
 # Get market hours for a specific date
 get_market_hours(RH)
@@ -75,39 +156,7 @@ get_market_hours(RH)
 
 # You can identify instruments by popular tags
 get_tag(RH, tag = "100-most-popular")
-
-#       simple_name symbol
-# 1           Apple   AAPL
-# 2              GE     GE
-# 3 Aurora Cannabis    ACB
-# 4            Ford      F
-# 5           Group   CRON
-# 6       Microsoft   MSFT
-# 7        Facebook    FB
-
-# Get instrument fundamentals
-str(get_fundamentals(RH, 'CAT'))
-
-#'data.frame':	1 obs. of  19 variables:
-# $ open                  : chr "135.020000"
-# $ high                  : chr "137.710000"
-# $ low                   : chr "133.660000"
-# $ volume                : chr "1629664.000000"
-# $ average_volume_2_weeks: chr "4372297.200000"
-# $ average_volume        : chr "5479200.247000"
-# $ high_52_weeks         : chr "173.100000"
-# $ dividend_yield        : chr "1.967200"
-# $ low_52_weeks          : chr "112.060000"
-# $ market_cap            : chr "79392956900.000000"
-# $ pe_ratio              : chr "21.800580"
-# $ shares_outstanding    : chr "590106711.000000"
-# $ ceo                   : chr "Donald James Umpleby, III"
-# $ headquarters_city     : chr "Deerfield"
-# $ headquarters_state    : chr "Illinois"
-# $ sector                : chr "Producer Manufacturing"
-# $ industry              : chr "Trucks Or Construction Or Farm Machinery"
-# $ num_employees         : int 98400
-# $ year_founded          : int 1925
+#  [1] "AAPL"  "GE"    "ACB"   "F"     "CRON"  "MSFT"  "FB"    "AMD"   "FIT"   "GPRO"  "CGC"   "SNAP" ...
 
 # Watchlist commands, currently creating and removing watchlists isn't working
 watchlist(RH, action = 'get')
@@ -122,10 +171,6 @@ watchlist(RH, action = 'add', watchlist = 'Default', ticker = "CAT")
 watchlist(RH, action = 'delete', watchlist = 'Default', ticker = 'CAT')
 # [1] "Instrument removed from watchlist"
 
-# Get user info (see api_user for a list of fields)
-get_user(RH)
 
-# Get account info (see api_accounts for a list of fields)
-get_accounts(RH)
 
 ```
