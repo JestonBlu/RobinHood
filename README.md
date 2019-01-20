@@ -6,12 +6,24 @@
 --------------------------------------------------------------------------------
 
 ## RobinHood
-An R Interface for the RobinHood.com no commision investing site.
+This is package is designed to help you execute trading programs in R.
 
-This project is in early development. Once I get a basic set of usuable features created then I will do a first release, submit the package to CRAN, and stop making changes to the master branch. Until then things could structurally change without notice. Please see the project page for a list of features I am working on for the initial release.
+**[RobinHood](https://robinhood.com)** is a no commission trading platform intended to bring investing to the masses. It is a great place to experiment with different trading strategies on a minimal investment because your trades will not be eaten up by commission fees.
+
+Haven't signed up for a RobinHood account yet? Use my **[referral link](https://share.robinhood.com/josephb5278)**. We both get a free share of stock!
+
+## Features
+- [x] Access account data and current holdings
+- [x] Access investment statistics and quotes
+- [x] Place and cancel orders
+- [x] Get market open/close hours
+- [x] Search investments by popular tag
+- [x] Add and remove investments on your watchlist
+- [ ] Interactions with your linked bank account
 
 ## Install with devtools
 ```r
+# Development version
 devtools::install_github("jestonblu/RobinHood")
 ```
 
