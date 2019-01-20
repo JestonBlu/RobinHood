@@ -51,7 +51,6 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
                        side = NULL) {
 
   if (action == "order") {
-    # Place an order to buy or sell
     detail <- paste("account=", RH$url.account_id,
                     "&instrument=", instrument_id,
                     "&symbol=", symbol,
@@ -78,7 +77,6 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
   }
 
   if (action == "status") {
-    # Get Order Status
     order_status <- new_handle() %>%
       handle_setheaders("Accept" = "application/json") %>%
       handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
@@ -90,8 +88,6 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
   }
 
   if (action == "cancel") {
-
-    # Get Order Status
     order_status <- new_handle() %>%
       handle_setheaders("Accept" = "application/json") %>%
       handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%

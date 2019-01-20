@@ -10,11 +10,10 @@ cancel_order <- function(RH, order_url) {
 
   order_status <- api_orders(RH, action = "cancel", order_url)
 
-  if (length(order_status) == 0) order_status <- "Order Canceled"
+  if (length(order_status) == 0) cat("Order Canceled")
 
   if (length(order_status) >  0) {
-    order_status <- "You may have already canceled this order, check order_status()"
+    cat("You may have already canceled this order, check order_status()")
   }
 
-  return(order_status)
 }
