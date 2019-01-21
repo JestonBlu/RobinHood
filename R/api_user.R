@@ -25,9 +25,9 @@ api_user <- function(RH) {
   user <- new_handle() %>%
     handle_setheaders("Accept" = "application/json") %>%
     handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-    curl_fetch_memory(url = api_endpoints("user")) %$% content %>%
-    rawToChar %>%
-    fromJSON
+    curl_fetch_memory(url = api_endpoints("user"))
+
+  user <- fromJSON(rawToChar(user$content))
 
   return(user)
 }

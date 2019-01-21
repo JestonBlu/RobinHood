@@ -35,7 +35,7 @@ get_market_hours <- function(RH, market_date = NULL) {
       if (length(x$date) == 0) x$date <- NA
       if (length(x$opens_at) == 0) x$opens_at <- NA
 
-      x <- x %>% data.frame
+      x <- data.frame(x)
 
       market_hours <- rbind(market_hours, x)
   }

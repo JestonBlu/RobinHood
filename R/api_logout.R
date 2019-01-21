@@ -15,6 +15,7 @@ api_logout <- function(RH) {
   logout <- new_handle() %>%
     handle_setopt(copypostfields = detail) %>%
     handle_setheaders("Accept" = "application/json") %>%
-    curl_fetch_memory(url = api_endpoints("revoke_token")) %$% content
-    
+    curl_fetch_memory(url = api_endpoints("revoke_token"))
+
+  logout <- logout$content
 }

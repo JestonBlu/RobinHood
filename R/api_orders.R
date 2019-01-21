@@ -68,20 +68,20 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
       handle_setheaders("Accept" = "application/json") %>%
       handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
       handle_setopt(copypostfields = detail) %>%
-      curl_fetch_memory(url = api_endpoints("orders")) %$% content %>%
-      rawToChar %>%
-      fromJSON
+      curl_fetch_memory(url = api_endpoints("orders"))
 
-      orders$updated_at <- ymd_hms(orders$updated_at)
-      orders$last_transaction_at <- ymd_hms(orders$last_transaction_at)
-      orders$created_at <- ymd_hms(orders$created_at)
-      orders$fees <- as.numeric(orders$fees)
-      orders$cumulative_quantity <- as.numeric(orders$cumulative_quantity)
-      orders$stop_price <- as.numeric(orders$stop_price)
-      orders$reject_reason <- as.numeric(orders$reject_reason)
-      orders$price <- as.numeric(orders$price)
-      orders$average_price <- as.numeric(orders$average_price)
-      orders$quantity <- as.numeric(orders$quantity)
+    orders <- fromJSON(rawToChar(orders$content))
+
+    orders$updated_at <- ymd_hms(orders$updated_at)
+    orders$last_transaction_at <- ymd_hms(orders$last_transaction_at)
+    orders$created_at <- ymd_hms(orders$created_at)
+    orders$fees <- as.numeric(orders$fees)
+    orders$cumulative_quantity <- as.numeric(orders$cumulative_quantity)
+    orders$stop_price <- as.numeric(orders$stop_price)
+    orders$reject_reason <- as.numeric(orders$reject_reason)
+    orders$price <- as.numeric(orders$price)
+    orders$average_price <- as.numeric(orders$average_price)
+    orders$quantity <- as.numeric(orders$quantity)
 
     return(orders)
 
@@ -91,9 +91,9 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
     order_status <- new_handle() %>%
       handle_setheaders("Accept" = "application/json") %>%
       handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-      curl_fetch_memory(url = order_url) %$% content %>%
-      rawToChar %>%
-      fromJSON
+      curl_fetch_memory(url = order_url)
+
+    order_status <- fromJSON(rawToChar(order_status$content))
 
     return(order_status)
   }
@@ -103,9 +103,9 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
       handle_setheaders("Accept" = "application/json") %>%
       handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
       handle_setopt(copypostfields = "") %>%
-      curl_fetch_memory(url = order_url) %$% content %>%
-      rawToChar %>%
-      fromJSON
+      curl_fetch_memory(url = order_url)
+
+    order_status <- fromJSON(rawToChar(order_status$content))
 
     return(order_status)
   }

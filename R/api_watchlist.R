@@ -17,8 +17,9 @@ api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
       handle_setopt(customrequest = "DELETE") %>%
       handle_setheaders("Accept" = "application/json") %>%
       handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-      curl_fetch_memory(url = watchlist_url) %$% content %>%
-      rawToChar
+      curl_fetch_memory(url = watchlist_url)
+
+    watchlist <- rawToChar(watchlist$content)
   }
 
   # Send a command to create a watchlist
@@ -26,9 +27,9 @@ api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
     watchlist <- new_handle() %>%
       handle_setheaders("Accept" = "application/json") %>%
       handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-      curl_fetch_memory(url = watchlist_url) %$% content %>%
-      rawToChar %>%
-      fromJSON
+      curl_fetch_memory(url = watchlist_url)
+
+    watchlist <- fromJSON(rawToChar(watchlist$content))
   }
 
   # Send a command to add an instrument to an existing watchlist
@@ -37,9 +38,9 @@ api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
       handle_setheaders("Accept" = "application/json") %>%
       handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
       handle_setopt(copypostfields = detail) %>%
-      curl_fetch_memory(url = watchlist_url) %$% content %>%
-      rawToChar %>%
-      fromJSON
+      curl_fetch_memory(url = watchlist_url)
+
+    watchlist <- fromJSON(rawToChar(watchlist$content))
   }
 
   return(watchlist)

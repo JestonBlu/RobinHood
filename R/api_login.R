@@ -33,12 +33,12 @@ api_login <- function(username, password) {
   auth <- new_handle() %>%
     handle_setopt(copypostfields = detail) %>%
     handle_setheaders("Accept" = "application/json") %>%
-    curl_fetch_memory(url = api_endpoints("token")) %$% content %>%
-    rawToChar %>%
-    fromJSON
+    curl_fetch_memory(url = api_endpoints("token"))
 
-    access_token <- auth$access_token
-    refresh_token <- auth$refresh_token
+  auth <- fromJSON(rawToChar(auth$content))
+
+  access_token <- auth$access_token
+  refresh_token <- auth$refresh_token
 
   # Return object
   RH <- c(RH,

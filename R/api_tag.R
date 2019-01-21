@@ -13,9 +13,10 @@ api_tag <- function(RH, tag) {
   tag <- new_handle() %>%
     handle_setheaders("Accept" = "application/json") %>%
     handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-    curl_fetch_memory(url = tag_url) %$% content %>%
-    rawToChar %>%
-    fromJSON %$% instruments
+    curl_fetch_memory(url = tag_url)
+
+  tag <- fromJSON(rawToChar(tag$content))
+  tag <- tag$instruments
 
   return(tag)
 }

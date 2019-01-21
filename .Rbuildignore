@@ -1,2 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+.git/
+.lintr
+.travis.yml
+LICENSE

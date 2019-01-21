@@ -26,9 +26,10 @@ api_quote <- function(RH, symbols_url) {
   quotes <- new_handle() %>%
     handle_setheaders("Accept" = "application/json") %>%
     handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-    curl_fetch_memory(url = symbols_url) %$% content %>%
-    rawToChar %>%
-    fromJSON %$% results %>% data.frame
+    curl_fetch_memory(url = symbols_url)
+
+  quotes <- fromJSON(rawToChar(quotes$content))
+  quotes <- data.frame(quotes$results)
 
   quotes$ask_price <- as.numeric(quotes$ask_price)
   quotes$bid_price <- as.numeric(quotes$bid_price)

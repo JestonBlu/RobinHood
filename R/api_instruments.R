@@ -4,7 +4,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @param instrument_id (string) a single instrument_id
-#' @import curl jsonlite magrittr
+#' @import curl jsonlite magrittr lubridate
 #' @examples
 #' # data returned by api call
 #' #  $ margin_initial_ratio
@@ -34,8 +34,9 @@ api_instruments <- function(RH, instrument_id) {
   instrument <- new_handle() %>%
     handle_setheaders("Accept" = "application/json") %>%
     handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-    curl_fetch_memory(url = instrument_id) %$% content %>%
-    rawToChar %>% fromJSON
+    curl_fetch_memory(url = instrument_id)
+
+  instrument <- fromJSON(rawToChar(instrument$content))
 
   instrument$margin_initial_ratio <- as.numeric(instrument$margin_initial_ratio)
   instrument$maintenance_ratio <- as.numeric(instrument$maintenance_ratio)

@@ -22,13 +22,13 @@ api_markets <- function(RH, markets_url, type = "df") {
 
   markets <- new_handle() %>%
     handle_setheaders("Accept" = "application/json") %>%
-    curl_fetch_memory(url = markets_url) %$% content %>%
-    rawToChar %>%
-    fromJSON
+    curl_fetch_memory(url = markets_url)
+
+  markets <- fromJSON(rawToChar(markets$content))
 
   if (type == "df") {
     # Returns market information
-    markets_df <- markets %$% results %>% data.frame
+    markets_df <- data.frame(markets$results)
     return(markets_df)
   }
   if (type == "list") {

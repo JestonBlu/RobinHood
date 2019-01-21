@@ -27,9 +27,10 @@ api_positions <- function(RH) {
   positions <- new_handle() %>%
     handle_setheaders("Accept" = "application/json") %>%
     handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-    curl_fetch_memory(url = RH$url.positions) %$% content %>%
-    rawToChar %>%
-    fromJSON %$% results %>% data.frame
+    curl_fetch_memory(url = RH$url.positions)
+
+  positions <- fromJSON(rawToChar(positions$content))
+  positions <- data.frame(positions$results)
 
   positions$created_at <- ymd_hms(positions$created_at)
   positions$updated_at <- ymd_hms(positions$updated_at)

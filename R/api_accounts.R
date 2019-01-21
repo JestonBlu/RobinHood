@@ -4,7 +4,7 @@
 #'
 #'
 #' @param RH object of class RobinHood
-#' @import curl jsonlite magrittr
+#' @import curl jsonlite magrittr lubridate
 #' @examples
 #' # data returned by api call
 #' # $ rhs_account_number
@@ -74,9 +74,10 @@ api_accounts <- function(RH) {
   accounts <- new_handle() %>%
     handle_setheaders("Accept" = "application/json") %>%
     handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-    curl_fetch_memory(url = api_endpoints("accounts")) %$% content %>%
-    rawToChar %>%
-    fromJSON %$% results %>% as.list
+    curl_fetch_memory(url = api_endpoints("accounts"))
+
+accounts <- fromJSON(rawToChar(accounts$content))
+accounts <- as.list(accounts$results)
 
   # Reformat output columns
   accounts$updated_at <- ymd_hms(accounts$updated_at)
