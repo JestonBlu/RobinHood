@@ -8,6 +8,8 @@
 #' @export
 cancel_order <- function(RH, order_url) {
 
+  if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
+
   order_status <- api_orders(RH, action = "cancel", order_url)
 
   if (length(order_status) == 0) cat("Order Canceled")

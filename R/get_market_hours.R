@@ -8,6 +8,8 @@
 #' @export
 get_market_hours <- function(RH, market_date = NULL) {
 
+  if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
+
   # If no date is provided, use todays date
   if (is.null(market_date)) market_date <- suppressWarnings(today())
 

@@ -9,6 +9,8 @@
 #' @export
 get_quote <- function(RH, ticker, limit_output = TRUE) {
 
+  if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
+
   # Get latest quote
   quote <- paste(ticker, collapse = ",")
 

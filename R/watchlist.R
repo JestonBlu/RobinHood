@@ -14,6 +14,8 @@
 #' # get_quote(RH, c("CAT", "GE"))
 watchlist <- function(RH, action, watchlist = "", ticker = "") {
 
+  if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
+
   # get starting watchlist url
   base_watchlist_url <- api_endpoints("watchlist")
 
@@ -23,6 +25,7 @@ watchlist <- function(RH, action, watchlist = "", ticker = "") {
   if (action == "get" & watchlist == "") {
     # Return a list of watchlist
     wl <- current_watchlist$results$name
+    return(wl)
   }
 
   if (action == "get" & watchlist != "") {
@@ -39,6 +42,8 @@ watchlist <- function(RH, action, watchlist = "", ticker = "") {
       x <- x$symbol
       wl <- c(wl, x)
     }
+
+    return(wl)
 
   }
 
@@ -64,7 +69,7 @@ watchlist <- function(RH, action, watchlist = "", ticker = "") {
   }
 
   if (action == "delete" & watchlist == "") {
-    cat("Watchlist cant be null.")
+    cat("Watchlist cant be null")
   }
 
   if (action == "delete" & watchlist != "" & ticker == "") {

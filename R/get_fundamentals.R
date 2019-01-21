@@ -9,6 +9,8 @@
 #' @export
 get_fundamentals <- function(RH, ticker, include_description = FALSE) {
 
+    if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
+
     ticker <- paste(ticker, collapse = ",")
 
     fundamentals <- api_fundamentals(RH, ticker)

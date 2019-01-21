@@ -9,6 +9,8 @@
 #' @export
 get_order_status <- function(RH, order_url, limit_output = TRUE) {
 
+  if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
+  
   # Get Order Status
   order_status <- api_orders(RH, action = "status", order_url)
 

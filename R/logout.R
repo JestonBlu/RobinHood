@@ -10,6 +10,7 @@
 #' # RH <- RobinHood(username = 'your username', password = 'your password')
 #' # logout(RH)
 logout <- function(RH) {
+  if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
 
   x <- api_logout(RH)
 
