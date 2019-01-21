@@ -21,7 +21,7 @@ get_quote <- function(RH, ticker, limit_output = TRUE) {
   quotes <- api_quote(RH, quote_url)
 
   # Trim output
-  quotes <- subset(quotes, select = -c(instrument))
+  quotes <- quotes[, !names(quotes) %in% c("instrument")]
   quotes$updated_at <- ymd_hms(quotes$updated_at)
 
   if (limit_output == TRUE) {

@@ -47,7 +47,7 @@ get_positions <- function(RH, limit_output = TRUE) {
   positions <- merge(positions, quotes)
 
   # Get rid of arbitrary columns
-  positions = subset(positions, select = -c(account, url, instrument))
+  positions <- positions[, !names(positions) %in% c("account", "url", "instrument")]
 
   # Convert timestamp
   positions$updated_at <- ymd_hms(positions$updated_at)

@@ -16,7 +16,7 @@ get_fundamentals <- function(RH, ticker, include_description = FALSE) {
     fundamentals <- api_fundamentals(RH, ticker)
 
     if (include_description == FALSE) {
-        fundamentals <- subset(fundamentals, select = -c(description, instrument))
+        fundamentals <- fundamentals[, !names(fundamentals) %in% c("description", "instrument")]
     }
 
     fundamentals <- as.list(fundamentals)
