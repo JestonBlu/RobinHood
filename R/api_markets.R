@@ -36,7 +36,7 @@ api_markets <- function(RH, markets_url, type = "df") {
     markets$closes_at <- ymd_hms(markets$closes_at)
     markets$extended_opens_at <- ymd_hms(markets$extended_opens_at)
     markets$extended_closes_at <- ymd_hms(markets$extended_closes_at)
-    markets$date <- ymd_hms(markets$date)
+    markets$date <- ymd(markets$date)
     markets$opens_at <- ymd_hms(markets$opens_at)
     return(markets)
   }
