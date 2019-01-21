@@ -27,10 +27,7 @@ watchlist <- function(RH, action, watchlist = "", ticker = "") {
 
   if (action == "get" & watchlist != "") {
     # Return instruments the watchlist
-    watchlist_url <- paste(base_watchlist_url,
-                           watchlist,
-                           "/?cursor=$cursor",
-                           sep = "", collapse = "")
+    watchlist_url <- paste(base_watchlist_url, watchlist, "/?cursor=$cursor", sep = "", collapse = "")
 
     instruments <- api_watchlist(RH, watchlist_url, detail = FALSE)
     instrument_id <- instruments$results$instrument
@@ -46,41 +43,32 @@ watchlist <- function(RH, action, watchlist = "", ticker = "") {
   }
 
   if (action == "add" & watchlist == "") {
-    stop("Watchlist cant be null, maybe you wanted Default?")
+    cat("Watchlist cant be null, maybe you wanted Default?")
   }
 
   if (action == "add" & watchlist != "" & ticker == "") {
-    # Create a new watchlist
-    # detail <- paste("name=", watchlist, sep = "")
-    # wl <- api_watchlist(RH, base_watchlist_url, detail = detail)
-    stop("Creating a watchlist is currently disabled, use the Default watchlist")
+    cat("Creating a watchlist is currently disabled, use the Default watchlist")
   }
 
   if (action == "add" & watchlist != "" & ticker != "") {
     # Add ticker to the named watchlist
-    watchlist_url <- paste(base_watchlist_url,
-                           watchlist,
-                           "/bulk_add/",
-                           sep = "", collapse = "")
+    watchlist_url <- paste(base_watchlist_url, watchlist, "/bulk_add/", sep = "", collapse = "")
 
     detail <- paste("symbols=", ticker, sep = "", collapse = "")
 
     wl <- api_watchlist(RH, watchlist_url, detail)
 
-    if (length(wl)  > 0) wl <- "Instrument added to watchlist"
-    if (length(wl) == 0) wl <- "Instrument is already in your watchlist"
+    if (length(wl)  > 0) cat("Instrument added to watchlist")
+    if (length(wl) == 0) cat("Instrument is already in your watchlist")
 
   }
 
   if (action == "delete" & watchlist == "") {
-    stop("Watchlist cant be null.")
+    cat("Watchlist cant be null.")
   }
 
   if (action == "delete" & watchlist != "" & ticker == "") {
-    # delete the named watchlist
-    # watchlist_url <- paste(base_watchlist_url, watchlist, "/", sep = "", collapse = "")
-    # wl <- api_watchlist(RH, watchlist_url, delete = TRUE)
-    stop("Deleting a watchlist is currently disabled")
+    cat("Deleting a watchlist is currently disabled")
   }
 
   if (action == "delete" & watchlist != "" & ticker != "") {
@@ -89,22 +77,14 @@ watchlist <- function(RH, action, watchlist = "", ticker = "") {
 
     # get instrument and strip out everything before the id
     instrument_id <- fundamentals$instrument
-    instrument_id <- gsub("https://api.robinhood.com/instruments/",
-                          "",
-                          instrument_id)
+    instrument_id <- gsub("https://api.robinhood.com/instruments/", "", instrument_id)
 
-    watchlist_url <- paste(base_watchlist_url,
-                           watchlist,
-                           "/",
-                           instrument_id,
-                           sep = "", collapse = "")
+    watchlist_url <- paste(base_watchlist_url, watchlist, "/", instrument_id, sep = "", collapse = "")
 
     wl <- api_watchlist(RH, watchlist_url, delete = TRUE)
 
-    if (wl == "") wl <- "Instrument removed from watchlist"
+    if (wl == "") cat("Instrument removed from watchlist")
 
   }
-
-  return(wl)
 
 }
