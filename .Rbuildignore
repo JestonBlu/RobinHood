@@ -4,5 +4,5 @@
 .lintr
 .travis.yml
 LICENSE
-test/
+tests/
 README.md
