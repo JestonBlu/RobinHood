@@ -19,7 +19,6 @@ Haven't signed up for a RobinHood account yet? Use my **[referral link](https://
 - [x] Get market open/close hours
 - [x] Search investments by popular tag
 - [x] Add and remove investments on your watchlist
-- [ ] Interactions with your linked bank account
 
 ## Install with devtools
 ```r
@@ -49,21 +48,22 @@ get_positions(RH, limit_output= TRUE)
 # 2       Zynga   ZNGA        2               0.0             4.27  0.0          8.54 2019-01-06 16:44:03
 
 # Get instrument fundamentals
-str(get_fundamentals(RH, 'CAT'))
+get_fundamentals(RH, 'CAT')
 
-#'data.frame':	1 obs. of  19 variables:
-# $ open                  : chr "135.020000"
-# $ high                  : chr "137.710000"
-# $ low                   : chr "133.660000"
-# $ volume                : chr "1629664.000000"
-# $ average_volume_2_weeks: chr "4372297.200000"
-# $ average_volume        : chr "5479200.247000"
-# $ high_52_weeks         : chr "173.100000"
-# $ dividend_yield        : chr "1.967200"
-# $ low_52_weeks          : chr "112.060000"
-# $ market_cap            : chr "79392956900.000000"
-# $ pe_ratio              : chr "21.800580"
-# $ shares_outstanding    : chr "590106711.000000"
+# Structure shown
+# List of 19
+# $ open                  : num 135
+# $ high                  : num 138
+# $ low                   : num 134
+# $ volume                : num 2021397
+# $ average_volume_2_weeks: num 4429974
+# $ average_volume        : num 5480144
+# $ high_52_weeks         : num 173
+# $ dividend_yield        : num 1.97
+# $ low_52_weeks          : num 112
+# $ market_cap            : num 8.06e+10
+# $ pe_ratio              : num 21.8
+# $ shares_outstanding    : num 5.9e+08
 # $ ceo                   : chr "Donald James Umpleby, III"
 # $ headquarters_city     : chr "Deerfield"
 # $ headquarters_state    : chr "Illinois"
@@ -89,34 +89,35 @@ x = place_order(RH = RH,
                 quantity = 1,           # Number of shares you want
                 side = "buy")           # buy or sell
 
+# Structure shown
 # List of 27
-# $ updated_at               :
-# $ ref_id                   :
-# $ time_in_force            :
-# $ fees                     :
-# $ cancel                   : # url to cancel an order
-# $ response_category        :
-# $ id                       :
-# $ cumulative_quantity      :
-# $ stop_price               :
-# $ reject_reason            :
-# $ instrument               :
-# $ state                    :
-# $ trigger                  :
-# $ override_dtbp_checks     :
-# $ type                     :
-# $ last_transaction_at      :
-# $ price                    :
-# $ executions               :
-# $ extended_hours           :
-# $ account                  :
-# $ url                      : # url for checking order status
-# $ created_at               :
-# $ side                     :
-# $ override_day_trade_checks:
-# $ position                 :
-# $ average_price            :
-# $ quantity                 :
+# $ updated_at               : POSIXct
+# $ ref_id                   : chr
+# $ time_in_force            : chr
+# $ fees                     : num
+# $ cancel                   : chr (url needed to cancel order)
+# $ response_category        : chr
+# $ id                       : chr
+# $ cumulative_quantity      : num
+# $ stop_price               : num
+# $ reject_reason            : num
+# $ instrument               : chr
+# $ state                    : chr
+# $ trigger                  : chr
+# $ override_dtbp_checks     : logi
+# $ type                     : chr
+# $ last_transaction_at      : POSIXct
+# $ price                    : num
+# $ executions               : list()
+# $ extended_hours           : logi
+# $ account                  : chr
+# $ url                      : chr (url for checking order status)
+# $ created_at               : POSIXct
+# $ side                     : chr
+# $ override_day_trade_checks: logi
+# $ position                 : chr
+# $ average_price            : num
+# $ quantity                 : num
 
 
 # Check the status of an order
@@ -140,7 +141,7 @@ get_order_status(RH, x$url)
 # Cancel an order (should generate an email)
 cancel_order(RH, x$cancel)
 # One of 2 messages you may receive
-#  "Order canceled"
+# "Order canceled"
 # "You may have already canceled this order, check order_status()"
 
 # Get market hours for a specific date
@@ -178,10 +179,10 @@ watchlist(RH, action = 'get', watchlist = 'Default')
 # [1] "AAPL" "TWTR" "TSLA" "NFLX" "FB"   "MSFT" "DIS"  "GPRO" "SBUX" "F"    "BABA" "BAC"  "FIT"  "GE"   "SNAP"
 
 watchlist(RH, action = 'add', watchlist = 'Default', ticker = "CAT")
-# [1] "Instrument added to watchlist"
+# "Instrument added to watchlist"
 
 watchlist(RH, action = 'delete', watchlist = 'Default', ticker = 'CAT')
-# [1] "Instrument removed from watchlist"
+# "Instrument removed from watchlist"
 
 
 
