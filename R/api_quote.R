@@ -4,7 +4,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @param symbols_url (string) url of query with ticker symbols
-#' @import curl jsonlite magrittr
+#' @import curl jsonlite magrittr lubridate
 #' @examples
 #' # data returned by api call
 #' #  $ symbol
@@ -29,6 +29,15 @@ api_quote <- function(RH, symbols_url) {
     curl_fetch_memory(url = symbols_url) %$% content %>%
     rawToChar %>%
     fromJSON %$% results %>% data.frame
+
+  quotes$ask_price <- as.numeric(quotes$ask_price)
+  quotes$bid_price <- as.numeric(quotes$bid_price)
+  quotes$last_trade_price <- as.numeric(quotes$last_trade_price)
+  quotes$last_extended_hours_trade_price <- as.numeric(quotes$last_extended_hours_trade_price)
+  quotes$previous_close <- as.numeric(quotes$previous_close)
+  quotes$adjusted_previous_close <- as.numeric(quotes$adjusted_previous_close)
+  quotes$previous_close_date <- ymd(quotes$previous_close_date)
+  quotes$updated_at <- ymd_hms(quotes$updated_at)
 
   return(quotes)
 }

@@ -5,7 +5,7 @@
 #' @param RH object of class RobinHood
 #' @param markets_url (string) a single market url
 #' @param type (string) structure of data returned, 'df' or 'list'
-#' @import curl jsonlite magrittr
+#' @import curl jsonlite magrittr lubridate
 #' @examples
 #' # data returned by api call
 #' # $ website
@@ -33,6 +33,11 @@ api_markets <- function(RH, markets_url, type = "df") {
   }
   if (type == "list") {
     # Returns market hours
+    markets$closes_at <- ymd_hms(markets$closes_at)
+    markets$extended_opens_at <- ymd_hms(markets$extended_opens_at)
+    markets$extended_closes_at <- ymd_hms(markets$extended_closes_at)
+    markets$date <- ymd_hms(markets$date)
+    markets$opens_at <- ymd_hms(markets$opens_at)
     return(markets)
   }
 }

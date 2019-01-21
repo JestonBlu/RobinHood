@@ -16,7 +16,7 @@
 #' @param stop_price (number) if trigger = stop, enter stop price, otherwise leave blank
 #' @param quantity (int) number of shares you wish to transact
 #' @param side (string) "buy" or "sell"
-#' @import curl jsonlite magrittr
+#' @import curl jsonlite magrittr lubridate
 #' @examples
 #' # data returned by api call
 #' #  $ updated_at
@@ -71,6 +71,17 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
       curl_fetch_memory(url = api_endpoints("orders")) %$% content %>%
       rawToChar %>%
       fromJSON
+
+      orders$updated_at <- ymd_hms(orders$updated_at)
+      orders$last_transaction_at <- ymd_hms(orders$last_transaction_at)
+      orders$created_at <- ymd_hms(orders$created_at)
+      orders$fees <- as.numeric(orders$fees)
+      orders$cumulative_quantity <- as.numeric(orders$cumulative_quantity)
+      orders$stop_price <- as.numeric(orders$stop_price)
+      orders$reject_reason <- as.numeric(orders$reject_reason)
+      orders$price <- as.numeric(orders$price)
+      orders$average_price <- as.numeric(orders$average_price)
+      orders$quantity <- as.numeric(orders$quantity)
 
     return(orders)
 

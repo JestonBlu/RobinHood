@@ -15,10 +15,10 @@ RobinHood <- function(username, password) {
   # Login to RobinHood, returns RobinHood object with access tokens
   RH <- api_login(username, password)
 
-  # Get user data for the main purpose of returning the position url
-  user <- api_accounts(RH)
-  url_positions <- user$results$positions
-  url_account_id <- user$results$url
+  # Get account data for the main purpose of returning the position url
+  accounts <- api_accounts(RH)
+  url_positions <- accounts$positions
+  url_account_id <- accounts$url
 
   # Return object
   RH <- c(RH, url = list(positions = url_positions,

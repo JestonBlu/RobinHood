@@ -42,7 +42,7 @@ get_user(RH)
 get_accounts(RH)
 
 # Returns a data.frame of positions
-get_positions(RH, simple = TRUE)
+get_positions(RH, limit_output= TRUE)
 
 #   simple_name symbol quantity average_buy_price last_trade_price cost current_value          updated_at
 # 1          GE     GE        1               8.5             8.73  8.5          8.73 2019-01-10 04:19:01
@@ -73,7 +73,7 @@ str(get_fundamentals(RH, 'CAT'))
 # $ year_founded          : int 1925
 
 # Get quotes
-get_quote(RH, ticker = c("CAT", "GE"), simple = TRUE)
+get_quote(RH, ticker = c("CAT", "GE"), limit_output= TRUE)
 
 #    symbol last_trade_price last_trade_price_source
 # 1    CAT       131.660000            consolidated

@@ -37,5 +37,9 @@ api_instruments <- function(RH, instrument_id) {
     curl_fetch_memory(url = instrument_id) %$% content %>%
     rawToChar %>% fromJSON
 
+  instrument$margin_initial_ratio <- as.numeric(instrument$margin_initial_ratio)
+  instrument$maintenance_ratio <- as.numeric(instrument$maintenance_ratio)
+  instrument$day_trade_ratio <- as.numeric(instrument$day_trade_ratio)
+
   return(instrument)
 }
