@@ -30,7 +30,11 @@
 #' #  $ bloomberg_unique
 #' #  $ list_date
 api_tickers <- function(RH) {
-
+  
+  cat("Getting stock ticker data from RobinHood.com...")
+  # Stopwatch
+  start_time = proc.time()
+  
   url <- api_endpoints("tickers")
 
   tickers <- new_handle() %>%
@@ -56,4 +60,12 @@ api_tickers <- function(RH) {
 
     pause(1)
   }
+  
+  # Stopwatch
+  end_time = proc.time() - start_time
+  
+  cat("..........COMPLETE (", round(end_time[3]/60, 2), "minutes)")
+  
+  
+  return(output)
 }
