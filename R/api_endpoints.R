@@ -16,7 +16,8 @@ api_endpoints <- function(endpoint) {
     fundamentals = "fundamentals/?symbols=",
     tags = "midlands/tags/tag/",
     watchlist = "watchlists/",
-    user = "user/"
+    user = "user/",
+    tickers = "instruments/"
   )
 
   x <- which(names(api.endpoint) == endpoint)
