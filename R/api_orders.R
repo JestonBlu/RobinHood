@@ -5,7 +5,7 @@
 #' status or cancel the order.
 #'
 #' @param RH object of class RobinHood
-#' @param action (string) one of "order", "status", or "cancel"
+#' @param action (string) one of "order", "status", "cancel", or "history"
 #' @param order_url (string) action is "status" or "cancel", only order_url is required
 #' @param instrument_id (string) URL of the instrument_id
 #' @param symbol (string) Ticket symbol you are attempting to buy or sell
@@ -108,6 +108,16 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
     order_status <- fromJSON(rawToChar(order_status$content))
 
     return(order_status)
+  }
+
+  if (action == "history") {
+    order_history <- new_handle() %>%
+      handle_setheaders("Accept" = "application/json") %>%
+      handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
+      curl_fetch_memory(url = api_endpoints("orders"))
+
+    return(order_history)
+
   }
 
 }

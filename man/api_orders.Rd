@@ -11,7 +11,7 @@ api_orders(RH, action, order_url = NULL, instrument_id = NULL,
 \arguments{
 \item{RH}{object of class RobinHood}
 
-\item{action}{(string) one of "order", "status", or "cancel"}
+\item{action}{(string) one of "order", "status", "cancel", or "history"}
 
 \item{order_url}{(string) action is "status" or "cancel", only order_url is required}
 
