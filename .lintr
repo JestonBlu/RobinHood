@@ -1,1 +1,4 @@
-linters: with_defaults(line_length_linter(110))
+linters: with_defaults(line_length_linter(125),
+                       camel_case_linter = NULL,
+                       snake_case_linter = NULL,
+                       absolute_paths_linter = NULL)
