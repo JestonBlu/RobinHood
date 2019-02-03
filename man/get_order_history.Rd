@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_order_history.R
 \name{get_order_history}
 \alias{get_order_history}
-\title{Get order history using the RobinHood api}
+\title{Download all available order history for your RobinHood account}
 \usage{
 get_order_history(RH)
 }
@@ -10,7 +10,7 @@ get_order_history(RH)
 \item{RH}{object of class RobinHood}
 }
 \description{
-Returns recent order history.
+Download all available order history for your RobinHood account
 }
 \examples{
 \dontrun{

@@ -1,6 +1,4 @@
-#' Get order history using the RobinHood api
-#'
-#' Returns recent order history.
+#' Download all available order history for your RobinHood account
 #'
 #' @param RH object of class RobinHood
 #' @import curl jsonlite magrittr lubridate

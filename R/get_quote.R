@@ -1,7 +1,5 @@
 #' Get a quote from RobinHood
 #'
-#' For a string of ticker symbols, return quote data.
-#'
 #' @param RH object class RobinHood
 #' @param ticker (string) of ticker symbols
 #' @param limit_output (logical) if TRUE (default) return less quote detail

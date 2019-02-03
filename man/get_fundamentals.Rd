@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_fundamentals.R
 \name{get_fundamentals}
 \alias{get_fundamentals}
-\title{Get ticker fundamentals}
+\title{Get fundamental investment statistics for a particular ticker symbol}
 \usage{
 get_fundamentals(RH, ticker, include_description = FALSE)
 }
@@ -14,7 +14,7 @@ get_fundamentals(RH, ticker, include_description = FALSE)
 \item{include_description}{(logical) include a long description of the company (default: FALSE)}
 }
 \description{
-Get ticker fundamentals for a particular symbol or list of symbols.
+Get fundamental investment statistics for a particular ticker symbol
 }
 \examples{
 \dontrun{

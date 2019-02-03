@@ -12,7 +12,7 @@ cancel_order(RH, order_url)
 \item{order_url}{(string) cancel url returned from place_order()}
 }
 \description{
-Send a cancel buy order command to RobinHood. You will need to retain the buy/sell order url.
+Send a cancel signal for a particular order to RobinHood. You will need to retain the buy/sell order url returned from place_order.
 }
 \examples{
 \dontrun{

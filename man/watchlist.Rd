@@ -2,7 +2,7 @@
 % Please edit documentation in R/watchlist.R
 \name{watchlist}
 \alias{watchlist}
-\title{Get a current instrument quote from RobinHood}
+\title{Manage your RobinHood watchlist}
 \usage{
 watchlist(RH, action, watchlist = "", ticker = "")
 }
@@ -16,7 +16,7 @@ watchlist(RH, action, watchlist = "", ticker = "")
 \item{ticker}{(string) list of tickers to add or delete, null will add or delete watchlist}
 }
 \description{
-For a string of ticker symbols, return quote data.
+Add and delete instruments from your RobinHood watchlist.
 }
 \examples{
 \dontrun{

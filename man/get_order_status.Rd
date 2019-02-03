@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_order_status.R
 \name{get_order_status}
 \alias{get_order_status}
-\title{Get order status using the RobinHood api}
+\title{Get a current status of an order on RobinHood}
 \usage{
 get_order_status(RH, order_url, limit_output = TRUE)
 }
@@ -14,7 +14,7 @@ get_order_status(RH, order_url, limit_output = TRUE)
 \item{limit_output}{(logical) return limited info on the order (default TRUE)}
 }
 \description{
-Returns a list of order information given a buy/sell order url.
+Returns a list of order information given a buy/sell order url returned from place_order().
 }
 \examples{
 \dontrun{

@@ -14,7 +14,7 @@ get_quote(RH, ticker, limit_output = TRUE)
 \item{limit_output}{(logical) if TRUE (default) return less quote detail}
 }
 \description{
-For a string of ticker symbols, return quote data.
+Get a quote from RobinHood
 }
 \examples{
 \dontrun{

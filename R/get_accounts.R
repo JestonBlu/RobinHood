@@ -1,6 +1,4 @@
-#' Get account data
-#'
-#' Download a list of account data for your RobinHood account.
+#' Get account data related to your RobinHood account
 #'
 #' @param RH object of class RobinHood
 #' @import curl jsonlite magrittr

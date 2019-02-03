@@ -1,6 +1,4 @@
-#' Get the current positions of your account
-#'
-#' Download all investment positions for your account.
+#' Get the currently held positions for your RobinHood account
 #'
 #' @param RH object class RobinHood
 #' @param limit_output (logical) if true, return a simplified positions table, false returns all positions details

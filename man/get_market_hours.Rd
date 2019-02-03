@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_market_hours.R
 \name{get_market_hours}
 \alias{get_market_hours}
-\title{Get market hours}
+\title{Get open market hours}
 \usage{
 get_market_hours(RH, market_date = NULL)
 }

@@ -1,4 +1,4 @@
-#' Get market hours
+#' Get open market hours
 #'
 #' Get a list of markets available on RobinHood with trading hours for a specific date.
 #'

@@ -1,6 +1,4 @@
-#' Get ticker fundamentals
-#'
-#' Get ticker fundamentals for a particular symbol or list of symbols.
+#' Get fundamental investment statistics for a particular ticker symbol
 #'
 #' @param RH object of class RobinHood
 #' @param ticker (string) vector of ticker symbols

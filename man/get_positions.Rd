@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_positions.R
 \name{get_positions}
 \alias{get_positions}
-\title{Get the current positions of your account}
+\title{Get the currently held positions for your RobinHood account}
 \usage{
 get_positions(RH, limit_output = TRUE)
 }
@@ -12,7 +12,7 @@ get_positions(RH, limit_output = TRUE)
 \item{limit_output}{(logical) if true, return a simplified positions table, false returns all positions details}
 }
 \description{
-Download all investment positions for your account.
+Get the currently held positions for your RobinHood account
 }
 \examples{
 \dontrun{

@@ -1,6 +1,6 @@
-#' Get order status using the RobinHood api
+#' Get a current status of an order on RobinHood
 #'
-#' Returns a list of order information given a buy/sell order url.
+#' Returns a list of order information given a buy/sell order url returned from place_order().
 #'
 #' @param RH object of class RobinHood
 #' @param order_url (string) url of order returned from place_order

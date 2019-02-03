@@ -1,6 +1,6 @@
-#' Get a current instrument quote from RobinHood
+#' Manage your RobinHood watchlist
 #'
-#' For a string of ticker symbols, return quote data.
+#' Add and delete instruments from your RobinHood watchlist. 
 #'
 #' @param RH object class RobinHood
 #' @param action (string) one of: get, add, delete

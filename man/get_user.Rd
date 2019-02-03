@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_user.R
 \name{get_user}
 \alias{get_user}
-\title{Get user data}
+\title{Get personal user data related to your RobinHood account}
 \usage{
 get_user(RH)
 }
@@ -10,7 +10,7 @@ get_user(RH)
 \item{RH}{object class RobinHood}
 }
 \description{
-Download a list of user data from your RobinHood account
+Get personal user data related to your RobinHood account
 }
 \examples{
 \dontrun{

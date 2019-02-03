@@ -1,6 +1,6 @@
 #' Cancel an existing order on RobinHood
 #'
-#' Send a cancel buy order command to RobinHood. You will need to retain the buy/sell order url.
+#' Send a cancel signal for a particular order to RobinHood. You will need to retain the buy/sell order url returned from place_order.
 #'
 #' @param RH object of class RobinHood
 #' @param order_url (string) cancel url returned from place_order()

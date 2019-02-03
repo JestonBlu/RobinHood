@@ -1,6 +1,4 @@
-#' Get user data
-#'
-#' Download a list of user data from your RobinHood account
+#' Get personal user data related to your RobinHood account
 #'
 #' @param RH object class RobinHood
 #' @import curl jsonlite magrittr lubridate

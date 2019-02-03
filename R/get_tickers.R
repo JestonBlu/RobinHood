@@ -1,6 +1,6 @@
-#' Get tickers
+#' Download all financial instruments available on RobinHood
 #'
-#' Get a dataframe of all listed companies including tickers and trade indicators.
+#' Get a dataframe of all listed companies including ticker symbols and tradeability indicators.
 #'
 #' @param RH object of class RobinHood
 #' @import curl jsonlite magrittr

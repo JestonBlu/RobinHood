@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_tickers.R
 \name{get_tickers}
 \alias{get_tickers}
-\title{Get tickers}
+\title{Download all financial instruments available on RobinHood}
 \usage{
 get_tickers(RH)
 }
@@ -10,7 +10,7 @@ get_tickers(RH)
 \item{RH}{object of class RobinHood}
 }
 \description{
-Get a dataframe of all listed companies including tickers and trade indicators.
+Get a dataframe of all listed companies including ticker symbols and tradeability indicators.
 }
 \examples{
 \dontrun{
