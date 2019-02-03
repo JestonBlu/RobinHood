@@ -7,6 +7,13 @@
 #' @param limit_output (logical) if TRUE (default) return less quote detail
 #' @import curl jsonlite magrittr lubridate
 #' @export
+#' @examples
+#' \dontrun{
+#' # Login in to your RobinHood account
+#' RH <- RobinHood("username", "password")
+#'
+#' get_quote(RH, "IR")
+#'}
 get_quote <- function(RH, ticker, limit_output = TRUE) {
 
   if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
@@ -25,23 +32,22 @@ get_quote <- function(RH, ticker, limit_output = TRUE) {
   quotes$updated_at <- ymd_hms(quotes$updated_at)
 
   if (limit_output == TRUE) {
-    quotes <- quotes[, c("symbol",
-                        "last_trade_price")]
+    quotes <- quotes[, c("symbol", "last_trade_price")]
   } else {
     quotes <- quotes[, c("symbol",
-                       "last_trade_price",
-                       "last_trade_price_source",
-                       "ask_price",
-                       "ask_size",
-                       "bid_price",
-                       "bid_size",
-                       "previous_close",
-                       "adjusted_previous_close",
-                       "previous_close_date",
-                       "last_extended_hours_trade_price",
-                       "trading_halted",
-                       "has_traded",
-                       "updated_at")]
+                         "last_trade_price",
+                         "last_trade_price_source",
+                         "ask_price",
+                         "ask_size",
+                         "bid_price",
+                         "bid_size",
+                         "previous_close",
+                         "adjusted_previous_close",
+                         "previous_close_date",
+                         "last_extended_hours_trade_price",
+                         "trading_halted",
+                         "has_traded",
+                         "updated_at")]
                      }
 
   return(quotes)

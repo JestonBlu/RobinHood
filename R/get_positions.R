@@ -6,6 +6,13 @@
 #' @param limit_output (logical) if true, return a simplified positions table, false returns all positions details
 #' @import curl jsonlite magrittr lubridate
 #' @export
+#' @examples
+#' \dontrun{
+#' # Login in to your RobinHood account
+#' RH <- RobinHood("username", "password")
+#'
+#' get_positions(RH)
+#'}
 get_positions <- function(RH, limit_output = TRUE) {
 
   if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")

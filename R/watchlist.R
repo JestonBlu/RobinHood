@@ -9,9 +9,22 @@
 #' @import curl jsonlite magrittr
 #' @export
 #' @examples
-#' # Get you current positions
-#' # RH <- RobinHood(username = 'your username', password = 'your password')
-#' # get_quote(RH, c("CAT", "GE"))
+#' \dontrun{
+#' # Login in to your RobinHood account
+#' RH <- RobinHood("username", "password")
+#'
+#' # Get a vector of your watchlist names
+#' watchlist(RH, action = "get")
+#'
+#' # Get a vectors of symbols on your watchlist
+#' watchlist(RH, action = "get", watchlist = "Default")
+#'
+#' # Add a symbol to your watchlist
+#' watchlist(RH, action = "add", watchlist = "Default", ticker = "CAT")
+#'
+#' # Delete a symbol from your watchlist
+#' watchlist(RH, action = "delete", watchlist = "Default", ticker = "CAT")
+#'}
 watchlist <- function(RH, action, watchlist = "", ticker = "") {
 
   if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")

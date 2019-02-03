@@ -13,7 +13,10 @@ logout(RH)
 Send a logout call through the RobinHood API service and disable your token.
 }
 \examples{
-# Logout
-# RH <- RobinHood(username = 'your username', password = 'your password')
-# logout(RH)
+\dontrun{
+# Login in to your RobinHood account
+RH <- RobinHood("username", "password")
+
+logout(RH)
+}
 }

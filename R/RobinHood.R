@@ -8,8 +8,9 @@
 #' @import curl jsonlite magrittr
 #' @export
 #' @examples
-#' # Connect to your robinhood account
-#' # RH <- RobinHood(username = 'your username', password = 'your password')
+#' \dontrun{
+#' RH <- RobinHood("username", "password")
+#'}
 RobinHood <- function(username, password) {
 
   # Login to RobinHood, returns RobinHood object with access tokens

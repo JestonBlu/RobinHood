@@ -4,31 +4,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @param instrument_id (string) a single instrument_id
-#' @import curl jsonlite magrittr lubridate
-#' @examples
-#' # data returned by api call
-#' #  $ margin_initial_ratio
-#' #  $ rhs_tradability
-#' #  $ id
-#' #  $ market
-#' #  $ simple_name
-#' #  $ min_tick_size
-#' #  $ maintenance_ratio
-#' #  $ tradability
-#' #  $ state
-#' #  $ type
-#' #  $ tradeable
-#' #  $ fundamentals
-#' #  $ quote
-#' #  $ symbol
-#' #  $ day_trade_ratio
-#' #  $ name
-#' #  $ tradable_chain_id
-#' #  $ splits
-#' #  $ url
-#' #  $ country
-#' #  $ bloomberg_unique
-#' #  $ list_date
+#' @import curl jsonlite magrittr
 api_instruments <- function(RH, instrument_id) {
 
   instrument <- new_handle() %>%

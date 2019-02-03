@@ -12,3 +12,11 @@ get_tickers(RH)
 \description{
 Get a dataframe of all listed companies including tickers and trade indicators.
 }
+\examples{
+\dontrun{
+# Login in to your RobinHood account
+RH <- RobinHood("username", "password")
+
+get_tickers(RH)
+}
+}

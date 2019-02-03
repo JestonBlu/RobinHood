@@ -14,28 +14,3 @@ api_instruments(RH, instrument_id)
 \description{
 Backend function called by get_tag(), get_position(), watchlist(). Returns a list of instrument data.
 }
-\examples{
-# data returned by api call
-#  $ margin_initial_ratio
-#  $ rhs_tradability
-#  $ id
-#  $ market
-#  $ simple_name
-#  $ min_tick_size
-#  $ maintenance_ratio
-#  $ tradability
-#  $ state
-#  $ type
-#  $ tradeable
-#  $ fundamentals
-#  $ quote
-#  $ symbol
-#  $ day_trade_ratio
-#  $ name
-#  $ tradable_chain_id
-#  $ splits
-#  $ url
-#  $ country
-#  $ bloomberg_unique
-#  $ list_date
-}

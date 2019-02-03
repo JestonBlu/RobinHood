@@ -4,37 +4,13 @@
 #' on RobinHood.
 #'
 #' @param RH object of class RobinHood
-#' @import curl jsonlite magrittr profvis
-#' @examples
-#' # data returned by api call
-#' # $ margin_initial_ratio
-#' #  $ rhs_tradability
-#' #  $ id
-#' #  $ market
-#' #  $ simple_name
-#' #  $ min_tick_size
-#' #  $ maintenance_ratio
-#' #  $ tradability
-#' #  $ state
-#' #  $ type
-#' #  $ tradeable
-#' #  $ fundamentals
-#' #  $ quote
-#' #  $ symbol
-#' #  $ day_trade_ratio
-#' #  $ name
-#' #  $ tradable_chain_id
-#' #  $ splits
-#' #  $ url
-#' #  $ country
-#' #  $ bloomberg_unique
-#' #  $ list_date
+#' @import curl jsonlite magrittr
 api_tickers <- function(RH) {
-  
+
   cat("Getting stock ticker data from RobinHood.com...")
   # Stopwatch
-  start_time = proc.time()
-  
+  start_time <- proc.time()
+
   url <- api_endpoints("tickers")
 
   tickers <- new_handle() %>%
@@ -58,14 +34,14 @@ api_tickers <- function(RH) {
 
     output <- rbind(output, x)
 
-    pause(1)
+    profvis::pause(1)
   }
-  
+
   # Stopwatch
-  end_time = proc.time() - start_time
-  
-  cat("..........COMPLETE (", round(end_time[3]/60, 2), "minutes)")
-  
-  
+  end_time <- proc.time() - start_time
+
+  cat("..........COMPLETE (", round(end_time[3] / 60, 2), "minutes)")
+
+
   return(output)
 }

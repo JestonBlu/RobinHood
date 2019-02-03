@@ -13,28 +13,3 @@ api_tickers(RH)
 Backend function called by get_ticker. Returns a data frame of all instruments listed
 on RobinHood.
 }
-\examples{
-# data returned by api call
-# $ margin_initial_ratio
-#  $ rhs_tradability
-#  $ id
-#  $ market
-#  $ simple_name
-#  $ min_tick_size
-#  $ maintenance_ratio
-#  $ tradability
-#  $ state
-#  $ type
-#  $ tradeable
-#  $ fundamentals
-#  $ quote
-#  $ symbol
-#  $ day_trade_ratio
-#  $ name
-#  $ tradable_chain_id
-#  $ splits
-#  $ url
-#  $ country
-#  $ bloomberg_unique
-#  $ list_date
-}

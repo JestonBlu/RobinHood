@@ -16,3 +16,11 @@ get_fundamentals(RH, ticker, include_description = FALSE)
 \description{
 Get ticker fundamentals for a particular symbol or list of symbols.
 }
+\examples{
+\dontrun{
+# Login in to your RobinHood account
+RH <- RobinHood("username", "password")
+
+get_fundamentals(RH, "CAT")
+}
+}

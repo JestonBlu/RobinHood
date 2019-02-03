@@ -12,20 +12,3 @@ api_user(RH)
 \description{
 Backend function called by get_user() to return user data
 }
-\examples{
-# data returned by api call
-# $ username
-# $ first_name
-# $ last_name
-# $ id_info
-# $ url
-# $ email_verified
-# $ created_at
-# $ basic_info
-# $ email
-# $ investment_profile
-# $ id
-# $ international_info
-# $ employment
-# $ additional_info
-}

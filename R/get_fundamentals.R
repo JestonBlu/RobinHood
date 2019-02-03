@@ -7,6 +7,13 @@
 #' @param include_description (logical) include a long description of the company (default: FALSE)
 #' @import curl jsonlite magrittr
 #' @export
+#' @examples
+#' \dontrun{
+#' # Login in to your RobinHood account
+#' RH <- RobinHood("username", "password")
+#'
+#' get_fundamentals(RH, "CAT")
+#'}
 get_fundamentals <- function(RH, ticker, include_description = FALSE) {
 
     if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")

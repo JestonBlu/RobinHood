@@ -12,3 +12,11 @@ get_user(RH)
 \description{
 Download a list of user data from your RobinHood account
 }
+\examples{
+\dontrun{
+# Login in to your RobinHood account
+RH <- RobinHood("username", "password")
+
+get_user(RH)
+}
+}

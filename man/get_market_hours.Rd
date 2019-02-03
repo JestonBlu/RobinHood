@@ -14,3 +14,11 @@ get_market_hours(RH, market_date = NULL)
 \description{
 Get a list of markets available on RobinHood with trading hours for a specific date.
 }
+\examples{
+\dontrun{
+# Login in to your RobinHood account
+RH <- RobinHood("username", "password")
+
+get_market_hours(RH)
+}
+}

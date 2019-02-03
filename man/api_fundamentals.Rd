@@ -15,27 +15,3 @@ api_fundamentals(RH, ticker)
 Backend function called by get_fundamentals(), watchlist(). Returns a data frame of descriptive data for a
 given ticker symbol.
 }
-\examples{
-# data returned by api call
-# $ open
-# $ high
-# $ low
-# $ volume
-# $ average_volume_2_weeks
-# $ average_volume
-# $ high_52_weeks
-# $ dividend_yield
-# $ low_52_weeks
-# $ market_cap
-# $ pe_ratio
-# $ shares_outstanding
-# $ description
-# $ instrument
-# $ ceo
-# $ headquarters_city
-# $ headquarters_state
-# $ sector
-# $ industry
-# $ num_employees
-# $ year_founded
-}

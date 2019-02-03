@@ -14,3 +14,11 @@ get_positions(RH, limit_output = TRUE)
 \description{
 Download all investment positions for your account.
 }
+\examples{
+\dontrun{
+# Login in to your RobinHood account
+RH <- RobinHood("username", "password")
+
+get_positions(RH)
+}
+}

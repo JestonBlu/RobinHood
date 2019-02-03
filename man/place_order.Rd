@@ -29,3 +29,19 @@ place_order(RH, symbol, type, time_in_force, trigger, price,
 \description{
 Issues a buy or sell order and returns a list of order information confirming the order.
 }
+\examples{
+\dontrun{
+# Login in to your RobinHood account
+RH <- RobinHood("username", "password")
+
+# Place an order, should generate an email confirmation
+x <- place_order(RH = RH,
+                 symbol = "GE",          # Ticker symbol you want to trade
+                 type = "market",        # Type of market order
+                 time_in_force = "gfd",  # Time period the order is good for (gfd: good for day)
+                 trigger = "immediate",  # Trigger or delay order
+                 price = 8.96,           # The highest price you are willing to pay
+                 quantity = 1,           # Number of shares you want
+                 side = "buy")           # buy or sell
+}
+}

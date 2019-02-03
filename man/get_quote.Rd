@@ -16,3 +16,11 @@ get_quote(RH, ticker, limit_output = TRUE)
 \description{
 For a string of ticker symbols, return quote data.
 }
+\examples{
+\dontrun{
+# Login in to your RobinHood account
+RH <- RobinHood("username", "password")
+
+get_quote(RH, "IR")
+}
+}

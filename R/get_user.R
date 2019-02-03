@@ -5,6 +5,13 @@
 #' @param RH object class RobinHood
 #' @import curl jsonlite magrittr lubridate
 #' @export
+#' @examples
+#' \dontrun{
+#' # Login in to your RobinHood account
+#' RH <- RobinHood("username", "password")
+#'
+#' get_user(RH)
+#'}
 get_user <- function(RH) {
   if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
 

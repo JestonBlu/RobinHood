@@ -14,3 +14,11 @@ get_tag(RH, tag)
 \description{
 Geta a data frame of ticker symbols and names linked to trending tags on the RobinHood website.
 }
+\examples{
+\dontrun{
+# Login in to your RobinHood account
+RH <- RobinHood("username", "password")
+
+get_tag(RH, "100-most-popular")
+}
+}

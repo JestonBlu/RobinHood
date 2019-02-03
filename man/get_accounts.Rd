@@ -7,8 +7,16 @@
 get_accounts(RH)
 }
 \arguments{
-\item{RH}{object class RobinHood}
+\item{RH}{object of class RobinHood}
 }
 \description{
 Download a list of account data for your RobinHood account.
+}
+\examples{
+\dontrun{
+# Login in to your RobinHood account
+RH <- RobinHood("username", "password")
+
+get_accounts(RH)
+}
 }

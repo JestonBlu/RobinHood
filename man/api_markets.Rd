@@ -16,16 +16,3 @@ api_markets(RH, markets_url, type = "df")
 \description{
 Backend function called by get_market_hours(). Returns a data frame of markets data and trading hours.
 }
-\examples{
-# data returned by api call
-# $ website
-# $ city
-# $ name
-# $ url
-# $ country
-# $ todays_hours
-# $ operating_mic
-# $ acronym
-# $ timezone
-# $ mic
-}

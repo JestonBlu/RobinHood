@@ -19,7 +19,20 @@ watchlist(RH, action, watchlist = "", ticker = "")
 For a string of ticker symbols, return quote data.
 }
 \examples{
-# Get you current positions
-# RH <- RobinHood(username = 'your username', password = 'your password')
-# get_quote(RH, c("CAT", "GE"))
+\dontrun{
+# Login in to your RobinHood account
+RH <- RobinHood("username", "password")
+
+# Get a vector of your watchlist names
+watchlist(RH, action = "get")
+
+# Get a vectors of symbols on your watchlist
+watchlist(RH, action = "get", watchlist = "Default")
+
+# Add a symbol to your watchlist
+watchlist(RH, action = "add", watchlist = "Default", ticker = "CAT")
+
+# Delete a symbol from your watchlist
+watchlist(RH, action = "delete", watchlist = "Default", ticker = "CAT")
+}
 }

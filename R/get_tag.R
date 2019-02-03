@@ -6,8 +6,15 @@
 #' @param tag (string) a hyphenated tag such as "100-most-popular"
 #' @import curl jsonlite magrittr
 #' @export
+#' @examples
+#' \dontrun{
+#' # Login in to your RobinHood account
+#' RH <- RobinHood("username", "password")
+#'
+#' get_tag(RH, "100-most-popular")
+#'}
 get_tag <- function(RH, tag) {
-  
+
   if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
 
   # Get a list of instrument IDs for a particular tag

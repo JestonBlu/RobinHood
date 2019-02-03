@@ -6,18 +6,6 @@
 #' @param markets_url (string) a single market url
 #' @param type (string) structure of data returned, 'df' or 'list'
 #' @import curl jsonlite magrittr lubridate
-#' @examples
-#' # data returned by api call
-#' # $ website
-#' # $ city
-#' # $ name
-#' # $ url
-#' # $ country
-#' # $ todays_hours
-#' # $ operating_mic
-#' # $ acronym
-#' # $ timezone
-#' # $ mic
 api_markets <- function(RH, markets_url, type = "df") {
 
   markets <- new_handle() %>%

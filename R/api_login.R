@@ -5,15 +5,6 @@
 #' @param username (string) RobinHood username
 #' @param password (string) RobinHood password
 #' @import curl jsonlite magrittr
-#' @examples
-#' # data returned by api call
-#' #  $ api_grant_type
-#' #  $ api_client_id
-#' #  $ tokens.access_token
-#' #  $ tokens.refresh_token
-#' #  $ url.positions
-#' #  $ url.account_id
-#' #  - attr(*, "class")= chr "RobinHood"
 api_login <- function(username, password) {
 
   # Storage for api data

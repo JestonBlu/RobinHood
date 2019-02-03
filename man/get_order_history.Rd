@@ -12,3 +12,11 @@ get_order_history(RH)
 \description{
 Returns recent order history.
 }
+\examples{
+\dontrun{
+# Login in to your RobinHood account
+RH <- RobinHood("username", "password")
+
+get_order_history(RH)
+}
+}

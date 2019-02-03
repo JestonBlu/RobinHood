@@ -16,6 +16,7 @@ This function returns an object of S3 class RobinHood and establishes a connecti
 It is a required input for every other function in the package.
 }
 \examples{
-# Connect to your robinhood account
-# RH <- RobinHood(username = 'your username', password = 'your password')
+\dontrun{
+RH <- RobinHood("username", "password")
+}
 }

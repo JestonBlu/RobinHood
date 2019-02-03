@@ -6,9 +6,12 @@
 #' @import curl jsonlite magrittr
 #' @export
 #' @examples
-#' # Logout
-#' # RH <- RobinHood(username = 'your username', password = 'your password')
-#' # logout(RH)
+#' \dontrun{
+#' # Login in to your RobinHood account
+#' RH <- RobinHood("username", "password")
+#'
+#' logout(RH)
+#'}
 logout <- function(RH) {
   if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
 

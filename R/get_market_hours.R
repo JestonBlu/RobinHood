@@ -6,6 +6,13 @@
 #' @param market_date (string) date in the form 'yyyy-mm-dd', default today
 #' @import curl jsonlite magrittr lubridate
 #' @export
+#' @examples
+#' \dontrun{
+#' # Login in to your RobinHood account
+#' RH <- RobinHood("username", "password")
+#'
+#' get_market_hours(RH)
+#'}
 get_market_hours <- function(RH, market_date = NULL) {
 
   if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")

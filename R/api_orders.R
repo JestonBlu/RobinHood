@@ -17,35 +17,6 @@
 #' @param quantity (int) number of shares you wish to transact
 #' @param side (string) "buy" or "sell"
 #' @import curl jsonlite magrittr lubridate
-#' @examples
-#' # data returned by api call
-#' #  $ updated_at
-#' #  $ ref_id
-#' #  $ time_in_force
-#' #  $ fees
-#' #  $ cancel
-#' #  $ response_category
-#' #  $ id
-#' #  $ cumulative_quantity
-#' #  $ stop_price
-#' #  $ reject_reason
-#' #  $ instrument
-#' #  $ state
-#' #  $ trigger
-#' #  $ override_dtbp_checks
-#' #  $ type
-#' #  $ last_transaction_at
-#' #  $ price
-#' #  $ executions
-#' #  $ extended_hours
-#' #  $ account
-#' #  $ url
-#' #  $ created_at
-#' #  $ side
-#' #  $ override_day_trade_checks
-#' #  $ position
-#' #  $ average_price
-#' #  $ quantity
 api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbol = NULL, type = NULL,
                        time_in_force = NULL, trigger = NULL, price = NULL, stop_price = NULL, quantity = NULL,
                        side = NULL) {

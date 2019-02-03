@@ -4,22 +4,6 @@
 #'
 #' @param RH object of class RobinHood
 #' @import curl jsonlite magrittr
-#' @examples
-#' # data returned by api call
-#' # $ username
-#' # $ first_name
-#' # $ last_name
-#' # $ id_info
-#' # $ url
-#' # $ email_verified
-#' # $ created_at
-#' # $ basic_info
-#' # $ email
-#' # $ investment_profile
-#' # $ id
-#' # $ international_info
-#' # $ employment
-#' # $ additional_info
 api_user <- function(RH) {
 
   user <- new_handle() %>%
