@@ -23,6 +23,9 @@ Haven't signed up for a RobinHood account yet? Use my **[referral link](https://
 
 ## Install with devtools
 ```r
+# CRAN version
+install.packages("RobinHood")
+
 # Development version
 devtools::install_github("jestonblu/RobinHood")
 ```
