@@ -4,6 +4,7 @@
 #' required by all other functions.
 #' @param username (string) RobinHood username
 #' @param password (string) RobinHood password
+#' @export
 #' @import curl jsonlite magrittr
 api_login <- function(username, password) {
 

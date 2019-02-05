@@ -3,6 +3,7 @@
 #' Backend function called by get_positions(). Returns a data frame of instrument position data.
 #'
 #' @param RH object of class RobinHood
+#' @export
 #' @import curl jsonlite magrittr lubridate
 api_positions <- function(RH) {
 

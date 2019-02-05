@@ -5,6 +5,7 @@
 #' @param RH object of class RobinHood
 #' @param markets_url (string) a single market url
 #' @param type (string) structure of data returned, 'df' or 'list'
+#' @export
 #' @import curl jsonlite magrittr lubridate
 api_markets <- function(RH, markets_url, type = "df") {
 

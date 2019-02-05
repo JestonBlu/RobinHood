@@ -4,6 +4,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @param instrument_id (string) a single instrument_id
+#' @export
 #' @import curl jsonlite magrittr
 api_instruments <- function(RH, instrument_id) {
 

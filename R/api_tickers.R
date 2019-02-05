@@ -4,6 +4,7 @@
 #' on RobinHood.
 #'
 #' @param RH object of class RobinHood
+#' @export
 #' @import curl jsonlite magrittr
 api_tickers <- function(RH) {
 

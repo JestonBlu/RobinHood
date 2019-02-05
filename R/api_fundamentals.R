@@ -5,6 +5,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @param ticker (string) vector of ticker symbols
+#' @export
 #' @import curl jsonlite magrittr
 api_fundamentals <- function(RH, ticker) {
 

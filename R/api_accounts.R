@@ -4,6 +4,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @import curl jsonlite magrittr lubridate
+#' @export
 api_accounts <- function(RH) {
 
   accounts <- new_handle() %>%
