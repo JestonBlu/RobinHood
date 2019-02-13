@@ -1,5 +1,4 @@
 ![Travis-CI](https://travis-ci.org/JestonBlu/RobinHood.svg?branch=master)
-![Commit-Activity](https://img.shields.io/github/commit-activity/4w/JestonBlu/RobinHood.svg)
 ![CRAN Version](http://www.r-pkg.org/badges/version/RobinHood)
 ![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/RobinHood)
 
