@@ -30,10 +30,11 @@ get_order_history <- function(RH) {
 
   # Combine symbol with order history
   order_history$symbol <- symbol
-  order_history <- order_history[, c("updated_at", "symbol", "side", "price", "quantity", "fees", "state",
-                                   "average_price", "type", "trigger", "time_in_force")]
+  order_history <- order_history[, c("created_at", "symbol", "side", "price", "quantity", "fees", "state",
+                                   "average_price", "type", "trigger", "time_in_force", "updated_at")]
 
   # Format timestamp
+  order_history$created_at <- ymd_hms(order_history$created_at)
   order_history$updated_at <- ymd_hms(order_history$updated_at)
   order_history$fees <- as.numeric(order_history$fees)
   order_history$price <- as.numeric(order_history$price)
