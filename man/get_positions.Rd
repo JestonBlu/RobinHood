@@ -4,14 +4,12 @@
 \alias{get_positions}
 \title{Get the currently held positions for your RobinHood account}
 \usage{
-get_positions(RH, limit_output = TRUE, options = FALSE)
+get_positions(RH, limit_output = TRUE)
 }
 \arguments{
 \item{RH}{object class RobinHood}
 
 \item{limit_output}{(logical) if true, return a simplified positions table, false returns all position details}
-
-\item{options}{(logical) if true, include any options or pending options}
 }
 \description{
 Get the currently held positions for your RobinHood account
