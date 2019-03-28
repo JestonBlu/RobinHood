@@ -32,10 +32,10 @@ get_positions <- function(RH, limit_output = TRUE, options = FALSE) {
   if (options == TRUE) {
     positions <- positions[(positions$shares_held_for_options_events > 0 |
                             positions$shares_held_for_options_collateral > 0 |
-                            positions$shares_pending_from_options_events > 0) &
+                            positions$shares_pending_from_options_events > 0) |
                             positions$quantity > 0, ]
 
-    if (nrow(positions) == 0) stop("You have no current positions or options")
+    if (nrow(positions) == 0) stop("You have no current positions")
     }
 
   ##############################################################################
