@@ -19,8 +19,13 @@ Haven't signed up for a RobinHood account yet? Use my **[referral link](https://
 - [x] Get market open/close hours
 - [x] Search investments by popular tag
 - [x] Add and remove investments on your watchlist
+- [ ] Get options market data
+- [ ] Get options contracts
+- [ ] Get price history
 
-## Install with devtools
+--------------------------------------------------------------------------------
+
+## Installation
 ```r
 # CRAN version
 install.packages("RobinHood")
@@ -29,31 +34,45 @@ install.packages("RobinHood")
 devtools::install_github("jestonblu/RobinHood")
 ```
 
-## Examples
+
+## Establish a connection to RobinHood
 ```r
 library(RobinHood)
 
 # Establishes a connection with your account and generates an oauth2 token
 # Returns a list style object of relevant API keys and IDs needed to interact with your account
 RH = RobinHood(username = "username", password = "password")
+```
 
+
+## User and Account Info
+```r
 # Get user info (see api_user for a list of fields)
 get_user(RH)
 
 # Get account info (see api_accounts for a list of fields)
 get_accounts(RH)
+```
 
+
+## Investment Positions
+```r
 # Returns a data.frame of positions
-get_positions(RH, limit_output= TRUE)
+get_positions(RH)
 
 #   simple_name symbol quantity average_buy_price last_trade_price cost current_value          updated_at
 # 1          GE     GE        1               8.5             8.73  8.5          8.73 2019-01-10 04:19:01
 # 2       Zynga   ZNGA        2               0.0             4.27  0.0          8.54 2019-01-06 16:44:03
 
+```
+
+
+## Research
+```r
 # Get instrument fundamentals
 get_fundamentals(RH, 'CAT')
 
-# Structure shown
+# Structure
 # List of 19
 # $ open                  : num 135
 # $ high                  : num 138
@@ -76,23 +95,27 @@ get_fundamentals(RH, 'CAT')
 # $ year_founded          : int 1925
 
 # Get quotes
-get_quote(RH, ticker = c("CAT", "GE"), limit_output= TRUE)
+get_quote(RH, ticker = c("CAT", "GE"), limit_output = TRUE)
 
 #    symbol last_trade_price last_trade_price_source
-# 1    CAT       131.660000            consolidated
-# 2     GE         8.980000            consolidated
+# 1     CAT           131.66            consolidated
+# 2      GE             8.98            consolidated
+```
 
+
+## Orders
+```r
 # Place Order, should generate an email
-x = place_order(RH = RH,
-                symbol = "GE",          # Ticker symbol you want to trade
-                type = "market",        # Type of market order
-                time_in_force = "gfd",  # Time period the order is good for (gfd: good for day)
-                trigger = "immediate",  # Trigger or delay order
-                price = 8.96,           # The highest price you are willing to pay
-                quantity = 1,           # Number of shares you want
-                side = "buy")           # buy or sell
+x = place_order(RH            = RH,
+                symbol        = "GE",        # Ticker symbol you want to trade
+                type          = "market",    # Type of market order
+                time_in_force = "gfd",       # Time period the order is good for (gfd: good for day)
+                trigger       = "immediate", # Trigger or delay order
+                price         = 8.96,        # The highest price you are willing to pay
+                quantity      = 1,           # Number of shares you want
+                side          = "buy")       # buy or sell
 
-# Structure shown
+# Structure
 # List of 27
 # $ updated_at               : POSIXct
 # $ ref_id                   : chr
@@ -143,10 +166,15 @@ get_order_status(RH, x$url)
 
 # Cancel an order (should generate an email)
 cancel_order(RH, x$cancel)
+
 # One of 2 messages you may receive
 # "Order canceled"
 # "You may have already canceled this order, check order_status()"
+```
 
+
+## Market Hours
+```r
 # Get market hours for a specific date
 get_market_hours(RH)
 
@@ -167,26 +195,30 @@ get_market_hours(RH)
 # 5          08:00:00           17:00:00    TRUE 2019-01-17
 # 6          08:00:00           17:00:00    TRUE 2019-01-17
 # 7          08:00:00           17:00:00    TRUE 2019-01-17
+```
 
 
-
+## Tags
+```r
 # You can identify instruments by popular tags
 get_tag(RH, tag = "100-most-popular")
-#  [1] "AAPL"  "GE"    "ACB"   "F"     "CRON"  "MSFT"  "FB"    "AMD"   "FIT"   "GPRO"  "CGC"   "SNAP" ...
 
+#  [1] "AAPL"  "GE"    "ACB"   "F"     "CRON"  "MSFT"  "FB" ...
+```
+
+
+## Watchlist
+```r
 # Watchlist commands, currently creating and removing watchlists isn't working
 watchlist(RH, action = 'get')
 # [1] "Default"
 
 watchlist(RH, action = 'get', watchlist = 'Default')
-# [1] "AAPL" "TWTR" "TSLA" "NFLX" "FB"   "MSFT" "DIS"  "GPRO" "SBUX" "F"    "BABA" "BAC"  "FIT"  "GE"   "SNAP"
+# [1] "AAPL" "TWTR" "TSLA" "NFLX" "FB"   "MSFT" "DIS"  "GPRO" ...
 
 watchlist(RH, action = 'add', watchlist = 'Default', ticker = "CAT")
 # "Instrument added to watchlist"
 
 watchlist(RH, action = 'delete', watchlist = 'Default', ticker = 'CAT')
 # "Instrument removed from watchlist"
-
-
-
 ```
