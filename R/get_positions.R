@@ -1,7 +1,8 @@
 #' Get the currently held positions for your RobinHood account
 #'
 #' @param RH object class RobinHood
-#' @param limit_output (logical) if true, return a simplified positions table, false returns all positions details
+#' @param limit_output (logical) if true, return a simplified positions table, false returns all position details
+#' @param options (logical) if true, include any options or pending options
 #' @import curl jsonlite magrittr lubridate
 #' @export
 #' @examples
@@ -11,13 +12,31 @@
 #'
 #' get_positions(RH)
 #'}
-get_positions <- function(RH, limit_output = TRUE) {
+get_positions <- function(RH, limit_output = TRUE, options = FALSE) {
 
   if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
 
   ##############################################################################
   # Get current positions
   positions <- api_positions(RH)
+
+
+  # If options are not requested, return only quantity > 0
+  if (options == FALSE) {
+    positions <- positions[positions$quantity > 0, ]
+
+    if (nrow(positions) == 0) stop("You have no current positions")
+    }
+
+  # If options are requested, return option events with quantity > 0
+  if (options == TRUE) {
+    positions <- positions[(positions$shares_held_for_options_events > 0 |
+                            positions$shares_held_for_options_collateral > 0 |
+                            positions$shares_pending_from_options_events > 0) &
+                            positions$quantity > 0, ]
+
+    if (nrow(positions) == 0) stop("You have no current positions or options")
+    }
 
   ##############################################################################
   # Use instrument IDs to get the ticker symbol and name
@@ -76,6 +95,7 @@ get_positions <- function(RH, limit_output = TRUE) {
   positions$cost <- with(positions, average_buy_price * quantity)
   positions$current_value <- with(positions, last_trade_price * quantity)
 
+  # Output Options
   if (limit_output == TRUE) {
     # Reorder dataframe
     positions <- positions[, c("simple_name",
@@ -86,27 +106,28 @@ get_positions <- function(RH, limit_output = TRUE) {
                                "cost",
                                "current_value",
                                "updated_at")]
-    } else {
+                             }
 
-      positions <- positions[, c("symbol",
-                                 "simple_name",
-                                 "quantity",
-                                 "average_buy_price",
-                                 "last_trade_price",
-                                 "cost",
-                                 "current_value",
-                                 "shares_held_for_stock_grants",
-                                 "shares_held_for_options_events",
-                                 "shares_held_for_options_collateral",
-                                 "shares_held_for_buys",
-                                 "shares_held_for_sells",
-                                 "shares_pending_from_options_events",
-                                 "pending_average_buy_price",
-                                 "intraday_average_buy_price",
-                                 "intraday_quantity",
-                                 "created_at",
-                                 "updated_at")]
-  }
+  if (limit_output == FALSE) {
+    positions <- positions[, c("symbol",
+                               "simple_name",
+                               "quantity",
+                               "average_buy_price",
+                               "last_trade_price",
+                               "cost",
+                               "current_value",
+                               "shares_held_for_stock_grants",
+                               "shares_held_for_options_events",
+                               "shares_held_for_options_collateral",
+                               "shares_held_for_buys",
+                               "shares_held_for_sells",
+                               "shares_pending_from_options_events",
+                               "pending_average_buy_price",
+                               "intraday_average_buy_price",
+                               "intraday_quantity",
+                               "created_at",
+                               "updated_at")]
+                             }
 
   return(positions)
 }
