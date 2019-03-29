@@ -7,18 +7,19 @@
 api_endpoints <- function(endpoint) {
 
   api.endpoint <- list(
-    url = "https://api.robinhood.com/",
-    token = "oauth2/token/",
-    revoke_token = "oauth2/revoke_token/",
-    accounts = "accounts/",
-    quotes = "quotes/?symbols=",
-    orders = "orders/",
-    markets = "markets/",
+    url          = "https://api.robinhood.com/",
+    accounts     = "accounts/",
     fundamentals = "fundamentals/?symbols=",
-    tags = "midlands/tags/tag/",
-    watchlist = "watchlists/",
-    user = "user/",
-    tickers = "instruments/"
+    historicals  = "quotes/historicals/",
+    markets      = "markets/",
+    orders       = "orders/",
+    quotes       = "quotes/?symbols=",
+    tags         = "midlands/tags/tag/",
+    tickers      = "instruments/",
+    token        = "oauth2/token/",
+    revoke_token = "oauth2/revoke_token/",
+    user         = "user/",
+    watchlist    = "watchlists/"
   )
 
   x <- which(names(api.endpoint) == endpoint)
