@@ -67,7 +67,7 @@ get_positions(RH)
 ```
 
 
-## Research
+## Funadmentals, Quotes, and Historicals
 ```r
 # Get instrument fundamentals
 get_fundamentals(RH, 'CAT')
@@ -100,6 +100,20 @@ get_quote(RH, ticker = c("CAT", "GE"), limit_output = TRUE)
 #    symbol last_trade_price last_trade_price_source
 # 1     CAT           131.66            consolidated
 # 2      GE             8.98            consolidated
+
+# Get historical prices
+get_historicals(RH, 'CAT', interval = '30minute', span = 'day')    # Every 30 minutes for the current day
+
+#    begins_at open_price close_price high_price  low_price   volume session interpolated
+# 1 2019-02-25     140.99      137.47     142.55     135.27 22995597     reg        FALSE
+# 2 2019-03-04     138.80      131.35     139.77     130.23 19397486     reg        FALSE
+# 3 2019-03-11     131.91      132.67     134.53     131.59 23201154     reg        FALSE
+# 4 2019-03-18     132.70      129.77     135.71     129.49 19314924     reg        FALSE
+
+get_historicals(RH, 'CAT', interval = 'day',      span = 'week')   # Every day for the current week
+get_historicals(RH, 'CAT', interval = 'week',     span = '3month') # Every week for the last 3 months
+get_historicals(RH, 'CAT', interval = 'month',    span = 'year')   # Every month for the current year
+
 ```
 
 
