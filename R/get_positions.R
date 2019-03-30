@@ -19,11 +19,9 @@ get_positions <- function(RH, limit_output = TRUE) {
   # Get current positions
   positions <- api_positions(RH)
 
-
-  # Return only quantity > 0
-  positions <- positions[positions$quantity > 0, ]
-
-  if (nrow(positions) == 0) stop("You have no current positions")
+  if (nrow(positions) == 0)  {
+    return(cat("You have no current positions"))
+  }
 
   ##############################################################################
   # Use instrument IDs to get the ticker symbol and name

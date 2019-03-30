@@ -7,10 +7,12 @@
 #' @import curl jsonlite magrittr lubridate
 api_positions <- function(RH) {
 
+  positions_url <- paste(RH$url.positions, "?nonzero=True", sep = "")
+
   positions <- new_handle() %>%
     handle_setheaders("Accept" = "application/json") %>%
     handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-    curl_fetch_memory(url = RH$url.positions)
+    curl_fetch_memory(url = positions_url)
 
   positions <- fromJSON(rawToChar(positions$content))
   positions <- data.frame(positions$results)
