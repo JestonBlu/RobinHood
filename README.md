@@ -3,7 +3,6 @@
 ![CRAN Version](http://www.r-pkg.org/badges/version/RobinHood)
 ![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/RobinHood)
 
---------------------------------------------------------------------------------
 
 ## RobinHood
 This is package is designed to help you execute trading programs in R.
@@ -19,11 +18,12 @@ Haven't signed up for a RobinHood account yet? Use my **[referral link](https://
 - [x] Get market open/close hours
 - [x] Search investments by popular tag
 - [x] Add and remove investments on your watchlist
+- [x] Get price history
 - [ ] Get options market data
 - [ ] Get options contracts
-- [ ] Get price history
+- [ ] Calculate historical account balance
+- [ ] Execute ACH transfers
 
---------------------------------------------------------------------------------
 
 ## Installation
 ```r
