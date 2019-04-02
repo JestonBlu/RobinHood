@@ -4,12 +4,12 @@
 \alias{api_instruments}
 \title{RobinHood API: Instruments}
 \usage{
-api_instruments(RH, instrument_id)
+api_instruments(RH, symbol)
 }
 \arguments{
 \item{RH}{object of class RobinHood}
 
-\item{instrument_id}{(string) a single instrument_id}
+\item{symbol}{(string) a single symbol}
 }
 \description{
 Backend function called by get_tag(), get_position(), watchlist(). Returns a list of instrument data.

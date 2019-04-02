@@ -16,8 +16,6 @@ get_order_history <- function(RH) {
 
   # Get Order History
   order_history <- api_orders(RH, action = "history")
-  order_history <- fromJSON(rawToChar(order_history$content))
-  order_history <- order_history$results
 
   # Get symbol to attach to output
   symbol <- as.character()
