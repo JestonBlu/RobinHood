@@ -1,6 +1,6 @@
 #' Manage your RobinHood watchlist
 #'
-#' Add and delete instruments from your RobinHood watchlist. 
+#' Add and delete instruments from your RobinHood watchlist.
 #'
 #' @param RH object class RobinHood
 #' @param action (string) one of: get, add, delete
@@ -51,7 +51,7 @@ watchlist <- function(RH, action, watchlist = "", ticker = "") {
     wl <- c()
 
     for (i in 1:length(instrument_id)) {
-      x <- api_instruments(RH, instrument_id[i])
+      x <- api_instruments(RH, instrument_url = instrument_id[i])
       x <- x$symbol
       wl <- c(wl, x)
     }

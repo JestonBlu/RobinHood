@@ -1,7 +1,7 @@
 #' Get a quote from RobinHood
 #'
 #' @param RH object class RobinHood
-#' @param ticker (string) of ticker symbols
+#' @param symbol (string) of ticker symbols
 #' @param limit_output (logical) if TRUE (default) return less quote detail
 #' @import curl jsonlite magrittr lubridate
 #' @export
@@ -12,12 +12,12 @@
 #'
 #' get_quote(RH, "IR")
 #'}
-get_quote <- function(RH, ticker, limit_output = TRUE) {
+get_quote <- function(RH, symbol, limit_output = TRUE) {
 
   if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
 
   # Get latest quote
-  quote <- paste(ticker, collapse = ",")
+  quote <- paste(symbol, collapse = ",")
 
   # Quotes URL
   quote_url <- paste(api_endpoints(endpoint = "quotes"), quote, sep = "")

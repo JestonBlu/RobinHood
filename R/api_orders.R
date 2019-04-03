@@ -88,6 +88,9 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
       handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
       curl_fetch_memory(url = api_endpoints("orders"))
 
+    order_history <- fromJSON(rawToChar(order_history$content))
+    order_history <- order_history$results
+
     return(order_history)
 
   }
