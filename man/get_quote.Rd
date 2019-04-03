@@ -4,12 +4,12 @@
 \alias{get_quote}
 \title{Get a quote from RobinHood}
 \usage{
-get_quote(RH, ticker, limit_output = TRUE)
+get_quote(RH, symbol, limit_output = TRUE)
 }
 \arguments{
 \item{RH}{object class RobinHood}
 
-\item{ticker}{(string) of ticker symbols}
+\item{symbol}{(string) of ticker symbols}
 
 \item{limit_output}{(logical) if TRUE (default) return less quote detail}
 }

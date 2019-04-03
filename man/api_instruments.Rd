@@ -4,7 +4,7 @@
 \alias{api_instruments}
 \title{RobinHood API: Instruments}
 \usage{
-api_instruments(RH, symbol, instrument_url = NULL)
+api_instruments(RH, symbol = NULL, instrument_url = NULL)
 }
 \arguments{
 \item{RH}{object of class RobinHood}
