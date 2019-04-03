@@ -21,7 +21,7 @@ get_order_history <- function(RH) {
   symbol <- as.character()
 
   for (i in order_history$instrument) {
-    x <- api_instruments(RH, i)
+    x <- api_instruments(RH, instrument_url = i)
     x <- x$symbol
     symbol <- c(symbol, x)
   }
