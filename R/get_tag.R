@@ -24,7 +24,7 @@ get_tag <- function(RH, tag) {
   instruments <- c()
 
   for (i in 1:length(instrument_id)) {
-    instrument <- api_instruments(RH, instrument_id[i])
+    instrument <- api_instruments(RH, instrument_url = instrument_id[i])
     x <- ifelse(is.null(instrument$symbol), "", instrument$symbol)
     instruments <- c(instruments, x)
   }

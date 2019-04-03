@@ -7,7 +7,7 @@
 #' @import curl jsonlite magrittr lubridate
 api_positions <- function(RH) {
 
-  positions_url <- paste(RH$url.positions, "?nonzero=True", sep = "")
+  positions_url <- RH$url.positions
 
   positions <- new_handle() %>%
     handle_setheaders("Accept" = "application/json") %>%
@@ -30,6 +30,8 @@ api_positions <- function(RH) {
   positions$shares_held_for_sells <- as.numeric(positions$shares_held_for_sells)
   positions$shares_pending_from_options_events <- as.numeric(positions$shares_pending_from_options_events)
   positions$quantity <- as.numeric(positions$quantity)
+
+  positions <- positions[positions$quantity > 0, ]
 
   return(positions)
 }

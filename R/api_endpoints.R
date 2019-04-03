@@ -15,7 +15,7 @@ api_endpoints <- function(endpoint) {
     orders       = "orders/",
     quotes       = "quotes/?symbols=",
     tags         = "midlands/tags/tag/",
-    tickers      = "instruments/",
+    instruments  = "instruments/",
     token        = "oauth2/token/",
     revoke_token = "oauth2/revoke_token/",
     user         = "user/",

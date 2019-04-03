@@ -12,7 +12,7 @@ api_tickers <- function(RH) {
   # Stopwatch
   start_time <- proc.time()
 
-  url <- api_endpoints("tickers")
+  url <- api_endpoints("instruments")
 
   tickers <- new_handle() %>%
     handle_setheaders("Accept" = "application/json") %>%
