@@ -52,12 +52,15 @@ get_user(RH)
 
 # Get account info (see api_accounts for a list of fields)
 get_accounts(RH)
+
+# Get summary of your portfolios
+get_portfolios(RH)
 ```
 
 
 ## Investment Positions
 ```r
-# Returns a data.frame of positions
+# Returns a data frame of stock ownership positions
 get_positions(RH)
 
 #   simple_name symbol quantity average_buy_price last_trade_price cost current_value          updated_at
@@ -73,7 +76,6 @@ get_positions(RH)
 get_fundamentals(RH, 'CAT')
 
 # Structure
-# List of 19
 # $ open                  : num 135
 # $ high                  : num 138
 # $ low                   : num 134
@@ -130,7 +132,6 @@ x = place_order(RH            = RH,
                 side          = "buy")       # buy or sell
 
 # Structure
-# List of 27
 # $ updated_at               : POSIXct
 # $ ref_id                   : chr
 # $ time_in_force            : chr

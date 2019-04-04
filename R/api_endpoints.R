@@ -13,6 +13,7 @@ api_endpoints <- function(endpoint) {
     historicals  = "quotes/historicals/",
     markets      = "markets/",
     orders       = "orders/",
+    portfolios   = "portfolios/",
     quotes       = "quotes/?symbols=",
     tags         = "midlands/tags/tag/",
     instruments  = "instruments/",
