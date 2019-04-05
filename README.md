@@ -19,9 +19,9 @@ Haven't signed up for a RobinHood account yet? Use my **[referral link](https://
 - [x] Search investments by popular tag
 - [x] Add and remove investments on your watchlist
 - [x] Get price history
+- [x] Calculate historical account balance
 - [ ] Get options market data
 - [ ] Get options contracts
-- [ ] Calculate historical account balance
 - [ ] Execute ACH transfers
 
 
@@ -53,8 +53,22 @@ get_user(RH)
 # Get account info (see api_accounts for a list of fields)
 get_accounts(RH)
 
-# Get summary of your portfolios
+# Get summary of your current portfolio
 get_portfolios(RH)
+
+# Get historical summaries of your portfolio
+get_portfolios(RH, interval = "day", span = "3month")
+
+# Structure
+# $ begins_at            : POSIXct, format: "2019-01-04" "2019-01-07" "2019-01-08" "2019-01-09" ...
+# $ adjusted_open_equity : num  500 504 504 504 504 ...
+# $ adjusted_close_equity: num  500 504 504 504 509 ...
+# $ open_equity          : num  0 504 504 504 504 ...
+# $ close_equity         : num  0 504 504 504 509 ...
+# $ open_market_value    : num  0 4.01 4.12 4.16 4.26 ...
+# $ close_market_value   : num  0 4.07 4.14 4.27 17.52 ...
+# $ net_return           : num  0 0.0001 0 0.0002 0.0094 0.0002 0 -0.0003 0.0005 0.0015 ...
+# $ session              : chr  "reg" "reg" "reg" "reg" ...
 ```
 
 
