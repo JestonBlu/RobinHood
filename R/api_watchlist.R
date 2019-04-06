@@ -8,8 +8,8 @@
 #' @param watchlist_url (string) a single watchlist url
 #' @param detail (logical) if null use header api only, otherwise pass options
 #' @param delete (logical) send delete call
-#' @export
 #' @import curl jsonlite magrittr
+#' @export
 api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
 
   # Send a command to delete a watchlist or instrument from a watchlist

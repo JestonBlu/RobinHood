@@ -4,8 +4,8 @@
 #'
 #' @param RH object of class RobinHood
 #' @param portfolio_url portfolio url
-#' @export
 #' @import curl jsonlite magrittr lubridate
+#' @export
 api_portfolios <- function(RH, portfolio_url) {
 
   if (portfolio_url == api_endpoints("portfolios")) {

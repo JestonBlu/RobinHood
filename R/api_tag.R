@@ -4,8 +4,8 @@
 #'
 #' @param RH object of class RobinHood
 #' @param tag (string) a hyphenated tag such as "100-most-popular"
-#' @export
 #' @import curl jsonlite magrittr
+#' @export
 api_tag <- function(RH, tag) {
 
   tag_url <- paste(api_endpoints("tags"), tag, "/", sep = "", collapse = "")

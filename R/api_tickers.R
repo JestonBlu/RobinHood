@@ -4,8 +4,8 @@
 #' on RobinHood.
 #'
 #' @param RH object of class RobinHood
-#' @export
 #' @import curl jsonlite magrittr
+#' @export
 api_tickers <- function(RH) {
 
   cat("Getting stock ticker data from RobinHood.com...")

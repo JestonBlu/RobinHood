@@ -24,6 +24,8 @@ Haven't signed up for a RobinHood account yet? Use my **[referral link](https://
 - [ ] Get options contracts
 - [ ] Execute ACH transfers
 
+**Note:** A key difference between the CRAN version and the Github version is that the API functions are exported and available to call directly. This is intended primarily to help with development and bug fixes. In the CRAN version, all API functions are not export and instead are called behind the scenes.
+
 
 ## Installation
 ```r

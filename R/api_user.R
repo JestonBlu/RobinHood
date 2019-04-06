@@ -3,8 +3,8 @@
 #' Backend function called by get_user() to return user data
 #'
 #' @param RH object of class RobinHood
-#' @export
 #' @import curl jsonlite magrittr
+#' @export
 api_user <- function(RH) {
 
   user <- new_handle() %>%

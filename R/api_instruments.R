@@ -5,8 +5,8 @@
 #' @param RH object of class RobinHood
 #' @param symbol (string) a single symbol
 #' @param instrument_url (string) instrument url
-#' @export
 #' @import curl jsonlite magrittr
+#' @export
 api_instruments <- function(RH, symbol = NULL, instrument_url = NULL) {
 
   if (length(symbol == 1)) {
@@ -35,7 +35,7 @@ api_instruments <- function(RH, symbol = NULL, instrument_url = NULL) {
       curl_fetch_memory(url = url)
 
     instrument <- fromJSON(rawToChar(instrument$content))
-  
+
     instrument$margin_initial_ratio <- as.numeric(instrument$margin_initial_ratio)
     instrument$maintenance_ratio <- as.numeric(instrument$maintenance_ratio)
     instrument$day_trade_ratio <- as.numeric(instrument$day_trade_ratio)
