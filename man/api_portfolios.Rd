@@ -4,10 +4,12 @@
 \alias{api_portfolios}
 \title{RobinHood API: Portfolio}
 \usage{
-api_portfolios(RH)
+api_portfolios(RH, portfolio_url)
 }
 \arguments{
 \item{RH}{object of class RobinHood}
+
+\item{portfolio_url}{portfolio url}
 }
 \description{
 Backend function called by get_portfolio(). Returns a data frame of account summaries.

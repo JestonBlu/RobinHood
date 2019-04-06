@@ -2,15 +2,19 @@
 % Please edit documentation in R/get_portfolios.R
 \name{get_portfolios}
 \alias{get_portfolios}
-\title{Get porfolio summaries related to your RobinHood account}
+\title{Get porfolio summaries related to your RobinHood Account}
 \usage{
-get_portfolios(RH)
+get_portfolios(RH, interval = NULL, span = NULL)
 }
 \arguments{
 \item{RH}{object of class RobinHood}
+
+\item{interval}{(string) Interval of time to aggregate to (examples: hour, day, week, month)}
+
+\item{span}{(string) Period of time you are interested in (examples: day, week, month, year)}
 }
 \description{
-Get porfolio summaries related to your RobinHood account
+Returns a dataframe of portfolio summaries for a specific period of time. Default is current day.
 }
 \examples{
 \dontrun{
@@ -18,5 +22,6 @@ Get porfolio summaries related to your RobinHood account
 RH <- RobinHood("username", "password")
 
 get_portfolios(RH)
+get_portfolios(RH, interval = "day", span = "3month")
 }
 }
