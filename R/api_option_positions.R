@@ -3,8 +3,8 @@
 #' Backend function called by get_contract_positions(). Returns a data frame of owned options contracts.
 #'
 #' @param RH object of class RobinHood
-#' @export
 #' @import curl jsonlite magrittr lubridate
+#' @export
 api_option_positions <- function(RH) {
 
   option_positions_url <- api_endpoints("option_positions")

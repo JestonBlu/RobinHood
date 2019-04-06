@@ -4,8 +4,8 @@
 #'
 #' @param RH object of class RobinHood
 #' @param symbols_url (string) url of query with ticker symbols
-#' @export
 #' @import curl jsonlite magrittr lubridate
+#' @export
 api_quote <- function(RH, symbols_url) {
 
   quotes <- new_handle() %>%

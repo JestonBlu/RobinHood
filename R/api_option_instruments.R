@@ -1,8 +1,9 @@
 #' RobinHood API: Option Contract Instruments
 #'
 #' @param RH object of class RobinHood
-#' @export
+#' @param option_instrument_url (string) url
 #' @import curl jsonlite magrittr lubridate
+#' @export
 api_option_instruments <- function(RH, option_instrument_url) {
 
   option_instrument_url <- option_instrument_url

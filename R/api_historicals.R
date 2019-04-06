@@ -5,8 +5,8 @@
 #' @param RH object of class RobinHood
 #' @param historicals_url (string) api url
 #' @param body (string) api body
-#' @export
 #' @import curl jsonlite magrittr lubridate
+#' @export
 api_historicals <- function(RH, historicals_url, body) {
 
   historicals_url = paste(historicals_url, "?", body, sep = "")

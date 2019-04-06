@@ -3,8 +3,8 @@
 #' Backend function called by get_portfolio(). Returns a data frame of account summaries.
 #'
 #' @param RH object of class RobinHood
-#' @export
 #' @import curl jsonlite magrittr lubridate
+#' @export
 api_portfolios <- function(RH) {
 
   portfolio_url <- api_endpoints("portfolios")

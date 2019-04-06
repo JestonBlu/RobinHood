@@ -8,6 +8,8 @@ api_option_instruments(RH, option_instrument_url)
 }
 \arguments{
 \item{RH}{object of class RobinHood}
+
+\item{option_instrument_url}{(string) url}
 }
 \description{
 RobinHood API: Option Contract Instruments
