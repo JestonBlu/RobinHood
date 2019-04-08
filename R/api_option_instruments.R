@@ -26,7 +26,6 @@ api_option_instruments <- function(RH, option_instrument_url) {
     option_instruments$created_at <- lubridate::ymd_hms(option_instruments$created_at)
     option_instruments$updated_at <- lubridate::ymd_hms(option_instruments$updated_at)
 
-    option_instruments <- option_instruments[, !names(option_instruments) %in% c("url", "chain_id", "id")]
   }
 
   return(option_instruments)
