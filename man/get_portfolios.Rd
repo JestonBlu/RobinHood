@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_portfolios.R
 \name{get_portfolios}
 \alias{get_portfolios}
-\title{Get porfolio summaries related to your RobinHood Account}
+\title{Get portfolio summaries related to your RobinHood Account}
 \usage{
 get_portfolios(RH, interval = NULL, span = NULL)
 }

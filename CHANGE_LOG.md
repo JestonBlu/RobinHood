@@ -8,7 +8,7 @@
 #### New Features
   - `get_historicals()`
     - added a new function for pulling historical prices
-  - `get_porfolios()`
+  - `get_portfolios()`
     - added a new function for pulling current and historical portfolio values
   - `get_order_history()`
     - added an additional field `created_at`

@@ -1,4 +1,4 @@
-#' Get porfolio summaries related to your RobinHood Account
+#' Get portfolio summaries related to your RobinHood Account
 #'
 #' Returns a dataframe of portfolio summaries for a specific period of time. Default is current day.
 #'
@@ -25,8 +25,8 @@ get_portfolios <- function(RH, interval = NULL, span = NULL) {
 
   # Construct URL for query
   if (is.null(interval) | is.null(span)) {
-      porfolio_url <- api_endpoints("portfolios")
-      portfolios <- api_portfolios(RH, porfolio_url)
+      portfolio_url <- api_endpoints("portfolios")
+      portfolios <- api_portfolios(RH, portfolio_url)
 
       # reorder columns
       portfolios <- portfolios[, c("start_date", "unwithdrawable_grants", "excess_maintenance_with_uncleared_deposits",
@@ -36,12 +36,12 @@ get_portfolios <- function(RH, interval = NULL, span = NULL) {
                                  "adjusted_equity_previous_close", "equity_previous_close", "extended_hours_market_value")]
 
     } else {
-      porfolio_url <- paste(api_endpoints("portfolios"),
+      portfolio_url <- paste(api_endpoints("portfolios"),
                             "/historicals/?account_number=", account_number,
                             "&interval=", interval,
                             "&span=", span,
                             sep = "")
-      portfolios <- api_portfolios(RH, porfolio_url)
+      portfolios <- api_portfolios(RH, portfolio_url)
 
       # reorder columns
       portfolios <- portfolios[, c("begins_at", "adjusted_open_equity", "adjusted_close_equity", "open_equity",
