@@ -35,7 +35,7 @@ api_tickers <- function(RH) {
 
     output <- rbind(output, x)
 
-    profvis::pause(1)
+    profvis::pause(.25)
   }
 
   # Stopwatch
