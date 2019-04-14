@@ -1,3 +1,8 @@
+## 1.0.6
+
+#### Clean up
+  - `get_historicals()` now returns prices formatted as numeric
+
 ## 1.0.5
 
 #### Bug fixes

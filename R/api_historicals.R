@@ -19,6 +19,10 @@ api_historicals <- function(RH, historicals_url, body) {
   historicals <- fromJSON(rawToChar(historicals$content))
   historicals <- data.frame(historicals$results$historicals)
 
-  historicals$begins_at = lubridate::ymd_hms(historicals$begins_at)
+  historicals$begins_at <- lubridate::ymd_hms(historicals$begins_at)
+  historicals$open_price <- as.numeric(historicals$open_price)
+  historicals$close_price <- as.numeric(historicals$close_price)
+  historicals$high_price <- as.numeric(historicals$high_price)
+  historicals$low_price <- as.numeric(historicals$low_price)
   return(historicals)
   }
