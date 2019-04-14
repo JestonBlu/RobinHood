@@ -1,3 +1,9 @@
 language: r
 r_build_args: --no-manual
 r_check_args: --no-manual
+
+r_packages:
+  - RobinHood
+
+after_success:
+  - Rscript -e 'library(RobinHood); codecov()'
