@@ -3,6 +3,7 @@
 #' Get a dataframe of all listed companies including ticker symbols and tradeability indicators.
 #'
 #' @param RH object of class RobinHood
+#' @param fundamentals (logical) if TRUE then return fundamental data (long run time)
 #' @import curl jsonlite magrittr
 #' @export
 #' @examples
@@ -12,7 +13,7 @@
 #'
 #' get_tickers(RH)
 #'}
-get_tickers <- function(RH) {
+get_tickers <- function(RH, fundamentals = FALSE) {
 
     if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
 
@@ -24,16 +25,28 @@ get_tickers <- function(RH) {
 
     symbols <- tickers$symbol
 
-    fundamentals <- data.frame()
+    if (fundamentals == TRUE) {
+      # Stopwatch
+      start_time <- proc.time()
 
-    for (i in 1:length(symbols)) {
-        x <- get_fundamentals(RH, symbols[i])
-        fundamentals <- rbind(fundamentals, x)
+      cat("Getting additional investment fundamentals...")
 
-        if (i %in% seq(0, 15000, 100)) {
-            profvis::pause(.25)
+      fundamentals <- data.frame()
+
+      for (i in 1:length(symbols)) {
+          x <- get_fundamentals(RH, symbols[i])
+          fundamentals <- rbind(fundamentals, x)
+
+          if (i %in% seq(0, 15000, 100)) {
+              profvis::pause(.25)
+          }
         }
-      }
+
+      # Stopwatch
+      end_time <- proc.time() - start_time
+
+      cat("..........COMPLETE (", round(end_time[3] / 60, 2), "minutes)")
+    }
 
     tickers <- dplyr::left_join(tickers, fundamentals, by = "symbol")
 

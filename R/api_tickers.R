@@ -41,7 +41,7 @@ api_tickers <- function(RH) {
   # Stopwatch
   end_time <- proc.time() - start_time
 
-  cat("..........COMPLETE (", round(end_time[3] / 60, 2), "minutes)")
+  cat("..........COMPLETE (", round(end_time[3] / 60, 2), "minutes)\n")
 
 
   return(output)
