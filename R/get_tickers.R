@@ -20,15 +20,17 @@ get_tickers <- function(RH) {
 
     tickers <- tickers[, c("symbol", "rhs_tradability", "country", "name", "state", "list_date")]
 
+    tickers <- tickers[tickers$rhs_tradability == "tradable", ]
+
     symbols <- tickers$symbol
 
     fundamentals <- data.frame()
 
-    for (i in length(symbols)) {
+    for (i in 1:length(symbols)) {
         x <- get_fundamentals(RH, symbols[i])
         fundamentals <- rbind(fundamentals, x)
 
-        if (i == seq(0, 15000, 100)) {
+        if (i %in% seq(0, 15000, 100)) {
             profvis::pause(.25)
         }
       }
