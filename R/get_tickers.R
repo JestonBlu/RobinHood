@@ -37,8 +37,8 @@ get_tickers <- function(RH, add_fundamentals = FALSE) {
           x <- get_fundamentals(RH, symbols[i])
           fundamentals <- rbind(fundamentals, x)
 
-          if (i %in% seq(0, 15000, 100)) {
-              profvis::pause(.25)
+          if (i %in% seq(0, 15000, 50)) {
+              profvis::pause(1)
           }
         }
 
