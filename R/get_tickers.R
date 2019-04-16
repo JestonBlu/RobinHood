@@ -3,7 +3,7 @@
 #' Get a dataframe of all listed companies including ticker symbols and tradeability indicators.
 #'
 #' @param RH object of class RobinHood
-#' @param fundamentals (logical) if TRUE then return fundamental data (long run time)
+#' @param add_fundamentals (logical) if TRUE then return fundamental data (long run time)
 #' @import curl jsonlite magrittr
 #' @export
 #' @examples
@@ -13,7 +13,7 @@
 #'
 #' get_tickers(RH)
 #'}
-get_tickers <- function(RH, fundamentals = FALSE) {
+get_tickers <- function(RH, add_fundamentals = FALSE) {
 
     if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
 
@@ -25,7 +25,7 @@ get_tickers <- function(RH, fundamentals = FALSE) {
 
     symbols <- tickers$symbol
 
-    if (fundamentals == TRUE) {
+    if (add_fundamentals == TRUE) {
       # Stopwatch
       start_time <- proc.time()
 

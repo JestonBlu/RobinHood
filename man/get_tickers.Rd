@@ -4,12 +4,12 @@
 \alias{get_tickers}
 \title{Download all financial instruments available on RobinHood}
 \usage{
-get_tickers(RH, fundamentals = FALSE)
+get_tickers(RH, add_fundamentals = FALSE)
 }
 \arguments{
 \item{RH}{object of class RobinHood}
 
-\item{fundamentals}{(logical) if TRUE then return fundamental data (long run time)}
+\item{add_fundamentals}{(logical) if TRUE then return fundamental data (long run time)}
 }
 \description{
 Get a dataframe of all listed companies including ticker symbols and tradeability indicators.
