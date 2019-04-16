@@ -20,6 +20,20 @@ get_tickers <- function(RH) {
 
     tickers <- tickers[, c("symbol", "rhs_tradability", "country", "name", "state", "list_date")]
 
-    return(tickers)
+    symbols <- tickers$symbol
 
+    fundamentals <- data.frame()
+
+    for (i in length(symbols)) {
+        x <- get_fundamentals(RH, symbols[i])
+        fundamentals <- rbind(fundamentals, x)
+
+        if (i == seq(0, 15000, 100)) {
+            profvis::pause(.25)
+        }
+      }
+
+    tickers <- dplyr::left_join(tickers, fundamentals, by = "symbol")
+
+    return(tickers)
 }

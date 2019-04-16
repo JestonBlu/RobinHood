@@ -20,12 +20,43 @@ get_fundamentals <- function(RH, ticker, include_description = FALSE) {
 
     fundamentals <- api_fundamentals(RH, ticker)
 
+    x <- data.frame(
+          open                   = NA,
+          high                   = NA,
+          low                    = NA,
+          volume                 = NA,
+          average_volume_2_weeks = NA,
+          average_volume         = NA,
+          high_52_weeks          = NA,
+          dividend_yield         = NA,
+          float                  = NA,
+          low_52_weeks           = NA,
+          market_cap             = NA,
+          pb_ratio               = NA,
+          pe_ratio               = NA,
+          shares_outstanding     = NA,
+          description            = NA,
+          instrument             = NA,
+          ceo                    = NA,
+          headquarters_city      = NA,
+          headquarters_state     = NA,
+          sector                 = NA,
+          industry               = NA,
+          num_employees          = NA,
+          year_founded           = NA,
+          symbol                 = ticker
+        )
+
+    if (nrow(fundamentals) == 0) {
+         fundamentals <- x
+         fundamentals$symbol <- ticker
+      }
+
+    fundamentals$symbol <- ticker
+
     if (include_description == FALSE) {
         fundamentals <- fundamentals[, !names(fundamentals) %in% c("description", "instrument")]
-    }
-
-    fundamentals <- as.list(fundamentals)
+      }
 
     return(fundamentals)
-
 }
