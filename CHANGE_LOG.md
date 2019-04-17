@@ -1,7 +1,7 @@
 ## 1.0.6
 
 #### New Features
-  - added the output of `get_fundamentals()` to the output of `get_tickers()`
+  - added an optional output of `get_fundamentals()` to the output of `get_tickers()`
 
 #### Clean up
   - `get_historicals()` now returns prices formatted as numeric
