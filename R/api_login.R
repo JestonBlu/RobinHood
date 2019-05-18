@@ -21,12 +21,6 @@ api_login <- function(username, password) {
                   "&username=", username,
                   "&password=", password, sep = "")
 
-  # Log in, get access token
-  # auth <- new_handle() %>%
-  #   handle_setopt(copypostfields = detail) %>%
-  #   handle_setheaders("Accept" = "application/json") %>%
-  #   curl_fetch_memory(url = api_endpoints("token"))
-
   auth <- httr::POST(paste(api_endpoints("token"), detail, sep = ""))
   auth <- httr::content(auth, type = "json")
   auth <- fromJSON(rawToChar(auth))
