@@ -4,7 +4,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @param tag (string) a hyphenated tag such as "100-most-popular"
-#' @import curl jsonlite magrittr
+#' @import curl magrittr
 #' @export
 api_tag <- function(RH, tag) {
 
@@ -16,7 +16,7 @@ api_tag <- function(RH, tag) {
     handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
     curl_fetch_memory(url = tag_url)
 
-  tag <- fromJSON(rawToChar(tag$content))
+  tag <- jsonlite::fromJSON(rawToChar(tag$content))
   tag <- tag$instruments
 
   return(tag)

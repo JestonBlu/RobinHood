@@ -4,7 +4,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @param order_url (string) cancel url returned from place_order()
-#' @import curl jsonlite magrittr
+#' @import curl magrittr
 #' @export
 #' @examples
 #' \dontrun{

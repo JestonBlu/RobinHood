@@ -1,7 +1,7 @@
 #' Get account data related to your RobinHood account
 #'
 #' @param RH object of class RobinHood
-#' @import curl jsonlite magrittr
+#' @import curl magrittr
 #' @export
 #' @examples
 #' \dontrun{

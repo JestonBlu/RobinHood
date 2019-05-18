@@ -4,7 +4,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @param add_fundamentals (logical) if TRUE then return fundamental data (long run time)
-#' @import curl jsonlite magrittr
+#' @import curl magrittr
 #' @export
 #' @examples
 #' \dontrun{

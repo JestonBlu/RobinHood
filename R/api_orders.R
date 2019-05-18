@@ -16,7 +16,7 @@
 #' @param stop_price (number) if trigger = stop, enter stop price, otherwise leave blank
 #' @param quantity (int) number of shares you wish to transact
 #' @param side (string) "buy" or "sell"
-#' @import curl jsonlite magrittr lubridate
+#' @import curl magrittr
 #' @export
 api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbol = NULL, type = NULL,
                        time_in_force = NULL, trigger = NULL, price = NULL, stop_price = NULL, quantity = NULL,
@@ -42,11 +42,11 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
       handle_setopt(copypostfields = detail) %>%
       curl_fetch_memory(url = api_endpoints("orders"))
 
-    orders <- fromJSON(rawToChar(orders$content))
+    orders <- jsonlite::fromJSON(rawToChar(orders$content))
 
-    orders$updated_at <- ymd_hms(orders$updated_at)
-    orders$last_transaction_at <- ymd_hms(orders$last_transaction_at)
-    orders$created_at <- ymd_hms(orders$created_at)
+    orders$updated_at <-  lubridate::ymd_hms(orders$updated_at)
+    orders$last_transaction_at <-  lubridate::ymd_hms(orders$last_transaction_at)
+    orders$created_at <-  lubridate::ymd_hms(orders$created_at)
     orders$fees <- as.numeric(orders$fees)
     orders$cumulative_quantity <- as.numeric(orders$cumulative_quantity)
     orders$stop_price <- as.numeric(orders$stop_price)
@@ -65,7 +65,7 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
       handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
       curl_fetch_memory(url = order_url)
 
-    order_status <- fromJSON(rawToChar(order_status$content))
+    order_status <- jsonlite::fromJSON(rawToChar(order_status$content))
 
     return(order_status)
   }
@@ -77,7 +77,7 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
       handle_setopt(copypostfields = "") %>%
       curl_fetch_memory(url = order_url)
 
-    order_status <- fromJSON(rawToChar(order_status$content))
+    order_status <- jsonlite::fromJSON(rawToChar(order_status$content))
 
     return(order_status)
   }
@@ -88,7 +88,7 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
       handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
       curl_fetch_memory(url = api_endpoints("orders"))
 
-    order_history <- fromJSON(rawToChar(order_history$content))
+    order_history <- jsonlite::fromJSON(rawToChar(order_history$content))
     order_history <- order_history$results
 
     return(order_history)

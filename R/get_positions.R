@@ -2,7 +2,7 @@
 #'
 #' @param RH object class RobinHood
 #' @param limit_output (logical) if true, return a simplified positions table, false returns all position details
-#' @import curl jsonlite magrittr lubridate
+#' @import curl magrittr
 #' @export
 #' @examples
 #' \dontrun{
@@ -31,7 +31,7 @@ get_positions <- function(RH, limit_output = TRUE) {
   for (i in 1:length(instrument_id)) {
     instrument <- api_instruments(RH, instrument_url = instrument_id[i])
 
-    x <- data.frame(simple_name = ifelse(is.null(instrument$simple_name), instrument$name , instrument$simple_name), 
+    x <- data.frame(simple_name = ifelse(is.null(instrument$simple_name), instrument$name , instrument$simple_name),
                     symbol = instrument$symbol)
 
     instruments <- rbind(instruments, x)
@@ -60,8 +60,8 @@ get_positions <- function(RH, limit_output = TRUE) {
   positions <- positions[, !names(positions) %in% c("account", "url", "instrument")]
 
   # Convert timestamp
-  positions$updated_at <- ymd_hms(positions$updated_at)
-  positions$created_at <- ymd_hms(positions$created_at)
+  positions$updated_at <-  lubridate::ymd_hms(positions$updated_at)
+  positions$created_at <-  lubridate::ymd_hms(positions$created_at)
 
   # Adjust data types
   positions$quantity <- as.numeric(positions$quantity)

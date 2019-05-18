@@ -9,7 +9,7 @@
 #' @param stop_price (number) if trigger = stop, enter stop price, otherwise leave blank
 #' @param quantity (int) number of shares you wish to transact
 #' @param side (string) "buy" or "sell"
-#' @import curl jsonlite magrittr lubridate
+#' @import curl magrittr
 #' @export
 #' @examples
 #' \dontrun{

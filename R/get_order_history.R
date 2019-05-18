@@ -32,8 +32,8 @@ get_order_history <- function(RH) {
                                    "average_price", "type", "trigger", "time_in_force", "updated_at")]
 
   # Format timestamp
-  order_history$created_at <- ymd_hms(order_history$created_at)
-  order_history$updated_at <- ymd_hms(order_history$updated_at)
+  order_history$created_at <-  lubridate::ymd_hms(order_history$created_at)
+  order_history$updated_at <-  lubridate::ymd_hms(order_history$updated_at)
   order_history$fees <- as.numeric(order_history$fees)
   order_history$price <- as.numeric(order_history$price)
   order_history$average_price <- as.numeric(order_history$average_price)

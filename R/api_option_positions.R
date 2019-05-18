@@ -3,7 +3,7 @@
 #' Backend function called by get_contract_positions(). Returns a data frame of owned options contracts.
 #'
 #' @param RH object of class RobinHood
-#' @import curl jsonlite magrittr lubridate
+#' @import curl magrittr
 #' @export
 api_option_positions <- function(RH) {
 
@@ -14,7 +14,7 @@ api_option_positions <- function(RH) {
     handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
     curl_fetch_memory(url = option_positions_url)
 
-  option_positions <- fromJSON(rawToChar(option_positions$content))
+  option_positions <- jsonlite::fromJSON(rawToChar(option_positions$content))
   option_positions <- data.frame(option_positions$results)
 
   option_positions$intraday_average_open_price <- as.numeric(option_positions$intraday_average_open_price)

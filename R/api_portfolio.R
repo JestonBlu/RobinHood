@@ -4,7 +4,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @param portfolio_url portfolio url
-#' @import curl jsonlite magrittr lubridate
+#' @import curl magrittr
 #' @export
 api_portfolios <- function(RH, portfolio_url) {
 
@@ -15,7 +15,7 @@ api_portfolios <- function(RH, portfolio_url) {
       handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
       curl_fetch_memory(url = portfolio_url)
 
-    portfolios <- fromJSON(rawToChar(portfolios$content))
+    portfolios <- jsonlite::fromJSON(rawToChar(portfolios$content))
     portfolios <- data.frame(portfolios$results)
 
     portfolios$unwithdrawable_grants <- as.numeric(portfolios$unwithdrawable_grants)
@@ -41,7 +41,7 @@ api_portfolios <- function(RH, portfolio_url) {
       handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
       curl_fetch_memory(url = portfolio_url)
 
-    portfolios <- fromJSON(rawToChar(portfolios$content))
+    portfolios <- jsonlite::fromJSON(rawToChar(portfolios$content))
     portfolios <- data.frame(portfolios$equity_historicals)
 
     portfolios$begins_at <- lubridate::ymd_hms(portfolios$begins_at)

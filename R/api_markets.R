@@ -5,7 +5,7 @@
 #' @param RH object of class RobinHood
 #' @param markets_url (string) a single market url
 #' @param type (string) structure of data returned, 'df' or 'list'
-#' @import curl jsonlite magrittr lubridate
+#' @import curl magrittr
 #' @export
 api_markets <- function(RH, markets_url, type = "df") {
 
@@ -13,7 +13,7 @@ api_markets <- function(RH, markets_url, type = "df") {
     handle_setheaders("Accept" = "application/json") %>%
     curl_fetch_memory(url = markets_url)
 
-  markets <- fromJSON(rawToChar(markets$content))
+  markets <- jsonlite::fromJSON(rawToChar(markets$content))
 
   if (type == "df") {
     # Returns market information
@@ -22,11 +22,11 @@ api_markets <- function(RH, markets_url, type = "df") {
   }
   if (type == "list") {
     # Returns market hours
-    markets$closes_at <- ymd_hms(markets$closes_at)
-    markets$extended_opens_at <- ymd_hms(markets$extended_opens_at)
-    markets$extended_closes_at <- ymd_hms(markets$extended_closes_at)
-    markets$date <- ymd(markets$date)
-    markets$opens_at <- ymd_hms(markets$opens_at)
+    markets$closes_at <-  lubridate::ymd_hms(markets$closes_at)
+    markets$extended_opens_at <-  lubridate::ymd_hms(markets$extended_opens_at)
+    markets$extended_closes_at <-  lubridate::ymd_hms(markets$extended_closes_at)
+    markets$date <-  lubridate::ymd(markets$date)
+    markets$opens_at <-  lubridate::ymd_hms(markets$opens_at)
     return(markets)
   }
 }

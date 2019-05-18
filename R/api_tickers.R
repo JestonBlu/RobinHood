@@ -4,7 +4,7 @@
 #' on RobinHood.
 #'
 #' @param RH object of class RobinHood
-#' @import curl jsonlite magrittr
+#' @import curl magrittr
 #' @export
 api_tickers <- function(RH) {
 
@@ -19,7 +19,7 @@ api_tickers <- function(RH) {
     handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
     curl_fetch_memory(url = url)
 
-  tickers <- fromJSON(rawToChar(tickers$content))
+  tickers <- jsonlite::fromJSON(rawToChar(tickers$content))
 
   output <- tickers$results
 
@@ -29,7 +29,7 @@ api_tickers <- function(RH) {
       handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
       curl_fetch_memory(url = tickers$`next`)
 
-    tickers <- fromJSON(rawToChar(tickers$content))
+    tickers <- jsonlite::fromJSON(rawToChar(tickers$content))
 
     x <- tickers$results
 

@@ -5,7 +5,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @param ticker (string) vector of ticker symbols
-#' @import curl jsonlite magrittr
+#' @import curl magrittr
 #' @export
 api_fundamentals <- function(RH, ticker) {
 
@@ -16,7 +16,7 @@ api_fundamentals <- function(RH, ticker) {
     handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
     curl_fetch_memory(url = ticker_symbols)
 
-  fundamentals <- fromJSON(rawToChar(fundamentals$content))
+  fundamentals <- jsonlite::fromJSON(rawToChar(fundamentals$content))
   fundamentals <- data.frame(fundamentals$results)
 
   fundamentals$open                   <- as.numeric(fundamentals$open)

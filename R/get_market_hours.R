@@ -4,7 +4,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @param market_date (string) date in the form 'yyyy-mm-dd', default today
-#' @import curl jsonlite magrittr lubridate
+#' @import curl magrittr
 #' @export
 #' @examples
 #' \dontrun{
@@ -53,10 +53,10 @@ get_market_hours <- function(RH, market_date = NULL) {
                                    "extended_closes_at", "is_open", "date")]
 
   # Adjust time format
-  market_hours$opens_at <- strftime(ymd_hms(market_hours$opens_at), format = "%H:%M:%S")
-  market_hours$closes_at <- strftime(ymd_hms(market_hours$closes_at), format = "%H:%M:%S")
-  market_hours$extended_opens_at <- strftime(ymd_hms(market_hours$extended_opens_at), format = "%H:%M:%S")
-  market_hours$extended_closes_at <- strftime(ymd_hms(market_hours$extended_closes_at), format = "%H:%M:%S")
+  market_hours$opens_at <- strftime(lubridate::ymd_hms(market_hours$opens_at), format = "%H:%M:%S")
+  market_hours$closes_at <- strftime(lubridate::ymd_hms(market_hours$closes_at), format = "%H:%M:%S")
+  market_hours$extended_opens_at <- strftime(lubridate::ymd_hms(market_hours$extended_opens_at), format = "%H:%M:%S")
+  market_hours$extended_closes_at <- strftime(lubridate::ymd_hms(market_hours$extended_closes_at), format = "%H:%M:%S")
 
   markets <- cbind(markets, market_hours)
 

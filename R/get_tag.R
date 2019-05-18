@@ -4,7 +4,7 @@
 #'
 #' @param RH object class RobinHood
 #' @param tag (string) a hyphenated tag such as "100-most-popular"
-#' @import curl jsonlite magrittr
+#' @import curl magrittr
 #' @export
 #' @examples
 #' \dontrun{

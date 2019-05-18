@@ -3,7 +3,7 @@
 #' Backend function called by get_positions(). Returns a data frame of instrument position data.
 #'
 #' @param RH object of class RobinHood
-#' @import curl jsonlite magrittr lubridate
+#' @import curl magrittr
 #' @export
 api_positions <- function(RH) {
 
@@ -14,11 +14,11 @@ api_positions <- function(RH) {
     handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
     curl_fetch_memory(url = positions_url)
 
-  positions <- fromJSON(rawToChar(positions$content))
+  positions <- jsonlite::fromJSON(rawToChar(positions$content))
   positions <- data.frame(positions$results)
 
-  positions$created_at <- ymd_hms(positions$created_at)
-  positions$updated_at <- ymd_hms(positions$updated_at)
+  positions$created_at <-  lubridate::ymd_hms(positions$created_at)
+  positions$updated_at <-  lubridate::ymd_hms(positions$updated_at)
   positions$shares_held_for_stock_grants <- as.numeric(positions$shares_held_for_stock_grants)
   positions$pending_average_buy_price <- as.numeric(positions$pending_average_buy_price)
   positions$shares_held_for_options_events <- as.numeric(positions$shares_held_for_options_events)

@@ -2,7 +2,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @param option_instrument_url (string) url
-#' @import curl jsonlite magrittr lubridate
+#' @import curl magrittr
 #' @export
 api_option_instruments <- function(RH, option_instrument_url) {
 
@@ -13,7 +13,7 @@ api_option_instruments <- function(RH, option_instrument_url) {
     handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
     curl_fetch_memory(url = option_instrument_url)
 
-  option_instruments <- fromJSON(rawToChar(option_instruments$content))
+  option_instruments <- jsonlite::fromJSON(rawToChar(option_instruments$content))
   option_instruments <- data.frame(option_instruments)
 
   if (option_instruments$type == "call") {

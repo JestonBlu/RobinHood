@@ -4,7 +4,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @param symbols_url (string) url of query with ticker symbols
-#' @import curl jsonlite magrittr lubridate
+#' @import curl magrittr
 #' @export
 api_quote <- function(RH, symbols_url) {
 
@@ -13,7 +13,7 @@ api_quote <- function(RH, symbols_url) {
     handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
     curl_fetch_memory(url = symbols_url)
 
-  quotes <- fromJSON(rawToChar(quotes$content))
+  quotes <- jsonlite::fromJSON(rawToChar(quotes$content))
   quotes <- data.frame(quotes$results)
 
   quotes$ask_price <- as.numeric(quotes$ask_price)
@@ -22,8 +22,8 @@ api_quote <- function(RH, symbols_url) {
   quotes$last_extended_hours_trade_price <- as.numeric(quotes$last_extended_hours_trade_price)
   quotes$previous_close <- as.numeric(quotes$previous_close)
   quotes$adjusted_previous_close <- as.numeric(quotes$adjusted_previous_close)
-  quotes$previous_close_date <- ymd(quotes$previous_close_date)
-  quotes$updated_at <- ymd_hms(quotes$updated_at)
+  quotes$previous_close_date <-  lubridate::ymd(quotes$previous_close_date)
+  quotes$updated_at <-  lubridate::ymd_hms(quotes$updated_at)
 
   return(quotes)
 }

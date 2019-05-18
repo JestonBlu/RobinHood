@@ -23,7 +23,7 @@ api_login <- function(username, password) {
 
   auth <- httr::POST(paste(api_endpoints("token"), detail, sep = ""))
   auth <- httr::content(auth, type = "json")
-  auth <- fromJSON(rawToChar(auth))
+  auth <- jsonlite::fromJSON(rawToChar(auth))
 
   access_token <- auth$access_token
   refresh_token <- auth$refresh_token

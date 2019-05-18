@@ -6,7 +6,7 @@
 #' @param action (string) one of: get, add, delete
 #' @param watchlist (string) name of watchlist to add, delete, or get instruments, null will return a list of watchlist
 #' @param ticker (string) list of tickers to add or delete, null will add or delete watchlist
-#' @import curl jsonlite magrittr
+#' @import curl magrittr
 #' @export
 #' @examples
 #' \dontrun{

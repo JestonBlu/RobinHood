@@ -3,7 +3,7 @@
 #' @param RH object class RobinHood
 #' @param symbol (string) of ticker symbols
 #' @param limit_output (logical) if TRUE (default) return less quote detail
-#' @import curl jsonlite magrittr lubridate
+#' @import curl magrittr
 #' @export
 #' @examples
 #' \dontrun{
@@ -27,7 +27,7 @@ get_quote <- function(RH, symbol, limit_output = TRUE) {
 
   # Trim output
   quotes <- quotes[, !names(quotes) %in% c("instrument")]
-  quotes$updated_at <- ymd_hms(quotes$updated_at)
+  quotes$updated_at <-  lubridate::ymd_hms(quotes$updated_at)
 
   if (limit_output == TRUE) {
     quotes <- quotes[, c("symbol", "last_trade_price")]

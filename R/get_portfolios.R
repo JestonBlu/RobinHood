@@ -5,7 +5,7 @@
 #' @param RH object of class RobinHood
 #' @param interval (string) Interval of time to aggregate to (examples: hour, day, week, month)
 #' @param span (string) Period of time you are interested in (examples: day, week, month, year)
-#' @import curl jsonlite magrittr
+#' @import curl magrittr
 #' @export
 #' @examples
 #' \dontrun{

@@ -8,7 +8,7 @@
 #' @param watchlist_url (string) a single watchlist url
 #' @param detail (logical) if null use header api only, otherwise pass options
 #' @param delete (logical) send delete call
-#' @import curl jsonlite magrittr
+#' @import curl magrittr
 #' @export
 api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
 
@@ -30,7 +30,7 @@ api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
       handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
       curl_fetch_memory(url = watchlist_url)
 
-    watchlist <- fromJSON(rawToChar(watchlist$content))
+    watchlist <- jsonlite::fromJSON(rawToChar(watchlist$content))
   }
 
   # Send a command to add an instrument to an existing watchlist
@@ -41,7 +41,7 @@ api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
       handle_setopt(copypostfields = detail) %>%
       curl_fetch_memory(url = watchlist_url)
 
-    watchlist <- fromJSON(rawToChar(watchlist$content))
+    watchlist <- jsonlite::fromJSON(rawToChar(watchlist$content))
   }
 
   return(watchlist)
