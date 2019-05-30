@@ -8,6 +8,7 @@ api_endpoints <- function(endpoint) {
 
   api.endpoint <- list(
     url                = "https://api.robinhood.com/",
+    url_nummus         = "https://nummus.robinhood.com/",
     accounts           = "accounts/",
     fundamentals       = "fundamentals/?symbols=",
     historicals        = "quotes/historicals/",
