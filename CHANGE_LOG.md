@@ -3,6 +3,7 @@
 #### Bug fixes
   - fixed a change to the upstream login api
 
+-----------------------------------------------------------------------------------------------------------------------------
 
 ## 1.0.6
 
@@ -13,7 +14,7 @@
   - `get_historicals()` now returns prices formatted as numeric
   - `get_fundamentals()` now returns as a data frame instead of a list
 
-
+-----------------------------------------------------------------------------------------------------------------------------
 
 ## 1.0.5
 
