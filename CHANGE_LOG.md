@@ -1,5 +1,11 @@
 ## 1.0.6
 
+#### Bug fixes
+  - fixed a change to the upstream login api
+
+
+## 1.0.6
+
 #### New Features
   - added an optional output of `get_fundamentals()` to the output of `get_tickers()`
 
