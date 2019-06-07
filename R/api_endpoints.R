@@ -3,13 +3,15 @@
 #' Backend function called by almost every function. Returns the appropriate starting URL for a given endpoint.
 #'
 #' @param endpoint (string) which api endpoint to look up?
+#' @param source (string) directs api to api.robinhood.com (equity) vs nummus.robinhood.com (crypto)
 #' @export
-api_endpoints <- function(endpoint) {
+api_endpoints <- function(endpoint, source = "equity") {
 
   api.endpoint <- list(
     url                = "https://api.robinhood.com/",
     url_nummus         = "https://nummus.robinhood.com/",
     accounts           = "accounts/",
+    currency_pairs     = "currency_pairs/",
     fundamentals       = "fundamentals/?symbols=",
     historicals        = "quotes/historicals/",
     markets            = "markets/",
@@ -30,7 +32,14 @@ api_endpoints <- function(endpoint) {
 
   x <- which(names(api.endpoint) == endpoint)
 
-  endpoint <- paste(api.endpoint$url, as.character(api.endpoint[x]), sep = "")
+  if (source == "equity") {
+    endpoint <- paste(api.endpoint$url, as.character(api.endpoint[x]), sep = "")
+  }
+
+  if (source == "crypto") {
+    endpoint <- paste(api.endpoint$url_nummus, as.character(api.endpoint[x]), sep = "")
+  }
+
 
   return(endpoint)
 }
