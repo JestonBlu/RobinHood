@@ -12,6 +12,8 @@
 #'}
 get_accounts <- function(RH) {
 
+  check_rh(RH)
+
   if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
 
   accounts <- api_accounts(RH)

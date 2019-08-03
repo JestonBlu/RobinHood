@@ -17,8 +17,8 @@
 #'}
 get_portfolios <- function(RH, interval = NULL, span = NULL) {
 
-  if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
-
+  check_rh(RH)
+  
   # Get account number
   account_number <- api_accounts(RH)
   account_number <- account_number$account_number

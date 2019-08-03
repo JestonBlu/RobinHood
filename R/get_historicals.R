@@ -18,7 +18,9 @@
 #'}
 get_historicals <- function(RH, symbol, interval, span) {
 
-  historicals_url = api_endpoints("historicals")
+  check_rh(RH)
+
+  historicals_url <- api_endpoints("historicals")
 
   body <- paste("symbols=", symbol,
                 "&interval=", interval,

@@ -15,7 +15,7 @@
 #'}
 get_tag <- function(RH, tag) {
 
-  if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
+  check_rh(RH)
 
   # Get a list of instrument IDs for a particular tag
   instrument_id <- api_tag(RH, tag)

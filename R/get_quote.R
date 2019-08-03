@@ -14,7 +14,7 @@
 #'}
 get_quote <- function(RH, symbol, limit_output = TRUE) {
 
-  if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
+  check_rh(RH)
 
   # Get latest quote
   quote <- paste(symbol, collapse = ",")

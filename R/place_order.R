@@ -28,8 +28,9 @@
 #'}
 place_order <- function(RH, symbol, type, time_in_force, trigger, price, stop_price = NA, quantity, side) {
 
+  check_rh(RH)
+
   # Set up error checks
-  if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
   if (!type %in% c("market", "type")) stop("type must be 'market' or 'type'")
   if (!time_in_force %in% c("gfd", "gtc", "ioc", "opg")) stop(" time_in_fore must be one of 'gfd', 'gtc', 'ioc', 'opg'")
   if (!trigger %in% c("immediate", "stop")) stop("trigger must be 'immediate' or 'stope'")

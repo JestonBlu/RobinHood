@@ -12,8 +12,8 @@
 #'}
 get_order_history <- function(RH) {
 
-  if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
-
+  check_rh(RH)
+  
   # Get Order History
   order_history <- api_orders(RH, action = "history")
 

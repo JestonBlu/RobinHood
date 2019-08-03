@@ -26,7 +26,7 @@
 #'}
 cancel_order <- function(RH, order_url) {
 
-  if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
+  check_rh(RH)
 
   order_status <- api_orders(RH, action = "cancel", order_url)
 

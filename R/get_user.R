@@ -11,7 +11,8 @@
 #' get_user(RH)
 #'}
 get_user <- function(RH) {
-  if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
+
+  check_rh(RH)
 
   user <- api_user(RH)
   user$created_at <-  lubridate::ymd_hms(user$created_at)

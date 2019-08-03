@@ -15,7 +15,7 @@
 #'}
 get_tickers <- function(RH, add_fundamentals = FALSE) {
 
-    if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
+    check_rh(RH)
 
     tickers <- api_tickers(RH)
 

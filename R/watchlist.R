@@ -27,7 +27,7 @@
 #'}
 watchlist <- function(RH, action, watchlist = "", ticker = "") {
 
-  if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
+  check_rh(RH)
 
   # get starting watchlist url
   base_watchlist_url <- api_endpoints("watchlist")

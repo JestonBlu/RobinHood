@@ -13,7 +13,7 @@
 #'}
 get_positions <- function(RH, limit_output = TRUE) {
 
-  if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
+  check_rh(RH)
 
   ##############################################################################
   # Get current positions

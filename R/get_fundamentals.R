@@ -14,7 +14,7 @@
 #'}
 get_fundamentals <- function(RH, ticker, include_description = FALSE) {
 
-    if (class(RH) != "RobinHood") stop("RH must be class RobinHood, see RobinHood()")
+    check_rh(RH)
 
     ticker <- paste(ticker, collapse = ",")
 
