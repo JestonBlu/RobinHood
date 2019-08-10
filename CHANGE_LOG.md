@@ -1,4 +1,11 @@
-## 1.0.6
+## 1.0.8
+
+#### Bug fixes
+  - Cleaned up code and added comments in preparation for add crypto features
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+## 1.0.7
 
 #### Bug fixes
   - fixed a change to the upstream login api

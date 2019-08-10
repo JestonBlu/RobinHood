@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_accounts.R
 \name{get_accounts}
 \alias{get_accounts}
-\title{Get account data related to your RobinHood account}
+\title{Get data related to your RobinHood account}
 \usage{
 get_accounts(RH)
 }
@@ -10,7 +10,7 @@ get_accounts(RH)
 \item{RH}{object of class RobinHood}
 }
 \description{
-Get account data related to your RobinHood account
+Get data related to your RobinHood account
 }
 \examples{
 \dontrun{

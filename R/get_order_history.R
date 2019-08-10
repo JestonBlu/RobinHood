@@ -12,24 +12,35 @@
 #'}
 get_order_history <- function(RH) {
 
-  check_rh(RH)
-  
-  # Get Order History
-  order_history <- api_orders(RH, action = "history")
+    # Check if RH is valid
+    check_rh(RH)
 
-  # Get symbol to attach to output
-  symbol <- as.character()
+    # Get Order History
+    order_history <- api_orders(RH, action = "history")
 
-  for (i in order_history$instrument) {
-    x <- api_instruments(RH, instrument_url = i)
-    x <- x$symbol
-    symbol <- c(symbol, x)
-  }
+    # Get symbol to attach to output
+    symbol <- as.character()
 
-  # Combine symbol with order history
-  order_history$symbol <- symbol
-  order_history <- order_history[, c("created_at", "symbol", "side", "price", "quantity", "fees", "state",
-                                   "average_price", "type", "trigger", "time_in_force", "updated_at")]
+    for (i in order_history$instrument) {
+      x <- api_instruments(RH, instrument_url = i)
+      x <- x$symbol
+      symbol <- c(symbol, x)
+    }
+
+    # Combine symbol with order history
+    order_history$symbol <- symbol
+    order_history <- order_history[, c("created_at",
+                                       "symbol",
+                                       "side",
+                                       "price",
+                                       "quantity",
+                                       "fees",
+                                       "state",
+                                       "average_price",
+                                       "type",
+                                       "trigger",
+                                       "time_in_force",
+                                       "updated_at")]
 
   # Format timestamp
   order_history$created_at <-  lubridate::ymd_hms(order_history$created_at)

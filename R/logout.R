@@ -14,13 +14,15 @@
 #'}
 logout <- function(RH) {
 
-  check_rh(RH)
+    # Check if RH is valid
+    check_rh(RH)
 
-  x <- api_logout(RH)
+    # API request to revoke token
+    x <- api_logout(RH)
 
-  if (length(x) == 0) {
-    cat("Logout Sucessful")
-  } else {
-    cat("Failed to Logout")
+    if (length(x) == 0) {
+      cat("Logout Sucessful")
+    } else {
+      cat("Failed to Logout")
+    }
   }
-}

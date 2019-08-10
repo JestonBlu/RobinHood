@@ -15,31 +15,38 @@
 #'}
 get_tickers <- function(RH, add_fundamentals = FALSE) {
 
+    # Check if RH is valid
     check_rh(RH)
 
+    # Call the tickers api to retrieve all stock symbols
     tickers <- api_tickers(RH)
 
+    # limit columns and only return tradeable symbols
     tickers <- tickers[, c("symbol", "rhs_tradability", "country", "name", "state", "list_date")]
-
     tickers <- tickers[tickers$rhs_tradability == "tradable", ]
 
-    symbols <- tickers$symbol
 
+    # If fundamentals are requested
     if (add_fundamentals == TRUE) {
-      # Stopwatch
-      start_time <- proc.time()
 
-      cat("Getting additional investment fundamentals...")
+        # Create string of symbols to get fundamentals on
+        symbols <- tickers$symbol
 
-      fundamentals <- data.frame()
+        # Stopwatch
+        start_time <- proc.time()
 
-      for (i in 1:length(symbols)) {
-          x <- get_fundamentals(RH, symbols[i])
-          fundamentals <- rbind(fundamentals, x)
+        cat("Getting additional investment fundamentals...")
 
-          if (i %in% seq(0, 15000, 50)) {
-              profvis::pause(1)
-          }
+        fundamentals <- data.frame()
+
+        # Get fundamentals on each symbol, with a 1 second delay every 50 calls
+        for (i in 1:length(symbols)) {
+            x <- get_fundamentals(RH, symbols[i])
+            fundamentals <- rbind(fundamentals, x)
+
+            if (i %in% seq(0, 15000, 50)) {
+                profvis::pause(1)
+            }
         }
 
       # Stopwatch
@@ -48,6 +55,7 @@ get_tickers <- function(RH, add_fundamentals = FALSE) {
       cat("..........COMPLETE (", round(end_time[3] / 60, 2), "minutes)")
     }
 
+    # Join tickers and fundamentals
     tickers <- dplyr::left_join(tickers, fundamentals, by = "symbol")
 
     return(tickers)

@@ -28,29 +28,29 @@
 #'}
 place_order <- function(RH, symbol, type, time_in_force, trigger, price, stop_price = NA, quantity, side) {
 
-  check_rh(RH)
+    # Check if RH is valid
+    check_rh(RH)
 
-  # Set up error checks
-  if (!type %in% c("market", "type")) stop("type must be 'market' or 'type'")
-  if (!time_in_force %in% c("gfd", "gtc", "ioc", "opg")) stop(" time_in_fore must be one of 'gfd', 'gtc', 'ioc', 'opg'")
-  if (!trigger %in% c("immediate", "stop")) stop("trigger must be 'immediate' or 'stope'")
-  if (trigger == "stop" & is.na(stop_price) == TRUE) stop("stop price cant be null if trigger == 'stop'")
-  if (quantity < 1) stop("quantity must be > 0")
-  if (!side %in% c("buy", "sell")) stop("side must be 'buy' or 'sell'")
+    # Set up error checks
+    if (!type %in% c("market", "type")) stop("type must be 'market' or 'type'")
+    if (!time_in_force %in% c("gfd", "gtc", "ioc", "opg")) stop(" time_in_fore must be one of 'gfd', 'gtc', 'ioc', 'opg'")
+    if (!trigger %in% c("immediate", "stop")) stop("trigger must be 'immediate' or 'stope'")
+    if (trigger == "stop" & is.na(stop_price) == TRUE) stop("stop price cant be null if trigger == 'stop'")
+    if (quantity < 1) stop("quantity must be > 0")
+    if (!side %in% c("buy", "sell")) stop("side must be 'buy' or 'sell'")
 
-  # Convert NAs to NULL and numeric to character
-  if (is.na(stop_price) == TRUE) stop_price <- ""
-  quantity <- as.character(quantity)
-  price <- as.character(price)
+    # Convert NAs to NULL and numeric to character
+    if (is.na(stop_price) == TRUE) stop_price <- ""
+    quantity <- as.character(quantity)
+    price <- as.character(price)
 
-  ##############################################################################
-  # Given a symbol, return the instrument_id
-  instrument_url <- paste(api_endpoints(endpoint = "quotes"), symbol, sep = "")
-  instrument <- api_quote(RH, instrument_url)
-  instrument_id <- instrument$instrument
+    # Given a symbol, return the instrument_id
+    instrument_url <- paste(api_endpoints(endpoint = "quotes"), symbol, sep = "")
+    instrument <- api_quote(RH, instrument_url)
+    instrument_id <- instrument$instrument
 
 
-  # Place an order
+    # Place an order
     orders <- api_orders(RH = RH,
                          action = "order",
                          instrument_id = instrument_id,
@@ -63,5 +63,5 @@ place_order <- function(RH, symbol, type, time_in_force, trigger, price, stop_pr
                          quantity = quantity,
                          side = side)
 
-  return(orders)
+    return(orders)
 }

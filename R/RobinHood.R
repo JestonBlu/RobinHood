@@ -13,24 +13,23 @@
 #'}
 RobinHood <- function(username, password) {
 
-  # Login to RobinHood, returns RobinHood object with access tokens
-  RH <- api_login(username, password)
+    # Login to RobinHood, returns RobinHood object with access tokens
+    RH <- api_login(username, password)
 
-  # Get account data for the main purpose of returning the position url
-  accounts <- api_accounts(RH)
-  url_positions <- accounts$positions
-  url_account_id <- accounts$url
+    # Get account data for the main purpose of returning the position url
+    accounts <- api_accounts(RH)
+    url_positions <- accounts$positions
+    url_account_id <- accounts$url
 
-  # Return object
-  RH <- c(RH, url = list(positions = url_positions,
-                         account_id = url_account_id))
+    # Return object
+    RH <- c(RH, url = list(positions = url_positions,
+                           account_id = url_account_id))
 
-  # Check to see if connection was successful
-  if (is.null(RH$tokens.access_token)) {
-    cat("Login not successful, check username and password.")
-  }
+    # Check to see if connection was successful
+    if (is.null(RH$tokens.access_token)) {
+        cat("Login not successful, check username and password.")
+    }
 
-  # Set Class and return object
-  class(RH) <- "RobinHood"
-  return(RH)
+    class(RH) <- "RobinHood"
+    return(RH)
 }

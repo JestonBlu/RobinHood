@@ -14,12 +14,16 @@
 #'}
 get_fundamentals <- function(RH, ticker, include_description = FALSE) {
 
+    # Check if RH is valid
     check_rh(RH)
 
+    # Collapse tickers into a single string
     ticker <- paste(ticker, collapse = ",")
 
+    # Investment fundamentals call
     fundamentals <- api_fundamentals(RH, ticker)
 
+    # Empty dataframe for results
     x <- data.frame(
           open                   = NA,
           high                   = NA,
@@ -47,13 +51,16 @@ get_fundamentals <- function(RH, ticker, include_description = FALSE) {
           symbol                 = ticker
         )
 
+    # If the return all is empty then assign the NA dataframe
     if (nrow(fundamentals) == 0) {
          fundamentals <- x
          fundamentals$symbol <- ticker
       }
 
+    # CHECK THIS
     fundamentals$symbol <- ticker
 
+    # Remove the long description field
     if (include_description == FALSE) {
         fundamentals <- fundamentals[, !names(fundamentals) %in% c("description", "instrument")]
       }

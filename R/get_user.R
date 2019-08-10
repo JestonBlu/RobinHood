@@ -12,11 +12,12 @@
 #'}
 get_user <- function(RH) {
 
-  check_rh(RH)
+    # Check if RH is valid
+    check_rh(RH)
 
-  user <- api_user(RH)
-  user$created_at <-  lubridate::ymd_hms(user$created_at)
+    # Get request from user information API
+    user <- api_user(RH)
+    user$created_at <-  lubridate::ymd_hms(user$created_at)
 
-  return(user)
-
+    return(user)
 }

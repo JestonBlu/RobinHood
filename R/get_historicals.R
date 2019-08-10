@@ -18,16 +18,20 @@
 #'}
 get_historicals <- function(RH, symbol, interval, span) {
 
-  check_rh(RH)
+    # Check if RH is valid
+    check_rh(RH)
 
-  historicals_url <- api_endpoints("historicals")
+    # Call the historical price position endpoint
+    historicals_url <- api_endpoints("historicals")
 
-  body <- paste("symbols=", symbol,
-                "&interval=", interval,
-                "&span=", span,
-                sep = "")
+    # Create the api url
+    body <- paste("symbols=", symbol,
+                  "&interval=", interval,
+                  "&span=", span,
+                  sep = "")
 
-  historicals <- api_historicals(RH, historicals_url, body)
+    # Call the historical api for price history
+    historicals <- api_historicals(RH, historicals_url, body)
 
-  return(historicals)
+    return(historicals)
   }
