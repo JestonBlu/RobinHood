@@ -10,5 +10,5 @@ api_accounts(RH)
 \item{RH}{object of class RobinHood}
 }
 \description{
-Backend function called by get_user(), returns a list of user account data.
+Backend function called by get_user(),'returns a list of user account dat'a.
 }

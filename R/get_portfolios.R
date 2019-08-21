@@ -56,7 +56,7 @@ get_portfolios <- function(RH, interval = NULL, span = NULL) {
                             "&interval=", interval,
                             "&span=", span,
                             sep = "")
-                            
+
       portfolios <- api_portfolios(RH, portfolio_url)
 
       # Reorder columns

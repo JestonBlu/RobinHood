@@ -9,9 +9,9 @@ Description: Execute API calls to the RobinHood <https://robinhood.com> investin
 Imports:
   curl,
   jsonlite,
-  magrittr,
   lubridate,
   profvis,
+  magrittr,
   dplyr,
   httr
 License: GPL-3
