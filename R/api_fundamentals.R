@@ -19,27 +19,10 @@ api_fundamentals <- function(RH, ticker) {
   fundamentals <- jsonlite::fromJSON(rawToChar(fundamentals$content))
   fundamentals <- data.frame(fundamentals$results)
 
-  fundamentals$open                   <- as.numeric(fundamentals$open)
-  fundamentals$high                   <- as.numeric(fundamentals$high)
-  fundamentals$low                    <- as.numeric(fundamentals$low)
-  fundamentals$volume                 <- as.numeric(fundamentals$volume)
-  fundamentals$average_volume_2_weeks <- as.numeric(fundamentals$average_volume_2_weeks)
-  fundamentals$average_volume         <- as.numeric(fundamentals$average_volume)
-  fundamentals$high_52_weeks          <- as.numeric(fundamentals$high_52_weeks)
-  fundamentals$dividend_yield         <- as.numeric(fundamentals$dividend_yield)
-  fundamentals$low_52_weeks           <- as.numeric(fundamentals$low_52_weeks)
-  fundamentals$market_cap             <- as.numeric(fundamentals$market_cap)
-  fundamentals$pe_ratio               <- as.numeric(fundamentals$pe_ratio)
-  fundamentals$shares_outstanding     <- as.character(fundamentals$shares_outstanding)
-  fundamentals$description            <- as.character(fundamentals$description)
-  fundamentals$instrument             <- as.character(fundamentals$instrument)
-  fundamentals$ceo                    <- as.character(fundamentals$ceo)
-  fundamentals$headquarters_city      <- as.character(fundamentals$headquarters_city)
-  fundamentals$headquarters_state     <- as.character(fundamentals$headquarters_state)
-  fundamentals$sector                 <- as.character(fundamentals$sector)
-  fundamentals$industry               <- as.character(fundamentals$industry)
-  fundamentals$num_employees          <- as.character(fundamentals$num_employees)
-  fundamentals$year_founded           <- as.character(fundamentals$year_founded)
+  fundamentals <- fundamentals %>%
+    dplyr::mutate_at(c("open", "high", "low", "volume", "average_volume_2_weeks", "average_volume", "high_52_weeks",
+                       "dividend_yield", "low_52_weeks", "market_cap", "pe_ratio", "shares_outstanding"),
+                     as.numeric)
 
   return(fundamentals)
 }
