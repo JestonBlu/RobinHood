@@ -20,6 +20,7 @@ Haven't signed up for a RobinHood account yet? Use my **[referral link](https://
 - [x] Add and remove investments on your watchlist
 - [x] Get price history
 - [x] Calculate historical account balance
+- [ ] Crypto trading
 - [ ] Get options market data
 - [ ] Get options contracts
 - [ ] Execute ACH transfers
