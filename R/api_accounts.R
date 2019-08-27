@@ -1,6 +1,6 @@
 #' RobinHood API: User
 #'
-#' Backend function called by get_user(),'returns a list of user account dat'a.
+#' Backend function called by get_user(),'returns a list of user account data.
 #'
 #' @param RH object of class RobinHood
 #' @import curl magrittr
