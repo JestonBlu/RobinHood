@@ -37,7 +37,7 @@ RH <- RobinHood("username", "password")
 # Place an order, should generate an email confirmation
 x <- place_order(RH = RH,
                  symbol = "GE",          # Ticker symbol you want to trade
-                 type = "market",        # Type of market order
+                 type = "market",        # Type of market order (market, limit)
                  time_in_force = "gfd",  # Time period the order is good for (gfd: good for day)
                  trigger = "immediate",  # Trigger or delay order
                  price = 8.96,           # The highest price you are willing to pay
