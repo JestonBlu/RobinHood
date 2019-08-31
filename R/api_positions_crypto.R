@@ -31,13 +31,17 @@ api_positions_crypto <- function(RH) {
 
   cost <- c()
 
-  for (i in 1:(length(positions_cost)-1)) {
+  for (i in 1:(length(positions_cost) - 1)) {
     x <- positions_cost[[i]]
     cost <- c(cost, x$direct_cost_basis
     )
   }
 
   positions_qty$cost_bases <- cost
+
+  positions_qty$quantity <- as.numeric(as.character(positions_qty$quantity))
+  positions_qty$cost_bases <- as.numeric(as.character(positions_qty$cost_bases))
+  positions_qty$created_at <- lubridate::ymd_hms(positions_qty$created_at)
 
   return(positions_qty)
 }
