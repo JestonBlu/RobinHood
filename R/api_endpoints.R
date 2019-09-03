@@ -11,6 +11,7 @@ api_endpoints <- function(endpoint, source = "equity") {
     # RobinHood endpoints
     url                = "https://api.robinhood.com/",
     accounts           = "accounts/",
+    forex              = "marketdata/forex/quotes/",
     fundamentals       = "fundamentals/?symbols=",
     historicals        = "quotes/historicals/",
     markets            = "markets/",
