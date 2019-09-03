@@ -33,8 +33,8 @@ get_positions <- function(RH, limit_output = TRUE) {
 
       # If any simple names are blank, use full name
       x <- data.frame(simple_name = ifelse(is.null(instrument$simple_name),
-                                                  instrument$name,
-                                                  instrument$simple_name),
+                                                   instrument$name,
+                                                   instrument$simple_name),
                                            symbol = instrument$symbol)
 
       instruments <- rbind(instruments, x)
