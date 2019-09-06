@@ -11,19 +11,27 @@ This is package is designed to help you execute trading programs in R.
 
 Haven't signed up for a RobinHood account yet? Use my **[referral link](https://share.robinhood.com/josephb5278)**. We both get a free share of stock!
 
-## Features
-- [x] Access account data and current holdings
+
+## Account Features
+- [x] Account data
+- [x] Add and remove investments on your watchlist
+- [ ] Execute ACH transfers
+- [ ] 2 factor authentication
+
+## Equity Features
+- [x] Get current holdings
 - [x] Access investment statistics and quotes
 - [x] Place and cancel orders
 - [x] Get market open/close hours
 - [x] Search investments by popular tag
-- [x] Add and remove investments on your watchlist
 - [x] Get price history
 - [x] Calculate historical account balance
-- [ ] Crypto trading
 - [ ] Get options market data
 - [ ] Get options contracts
-- [ ] Execute ACH transfers
+
+## Crypto Features
+- [ ] Current Holdings
+- [ ] Place and cancel orders
 
 **Note:** A key difference between the CRAN version and the Github version is that the API functions are exported and available to call directly. This is intended primarily to help with development and bug fixes. In the CRAN version, all API functions are not export and instead are called behind the scenes.
 

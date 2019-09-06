@@ -39,9 +39,14 @@ api_positions_crypto <- function(RH) {
 
   positions_qty$cost_bases <- cost
 
+  # Reformat columns
   positions_qty$quantity <- as.numeric(as.character(positions_qty$quantity))
   positions_qty$cost_bases <- as.numeric(as.character(positions_qty$cost_bases))
   positions_qty$created_at <- lubridate::ymd_hms(positions_qty$created_at)
+  positions_qty$currency_code <- as.character(positions_qty$currency_code)
+
+  # Rename currency_code to symbol
+  colnames(positions_qty)[1] <- "symbol"
 
   return(positions_qty)
 }

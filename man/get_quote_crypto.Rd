@@ -9,7 +9,7 @@ get_quote_crypto(RH, symbol)
 \arguments{
 \item{RH}{object class RobinHood}
 
-\item{symbol}{(string) cryto currency symbol such as BTC-USD for Bitcoin in USD}
+\item{symbol}{(string) cryto currency symbol such as BTC, ETH, DOGE}
 }
 \description{
 Get a crypto currency quote from RobinHood
@@ -19,6 +19,6 @@ Get a crypto currency quote from RobinHood
 # Login in to your RobinHood account
 RH <- RobinHood("username", "password")
 
-get_quote_crypto(RH, "BTC-USD")
+get_quote_crypto(RH, "BTC")
 }
 }

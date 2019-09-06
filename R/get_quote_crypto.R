@@ -1,7 +1,7 @@
 #' Get a crypto currency quote from RobinHood
 #'
 #' @param RH object class RobinHood
-#' @param symbol (string) cryto currency symbol such as BTC-USD for Bitcoin in USD
+#' @param symbol (string) cryto currency symbol such as BTC, ETH, DOGE
 #' @import curl magrittr
 #' @export
 #' @examples
@@ -9,7 +9,7 @@
 #' # Login in to your RobinHood account
 #' RH <- RobinHood("username", "password")
 #'
-#' get_quote_crypto(RH, "BTC-USD")
+#' get_quote_crypto(RH, "BTC")
 #'}
 get_quote_crypto <- function(RH, symbol) {
 
@@ -18,6 +18,14 @@ get_quote_crypto <- function(RH, symbol) {
 
     # Get IDs for cryptocurrency
     currency_pairs <- api_currency_pairs(RH)
+
+    # Adjust symbol to require only the crypto symbol rather than the -USD addition
+    symbol <- paste(symbol, "-USD", sep = "")
+
+    # If symbol not in return the list of crypto quotes
+    if (!(symbol %in% currency_pairs$symbol))  {
+        return(cat("No quote found for given symbol"))
+    }
 
     # Filter to requested currency pair
     currency <- as.character(currency_pairs[currency_pairs$symbol == symbol, "id"])

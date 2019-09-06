@@ -20,7 +20,7 @@ api_quote_crypto <- function(RH, symbols_url) {
   quotes <- quotes %>%
       dplyr::mutate_at(c("ask_price", "bid_price", "mark_price",
                          "high_price", "low_price", "open_price",
-                         "volume"),
+                         "volume", "symbol"),
                        as.character) %>%
       dplyr::mutate_at(c("ask_price", "bid_price", "mark_price",
                         "high_price", "low_price", "open_price",
@@ -31,6 +31,9 @@ api_quote_crypto <- function(RH, symbols_url) {
   quotes <- quotes[, c("symbol", "ask_price", "bid_price",
                        "mark_price", "high_price", "low_price",
                        "open_price", "volume")]
+
+  # Remove the USD from the end of the symbol
+  quotes$symbol <- gsub(pattern = "USD$", replacement = "", x = quotes$symbol)
 
   return(quotes)
 }
