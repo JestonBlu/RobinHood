@@ -30,7 +30,8 @@ Haven't signed up for a RobinHood account yet? Use my **[referral link](https://
 - [ ] Get options contracts
 
 ## Crypto Features
-- [ ] Current Holdings
+- [x] Current crypto holdings
+- [x] Get crypto quotes
 - [ ] Place and cancel orders
 
 **Note:** A key difference between the CRAN version and the Github version is that the API functions are exported and available to call directly. This is intended primarily to help with development and bug fixes. In the CRAN version, all API functions are not export and instead are called behind the scenes.
@@ -88,10 +89,16 @@ get_portfolios(RH, interval = "day", span = "3month")
 # Returns a data frame of stock ownership positions
 get_positions(RH)
 
-#   simple_name symbol quantity average_buy_price last_trade_price cost current_value          updated_at
-# 1          GE     GE        1               8.5             8.73  8.5          8.73 2019-01-10 04:19:01
-# 2       Zynga   ZNGA        2               0.0             4.27  0.0          8.54 2019-01-06 16:44:03
+#  simple_name symbol quantity average_buy_price last_trade_price cost current_value          updated_at
+#           GE     GE        1               8.5             8.73  8.5          8.73 2019-01-10 04:19:01
+#        Zynga   ZNGA        2               0.0             4.27  0.0          8.54 2019-01-06 16:44:03
 
+# Returns a data frame of current crypto currency holdings
+get_positions_crypto(RH)
+
+#  symbol             name quantity market_value cost_bases gain_loss          created_at
+#    DOGE         Dogecoin     3261         8.09      10.01     -1.92 2019-07-15 21:08:19
+#     ETC Ethereum Classic       10        66.97      39.30     27.67 2019-02-01 00:23:40
 ```
 
 
@@ -124,18 +131,23 @@ get_fundamentals(RH, 'CAT')
 # Get quotes
 get_quote(RH, ticker = c("CAT", "GE"), limit_output = TRUE)
 
-#    symbol last_trade_price last_trade_price_source
-# 1     CAT           131.66            consolidated
-# 2      GE             8.98            consolidated
+#  symbol last_trade_price last_trade_price_source
+#     CAT           131.66            consolidated
+#      GE             8.98            consolidated
+
+# Get crypto currency quotes (only one symbol at a time here)
+get_quote_crypto(RH, symbol = "ETC")
+# symbol ask_price bid_price mark_price high_price low_price open_price   volume
+#    ETC  6.698958  6.684054   6.691506      7.006     6.257     6.4935 38310780
 
 # Get historical prices
 get_historicals(RH, 'CAT', interval = '30minute', span = 'day')    # Every 30 minutes for the current day
 
-#    begins_at open_price close_price high_price  low_price   volume session interpolated
-# 1 2019-02-25     140.99      137.47     142.55     135.27 22995597     reg        FALSE
-# 2 2019-03-04     138.80      131.35     139.77     130.23 19397486     reg        FALSE
-# 3 2019-03-11     131.91      132.67     134.53     131.59 23201154     reg        FALSE
-# 4 2019-03-18     132.70      129.77     135.71     129.49 19314924     reg        FALSE
+#  begins_at open_price close_price high_price  low_price   volume session interpolated
+# 2019-02-25     140.99      137.47     142.55     135.27 22995597     reg        FALSE
+# 2019-03-04     138.80      131.35     139.77     130.23 19397486     reg        FALSE
+# 2019-03-11     131.91      132.67     134.53     131.59 23201154     reg        FALSE
+# 2019-03-18     132.70      129.77     135.71     129.49 19314924     reg        FALSE
 
 get_historicals(RH, 'CAT', interval = 'day',      span = 'week')   # Every day for the current week
 get_historicals(RH, 'CAT', interval = 'week',     span = '3month') # Every week for the last 3 months
