@@ -8,10 +8,10 @@
 api_endpoints <- function(endpoint, source = "equity") {
 
   api.endpoint <- list(
+    # RobinHood endpoints
     url                = "https://api.robinhood.com/",
-    url_nummus         = "https://nummus.robinhood.com/",
     accounts           = "accounts/",
-    currency_pairs     = "currency_pairs/",
+    forex              = "marketdata/forex/quotes/",
     fundamentals       = "fundamentals/?symbols=",
     historicals        = "quotes/historicals/",
     markets            = "markets/",
@@ -27,7 +27,14 @@ api_endpoints <- function(endpoint, source = "equity") {
     token              = "oauth2/token/",
     revoke_token       = "oauth2/revoke_token/",
     user               = "user/",
-    watchlist          = "watchlists/"
+    watchlist          = "watchlists/",
+    # Nummus endpoints
+    url_nummus         = "https://nummus.robinhood.com/",
+    accounts_crypto    = "accounts/",
+    currency_pairs     = "currency_pairs/",
+    holdings_crypto    = "holdings/",
+    orders_crypto      = "orders/",
+    portfolios_crypto  = "portfolios/"
   )
 
   x <- which(names(api.endpoint) == endpoint)

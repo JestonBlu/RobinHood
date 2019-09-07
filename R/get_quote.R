@@ -13,6 +13,7 @@
 #' get_quote(RH, "IR")
 #'}
 get_quote <- function(RH, symbol, limit_output = TRUE) {
+
     # Check if RH is valid
     check_rh(RH)
 
