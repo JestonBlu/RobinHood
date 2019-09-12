@@ -29,19 +29,5 @@ api_accounts <- function(RH) {
                       as.numeric) %>%
     dplyr::mutate_at(c("updated_at", "marked_pattern_day_trader_date", "created_at"), lubridate::ymd_hms)
 
-  accounts$sma <- as.numeric(accounts$sma)
-  accounts$buying_power <- as.numeric(accounts$buying_power)
-  accounts$max_ach_early_access_amount <- as.numeric(accounts$max_ach_early_access_amount)
-  accounts$cash_held_for_orders <- as.numeric(accounts$cash_held_for_orders)
-  accounts$cash <- as.numeric(accounts$cash)
-  accounts$sma_held_for_orders <- as.numeric(accounts$sma_held_for_orders)
-  accounts$unsettled_debit <- as.numeric(accounts$unsettled_debit)
-  accounts$uncleared_deposits <- as.numeric(accounts$uncleared_deposits)
-  accounts$unsettled_funds <- as.numeric(accounts$unsettled_funds)
-  accounts$crypto_buying_power <- as.numeric(accounts$crypto_buying_power)
-  accounts$cash_available_for_withdrawal <- as.numeric(accounts$cash_available_for_withdrawal)
-  accounts$updated_at <- lubridate::ymd_hms(accounts$updated_at)
-  accounts$created_at <- lubridate::ymd_hms(accounts$created_at)
-
   return(accounts)
 }
