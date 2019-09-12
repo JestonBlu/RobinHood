@@ -15,7 +15,7 @@ api_accounts <- function(RH) {
   accounts <- jsonlite::fromJSON(rawToChar(accounts$content))
   accounts <- as.list(accounts$results)
 
-  # Reformat columns as numeric
+  # Reformat margin balances
   accounts$margin_balances <- accounts$margin_balances %>%
     dplyr::mutate_at(c("gold_equity_requirement", "outstanding_interest", "cash_held_for_options_collateral",
                        "uncleared_nummus_deposits", "overnight_ratio", "day_trade_buying_power",
@@ -29,6 +29,12 @@ api_accounts <- function(RH) {
                       as.numeric) %>%
     dplyr::mutate_at(c("updated_at", "marked_pattern_day_trader_date", "created_at"), lubridate::ymd_hms)
 
+  # Reformat instant eligibility
+  accounts$instant_eligibility <- accounts$instant_eligibility %>%
+    dplyr::mutate_at(c(additional_deposit_needed), as.numeric) %>%
+    dplyr::mutate_at(c(reinstatement_date, created_at, updated_at), lubridate::ymd_hms)
+
+  # Reformat remaining list items
   accounts$sma <- as.numeric(accounts$sma)
   accounts$buying_power <- as.numeric(accounts$buying_power)
   accounts$max_ach_early_access_amount <- as.numeric(accounts$max_ach_early_access_amount)
@@ -40,6 +46,7 @@ api_accounts <- function(RH) {
   accounts$unsettled_funds <- as.numeric(accounts$unsettled_funds)
   accounts$crypto_buying_power <- as.numeric(accounts$crypto_buying_power)
   accounts$cash_available_for_withdrawal <- as.numeric(accounts$cash_available_for_withdrawal)
+  accounts$portfolio_cash <- as.numeric(accounts$portfolio_cash)
   accounts$updated_at <- lubridate::ymd_hms(accounts$updated_at)
   accounts$created_at <- lubridate::ymd_hms(accounts$created_at)
 
