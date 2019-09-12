@@ -50,6 +50,5 @@ api_accounts <- function(RH) {
   accounts$updated_at <- lubridate::ymd_hms(accounts$updated_at)
   accounts$created_at <- lubridate::ymd_hms(accounts$created_at)
   
-
   return(accounts)
 }
