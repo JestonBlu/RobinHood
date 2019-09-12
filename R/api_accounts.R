@@ -49,6 +49,7 @@ api_accounts <- function(RH) {
   accounts$portfolio_cash <- as.numeric(accounts$portfolio_cash)
   accounts$updated_at <- lubridate::ymd_hms(accounts$updated_at)
   accounts$created_at <- lubridate::ymd_hms(accounts$created_at)
+  
 
   return(accounts)
 }
