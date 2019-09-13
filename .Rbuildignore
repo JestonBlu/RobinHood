@@ -8,3 +8,6 @@ tests/
 README.md
 API_RETURNS.md
 CHANGE_LOG.md
+.deploy_dir
+^Dockerfile$
+^\.github$
