@@ -49,6 +49,6 @@ action "Deploy" {
     BUILD_DIR = "_site"
   }
   secrets = [
-    "3c925830899d37c74547fbd260b2350243587abd"
+    "cafc5acc893b5d13d4501416301ee85972af87ed"
   ]
 }
