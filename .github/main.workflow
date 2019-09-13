@@ -49,6 +49,6 @@ action "Deploy" {
     BUILD_DIR = "_site"
   }
   secrets = [
-    GH_PAT="cafc5acc893b5d13d4501416301ee85972af87ed"
+    GITHUB_PAT=cafc5acc893b5d13d4501416301ee85972af87ed
   ]
 }
