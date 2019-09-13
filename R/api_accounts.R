@@ -18,8 +18,8 @@ api_accounts <- function(RH) {
   # Reformat margin balances
   accounts$margin_balances <- accounts$margin_balances %>%
     dplyr::mutate_at(c("gold_equity_requirement", "outstanding_interest", "cash_held_for_options_collateral",
-                       "uncleared_nummus_deposits", "overnight_ratio", "day_trade_buying_power",
-                       "cash_available_for_withdrawal", "sma", "cash_held_for_nummus_restrictions",
+                       "uncleared_nummus_deposits", "overnight_ratio", "day_trade_buying_power", "portfolio_cash",
+                       "funding_hold_balance", "cash_available_for_withdrawal", "sma", "cash_held_for_nummus_restrictions",
                        "unallocated_margin_cash", "start_of_day_dtbp", "overnight_buying_power_held_for_orders",
                        "day_trade_ratio", "cash_held_for_orders", "unsettled_debit", "cash_held_for_dividends", "cash",
                        "start_of_day_overnight_buying_power", "margin_limit", "overnight_buying_power", "uncleared_deposits",
@@ -27,12 +27,13 @@ api_accounts <- function(RH) {
                        "pending_deposit", "cash_held_for_restrictions", "crypto_buying_power",
                        "cash_pending_from_options_events", "settled_amount_borrowed"),
                       as.numeric) %>%
-    dplyr::mutate_at(c("updated_at", "marked_pattern_day_trader_date", "created_at"), lubridate::ymd_hms)
+    dplyr::mutate_at(c("updated_at", "created_at"), lubridate::ymd_hms) %>%
+    dplyr::mutate_at(c("marked_pattern_day_trader_date"), lubridate::ymd)
 
   # Reformat instant eligibility
   accounts$instant_eligibility <- accounts$instant_eligibility %>%
-    dplyr::mutate_at(c(additional_deposit_needed), as.numeric) %>%
-    dplyr::mutate_at(c(reinstatement_date, created_at, updated_at), lubridate::ymd_hms)
+    dplyr::mutate_at(c("additional_deposit_needed"), as.numeric) %>%
+    dplyr::mutate_at(c("reinstatement_date", "created_at", "updated_at"), lubridate::ymd_hms)
 
   # Reformat remaining list items
   accounts$sma <- as.numeric(accounts$sma)
@@ -49,6 +50,6 @@ api_accounts <- function(RH) {
   accounts$portfolio_cash <- as.numeric(accounts$portfolio_cash)
   accounts$updated_at <- lubridate::ymd_hms(accounts$updated_at)
   accounts$created_at <- lubridate::ymd_hms(accounts$created_at)
-  
+
   return(accounts)
 }
