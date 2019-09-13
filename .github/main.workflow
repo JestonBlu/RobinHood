@@ -1,7 +1,7 @@
 workflow "Render and Deploy RMarkdown Website" {
   on = "push"
   resolves = [
-    "Render", 
+    "Render",
     "Deploy"
   ]
 }
@@ -20,12 +20,12 @@ action "Render" {
   ]
   uses = "maxheld83/ghactions/Rscript-byod@master"
   args = [
-    "--verbose", 
-    "--echo", 
-    "-e \"{\"", 
-    "-e \"    deploy_dir <- rmarkdown::render_site(encoding = \"UTF-8\")\"", 
-    "-e \"    readr::write_lines(x = deploy_dir, path = \".deploy_dir\", \"", 
-    "-e \"        append = FALSE)\"", 
+    "--verbose",
+    "--echo",
+    "-e \"{\"",
+    "-e \"    deploy_dir <- rmarkdown::render_site(encoding = \"UTF-8\")\"",
+    "-e \"    readr::write_lines(x = deploy_dir, path = \".deploy_dir\", \"",
+    "-e \"        append = FALSE)\"",
     "-e \"}\""
   ]
 }
@@ -49,7 +49,6 @@ action "Deploy" {
     BUILD_DIR = "_site"
   }
   secrets = [
-    "GH_PAT"
+    "3c925830899d37c74547fbd260b2350243587abd"
   ]
 }
-
