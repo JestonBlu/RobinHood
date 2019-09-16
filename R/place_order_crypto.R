@@ -44,24 +44,29 @@ place_order_crypto <- function(RH, symbol, type, time_in_force, trigger, price, 
     quantity <- as.character(quantity)
     price <- as.character(price)
 
-    # Given a symbol, return the instrument_id
-    instrument_url <- paste(api_endpoints(endpoint = "quotes"), symbol, sep = "")
-    instrument <- api_quote(RH, instrument_url)
-    instrument_id <- instrument$instrument
+    # Get nummus id
+    nummus_id <- api_accounts_crypto(RH)
+    nummus_id <- nummus_id$id
 
+    # Given a symbol, return the crypto id
+    currency_pair_id <- api_currency_pairs(RH)
+
+    # Clean up currency symbol
+    currency_pair_id$symbol <- gsub(x = currency_pair_id$symbol, pattern = "-.*", replacement = "")
+
+    currency_pair_id <- subset(currency_pair_id, symbol == symbol)
+    currency_pair_id <- currency_pair_id$id
 
     # Place an order
     orders <- api_orders(RH = RH,
                          action = "order",
-                         instrument_id = instrument_id,
-                         symbol = symbol,
+                         account_id = nummus_id,
+                         currency_pair_id = currency_pair_id,
                          type = type,
+                         side = side,
                          time_in_force = time_in_force,
-                         trigger = trigger,
-                         price = price,
-                         stop_price = stop_price,
                          quantity = quantity,
-                         side = side)
+                         price = price)
 
     return(orders)
 }

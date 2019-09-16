@@ -36,11 +36,22 @@ api_orders_crypto <- function(RH, action, order_url = NULL, instrument_id = NULL
                     "&client_id=", RH$api_client_id,
                     sep = "")
 
+
+
+[{"key":"type","value":"market","description":"","type":"text","enabled":true},
+{"key":"side","value":"buy","description":"","type":"text","enabled":true},
+{"key":"quantity","value":"400","description":"","type":"text","enabled":true},
+{"key":"account_id","value":"5f45e61b-9afa-4e75-a00d-76593342f13f","description":"","type":"text","enabled":true},
+{"key":"currency_pair_id","value":"1ef78e1b-049b-4f12-90e5-555dcf2fe204","description":"","type":"text","enabled":true},
+{"key":"price","value":".003","description":"","type":"text","enabled":true},
+{"key":"time_in_force","value":"gfd","description":"","type":"text","enabled":true},
+{"key":"ref_id","value":"aaaa","description":"","type":"text","enabled":true}]
+
     orders <- new_handle() %>%
       handle_setheaders("Accept" = "application/json") %>%
       handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
       handle_setopt(copypostfields = detail) %>%
-      curl_fetch_memory(url = api_endpoints("orders"))
+      curl_fetch_memory(url = api_endpoints("orders", source = "crypto"))
 
     orders <- jsonlite::fromJSON(rawToChar(orders$content))
 
