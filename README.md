@@ -257,7 +257,6 @@ cancel_order_crypto(RH, x$cancel_url)
 # "You may have already canceled this order, check order_status()"
 
 # Get order History
-
 get_order_history(RH)
 
 # Structure
