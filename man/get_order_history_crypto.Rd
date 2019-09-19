@@ -17,6 +17,6 @@ Download all available crypto currency order history for your RobinHood account
 # Login in to your RobinHood account
 RH <- RobinHood("username", "password")
 
-get_order_history(RH)
+get_order_history_crypto(RH)
 }
 }

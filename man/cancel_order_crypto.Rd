@@ -4,12 +4,12 @@
 \alias{cancel_order_crypto}
 \title{Cancel an existing crypto order on RobinHood}
 \usage{
-cancel_order_crypto(RH, order_url)
+cancel_order_crypto(RH, cancel_url)
 }
 \arguments{
 \item{RH}{object of class RobinHood}
 
-\item{order_url}{(string) cancel url returned from place_order()}
+\item{cancel_url}{(string) cancel url returned from place_order_crypto()}
 }
 \description{
 Send a cancel signal for a particular order to RobinHood. You will need to retain the buy/sell order url returned from place_order.
@@ -20,7 +20,7 @@ Send a cancel signal for a particular order to RobinHood. You will need to retai
 RH <- RobinHood("username", "password")
 
 # Place an order, should generate an email confirmation
-x <- place_order(RH = RH,
+x <- place_order_crypto(RH = RH,
                  symbol = "GE",          # Ticker symbol you want to trade
                  type = "market",        # Type of market order
                  time_in_force = "gfd",  # Time period the order is good for (gfd: good for day)
@@ -30,6 +30,6 @@ x <- place_order(RH = RH,
                  side = "buy")           # buy or sell
 
 # Cancel the order, should also generate an email confirmation
-cancel_order(RH, x$cancel)
+cancel_order_crypto(RH, x$cancel_url)
 }
 }

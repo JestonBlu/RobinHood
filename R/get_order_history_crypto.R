@@ -33,12 +33,12 @@ get_order_history_crypto <- function(RH) {
 
     # Limit output
     order_history <- order_history %>%
-      select(c("name", "symbol", "created_at", "price", "exec_effective_price", "exec_quantity", "side", "state",
+      dplyr::select(c("name", "symbol", "created_at", "price", "exec_effective_price", "exec_quantity", "side", "state",
                "time_in_force", "type"))
 
    # Adjust factor levels it doesn't show factors not in the join
    order_history <- order_history %>%
-    mutate_at(c("name","symbol"), as.character)
+    dplyr::mutate_at(c("name","symbol"), as.character)
 
   return(order_history)
 }

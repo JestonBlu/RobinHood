@@ -4,30 +4,26 @@
 \alias{api_orders_crypto}
 \title{RobinHood API: Orders Crypto}
 \usage{
-api_orders_crypto(RH, action, order_url = NULL, instrument_id = NULL,
-  symbol = NULL, type = NULL, time_in_force = NULL, trigger = NULL,
-  price = NULL, stop_price = NULL, quantity = NULL, side = NULL)
+api_orders_crypto(RH, action, order_id = NULL, cancel_url = NULL,
+  currency_pair_id = NULL, type = NULL, time_in_force = NULL,
+  price = NULL, quantity = NULL, side = NULL)
 }
 \arguments{
 \item{RH}{object of class RobinHood}
 
 \item{action}{(string) one of "order", "status", "cancel", or "history"}
 
-\item{order_url}{(string) action is "status" or "cancel", only order_url is required}
+\item{order_id}{(string) action is "status" or "cancel", only order_id is required}
 
-\item{instrument_id}{(string) URL of the instrument_id}
+\item{cancel_url}{(string) url for posting a cancel order}
 
-\item{symbol}{(string) Ticket symbol you are attempting to buy or sell}
+\item{currency_pair_id}{(string) currency pair id}
 
 \item{type}{(string) "market" or "limit"}
 
 \item{time_in_force}{(string) Good For Day ("gfd"), Good Till Canceled ("gtc"), Immediate or Cancel ("ioc"), or Opening ("opg")}
 
-\item{trigger}{(string) "immediate" or "stop"}
-
 \item{price}{(number) the price you are willing to sell or buy at}
-
-\item{stop_price}{(number) if trigger = stop, enter stop price, otherwise leave blank}
 
 \item{quantity}{(int) number of shares you wish to transact}
 

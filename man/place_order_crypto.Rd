@@ -4,8 +4,7 @@
 \alias{place_order_crypto}
 \title{Place a crypto currency buy or sell order against your RobinHood account}
 \usage{
-place_order_crypto(RH, symbol, type, time_in_force, trigger, price,
-  stop_price = NA, quantity, side)
+place_order_crypto(RH, symbol, type, time_in_force, price, quantity, side)
 }
 \arguments{
 \item{RH}{object of class RobinHood}
@@ -16,11 +15,7 @@ place_order_crypto(RH, symbol, type, time_in_force, trigger, price,
 
 \item{time_in_force}{(string) Good For Day ("gfd"), Good Till Canceled ("gtc"), Immediate or Cancel ("ioc"), or Opening ("opg")}
 
-\item{trigger}{(string) "immediate" or "stop"}
-
 \item{price}{(number) the price you are willing to sell or buy at}
-
-\item{stop_price}{(number) if trigger = stop, enter stop price, otherwise leave blank}
 
 \item{quantity}{(int) number of shares you wish to transact}
 
@@ -35,13 +30,12 @@ Place a crypto currency buy or sell order against your RobinHood account
 RH <- RobinHood("username", "password")
 
 # Place an order, should generate an email confirmation
-x <- place_order(RH = RH,
-                 symbol = "GE",          # Ticker symbol you want to trade
-                 type = "market",        # Type of market order (market, limit)
-                 time_in_force = "gfd",  # Time period the order is good for (gfd: good for day)
-                 trigger = "immediate",  # Trigger or delay order
-                 price = 8.96,           # The highest price you are willing to pay
-                 quantity = 1,           # Number of shares you want
-                 side = "buy")           # buy or sell
+x <- place_order_crypto(RH = RH,
+                       symbol = "DOGE",        # Ticker symbol
+                       type = "market",        # Type of market order (market, limit)
+                       time_in_force = "gfd",  # Time period (gfd: good for day)
+                       price = .003,           # The highest price you are willing to pay
+                       quantity = 500,         # Number of shares you want
+                       side = "buy")           # buy or sell
 }
 }
