@@ -1,5 +1,5 @@
 ![Travis-CI](https://travis-ci.org/JestonBlu/RobinHood.svg?branch=master)
-![Dev Version](https://img.shields.io/badge/github-1.1-blue.svg)
+![Dev Version](https://img.shields.io/badge/github-1.2-blue.svg)
 ![CRAN Version](http://www.r-pkg.org/badges/version/RobinHood?color=blue)
 ![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/RobinHood)
 
@@ -22,19 +22,23 @@ Haven't signed up for a RobinHood account yet? Use my **[referral link](https://
 - [x] Get current holdings
 - [x] Access investment statistics and quotes
 - [x] Place and cancel orders
+- [x] Get order status
+- [x] Get price history
+- [x] Get order history
 - [x] Get market open/close hours
 - [x] Search investments by popular tag
-- [x] Get price history
 - [x] Calculate historical account balance
 - [ ] Get options market data
 - [ ] Get options contracts
 
 ## Crypto Features
-- [x] Current crypto holdings
-- [x] Get crypto quotes
-- [ ] Place and cancel orders
+- [x] Get current holdings
+- [x] Get order history
+- [x] Get quotes
+- [x] Place and cancel orders
+- [x] Get order status
 
-**Note:** A key difference between the CRAN version and the Github version is that the API functions are exported and available to call directly. This is intended primarily to help with development and bug fixes. In the CRAN version, all API functions are not export and instead are called behind the scenes.
+**Note:** A key difference between the CRAN version and the Github version is that the API functions are exported and available to call directly. This is intended primarily to help with development and bug fixes. In the CRAN version, all API functions are not exported and instead are called behind the scenes.
 
 
 ## Installation
@@ -197,9 +201,37 @@ x = place_order(RH            = RH,
 # $ average_price            : num
 # $ quantity                 : num
 
+# Crypto works the same way
+x = place_order_crypto(RH,
+                       symbol        = "DOGE",
+                       type          = "market",
+                       time_in_force = "gtc",
+                       price         = .002,
+                       quantity      = 400,
+                       side          = "buy")
+
+# Structure
+# $ account_id               : chr
+# $ cancel_url               : chr
+# $ created_at               : POSIXct[1:1]
+# $ cumulative_quantity      : num
+# $ currency_pair_id         : chr
+# $ executions               : list()
+# $ id                       : chr
+# $ last_transaction_at      : NULL
+# $ price                    : num
+# $ quantity                 : num
+# $ ref_id                   : chr
+# $ rounded_executed_notional: num
+# $ side                     : chr
+# $ state                    : chr
+# $ time_in_force            : chr
+# $ type                     : chr
+# $ updated_at               : POSIXct[1:1]
 
 # Check the status of an order
 get_order_status(RH, x$url)
+get_order_status_crypto(RH, x$id)
 
 # $updated_at
 # [1] "2019-01-20T13:57:44.329458Z"
@@ -218,10 +250,42 @@ get_order_status(RH, x$url)
 
 # Cancel an order (should generate an email)
 cancel_order(RH, x$cancel)
+cancel_order_crypto(RH, x$cancel_url)
 
 # One of 2 messages you may receive
 # "Order canceled"
 # "You may have already canceled this order, check order_status()"
+
+# Get order History
+get_order_history(RH)
+
+# Structure
+# $ created_at   : POSIXct
+# $ symbol       : chr
+# $ side         : chr
+# $ price        : num
+# $ quantity     : num
+# $ fees         : num
+# $ state        : chr
+# $ average_price: num
+# $ type         : chr
+# $ trigger      : chr
+# $ time_in_force: chr
+# $ updated_at   : POSIXct
+
+get_order_history_crypto(RH)
+
+# Structure
+# $ name                : chr
+# $ symbol              : chr
+# $ created_at          : POSIXct
+# $ price               : num
+# $ exec_effective_price: num
+# $ exec_quantity       : num
+# $ side                : chr
+# $ state               : chr
+# $ time_in_force       : chr
+# $ type                : chr
 ```
 
 
