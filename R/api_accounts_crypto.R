@@ -13,7 +13,7 @@ api_accounts_crypto <- function(RH) {
 
   # GET call
   accounts <- httr::GET(url,
-      add_headers("Accept" = "application/json",
+      httr::add_headers("Accept" = "application/json",
                   "Content-Type" = "application/json",
                   "Authorization" = token))
 
