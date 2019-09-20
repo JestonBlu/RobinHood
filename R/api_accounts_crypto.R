@@ -7,13 +7,21 @@
 #' @export
 api_accounts_crypto <- function(RH) {
 
-  accounts <- new_handle() %>%
-    handle_setheaders("Accept" = "application/json") %>%
-    handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-    curl_fetch_memory(url = api_endpoints("accounts", source = "crypto"))
+  # URL and token
+  url <- api_endpoints("accounts", "crypto")
+  token <- paste("Bearer", RH$tokens.access_token)
 
-  accounts <- jsonlite::fromJSON(rawToChar(accounts$content))
+  # GET call
+  accounts <- httr::GET(url,
+      add_headers("Accept" = "application/json",
+                  "Content-Type" = "application/json",
+                  "Authorization" = token))
+
+  # format return
+  accounts <- mod_json(accounts, "fromJSON")
   accounts <- as.list(accounts$results)
+
+  accounts$updated_at <- lubridate::ymd_hms(accounts$updated_at)
 
   return(accounts)
 }
