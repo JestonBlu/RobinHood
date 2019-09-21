@@ -9,20 +9,23 @@
 #' @export
 api_historicals <- function(RH, historicals_url, body) {
 
-  historicals_url <- paste(historicals_url, "?", body, sep = "")
+  # URL and token
+  url <- paste(historicals_url, "?", body, sep = "")
+  token <- paste("Bearer", RH$tokens.access_token)
 
-  historicals <- new_handle() %>%
-    handle_setheaders("Accept" = "application/json") %>%
-    handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-    curl_fetch_memory(url = historicals_url)
+  # GET call
+  dta <- httr::GET(url,
+    httr::add_headers("Accept" = "application/json",
+                "Content-Type" = "application/json",
+                "Authorization" = token))
 
-  historicals <- jsonlite::fromJSON(rawToChar(historicals$content))
-  historicals <- data.frame(historicals$results$historicals)
+  # Format return
+  dta <- mod_json(dta, "fromJSON")
+  dta <- as.data.frame(dta$results$dta)
 
-  historicals$begins_at <- lubridate::ymd_hms(historicals$begins_at)
-  historicals$open_price <- as.numeric(historicals$open_price)
-  historicals$close_price <- as.numeric(historicals$close_price)
-  historicals$high_price <- as.numeric(historicals$high_price)
-  historicals$low_price <- as.numeric(historicals$low_price)
-  return(historicals)
+  dta <- dta %>%
+    dplyr::mutate_at(c("open_price", "close_price", "high_price", "low_price"), as.numeric) %>%
+    dplyr::mutate_at("begins_at", lubridate::ymd_hms)
+
+  return(dta)
   }

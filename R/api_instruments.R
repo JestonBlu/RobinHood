@@ -10,36 +10,47 @@
 api_instruments <- function(RH, symbol = NULL, instrument_url = NULL) {
 
   if (length(symbol == 1)) {
+
+    # URL and token
     url <- paste(api_endpoints("instruments"), "?symbol=", symbol, sep = "")
+    token <- paste("Bearer", RH$tokens.access_token)
 
-    instrument <- new_handle() %>%
-      handle_setheaders("Accept" = "application/json") %>%
-      handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-      curl_fetch_memory(url = url)
+    # GET call
+    dta <- httr::GET(url,
+      httr::add_headers("Accept" = "application/json",
+                  "Content-Type" = "application/json",
+                  "Authorization" = token))
 
-    instrument <- jsonlite::fromJSON(rawToChar(instrument$content))
-    instrument <- instrument$results
+    # Format return
+    dta <- mod_json(dta, "fromJSON")
+    dta <- as.list(dta$results)
 
-    instrument$margin_initial_ratio <- as.numeric(instrument$margin_initial_ratio)
-    instrument$maintenance_ratio <- as.numeric(instrument$maintenance_ratio)
-    instrument$day_trade_ratio <- as.numeric(instrument$day_trade_ratio)
+    dta$margin_initial_ratio <- as.numeric(dta$margin_initial_ratio)
+    dta$maintenance_ratio <- as.numeric(dta$maintenance_ratio)
+    dta$day_trade_ratio <- as.numeric(dta$day_trade_ratio)
 
-    return(instrument)
+    return(dta)
 
   } else {
+
+    # URL and token
     url <- instrument_url
+    token <- paste("Bearer", RH$tokens.access_token)
 
-    instrument <- new_handle() %>%
-      handle_setheaders("Accept" = "application/json") %>%
-      handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-      curl_fetch_memory(url = url)
+    # GET call
+    dta <- httr::GET(url,
+      httr::add_headers("Accept" = "application/json",
+                  "Content-Type" = "application/json",
+                  "Authorization" = token))
 
-    instrument <- jsonlite::fromJSON(rawToChar(instrument$content))
+    # Format return
+    dta <- mod_json(dta, "fromJSON")
+    dta <- as.list(dta$results)
 
-    instrument$margin_initial_ratio <- as.numeric(instrument$margin_initial_ratio)
-    instrument$maintenance_ratio <- as.numeric(instrument$maintenance_ratio)
-    instrument$day_trade_ratio <- as.numeric(instrument$day_trade_ratio)
+    dta$margin_initial_ratio <- as.numeric(dta$margin_initial_ratio)
+    dta$maintenance_ratio <- as.numeric(dta$maintenance_ratio)
+    dta$day_trade_ratio <- as.numeric(dta$day_trade_ratio)
 
-    return(instrument)
+    return(dta)
   }
 }

@@ -12,16 +12,16 @@ api_accounts_crypto <- function(RH) {
   token <- paste("Bearer", RH$tokens.access_token)
 
   # GET call
-  accounts <- httr::GET(url,
+  dta <- httr::GET(url,
       httr::add_headers("Accept" = "application/json",
                   "Content-Type" = "application/json",
                   "Authorization" = token))
 
   # format return
-  accounts <- mod_json(accounts, "fromJSON")
-  accounts <- as.list(accounts$results)
+  dta <- mod_json(dta, "fromJSON")
+  dta <- as.list(dta$results)
 
-  accounts$updated_at <- lubridate::ymd_hms(accounts$updated_at)
+  dta$updated_at <- lubridate::ymd_hms(dta$updated_at)
 
-  return(accounts)
+  return(dta)
 }

@@ -13,10 +13,12 @@ api_logout <- function(RH) {
                   RH$tokens.refresh_token,
                   sep = "")
 
-  logout <- new_handle() %>%
-    handle_setopt(copypostfields = detail) %>%
-    handle_setheaders("Accept" = "application/json") %>%
-    curl_fetch_memory(url = api_endpoints("revoke_token"))
+  # URL
+  url <- paste(api_endpoints("revoke_token"), detail, sep = "")
+
+  # POST call
+  dta <- httr::POST(url) %>%
+    httr::content(type = "json")
 
   logout <- logout$content
 }
