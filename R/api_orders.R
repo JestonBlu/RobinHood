@@ -22,76 +22,83 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
                        time_in_force = NULL, trigger = NULL, price = NULL, stop_price = NULL, quantity = NULL,
                        side = NULL) {
 
+
   if (action == "order") {
-    detail <- paste("account=", RH$url.account_id,
-                    "&instrument=", instrument_id,
-                    "&symbol=", symbol,
-                    "&type=", type,
-                    "&time_in_force=", time_in_force,
-                    "&trigger=", trigger,
-                    "&price=", price,
-                    "&stop_price=", stop_price,
-                    "&quantity=", quantity,
-                    "&side=", side,
-                    "&client_id=", RH$api_client_id,
-                    sep = "")
 
-    orders <- new_handle() %>%
-      handle_setheaders("Accept" = "application/json") %>%
-      handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-      handle_setopt(copypostfields = detail) %>%
-      curl_fetch_memory(url = api_endpoints("orders"))
+    url <- api_endpoints("orders")
+    token <- paste("Bearer", RH$tokens.access_token)
 
-    orders <- jsonlite::fromJSON(rawToChar(orders$content))
+    detail <- data.frame(account = RH$url.account_id,
+                         instrument = instrument_id,
+                         symbol = symbol,
+                         type = type,
+                         time_in_force = time_in_force,
+                         trigger = trigger,
+                         price = price,
+                         stop_price = stop_price,
+                         quantity = quantity,
+                         side = side,
+                         client_id = RH$api_client_id)
 
-    orders$updated_at <-  lubridate::ymd_hms(orders$updated_at)
-    orders$last_transaction_at <-  lubridate::ymd_hms(orders$last_transaction_at)
-    orders$created_at <-  lubridate::ymd_hms(orders$created_at)
-    orders$fees <- as.numeric(orders$fees)
-    orders$cumulative_quantity <- as.numeric(orders$cumulative_quantity)
-    orders$stop_price <- as.numeric(orders$stop_price)
-    orders$reject_reason <- as.numeric(orders$reject_reason)
-    orders$price <- as.numeric(orders$price)
-    orders$average_price <- as.numeric(orders$average_price)
-    orders$quantity <- as.numeric(orders$quantity)
+    dta <- httr::POST(url = url,
+                      httr::add_headers("Accept" = "application/json",
+                                        "Content-Type" = "application/json",
+                                        "Authorization" = token),
+                      body = mod_json(detail, type = "toJSON"))
 
-    return(orders)
+    dta <- mod_json(dta, "fromJSON")
+
+    dta$updated_at <-  lubridate::ymd_hms(dta$updated_at)
+    dta$last_transaction_at <-  lubridate::ymd_hms(dta$last_transaction_at)
+    dta$created_at <-  lubridate::ymd_hms(dta$created_at)
+    dta$fees <- as.numeric(dta$fees)
+    dta$cumulative_quantity <- as.numeric(dta$cumulative_quantity)
+    dta$stop_price <- as.numeric(dta$stop_price)
+    dta$reject_reason <- as.numeric(dta$reject_reason)
+    dta$price <- as.numeric(dta$price)
+    dta$average_price <- as.numeric(dta$average_price)
+    dta$quantity <- as.numeric(dta$quantity)
+
+    return(dta)
 
   }
 
-  if (action == "status") {
-    order_status <- new_handle() %>%
-      handle_setheaders("Accept" = "application/json") %>%
-      handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-      curl_fetch_memory(url = order_url)
+  if (action %in% c("status", "cancel")) {
 
-    order_status <- jsonlite::fromJSON(rawToChar(order_status$content))
+    # URL and token
+    url <- order_url
+    token <- paste("Bearer", RH$tokens.access_token)
 
-    return(order_status)
+    # GET call
+    dta <- httr::GET(url,
+        httr::add_headers("Accept" = "application/json",
+                    "Content-Type" = "application/json",
+                    "Authorization" = token))
+
+    # format return
+    dta <- mod_json(dta, "fromJSON")
+
+    return(dta)
   }
 
-  if (action == "cancel") {
-    order_status <- new_handle() %>%
-      handle_setheaders("Accept" = "application/json") %>%
-      handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-      handle_setopt(copypostfields = "") %>%
-      curl_fetch_memory(url = order_url)
-
-    order_status <- jsonlite::fromJSON(rawToChar(order_status$content))
-
-    return(order_status)
-  }
 
   if (action == "history") {
-    order_history <- new_handle() %>%
-      handle_setheaders("Accept" = "application/json") %>%
-      handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-      curl_fetch_memory(url = api_endpoints("orders"))
 
-    order_history <- jsonlite::fromJSON(rawToChar(order_history$content))
-    order_history <- order_history$results
+    url <- api_endpoints("orders")
+    token <- paste("Bearer", RH$tokens.access_token)
 
-    return(order_history)
+    # GET call
+    dta <- httr::GET(url,
+        httr::add_headers("Accept" = "application/json",
+                    "Content-Type" = "application/json",
+                    "Authorization" = token))
+
+    # format return
+    dta <- mod_json(dta, "fromJSON")
+    dta <- as.list(dta$results)
+
+    return(dta)
+
 
   }
 

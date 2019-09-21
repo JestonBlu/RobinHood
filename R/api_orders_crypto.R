@@ -33,72 +33,91 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
                          time_in_force = time_in_force,
                          type = type)
 
-    orders <- httr::POST(url = api_endpoints("orders", "crypto"),
+    dta <- httr::POST(url = api_endpoints("dta", "crypto"),
                          httr::add_headers("Accept" = "application/json",
                                            "Content-Type" = "application/json",
                                            "Authorization" = paste("Bearer", RH$tokens.access_token)),
                          body = mod_json(detail, type = "toJSON"))
 
-    orders <- mod_json(orders, type = "fromJSON")
+    dta <- mod_json(dta, type = "fromJSON")
 
-    orders$cumulative_quantity <- as.numeric(orders$cumulative_quantity)
-    orders$price <- as.numeric(orders$price)
-    orders$quantity <- as.numeric(orders$quantity)
-    orders$rounded_executed_notional<- as.numeric(orders$rounded_executed_notional)
-    orders$created_at <- lubridate::ymd_hms(orders$created_at)
-    orders$updated_at <- lubridate::ymd_hms(orders$updated_at)
+    dta$cumulative_quantity <- as.numeric(dta$cumulative_quantity)
+    dta$price <- as.numeric(dta$price)
+    dta$quantity <- as.numeric(dta$quantity)
+    dta$rounded_executed_notional<- as.numeric(dta$rounded_executed_notional)
+    dta$created_at <- lubridate::ymd_hms(dta$created_at)
+    dta$updated_at <- lubridate::ymd_hms(dta$updated_at)
 
-    return(orders)
+    return(dta)
   }
 
   if (action == "status") {
-    order_status <- new_handle() %>%
-      handle_setheaders("Accept" = "application/json") %>%
-      handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-      curl_fetch_memory(url = paste(api_endpoints("orders", source = "crypto"), order_id, sep = ""))
 
-    order_status <- jsonlite::fromJSON(rawToChar(order_status$content))
+    # URL and token
+    url <- paste(api_endpoints("orders", source = "crypto"), order_id, sep = "")
+    token <- paste("Bearer", RH$tokens.access_token)
 
-    order_status$cumulative_quantity <- as.numeric(order_status$cumulative_quantity)
-    order_status$price <- as.numeric(order_status$price)
-    order_status$quantity <- as.numeric(order_status$quantity)
-    order_status$rounded_executed_notional<- as.numeric(order_status$rounded_executed_notional)
-    order_status$created_at <- lubridate::ymd_hms(order_status$created_at)
-    order_status$updated_at <- lubridate::ymd_hms(order_status$updated_at)
-    order_status$updated_at <- lubridate::ymd_hms(order_status$last_transaction_at)
+    # GET call
+    dta <- httr::GET(url,
+        httr::add_headers("Accept" = "application/json",
+                    "Content-Type" = "application/json",
+                    "Authorization" = token))
 
-    return(order_status)
+    # format return
+    dta <- mod_json(dta, "fromJSON")
+
+    dta$cumulative_quantity <- as.numeric(dta$cumulative_quantity)
+    dta$price <- as.numeric(dta$price)
+    dta$quantity <- as.numeric(dta$quantity)
+    dta$rounded_executed_notional<- as.numeric(dta$rounded_executed_notional)
+    dta$created_at <- lubridate::ymd_hms(dta$created_at)
+    dta$updated_at <- lubridate::ymd_hms(dta$updated_at)
+    dta$updated_at <- lubridate::ymd_hms(dta$last_transaction_at)
+
+    return(dta)
   }
 
   if (action == "cancel") {
-    order_cancel <- new_handle() %>%
-      handle_setheaders("Accept" = "application/json") %>%
-      handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-      handle_setopt(copypostfields = "") %>%
-      curl_fetch_memory(url = cancel_url)
 
-    order_cancel <- jsonlite::fromJSON(rawToChar(order_cancel$content))
+    # URL and token
+    url <- cancel_url
+    token <- paste("Bearer", RH$tokens.access_token)
 
-    return(order_cancel)
+    # GET call
+    dta <- httr::GET(url,
+        httr::add_headers("Accept" = "application/json",
+                    "Content-Type" = "application/json",
+                    "Authorization" = token))
+
+    # format return
+    dta <- mod_json(dta, "fromJSON")
+
+    return(dta)
   }
 
   # Get Order History
   if (action == "history") {
-    order_history <- new_handle() %>%
-      handle_setheaders("Accept" = "application/json") %>%
-      handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-      curl_fetch_memory(url = api_endpoints("orders_crypto", source = "crypto"))
 
-    order_history <- jsonlite::fromJSON(rawToChar(order_history$content))
-    order_history <- order_history$results
+    # URL and token
+    url <- api_endpoints("orders_crypto", source = "crypto")
+    token <- paste("Bearer", RH$tokens.access_token)
 
+    # GET call
+    dta <- httr::GET(url,
+        httr::add_headers("Accept" = "application/json",
+                    "Content-Type" = "application/json",
+                    "Authorization" = token))
+
+    # format return
+    dta <- mod_json(dta, "fromJSON")
+    dta <- as.list(dta$results)
 
     # Extract executions and combine with main extraction
     executions = data.frame()
 
     # Loop through executions
-    for (i in 1:length(order_history$executions)) {
-      x = data.frame(order_history$executions[i])
+    for (i in 1:length(dta$executions)) {
+      x = data.frame(dta$executions[i])
 
       if (nrow(x) == 0) {
         x = data.frame(effective_price = NA, id = NA, quantity = NA, timestamp = NA)
@@ -111,18 +130,18 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
     colnames(executions) = c("exec_effective_price", "exec_id", "exec_quantity", "exec_timestamp")
 
     # Combine executions with the rest of order history
-    order_history = cbind(order_history, executions)
+    dta = cbind(dta, executions)
 
     # Reformat columns
-    order_history = order_history %>%
+    dta = dta %>%
       dplyr::mutate_at(c("created_at", "last_transaction_at", "updated_at", "exec_timestamp"), lubridate::ymd_hms) %>%
       dplyr::mutate_at(c("cumulative_quantity", "price", "quantity", "rounded_executed_notional", "exec_effective_price",
                   "exec_quantity"), as.numeric)
 
     # Remove
-    order_history = order_history[, !names(order_history) %in% "executions"]
+    dta = dta[, !names(dta) %in% "executions"]
 
+    return(dta)
 
   }
-
 }
