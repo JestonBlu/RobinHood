@@ -8,16 +8,19 @@
 #' @export
 api_tag <- function(RH, tag) {
 
-  tag_url <- paste(api_endpoints("tags"), tag, "/", sep = "", collapse = "")
+  # URL and token
+  url <- paste(api_endpoints("tags"), tag, "/", sep = "", collapse = "")
+  token <- paste("Bearer", RH$tokens.access_token)
 
-  # Log in, get access token
-  tag <- new_handle() %>%
-    handle_setheaders("Accept" = "application/json") %>%
-    handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-    curl_fetch_memory(url = tag_url)
+  # GET call
+  dta <- httr::GET(url,
+      httr::add_headers("Accept" = "application/json",
+                  "Content-Type" = "application/json",
+                  "Authorization" = token))
 
-  tag <- jsonlite::fromJSON(rawToChar(tag$content))
-  tag <- tag$instruments
+  # format return
+  dta <- mod_json(dta, "fromJSON")
+  dta <- as.list(dta$instruments)
 
-  return(tag)
+  return(dta)
 }
