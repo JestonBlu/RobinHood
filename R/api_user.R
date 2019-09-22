@@ -3,7 +3,7 @@
 #' Backend function called by get_user() to return user data
 #'
 #' @param RH object of class RobinHood
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 api_user <- function(RH) {
 
@@ -12,10 +12,7 @@ api_user <- function(RH) {
   token <- paste("Bearer", RH$tokens.access_token)
 
   # GET call
-  dta <- httr::GET(url,
-      httr::add_headers("Accept" = "application/json",
-                  "Content-Type" = "application/json",
-                  "Authorization" = token))
+  dta <- GET(url, add_headers("Accept" = "application/json", "Authorization" = token))
 
   # format return
   dta <- mod_json(dta, "fromJSON")
