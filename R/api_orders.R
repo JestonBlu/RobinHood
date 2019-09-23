@@ -47,6 +47,7 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
                       body = mod_json(detail, type = "toJSON"))
 
     dta <- mod_json(dta, "fromJSON")
+    dta <- as.list(dta)
 
     dta$updated_at <-  lubridate::ymd_hms(dta$updated_at)
     dta$last_transaction_at <-  lubridate::ymd_hms(dta$last_transaction_at)

@@ -23,10 +23,12 @@ api_quote <- function(RH, symbols_url) {
   dta <- as.data.frame(dta$results)
 
   dta <- dta %>%
-    dplyr::mutate_at(c("ask_price", "bid_price", "last_trade_price",
-                       "last_extended_hours_trade_price",
-                        "previous_close", "adjusted_previous_close"), as.numeric) %>%
-    dplyr::mutate_at(c("previous_close_date", "updated_at"), lubridate::ymd_hms)
+  dplyr::mutate_at(c("ask_price", "bid_price", "last_trade_price",
+                     "last_extended_hours_trade_price",
+                     "previous_close", "adjusted_previous_close"), as.numeric) %>%
+  dplyr::mutate_at("previous_close_date", lubridate::ymd) %>%
+  dplyr::mutate_at("updated_at", lubridate::ymd_hms)
+
 
   return(dta)
 }
