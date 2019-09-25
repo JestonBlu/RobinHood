@@ -30,7 +30,7 @@ api_portfolios <- function(RH, portfolio_url) {
                          "excess_margin", "excess_margin_with_uncleared_deposits", "equity",
                          "last_core_equity", "adjusted_equity_previous_close", "equity_previous_close",
                          "extended_hours_market_value"), as.numeric) %>%
-      dplyr::mutate_at("start_date", lubridate::ymd_hms)
+      dplyr::mutate_at("start_date", lubridate::ymd)
 
   } else {
 

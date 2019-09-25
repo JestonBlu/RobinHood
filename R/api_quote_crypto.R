@@ -20,18 +20,18 @@ api_quote_crypto <- function(RH, symbols_url) {
 
   # format return
   dta <- mod_json(dta, "fromJSON")
-  dta <- as.data.frame(dta$results)
+  dta <- as.data.frame(dta)
 
-  # Convert numeric columns from character
+  # Convert numeric columns from character, have to convert from factor first
   dta <- dta %>%
-      dplyr::mutate_at(c("ask_price", "bid_price", "mark_price",
-                         "high_price", "low_price", "open_price",
-                         "volume", "symbol"),
-                       as.character) %>%
-      dplyr::mutate_at(c("ask_price", "bid_price", "mark_price",
-                        "high_price", "low_price", "open_price",
-                        "volume"),
-                      as.numeric)
+    dplyr::mutate_at(c("ask_price", "bid_price", "mark_price",
+                       "high_price", "low_price", "open_price",
+                       "volume"),
+                     as.character) %>%
+    dplyr::mutate_at(c("ask_price", "bid_price", "mark_price",
+                       "high_price", "low_price", "open_price",
+                       "volume"),
+                     as.numeric)
 
   # Reorder columns
   dta <- dta[, c("symbol", "ask_price", "bid_price",
