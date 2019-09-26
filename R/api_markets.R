@@ -20,12 +20,10 @@ api_markets <- function(RH, markets_url, type = "df") {
 
   # format return
   dta <- mod_json(dta, "fromJSON")
-  dta <- as.list(dta$results)
 
   if (type == "df") {
     # Returns market information
-    dta <- data.frame(dta$results)
-
+    dta <- as.data.frame(dta$results)
     return(dta)
   }
   if (type == "list") {
