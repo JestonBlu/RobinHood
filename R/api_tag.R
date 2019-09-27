@@ -20,7 +20,7 @@ api_tag <- function(RH, tag) {
 
   # format return
   dta <- mod_json(dta, "fromJSON")
-  dta <- as.list(dta$instruments)
+  dta <- as.character(dta$instruments)
 
   return(dta)
 }
