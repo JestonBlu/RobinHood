@@ -21,10 +21,10 @@ api_historicals <- function(RH, historicals_url, body) {
 
   # Format return
   dta <- mod_json(dta, "fromJSON")
-  dta <- as.data.frame(dta$results$dta)
+  dta <- as.data.frame(dta$results$historicals)
 
   dta <- dta %>%
-    dplyr::mutate_at(c("open_price", "close_price", "high_price", "low_price"), as.numeric) %>%
+    dplyr::mutate_at(c("open_price", "close_price", "high_price", "low_price", "volume"), as.numeric) %>%
     dplyr::mutate_at("begins_at", lubridate::ymd_hms)
 
   return(dta)
