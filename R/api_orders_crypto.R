@@ -110,7 +110,7 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
 
     # format return
     dta <- mod_json(dta, "fromJSON")
-    dta <- as.list(dta$results)
+    dta <- as.data.frame(dta$results)
 
     # Extract executions and combine with main extraction
     executions = data.frame()

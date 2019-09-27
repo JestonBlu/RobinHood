@@ -96,7 +96,7 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
 
     # format return
     dta <- mod_json(dta, "fromJSON")
-    dta <- as.list(dta$results)
+    dta <- as.data.frame(dta$results)
 
     return(dta)
 
