@@ -46,12 +46,12 @@ api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
   # Send a command to add an instrument to an existing watchlist
   if (delete == FALSE & detail != FALSE) {
 
-    # GET call
+    # POST call
     dta <- httr::POST(url,
         httr::add_headers("Accept" = "application/json",
                     "Content-Type" = "application/json",
                     "Authorization" = token),
-        body = detail)
+        body = mod_json(detail, "toJSON"))
 
     dta <- mod_json(dta, "fromJSON")
 
