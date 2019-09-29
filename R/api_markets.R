@@ -5,7 +5,7 @@
 #' @param RH object of class RobinHood
 #' @param markets_url (string) a single market url
 #' @param type (string) structure of data returned, 'df' or 'list'
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 api_markets <- function(RH, markets_url, type = "df") {
 
@@ -13,8 +13,8 @@ api_markets <- function(RH, markets_url, type = "df") {
   token <- paste("Bearer", RH$tokens.access_token)
 
   # GET call
-  dta <- httr::GET(markets_url,
-      httr::add_headers("Accept" = "application/json",
+  dta <- GET(markets_url,
+      add_headers("Accept" = "application/json",
                   "Content-Type" = "application/json",
                   "Authorization" = token))
 

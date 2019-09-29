@@ -4,7 +4,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @param portfolio_url portfolio url
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 api_portfolios <- function(RH, portfolio_url) {
 
@@ -14,8 +14,8 @@ api_portfolios <- function(RH, portfolio_url) {
   if (url == api_endpoints("portfolios")) {
 
     # GET call
-    dta <- httr::GET(url,
-        httr::add_headers("Accept" = "application/json",
+    dta <- GET(url,
+        add_headers("Accept" = "application/json",
                     "Content-Type" = "application/json",
                     "Authorization" = token))
 
@@ -35,8 +35,8 @@ api_portfolios <- function(RH, portfolio_url) {
   } else {
 
     # GET call
-    dta <- httr::GET(url,
-        httr::add_headers("Accept" = "application/json",
+    dta <- GET(url,
+        add_headers("Accept" = "application/json",
                     "Content-Type" = "application/json",
                     "Authorization" = token))
 

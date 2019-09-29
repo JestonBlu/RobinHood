@@ -5,7 +5,7 @@
 #' @param RH object of class RobinHood
 #' @param symbol (string) a single symbol
 #' @param instrument_url (string) instrument url
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 api_instruments <- function(RH, symbol = NULL, instrument_url = NULL) {
 
@@ -18,8 +18,8 @@ api_instruments <- function(RH, symbol = NULL, instrument_url = NULL) {
   token <- paste("Bearer", RH$tokens.access_token)
 
   # GET call
-  dta <- httr::GET(url,
-    httr::add_headers("Accept" = "application/json",
+  dta <- GET(url,
+    add_headers("Accept" = "application/json",
                 "Content-Type" = "application/json",
                 "Authorization" = token))
 

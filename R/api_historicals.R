@@ -5,7 +5,7 @@
 #' @param RH object of class RobinHood
 #' @param historicals_url (string) api url
 #' @param body (string) api body
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 api_historicals <- function(RH, historicals_url, body) {
 
@@ -14,8 +14,8 @@ api_historicals <- function(RH, historicals_url, body) {
   token <- paste("Bearer", RH$tokens.access_token)
 
   # GET call
-  dta <- httr::GET(url,
-    httr::add_headers("Accept" = "application/json",
+  dta <- GET(url,
+    add_headers("Accept" = "application/json",
                 "Content-Type" = "application/json",
                 "Authorization" = token))
 

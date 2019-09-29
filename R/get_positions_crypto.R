@@ -1,7 +1,7 @@
 #' Get the currently held crypto positions for your RobinHood account
 #'
 #' @param RH object class RobinHood
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 #' @examples
 #' \dontrun{

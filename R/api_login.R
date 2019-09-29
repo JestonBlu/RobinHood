@@ -4,7 +4,7 @@
 #' required by all other functions.
 #' @param username (string) RobinHood username
 #' @param password (string) RobinHood password
-#' @import curl jsonlite magrittr
+#' @import httr jsonlite magrittr
 #' @export
 api_login <- function(username, password) {
 
@@ -24,8 +24,8 @@ api_login <- function(username, password) {
   url <- paste(api_endpoints("token"), detail, sep = "")
 
   # POST call
-  dta <- httr::POST(url) %>%
-    httr::content(type = "json") %>%
+  dta <- POST(url) %>%
+    content(type = "json") %>%
     rawToChar() %>%
     jsonlite::fromJSON() %>%
     as.list()

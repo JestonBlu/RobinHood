@@ -3,7 +3,7 @@
 #' Send a logout call through the RobinHood API service and disable your token.
 #'
 #' @param RH object of class RobinHood
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 #' @examples
 #' \dontrun{

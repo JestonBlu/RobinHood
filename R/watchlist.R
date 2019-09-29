@@ -6,7 +6,7 @@
 #' @param action (string) one of: get, add, delete
 #' @param watchlist (string) name of watchlist to add, delete, or get instruments, null will return a list of watchlist
 #' @param ticker (string) list of tickers to add or delete, null will add or delete watchlist
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 #' @examples
 #' \dontrun{
@@ -66,7 +66,7 @@ watchlist <- function(RH, action, watchlist = "", ticker = "") {
     # Add a ticker to the named watchlist
     if (action == "add" & watchlist != "" & ticker != "") {
       watchlist_url <- paste(base_watchlist_url, watchlist, "/bulk_add/", sep = "", collapse = "")
-      detail = data.frame(symbol = ticker)
+      detail = data.frame(symbols = ticker)
       wl <- api_watchlist(RH, watchlist_url, detail)
       if (length(wl)  > 0) cat("Instrument added to watchlist")
       if (length(wl) == 0) cat("Instrument is already in your watchlist")

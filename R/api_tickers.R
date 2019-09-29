@@ -4,7 +4,7 @@
 #' on RobinHood.
 #'
 #' @param RH object of class RobinHood
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 api_tickers <- function(RH) {
 
@@ -18,8 +18,8 @@ api_tickers <- function(RH) {
   token <- paste("Bearer", RH$tokens.access_token)
 
   # GET call
-  dta <- httr::GET(url,
-      httr::add_headers("Accept" = "application/json",
+  dta <- GET(url,
+      add_headers("Accept" = "application/json",
                   "Content-Type" = "application/json",
                   "Authorization" = token))
 
@@ -34,8 +34,8 @@ api_tickers <- function(RH) {
     url <- dta$`next`
 
     # GET call
-    dta <- httr::GET(url,
-        httr::add_headers("Accept" = "application/json",
+    dta <- GET(url,
+        add_headers("Accept" = "application/json",
                     "Content-Type" = "application/json",
                     "Authorization" = token))
 

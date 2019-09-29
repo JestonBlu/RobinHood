@@ -2,7 +2,7 @@
 #'
 #' @param RH object class RobinHood
 #' @param symbol (string) cryto currency symbol such as BTC, ETH, DOGE
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 #' @examples
 #' \dontrun{

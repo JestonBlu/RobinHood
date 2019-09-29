@@ -3,7 +3,7 @@
 #' Backend function called by get_contract_positions(). Returns a data frame of owned options contracts.
 #'
 #' @param RH object of class RobinHood
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 api_option_positions <- function(RH) {
 
@@ -12,8 +12,8 @@ api_option_positions <- function(RH) {
   token <- paste("Bearer", RH$tokens.access_token)
 
   # GET call
-  dta <- httr::GET(url,
-      httr::add_headers("Accept" = "application/json",
+  dta <- GET(url,
+      add_headers("Accept" = "application/json",
                   "Content-Type" = "application/json",
                   "Authorization" = token))
 

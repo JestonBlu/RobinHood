@@ -1,7 +1,7 @@
 #' Download all available order history for your RobinHood account
 #'
 #' @param RH object of class RobinHood
-#' @import curl jsonlite magrittr lubridate
+#' @import httr jsonlite magrittr lubridate
 #' @export
 #' @examples
 #' \dontrun{

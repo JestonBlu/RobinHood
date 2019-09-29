@@ -4,7 +4,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @param tag (string) a hyphenated tag such as "100-most-popular"
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 api_tag <- function(RH, tag) {
 
@@ -13,8 +13,8 @@ api_tag <- function(RH, tag) {
   token <- paste("Bearer", RH$tokens.access_token)
 
   # GET call
-  dta <- httr::GET(url,
-      httr::add_headers("Accept" = "application/json",
+  dta <- GET(url,
+      add_headers("Accept" = "application/json",
                   "Content-Type" = "application/json",
                   "Authorization" = token))
 

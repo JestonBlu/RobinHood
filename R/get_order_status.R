@@ -5,7 +5,7 @@
 #' @param RH object of class RobinHood
 #' @param order_url (string) url of order returned from place_order
 #' @param limit_output (logical) return limited info on the order (default TRUE)
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 #' @examples
 #' \dontrun{

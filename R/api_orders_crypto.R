@@ -14,7 +14,7 @@
 #' @param price (number) the price you are willing to sell or buy at
 #' @param quantity (int) number of shares you wish to transact
 #' @param side (string) "buy" or "sell"
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, currency_pair_id = NULL, type = NULL,
                               time_in_force = NULL, price = NULL, quantity = NULL, side = NULL) {
@@ -33,8 +33,8 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
                          time_in_force = time_in_force,
                          type = type)
 
-    dta <- httr::POST(url = api_endpoints("dta", "crypto"),
-                         httr::add_headers("Accept" = "application/json",
+    dta <- POST(url = api_endpoints("dta", "crypto"),
+                         add_headers("Accept" = "application/json",
                                            "Content-Type" = "application/json",
                                            "Authorization" = paste("Bearer", RH$tokens.access_token)),
                          body = mod_json(detail, type = "toJSON"))
@@ -58,8 +58,8 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
     token <- paste("Bearer", RH$tokens.access_token)
 
     # GET call
-    dta <- httr::GET(url,
-        httr::add_headers("Accept" = "application/json",
+    dta <- GET(url,
+        add_headers("Accept" = "application/json",
                     "Content-Type" = "application/json",
                     "Authorization" = token))
 
@@ -84,8 +84,8 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
     token <- paste("Bearer", RH$tokens.access_token)
 
     # GET call
-    dta <- httr::GET(url,
-        httr::add_headers("Accept" = "application/json",
+    dta <- GET(url,
+        add_headers("Accept" = "application/json",
                     "Content-Type" = "application/json",
                     "Authorization" = token))
 
@@ -103,8 +103,8 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
     token <- paste("Bearer", RH$tokens.access_token)
 
     # GET call
-    dta <- httr::GET(url,
-        httr::add_headers("Accept" = "application/json",
+    dta <- GET(url,
+        add_headers("Accept" = "application/json",
                     "Content-Type" = "application/json",
                     "Authorization" = token))
 

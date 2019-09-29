@@ -16,7 +16,7 @@
 #' @param stop_price (number) if trigger = stop, enter stop price, otherwise leave blank
 #' @param quantity (int) number of shares you wish to transact
 #' @param side (string) "buy" or "sell"
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbol = NULL, type = NULL,
                        time_in_force = NULL, trigger = NULL, price = NULL, stop_price = NULL, quantity = NULL,
@@ -40,8 +40,14 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
                          side = side,
                          client_id = RH$api_client_id)
 
-    dta <- httr::POST(url = url,
-                      httr::add_headers("Accept" = "application/json",
+    # If type is limit then stop_price must be included, otherwise it must be excluded
+    if (type == "market") {
+      detail = detail[, c("account", "instrument", "symbol", "type", "time_in_force",
+                          "trigger", "price", "quantity", "side", "client_id")]
+    }
+
+    dta <- POST(url = url,
+                      add_headers("Accept" = "application/json",
                                         "Content-Type" = "application/json",
                                         "Authorization" = token),
                       body = mod_json(detail, type = "toJSON"))
@@ -64,15 +70,34 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
 
   }
 
-  if (action %in% c("status", "cancel")) {
+  if (action == "status") {
 
     # URL and token
     url <- order_url
     token <- paste("Bearer", RH$tokens.access_token)
 
     # GET call
-    dta <- httr::GET(url,
-        httr::add_headers("Accept" = "application/json",
+    dta <- GET(url,
+        add_headers("Accept" = "application/json",
+                    "Content-Type" = "application/json",
+                    "Authorization" = token))
+
+    # format return
+    dta <- mod_json(dta, "fromJSON")
+    dta <- as.list(dta)
+
+    return(dta)
+  }
+
+  if (action == "cancel") {
+
+    # URL and token
+    url <- order_url
+    token <- paste("Bearer", RH$tokens.access_token)
+
+    # GET call
+    dta <- POST(url,
+        add_headers("Accept" = "application/json",
                     "Content-Type" = "application/json",
                     "Authorization" = token))
 
@@ -83,14 +108,15 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
   }
 
 
+
   if (action == "history") {
 
     url <- api_endpoints("orders")
     token <- paste("Bearer", RH$tokens.access_token)
 
     # GET call
-    dta <- httr::GET(url,
-        httr::add_headers("Accept" = "application/json",
+    dta <- GET(url,
+        add_headers("Accept" = "application/json",
                     "Content-Type" = "application/json",
                     "Authorization" = token))
 

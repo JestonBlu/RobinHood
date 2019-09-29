@@ -3,7 +3,7 @@
 #' @param RH object of class RobinHood
 #' @param ticker (string) vector of ticker symbols
 #' @param include_description (logical) include a long description of the company (default: FALSE)
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 #' @examples
 #' \dontrun{
