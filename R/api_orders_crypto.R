@@ -15,7 +15,7 @@
 #' @param quantity (int) number of shares you wish to transact
 #' @param side (string) "buy" or "sell"
 #' @import httr magrittr
-#' @export
+
 api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, currency_pair_id = NULL, type = NULL,
                               time_in_force = NULL, price = NULL, quantity = NULL, side = NULL) {
 
@@ -34,10 +34,10 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
                          type = type)
 
     dta <- POST(url = api_endpoints("dta", "crypto"),
-                         add_headers("Accept" = "application/json",
-                                           "Content-Type" = "application/json",
-                                           "Authorization" = paste("Bearer", RH$tokens.access_token)),
-                         body = mod_json(detail, type = "toJSON"))
+                add_headers("Accept" = "application/json",
+                            "Content-Type" = "application/json",
+                            "Authorization" = paste("Bearer", RH$tokens.access_token)),
+                body = mod_json(detail, type = "toJSON"))
 
     dta <- mod_json(dta, type = "fromJSON")
 

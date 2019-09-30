@@ -5,7 +5,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @import httr magrittr
-#' @export
+
 api_tickers <- function(RH) {
 
   cat("Getting stock ticker data from RobinHood.com...")
@@ -19,9 +19,9 @@ api_tickers <- function(RH) {
 
   # GET call
   dta <- GET(url,
-      add_headers("Accept" = "application/json",
-                  "Content-Type" = "application/json",
-                  "Authorization" = token))
+             add_headers("Accept" = "application/json",
+                         "Content-Type" = "application/json",
+                         "Authorization" = token))
 
   # Format return
   dta <- mod_json(dta, "fromJSON")
@@ -35,9 +35,9 @@ api_tickers <- function(RH) {
 
     # GET call
     dta <- GET(url,
-        add_headers("Accept" = "application/json",
-                    "Content-Type" = "application/json",
-                    "Authorization" = token))
+               add_headers("Accept" = "application/json",
+                           "Content-Type" = "application/json",
+                           "Authorization" = token))
 
     # Format return
     dta <- mod_json(dta$content, "fromJSON")

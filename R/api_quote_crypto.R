@@ -5,7 +5,7 @@
 #' @param RH object of class RobinHood
 #' @param symbols_url (string) url of query with ticker symbols
 #' @import httr magrittr
-#' @export
+
 api_quote_crypto <- function(RH, symbols_url) {
 
   # URL and token
@@ -14,9 +14,9 @@ api_quote_crypto <- function(RH, symbols_url) {
 
   # GET call
   dta <- GET(url,
-      add_headers("Accept" = "application/json",
-                  "Content-Type" = "application/json",
-                  "Authorization" = token))
+             add_headers("Accept" = "application/json",
+                         "Content-Type" = "application/json",
+                         "Authorization" = token))
 
   # format return
   dta <- mod_json(dta, "fromJSON")

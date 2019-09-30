@@ -5,7 +5,7 @@
 #' @param RH object of class RobinHood
 #' @param portfolio_url portfolio url
 #' @import httr magrittr
-#' @export
+
 api_portfolios <- function(RH, portfolio_url) {
 
   url <- portfolio_url
@@ -15,9 +15,9 @@ api_portfolios <- function(RH, portfolio_url) {
 
     # GET call
     dta <- GET(url,
-        add_headers("Accept" = "application/json",
-                    "Content-Type" = "application/json",
-                    "Authorization" = token))
+               add_headers("Accept" = "application/json",
+                           "Content-Type" = "application/json",
+                           "Authorization" = token))
 
     # format return
     dta <- mod_json(dta, "fromJSON")
@@ -36,9 +36,9 @@ api_portfolios <- function(RH, portfolio_url) {
 
     # GET call
     dta <- GET(url,
-        add_headers("Accept" = "application/json",
-                    "Content-Type" = "application/json",
-                    "Authorization" = token))
+               add_headers("Accept" = "application/json",
+                           "Content-Type" = "application/json",
+                           "Authorization" = token))
 
     # format return
     dta <- mod_json(dta, "fromJSON")

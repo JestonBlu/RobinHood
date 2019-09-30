@@ -6,7 +6,7 @@
 #' @param historicals_url (string) api url
 #' @param body (string) api body
 #' @import httr magrittr
-#' @export
+
 api_historicals <- function(RH, historicals_url, body) {
 
   # URL and token
@@ -15,9 +15,9 @@ api_historicals <- function(RH, historicals_url, body) {
 
   # GET call
   dta <- GET(url,
-    add_headers("Accept" = "application/json",
-                "Content-Type" = "application/json",
-                "Authorization" = token))
+             add_headers("Accept" = "application/json",
+                         "Content-Type" = "application/json",
+                         "Authorization" = token))
 
   # Format return
   dta <- mod_json(dta, "fromJSON")

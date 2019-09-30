@@ -5,7 +5,7 @@
 #' @param username (string) RobinHood username
 #' @param password (string) RobinHood password
 #' @import httr jsonlite magrittr
-#' @export
+
 api_login <- function(username, password) {
 
   # Storage for api data

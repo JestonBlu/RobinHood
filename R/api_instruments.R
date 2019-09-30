@@ -6,7 +6,7 @@
 #' @param symbol (string) a single symbol
 #' @param instrument_url (string) instrument url
 #' @import httr magrittr
-#' @export
+
 api_instruments <- function(RH, symbol = NULL, instrument_url = NULL) {
 
   if (is.null(instrument_url) == TRUE) {
@@ -19,9 +19,9 @@ api_instruments <- function(RH, symbol = NULL, instrument_url = NULL) {
 
   # GET call
   dta <- GET(url,
-    add_headers("Accept" = "application/json",
-                "Content-Type" = "application/json",
-                "Authorization" = token))
+             add_headers("Accept" = "application/json",
+                         "Content-Type" = "application/json",
+                         "Authorization" = token))
 
   # Format return
   dta <- mod_json(dta, "fromJSON")

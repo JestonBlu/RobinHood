@@ -4,7 +4,7 @@
 #'
 #' @param endpoint (string) which api endpoint to look up?
 #' @param source (string) directs api to api.robinhood.com (equity) vs nummus.robinhood.com (crypto)
-#' @export
+
 api_endpoints <- function(endpoint, source = "equity") {
 
   api.endpoint <- list(

@@ -6,7 +6,7 @@
 #' @param RH object of class RobinHood
 #' @param ticker (string) vector of ticker symbols
 #' @import httr magrittr
-#' @export
+
 api_fundamentals <- function(RH, ticker) {
 
   # URL and token
@@ -15,9 +15,9 @@ api_fundamentals <- function(RH, ticker) {
 
   # GET call
   dta <- GET(url,
-    add_headers("Accept" = "application/json",
-                "Content-Type" = "application/json",
-                "Authorization" = token))
+             add_headers("Accept" = "application/json",
+                         "Content-Type" = "application/json",
+                         "Authorization" = token))
 
   # Format return
   dta <- mod_json(dta, "fromJSON")

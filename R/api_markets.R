@@ -6,7 +6,7 @@
 #' @param markets_url (string) a single market url
 #' @param type (string) structure of data returned, 'df' or 'list'
 #' @import httr magrittr
-#' @export
+
 api_markets <- function(RH, markets_url, type = "df") {
 
   # URL and token
@@ -14,9 +14,9 @@ api_markets <- function(RH, markets_url, type = "df") {
 
   # GET call
   dta <- GET(markets_url,
-      add_headers("Accept" = "application/json",
-                  "Content-Type" = "application/json",
-                  "Authorization" = token))
+             add_headers("Accept" = "application/json",
+                         "Content-Type" = "application/json",
+                         "Authorization" = token))
 
   # format return
   dta <- mod_json(dta, "fromJSON")

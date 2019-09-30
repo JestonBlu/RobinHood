@@ -4,7 +4,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @import httr magrittr
-#' @export
+
 api_positions_crypto <- function(RH) {
 
   # URL and token
@@ -13,9 +13,9 @@ api_positions_crypto <- function(RH) {
 
   # GET call
   dta <- GET(url,
-      add_headers("Accept" = "application/json",
-                  "Content-Type" = "application/json",
-                  "Authorization" = token))
+             add_headers("Accept" = "application/json",
+                         "Content-Type" = "application/json",
+                         "Authorization" = token))
 
   # format return
   dta <- mod_json(dta, "fromJSON")

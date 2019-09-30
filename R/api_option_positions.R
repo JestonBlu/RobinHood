@@ -4,7 +4,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @import httr magrittr
-#' @export
+
 api_option_positions <- function(RH) {
 
   # URL and token
@@ -13,9 +13,9 @@ api_option_positions <- function(RH) {
 
   # GET call
   dta <- GET(url,
-      add_headers("Accept" = "application/json",
-                  "Content-Type" = "application/json",
-                  "Authorization" = token))
+             add_headers("Accept" = "application/json",
+                         "Content-Type" = "application/json",
+                         "Authorization" = token))
 
   # format return
   dta <- mod_json(dta, "fromJSON")
@@ -26,7 +26,7 @@ api_option_positions <- function(RH) {
                        "pending_expired_quantity", "pending_buy_quantity", "pending_sell_quantity", "quantity"),
                      as.numeric) %>%
     dplyr::mutate_at(c("created_at", "updated_at"), lubridate::ymd_hms)
-  
+
   option_positions <- option_positions[option_positions$quantity > 0, ]
 
   return(option_positions)

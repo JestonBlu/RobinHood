@@ -9,7 +9,7 @@
 #' @param detail (logical) if null use header api only, otherwise pass options
 #' @param delete (logical) send delete call
 #' @import httr magrittr
-#' @export
+
 api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
 
   # URL and token
@@ -21,10 +21,10 @@ api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
 
     # GET call
     dta <- GET(url,
-        add_headers("Accept" = "application/json",
-                    "Content-Type" = "application/json",
-                    "Authorization" = token),
-        config(customrequest = "DELETE"))
+               add_headers("Accept" = "application/json",
+                           "Content-Type" = "application/json",
+                           "Authorization" = token),
+               config(customrequest = "DELETE"))
 
     dta <- rawToChar(dta$content)
 
@@ -35,9 +35,9 @@ api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
 
     # GET call
     dta <- GET(url,
-        add_headers("Accept" = "application/json",
-                    "Content-Type" = "application/json",
-                    "Authorization" = token))
+               add_headers("Accept" = "application/json",
+                           "Content-Type" = "application/json",
+                           "Authorization" = token))
 
     dta <- mod_json(dta, "fromJSON")
 
@@ -48,10 +48,10 @@ api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
 
     # POST call
     dta <- POST(url,
-        add_headers("Accept" = "application/json",
-                    "Content-Type" = "application/json",
-                    "Authorization" = token),
-        body = mod_json(detail, "toJSON"))
+                add_headers("Accept" = "application/json",
+                            "Content-Type" = "application/json",
+                            "Authorization" = token),
+                body = mod_json(detail, "toJSON"))
 
     dta <- mod_json(dta, "fromJSON")
 

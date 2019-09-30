@@ -3,7 +3,7 @@
 #' @param RH object of class RobinHood
 #' @param option_instrument_url (string) url
 #' @import httr magrittr
-#' @export
+
 api_option_instruments <- function(RH, option_instrument_url) {
 
   # URL and token
@@ -12,9 +12,9 @@ api_option_instruments <- function(RH, option_instrument_url) {
 
   # GET call
   dta <- GET(url,
-      add_headers("Accept" = "application/json",
-                  "Content-Type" = "application/json",
-                  "Authorization" = token))
+             add_headers("Accept" = "application/json",
+                         "Content-Type" = "application/json",
+                         "Authorization" = token))
 
   # format return
   dta <- mod_json(dta, "fromJSON")

@@ -17,7 +17,7 @@
 #' @param quantity (int) number of shares you wish to transact
 #' @param side (string) "buy" or "sell"
 #' @import httr magrittr
-#' @export
+
 api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbol = NULL, type = NULL,
                        time_in_force = NULL, trigger = NULL, price = NULL, stop_price = NULL, quantity = NULL,
                        side = NULL) {
@@ -47,10 +47,10 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
     }
 
     dta <- POST(url = url,
-                      add_headers("Accept" = "application/json",
-                                        "Content-Type" = "application/json",
-                                        "Authorization" = token),
-                      body = mod_json(detail, type = "toJSON"))
+                add_headers("Accept" = "application/json",
+                            "Content-Type" = "application/json",
+                            "Authorization" = token),
+                body = mod_json(detail, type = "toJSON"))
 
     dta <- mod_json(dta, "fromJSON")
     dta <- as.list(dta)
