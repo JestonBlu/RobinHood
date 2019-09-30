@@ -3,35 +3,34 @@
 #' Backend function called by get_positions(). Returns a data frame of instrument position data.
 #'
 #' @param RH object of class RobinHood
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 api_positions <- function(RH) {
 
-  positions_url <- RH$url.positions
+  # URL and token
+  url <- RH$url.positions
+  token <- paste("Bearer", RH$tokens.access_token)
 
-  positions <- new_handle() %>%
-    handle_setheaders("Accept" = "application/json") %>%
-    handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-    curl_fetch_memory(url = positions_url)
+  # GET call
+  dta <- GET(url,
+      add_headers("Accept" = "application/json",
+                  "Content-Type" = "application/json",
+                  "Authorization" = token))
 
-  positions <- jsonlite::fromJSON(rawToChar(positions$content))
-  positions <- data.frame(positions$results)
+  # Format return
+  dta <- mod_json(dta, "fromJSON")
+  dta <- as.data.frame(dta$results)
 
-  positions$created_at <-  lubridate::ymd_hms(positions$created_at)
-  positions$updated_at <-  lubridate::ymd_hms(positions$updated_at)
-  positions$shares_held_for_stock_grants <- as.numeric(positions$shares_held_for_stock_grants)
-  positions$pending_average_buy_price <- as.numeric(positions$pending_average_buy_price)
-  positions$shares_held_for_options_events <- as.numeric(positions$shares_held_for_options_events)
-  positions$intraday_average_buy_price <- as.numeric(positions$intraday_average_buy_price)
-  positions$shares_held_for_options_collateral <- as.numeric(positions$shares_held_for_options_collateral)
-  positions$shares_held_for_buys <- as.numeric(positions$shares_held_for_buys)
-  positions$average_buy_price <- as.numeric(positions$average_buy_price)
-  positions$intraday_quantity <- as.numeric(positions$intraday_quantity)
-  positions$shares_held_for_sells <- as.numeric(positions$shares_held_for_sells)
-  positions$shares_pending_from_options_events <- as.numeric(positions$shares_pending_from_options_events)
-  positions$quantity <- as.numeric(positions$quantity)
+  dta <- dta %>%
+    dplyr::mutate_at(c("shares_held_for_stock_grants", "pending_average_buy_price",
+                       "shares_held_for_options_events", "intraday_average_buy_price",
+                       "shares_held_for_options_collateral", "shares_held_for_buys",
+                       "average_buy_price", "intraday_quantity", "shares_held_for_sells",
+                       "shares_pending_from_options_events", "quantity"), as.numeric) %>%
+    dplyr::mutate_at(c("created_at", "updated_at"), lubridate::ymd_hms)
 
-  positions <- positions[positions$quantity > 0, ]
+  # Dont return records for 0 positions
+  dta <- dta[dta$quantity > 0, ]
 
-  return(positions)
+  return(dta)
 }

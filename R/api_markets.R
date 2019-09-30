@@ -5,28 +5,35 @@
 #' @param RH object of class RobinHood
 #' @param markets_url (string) a single market url
 #' @param type (string) structure of data returned, 'df' or 'list'
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 api_markets <- function(RH, markets_url, type = "df") {
 
-  markets <- new_handle() %>%
-    handle_setheaders("Accept" = "application/json") %>%
-    curl_fetch_memory(url = markets_url)
+  # URL and token
+  token <- paste("Bearer", RH$tokens.access_token)
 
-  markets <- jsonlite::fromJSON(rawToChar(markets$content))
+  # GET call
+  dta <- GET(markets_url,
+      add_headers("Accept" = "application/json",
+                  "Content-Type" = "application/json",
+                  "Authorization" = token))
+
+  # format return
+  dta <- mod_json(dta, "fromJSON")
 
   if (type == "df") {
     # Returns market information
-    markets_df <- data.frame(markets$results)
-    return(markets_df)
+    dta <- as.data.frame(dta$results)
+    return(dta)
   }
   if (type == "list") {
     # Returns market hours
-    markets$closes_at <-  lubridate::ymd_hms(markets$closes_at)
-    markets$extended_opens_at <-  lubridate::ymd_hms(markets$extended_opens_at)
-    markets$extended_closes_at <-  lubridate::ymd_hms(markets$extended_closes_at)
-    markets$date <-  lubridate::ymd(markets$date)
-    markets$opens_at <-  lubridate::ymd_hms(markets$opens_at)
-    return(markets)
+    dta$closes_at <- lubridate::ymd_hms(dta$closes_at)
+    dta$extended_opens_at <- lubridate::ymd_hms(dta$extended_opens_at)
+    dta$extended_closes_at <- lubridate::ymd_hms(dta$extended_closes_at)
+    dta$date <- lubridate::ymd(dta$date)
+    dta$opens_at <- lubridate::ymd_hms(dta$opens_at)
+
+    return(dta)
   }
 }

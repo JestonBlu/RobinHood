@@ -4,36 +4,42 @@
 #'
 #' @param RH object of class RobinHood
 #' @param symbols_url (string) url of query with ticker symbols
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 api_quote_crypto <- function(RH, symbols_url) {
 
-  quotes <- new_handle() %>%
-    handle_setheaders("Accept" = "application/json") %>%
-    handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-    curl_fetch_memory(url = symbols_url)
+  # URL and token
+  url <- symbols_url
+  token <- paste("Bearer", RH$tokens.access_token)
 
-  quotes <- jsonlite::fromJSON(rawToChar(quotes$content))
-  quotes <- as.data.frame(quotes)
+  # GET call
+  dta <- GET(url,
+      add_headers("Accept" = "application/json",
+                  "Content-Type" = "application/json",
+                  "Authorization" = token))
 
-  # Convert numeric columns from character
-  quotes <- quotes %>%
-      dplyr::mutate_at(c("ask_price", "bid_price", "mark_price",
-                         "high_price", "low_price", "open_price",
-                         "volume", "symbol"),
-                       as.character) %>%
-      dplyr::mutate_at(c("ask_price", "bid_price", "mark_price",
-                        "high_price", "low_price", "open_price",
-                        "volume"),
-                      as.numeric)
+  # format return
+  dta <- mod_json(dta, "fromJSON")
+  dta <- as.data.frame(dta)
+
+  # Convert numeric columns from character, have to convert from factor first
+  dta <- dta %>%
+    dplyr::mutate_at(c("ask_price", "bid_price", "mark_price",
+                       "high_price", "low_price", "open_price",
+                       "volume"),
+                     as.character) %>%
+    dplyr::mutate_at(c("ask_price", "bid_price", "mark_price",
+                       "high_price", "low_price", "open_price",
+                       "volume"),
+                     as.numeric)
 
   # Reorder columns
-  quotes <- quotes[, c("symbol", "ask_price", "bid_price",
+  dta <- dta[, c("symbol", "ask_price", "bid_price",
                        "mark_price", "high_price", "low_price",
                        "open_price", "volume")]
 
   # Remove the USD from the end of the symbol
-  quotes$symbol <- gsub(pattern = "USD$", replacement = "", x = quotes$symbol)
+  dta$symbol <- gsub(pattern = "USD$", replacement = "", x = dta$symbol)
 
-  return(quotes)
+  return(dta)
 }

@@ -5,41 +5,32 @@
 #' @param RH object of class RobinHood
 #' @param symbol (string) a single symbol
 #' @param instrument_url (string) instrument url
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 api_instruments <- function(RH, symbol = NULL, instrument_url = NULL) {
 
-  if (length(symbol == 1)) {
+  if (is.null(instrument_url) == TRUE) {
     url <- paste(api_endpoints("instruments"), "?symbol=", symbol, sep = "")
-
-    instrument <- new_handle() %>%
-      handle_setheaders("Accept" = "application/json") %>%
-      handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-      curl_fetch_memory(url = url)
-
-    instrument <- jsonlite::fromJSON(rawToChar(instrument$content))
-    instrument <- instrument$results
-
-    instrument$margin_initial_ratio <- as.numeric(instrument$margin_initial_ratio)
-    instrument$maintenance_ratio <- as.numeric(instrument$maintenance_ratio)
-    instrument$day_trade_ratio <- as.numeric(instrument$day_trade_ratio)
-
-    return(instrument)
-
   } else {
     url <- instrument_url
-
-    instrument <- new_handle() %>%
-      handle_setheaders("Accept" = "application/json") %>%
-      handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-      curl_fetch_memory(url = url)
-
-    instrument <- jsonlite::fromJSON(rawToChar(instrument$content))
-
-    instrument$margin_initial_ratio <- as.numeric(instrument$margin_initial_ratio)
-    instrument$maintenance_ratio <- as.numeric(instrument$maintenance_ratio)
-    instrument$day_trade_ratio <- as.numeric(instrument$day_trade_ratio)
-
-    return(instrument)
   }
+
+  token <- paste("Bearer", RH$tokens.access_token)
+
+  # GET call
+  dta <- GET(url,
+    add_headers("Accept" = "application/json",
+                "Content-Type" = "application/json",
+                "Authorization" = token))
+
+  # Format return
+  dta <- mod_json(dta, "fromJSON")
+  dta <- as.list(dta)
+
+  dta$margin_initial_ratio <- as.numeric(dta$margin_initial_ratio)
+  dta$maintenance_ratio <- as.numeric(dta$maintenance_ratio)
+  dta$day_trade_ratio <- as.numeric(dta$day_trade_ratio)
+
+  return(dta)
+
 }

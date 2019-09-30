@@ -4,7 +4,7 @@
 #'
 #' @param RH object class RobinHood
 #' @param tag (string) a hyphenated tag such as "100-most-popular"
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 #' @examples
 #' \dontrun{
@@ -24,8 +24,8 @@ get_tag <- function(RH, tag) {
     # Use instrument IDs to get the ticker symbol and name
     instruments <- c()
 
-    for (i in 1:length(instrument_id)) {
-      instrument <- api_instruments(RH, instrument_url = instrument_id[i])
+    for (i in instrument_id) {
+      instrument <- api_instruments(RH, instrument_url = i)
       x <- ifelse(is.null(instrument$symbol), "", instrument$symbol)
       instruments <- c(instruments, x)
     }

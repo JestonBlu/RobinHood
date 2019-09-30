@@ -4,7 +4,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @param order_url (string) cancel url returned from place_order()
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 #' @examples
 #' \dontrun{
@@ -33,7 +33,7 @@ cancel_order <- function(RH, order_url) {
   if (length(order_status) == 0) cat("Order Canceled")
 
   if (length(order_status) >  0) {
-    cat("You may have already canceled this order, check order_status()")
+    cat("You may have already canceled this order, check get_order_status()")
   }
 
 }

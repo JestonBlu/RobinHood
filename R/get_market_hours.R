@@ -4,7 +4,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @param market_date (string) date in the form 'yyyy-mm-dd', default today
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 #' @examples
 #' \dontrun{

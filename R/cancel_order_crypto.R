@@ -4,7 +4,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @param cancel_url (string) cancel url returned from place_order_crypto()
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 #' @examples
 #' \dontrun{

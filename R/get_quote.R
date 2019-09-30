@@ -3,7 +3,7 @@
 #' @param RH object class RobinHood
 #' @param symbol (string) of ticker symbols
 #' @param limit_output (logical) if TRUE (default) return less quote detail
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 #' @examples
 #' \dontrun{

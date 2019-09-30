@@ -4,7 +4,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @param order_id (string) id field of the object returned by place_order_crypto
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 #' @examples
 #' \dontrun{

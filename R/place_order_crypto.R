@@ -7,7 +7,7 @@
 #' @param price (number) the price you are willing to sell or buy at
 #' @param quantity (int) number of shares you wish to transact
 #' @param side (string) "buy" or "sell"
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 #' @examples
 #' \dontrun{

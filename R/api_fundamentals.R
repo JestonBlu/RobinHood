@@ -5,24 +5,28 @@
 #'
 #' @param RH object of class RobinHood
 #' @param ticker (string) vector of ticker symbols
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 api_fundamentals <- function(RH, ticker) {
 
-  ticker_symbols <- paste(api_endpoints("fundamentals"), ticker, collapse = ",", sep = "")
+  # URL and token
+  url <- paste(api_endpoints("fundamentals"), ticker, collapse = ",", sep = "")
+  token <- paste("Bearer", RH$tokens.access_token)
 
-  fundamentals <- new_handle() %>%
-    handle_setheaders("Accept" = "application/json") %>%
-    handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-    curl_fetch_memory(url = ticker_symbols)
+  # GET call
+  dta <- GET(url,
+    add_headers("Accept" = "application/json",
+                "Content-Type" = "application/json",
+                "Authorization" = token))
 
-  fundamentals <- jsonlite::fromJSON(rawToChar(fundamentals$content))
-  fundamentals <- data.frame(fundamentals$results)
+  # Format return
+  dta <- mod_json(dta, "fromJSON")
+  dta <- as.data.frame(dta$results)
 
-  fundamentals <- fundamentals %>%
+  dta <- dta %>%
     dplyr::mutate_at(c("open", "high", "low", "volume", "average_volume_2_weeks", "average_volume", "high_52_weeks",
                        "dividend_yield", "low_52_weeks", "market_cap", "pe_ratio", "shares_outstanding"),
                      as.numeric)
 
-  return(fundamentals)
+  return(dta)
 }

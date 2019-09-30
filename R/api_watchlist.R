@@ -8,41 +8,54 @@
 #' @param watchlist_url (string) a single watchlist url
 #' @param detail (logical) if null use header api only, otherwise pass options
 #' @param delete (logical) send delete call
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
 
+  # URL and token
+  url <- watchlist_url
+  token <- paste("Bearer", RH$tokens.access_token)
+
   # Send a command to delete a watchlist or instrument from a watchlist
   if (delete == TRUE) {
-    watchlist <- new_handle() %>%
-      handle_setopt(customrequest = "DELETE") %>%
-      handle_setheaders("Accept" = "application/json") %>%
-      handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-      curl_fetch_memory(url = watchlist_url)
 
-    watchlist <- rawToChar(watchlist$content)
+    # GET call
+    dta <- GET(url,
+        add_headers("Accept" = "application/json",
+                    "Content-Type" = "application/json",
+                    "Authorization" = token),
+        config(customrequest = "DELETE"))
+
+    dta <- rawToChar(dta$content)
+
   }
 
   # Send a command to create a watchlist
   if (delete == FALSE & detail == FALSE) {
-    watchlist <- new_handle() %>%
-      handle_setheaders("Accept" = "application/json") %>%
-      handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-      curl_fetch_memory(url = watchlist_url)
 
-    watchlist <- jsonlite::fromJSON(rawToChar(watchlist$content))
+    # GET call
+    dta <- GET(url,
+        add_headers("Accept" = "application/json",
+                    "Content-Type" = "application/json",
+                    "Authorization" = token))
+
+    dta <- mod_json(dta, "fromJSON")
+
   }
 
   # Send a command to add an instrument to an existing watchlist
   if (delete == FALSE & detail != FALSE) {
-    watchlist <- new_handle() %>%
-      handle_setheaders("Accept" = "application/json") %>%
-      handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-      handle_setopt(copypostfields = detail) %>%
-      curl_fetch_memory(url = watchlist_url)
 
-    watchlist <- jsonlite::fromJSON(rawToChar(watchlist$content))
+    # POST call
+    dta <- POST(url,
+        add_headers("Accept" = "application/json",
+                    "Content-Type" = "application/json",
+                    "Authorization" = token),
+        body = mod_json(detail, "toJSON"))
+
+    dta <- mod_json(dta, "fromJSON")
+
   }
 
-  return(watchlist)
+  return(dta)
 }

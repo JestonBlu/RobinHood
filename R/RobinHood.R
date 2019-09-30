@@ -5,7 +5,7 @@
 #'
 #' @param username user name or email
 #' @param password password
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 #' @examples
 #' \dontrun{

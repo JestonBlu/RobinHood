@@ -2,7 +2,7 @@
 #'
 #' @param RH object class RobinHood
 #' @param limit_output (logical) if true, return a simplified positions table, false returns all position details
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 #' @examples
 #' \dontrun{

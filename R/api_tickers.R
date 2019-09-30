@@ -4,34 +4,45 @@
 #' on RobinHood.
 #'
 #' @param RH object of class RobinHood
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 api_tickers <- function(RH) {
 
   cat("Getting stock ticker data from RobinHood.com...")
+
   # Stopwatch
   start_time <- proc.time()
 
+  # URL and token
   url <- api_endpoints("instruments")
+  token <- paste("Bearer", RH$tokens.access_token)
 
-  tickers <- new_handle() %>%
-    handle_setheaders("Accept" = "application/json") %>%
-    handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-    curl_fetch_memory(url = url)
+  # GET call
+  dta <- GET(url,
+      add_headers("Accept" = "application/json",
+                  "Content-Type" = "application/json",
+                  "Authorization" = token))
 
-  tickers <- jsonlite::fromJSON(rawToChar(tickers$content))
+  # Format return
+  dta <- mod_json(dta, "fromJSON")
+  output <- as.list(dta$results)
 
-  output <- tickers$results
+  # Cycle through the pages of tickers until all have been pulled
+  while (length(dta$`next`) > 0) {
 
-  while (length(tickers$`next`) > 0) {
-    tickers <- new_handle() %>%
-      handle_setheaders("Accept" = "application/json") %>%
-      handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-      curl_fetch_memory(url = tickers$`next`)
+    # URL
+    url <- dta$`next`
 
-    tickers <- jsonlite::fromJSON(rawToChar(tickers$content))
+    # GET call
+    dta <- GET(url,
+        add_headers("Accept" = "application/json",
+                    "Content-Type" = "application/json",
+                    "Authorization" = token))
 
-    x <- tickers$results
+    # Format return
+    dta <- mod_json(dta$content, "fromJSON")
+
+    x <- dta$results
 
     output <- rbind(output, x)
 

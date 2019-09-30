@@ -3,16 +3,20 @@
 #' Backend function called by get_user() to return user data
 #'
 #' @param RH object of class RobinHood
-#' @import curl magrittr
+#' @import httr magrittr
 #' @export
 api_user <- function(RH) {
 
-  user <- new_handle() %>%
-    handle_setheaders("Accept" = "application/json") %>%
-    handle_setheaders("Authorization" = paste("Bearer", RH$tokens.access_token)) %>%
-    curl_fetch_memory(url = api_endpoints("user"))
+  # URL and token
+  url <- api_endpoints("user")
+  token <- paste("Bearer", RH$tokens.access_token)
 
-  user <- jsonlite::fromJSON(rawToChar(user$content))
+  # GET call
+  dta <- GET(url, add_headers("Accept" = "application/json", "Authorization" = token))
 
-  return(user)
+  # format return
+  dta <- mod_json(dta, "fromJSON")
+  dta <- as.list(dta)
+
+  return(dta)
 }
