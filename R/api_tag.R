@@ -5,7 +5,7 @@
 #' @param RH object of class RobinHood
 #' @param tag (string) a hyphenated tag such as "100-most-popular"
 #' @import httr magrittr
-
+#' @export
 api_tag <- function(RH, tag) {
 
   # URL and token

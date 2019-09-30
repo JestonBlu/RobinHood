@@ -6,7 +6,7 @@
 #' @param markets_url (string) a single market url
 #' @param type (string) structure of data returned, 'df' or 'list'
 #' @import httr magrittr
-
+#' @export
 api_markets <- function(RH, markets_url, type = "df") {
 
   # URL and token

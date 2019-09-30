@@ -6,7 +6,7 @@
 #' @param RH object of class RobinHood
 #' @param ticker (string) vector of ticker symbols
 #' @import httr magrittr
-
+#' @export
 api_fundamentals <- function(RH, ticker) {
 
   # URL and token

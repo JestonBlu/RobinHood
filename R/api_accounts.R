@@ -4,6 +4,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @import httr magrittr
+#' @export
 api_accounts <- function(RH) {
 
   # URL and token

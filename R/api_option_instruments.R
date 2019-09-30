@@ -3,7 +3,7 @@
 #' @param RH object of class RobinHood
 #' @param option_instrument_url (string) url
 #' @import httr magrittr
-
+#' @export
 api_option_instruments <- function(RH, option_instrument_url) {
 
   # URL and token

@@ -2,6 +2,7 @@
 #'
 #' @param x dataframe intended for json conversoin
 #' @param type (string) one of "fromJSON" or "toJSON"
+#' @export
 mod_json <- function(x, type) {
 
   if (type == "toJSON") {

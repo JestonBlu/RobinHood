@@ -5,7 +5,7 @@
 #' @param RH object of class RobinHood
 #' @param symbols_url (string) url of query with ticker symbols
 #' @import httr magrittr
-
+#' @export
 api_quote <- function(RH, symbols_url) {
 
   # URL and token

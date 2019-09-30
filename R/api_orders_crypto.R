@@ -15,7 +15,7 @@
 #' @param quantity (int) number of shares you wish to transact
 #' @param side (string) "buy" or "sell"
 #' @import httr magrittr
-
+#' @export
 api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, currency_pair_id = NULL, type = NULL,
                               time_in_force = NULL, price = NULL, quantity = NULL, side = NULL) {
 

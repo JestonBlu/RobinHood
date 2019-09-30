@@ -9,7 +9,7 @@
 #' @param detail (logical) if null use header api only, otherwise pass options
 #' @param delete (logical) send delete call
 #' @import httr magrittr
-
+#' @export
 api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
 
   # URL and token

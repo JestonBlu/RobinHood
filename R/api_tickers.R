@@ -5,7 +5,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @import httr magrittr
-
+#' @export
 api_tickers <- function(RH) {
 
   cat("Getting stock ticker data from RobinHood.com...")

@@ -6,7 +6,7 @@
 #' @param historicals_url (string) api url
 #' @param body (string) api body
 #' @import httr magrittr
-
+#' @export
 api_historicals <- function(RH, historicals_url, body) {
 
   # URL and token

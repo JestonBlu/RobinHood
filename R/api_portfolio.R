@@ -5,7 +5,7 @@
 #' @param RH object of class RobinHood
 #' @param portfolio_url portfolio url
 #' @import httr magrittr
-
+#' @export
 api_portfolios <- function(RH, portfolio_url) {
 
   url <- portfolio_url
