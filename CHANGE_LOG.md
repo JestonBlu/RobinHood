@@ -1,3 +1,21 @@
+## 1.2
+
+#### New Features
+  - Added functions for trading crypto currency:
+    - `get_order_history_crypto()`
+    - `place_order_crypto()`
+    - `cancel_order_crypto()`
+    - `cancel_order_crypto()`
+    - `get_quote_crypto()`
+
+#### Clean up
+  - Fixed typo in `place_order()`
+  - Changed from `curl` to `httr` for backend API calls
+  - Fixed bad date format in `api_accounts`
+  - Improved comments in code
+
+-----------------------------------------------------------------------------------------------------------------------------
+
 ## 1.0.8
 
 #### Bug fixes
