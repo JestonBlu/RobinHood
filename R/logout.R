@@ -20,7 +20,7 @@ logout <- function(RH) {
     # API request to revoke token
     x <- api_logout(RH)
 
-    if (length(x) == 0) {
+    if (x == "") {
       cat("Logout Sucessful")
     } else {
       cat("Failed to Logout")

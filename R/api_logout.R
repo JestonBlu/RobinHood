@@ -7,7 +7,7 @@
 #' @export
 api_logout <- function(RH) {
 
-  detail <- paste("client_id=",
+  detail <- paste("?client_id=",
                   RH$api_client_id,
                   "&token=",
                   RH$tokens.refresh_token,
@@ -16,9 +16,10 @@ api_logout <- function(RH) {
   # URL
   url <- paste(api_endpoints("revoke_token"), detail, sep = "")
 
-  # POST call
   dta <- POST(url) %>%
-    content(type = "json")
+    content(type = "json") %>%
+    rawToChar()
 
-  logout <- logout$content
+  return(dta)
+
 }
