@@ -40,7 +40,7 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
                          side = side,
                          client_id = RH$api_client_id)
 
-    # If type is limit then stop_price must be included, otherwise it must be excluded
+    # If trigger = "stop" then stop_price must be included, otherwise it must be excluded
     if (trigger == "immediate") {
       detail <- detail[, c("account", "instrument", "symbol", "type", "time_in_force",
                           "trigger", "price", "quantity", "side", "client_id")]
