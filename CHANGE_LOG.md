@@ -1,3 +1,13 @@
+## 1.2.1
+
+#### Bug fixes
+  - `api_orders_crypto()`: fixed a typo in the url preventing it from working
+  - `api_orders`: fixed an issue with limit orders that would not work without a `stop_price`
+  - `logout`: fixed broken api
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+
 ## 1.2
 
 #### New Features
@@ -13,13 +23,6 @@
   - Changed from `curl` to `httr` for backend API calls
   - Fixed bad date format in `api_accounts`
   - Improved comments in code
-
------------------------------------------------------------------------------------------------------------------------------
-
-## 1.0.8
-
-#### Bug fixes
-  - Cleaned up code and added comments in preparation for add crypto features
 
 -----------------------------------------------------------------------------------------------------------------------------
 
@@ -49,12 +52,9 @@
     - fixed an issue that throws an error when one of your investments has no "Simple Name" value in the api
 
 #### New Features
-  - `get_historicals()`
-    - added a new function for pulling historical prices
-  - `get_portfolios()`
-    - added a new function for pulling current and historical portfolio values
-  - `get_order_history()`
-    - added an additional field `created_at`
+  - `get_historicals()`: added a new function for pulling historical prices
+  - `get_portfolios()`: added a new function for pulling current and historical portfolio values
+  - `get_order_history()`: added an additional field `created_at`
 
 #### Clean up
   - Reorganized some of the api_functions to make more calls go through `api_instruments()` when pulling instrument meta data
