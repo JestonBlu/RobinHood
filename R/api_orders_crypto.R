@@ -33,7 +33,7 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
                          time_in_force = time_in_force,
                          type = type)
 
-    dta <- POST(url = api_endpoints("dta", "crypto"),
+    dta <- POST(url = api_endpoints("orders", "crypto"),
                 add_headers("Accept" = "application/json",
                             "Content-Type" = "application/json",
                             "Authorization" = paste("Bearer", RH$tokens.access_token)),
