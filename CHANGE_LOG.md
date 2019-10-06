@@ -1,8 +1,10 @@
 ## 1.2.1
 
 #### Bug fixes
-  - `api_orders_crypto()`: fixed a typo in the url preventing it from working
-  - `api_orders`: fixed an issue with limit orders that would not work without a `stop_price`
+  - `place_orders_crypto()`: fixed a typo in the api url preventing it from working
+  - `place_orders`: fixed an issue with limit orders that would not work without a `stop_price`
+  - `cancel_order_crypto`: fixed a typo preventing it from working
+  - `get_tickers`: fixed a typo preventing function from working
   - `logout`: fixed broken api
 
 

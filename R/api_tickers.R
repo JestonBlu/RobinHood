@@ -25,7 +25,8 @@ api_tickers <- function(RH) {
 
   # Format return
   dta <- mod_json(dta, "fromJSON")
-  output <- as.list(dta$results)
+
+  output <- dta$results
 
   # Cycle through the pages of tickers until all have been pulled
   while (length(dta$`next`) > 0) {
@@ -40,11 +41,9 @@ api_tickers <- function(RH) {
                            "Authorization" = token))
 
     # Format return
-    dta <- mod_json(dta$content, "fromJSON")
+    dta <- mod_json(dta, "fromJSON")
 
-    x <- dta$results
-
-    output <- rbind(output, x)
+    output <- rbind(output, dta$results)
 
     profvis::pause(.25)
   }
