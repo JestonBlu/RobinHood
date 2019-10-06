@@ -84,7 +84,7 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
     token <- paste("Bearer", RH$tokens.access_token)
 
     # GET call
-    dta <- GET(url,
+    dta <- POST(url,
         add_headers("Accept" = "application/json",
                     "Content-Type" = "application/json",
                     "Authorization" = token))
