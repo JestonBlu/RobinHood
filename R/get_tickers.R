@@ -53,10 +53,11 @@ get_tickers <- function(RH, add_fundamentals = FALSE) {
       end_time <- proc.time() - start_time
 
       cat("..........COMPLETE (", round(end_time[3] / 60, 2), "minutes)")
-    }
 
-    # Join tickers and fundamentals
-    tickers <- dplyr::left_join(tickers, fundamentals, by = "symbol")
+      # Join tickers and fundamentals
+      tickers <- dplyr::left_join(tickers, fundamentals, by = "symbol")
+
+    }
 
     return(tickers)
 }
