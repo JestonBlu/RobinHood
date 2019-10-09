@@ -69,10 +69,10 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
     dta$cumulative_quantity <- as.numeric(dta$cumulative_quantity)
     dta$price <- as.numeric(dta$price)
     dta$quantity <- as.numeric(dta$quantity)
-    dta$rounded_executed_notional<- as.numeric(dta$rounded_executed_notional)
+    dta$rounded_executed_notional <- as.numeric(dta$rounded_executed_notional)
     dta$created_at <- lubridate::ymd_hms(dta$created_at)
     dta$updated_at <- lubridate::ymd_hms(dta$updated_at)
-    dta$updated_at <- lubridate::ymd_hms(dta$last_transaction_at)
+    dta$last_transaction_at <- lubridate::ymd_hms(dta$last_transaction_at)
 
     return(dta)
   }
@@ -113,33 +113,33 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
     dta <- as.data.frame(dta$results)
 
     # Extract executions and combine with main extraction
-    executions = data.frame()
+    executions <- data.frame()
 
     # Loop through executions
     for (i in 1:length(dta$executions)) {
-      x = data.frame(dta$executions[i])
+      x <- data.frame(dta$executions[i])
 
       if (nrow(x) == 0) {
-        x = data.frame(effective_price = NA, id = NA, quantity = NA, timestamp = NA)
+        x <- data.frame(effective_price = NA, id = NA, quantity = NA, timestamp = NA)
       }
 
-      executions = rbind(executions, x)
+      executions <- rbind(executions, x)
     }
 
     # Rename Columns
-    colnames(executions) = c("exec_effective_price", "exec_id", "exec_quantity", "exec_timestamp")
+    colnames(executions) <- c("exec_effective_price", "exec_id", "exec_quantity", "exec_timestamp")
 
     # Combine executions with the rest of order history
-    dta = cbind(dta, executions)
+    dta <- cbind(dta, executions)
 
     # Reformat columns
-    dta = dta %>%
+    dta <- dta %>%
       dplyr::mutate_at(c("created_at", "last_transaction_at", "updated_at", "exec_timestamp"), lubridate::ymd_hms) %>%
       dplyr::mutate_at(c("cumulative_quantity", "price", "quantity", "rounded_executed_notional", "exec_effective_price",
                   "exec_quantity"), as.numeric)
 
     # Remove
-    dta = dta[, !names(dta) %in% "executions"]
+    dta <- dta[, !names(dta) %in% "executions"]
 
     return(dta)
 
