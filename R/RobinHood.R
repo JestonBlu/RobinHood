@@ -15,7 +15,7 @@ RobinHood <- function(username, password) {
 
     # Login to RobinHood, returns RobinHood object with access tokens
     RH <- api_login(username, password)
-
+    
     # Get account data for the main purpose of returning the position url
     accounts <- api_accounts(RH)
     url_positions <- accounts$positions

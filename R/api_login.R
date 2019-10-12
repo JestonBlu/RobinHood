@@ -30,7 +30,7 @@ api_login <- function(username, password) {
     jsonlite::fromJSON() %>%
     as.list()
   
-  if(dta$detail == 'Unable to log in with provided credentials.') {
+  if('detail' %in% names(dta)) {
     stop(dta$detail)
   }
 

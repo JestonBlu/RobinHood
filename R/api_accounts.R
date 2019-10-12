@@ -22,21 +22,25 @@ api_accounts <- function(RH) {
   dta <- as.list(dta$results)
 
   # Reformat margin balances
-  dta$margin_balances <- dta$margin_balances %>%
-    dplyr::mutate_at(c("gold_equity_requirement",    "outstanding_interest", "cash_held_for_options_collateral",
-                       "uncleared_nummus_deposits",  "overnight_ratio",      "day_trade_buying_power",
-                       "portfolio_cash",             "funding_hold_balance", "cash_available_for_withdrawal",
-                       "unallocated_margin_cash",    "sma",                  "cash_held_for_nummus_restrictions",
-                       "start_of_day_dtbp",          "day_trade_ratio",      "overnight_buying_power_held_for_orders",
-                       "cash_held_for_orders",       "unsettled_debit",      "cash_held_for_dividends",
-                       "cash",                       "margin_limit",         "start_of_day_overnight_buying_power",
-                       "overnight_buying_power",     "uncleared_deposits",   "day_trade_buying_power_held_for_orders",
-                       "unsettled_funds",            "pending_deposit",      "cash_available_for_withdrawal",
-                       "cash_held_for_restrictions", "crypto_buying_power",  "cash_pending_from_options_events",
-                       "settled_amount_borrowed"),
-                      as.numeric) %>%
-    dplyr::mutate_at(c("updated_at", "created_at"), lubridate::ymd_hms) %>%
-    dplyr::mutate_at(c("marked_pattern_day_trader_date"), lubridate::ymd)
+
+  if(!is.na(dta$margin_balances)) {
+    dta$margin_balances <- dta$margin_balances %>%
+      dplyr::mutate_at(c("gold_equity_requirement",    "outstanding_interest", "cash_held_for_options_collateral",
+                         "uncleared_nummus_deposits",  "overnight_ratio",      "day_trade_buying_power",
+                         "portfolio_cash",             "funding_hold_balance", "cash_available_for_withdrawal",
+                         "unallocated_margin_cash",    "sma",                  "cash_held_for_nummus_restrictions",
+                         "start_of_day_dtbp",          "day_trade_ratio",      "overnight_buying_power_held_for_orders",
+                         "cash_held_for_orders",       "unsettled_debit",      "cash_held_for_dividends",
+                         "cash",                       "margin_limit",         "start_of_day_overnight_buying_power",
+                         "overnight_buying_power",     "uncleared_deposits",   "day_trade_buying_power_held_for_orders",
+                         "unsettled_funds",            "pending_deposit",      "cash_available_for_withdrawal",
+                         "cash_held_for_restrictions", "crypto_buying_power",  "cash_pending_from_options_events",
+                         "settled_amount_borrowed"),
+                       as.numeric) %>%
+      dplyr::mutate_at(c("updated_at", "created_at"), lubridate::ymd_hms) %>%
+      dplyr::mutate_at(c("marked_pattern_day_trader_date"), lubridate::ymd)
+  }
+  
 
   # Reformat instant eligibility
   dta$instant_eligibility <- dta$instant_eligibility %>%
