@@ -29,6 +29,10 @@ api_login <- function(username, password) {
     rawToChar() %>%
     jsonlite::fromJSON() %>%
     as.list()
+  
+  if(dta$detail == 'Unable to log in with provided credentials.') {
+    stop(dta$detail)
+  }
 
   # Return object
   RH <- c(RH,
