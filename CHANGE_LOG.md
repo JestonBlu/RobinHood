@@ -1,11 +1,14 @@
+## 1.2.3
+  - `get_tickers()`: fixed an issue where `get_tickers(RH, fundamentals = TRUE)` would return an error when a tickers fundamental data is empty
+
 ## 1.2.1
 
 #### Bug fixes
   - `place_orders_crypto()`: fixed a typo in the api url preventing it from working
-  - `place_orders`: fixed an issue with limit orders that would not work without a `stop_price`
-  - `cancel_order_crypto`: fixed a typo preventing it from working
-  - `get_tickers`: fixed a typo preventing function from working
-  - `logout`: fixed broken api
+  - `place_orders()`: fixed an issue with limit orders that would not work without a `stop_price`
+  - `cancel_order_crypto()`: fixed a typo preventing it from working
+  - `get_tickers()`: fixed a typo preventing function from working
+  - `logout()`: fixed broken api
 
 
 -----------------------------------------------------------------------------------------------------------------------------

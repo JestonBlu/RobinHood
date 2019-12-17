@@ -1,8 +1,8 @@
 Package: RobinHood
 Type: Package
 Title: Interface for the RobinHood.com No Commission Investing Platform
-Version: 1.2.2
-Date: 2019-10-5
+Version: 1.2.3
+Date: 2019-12-17
 Author: Joseph Blubaugh
 Maintainer: Joseph Blubaugh <jestonblu@gmail.com>
 Description: Execute API calls to the RobinHood <https://robinhood.com> investing platform. Functionality includes accessing account data and current holdings, retrieving investment statistics and quotes, placing and canceling orders, getting market trading hours, searching investments by popular tag, and interacting with watch lists.

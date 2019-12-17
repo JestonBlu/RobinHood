@@ -23,10 +23,5 @@ api_fundamentals <- function(RH, ticker) {
   dta <- mod_json(dta, "fromJSON")
   dta <- as.data.frame(dta$results)
 
-  dta <- dta %>%
-    dplyr::mutate_at(c("open", "high", "low", "volume", "average_volume_2_weeks", "average_volume", "high_52_weeks",
-                       "dividend_yield", "low_52_weeks", "market_cap", "pe_ratio", "shares_outstanding"),
-                     as.numeric)
-
   return(dta)
 }
