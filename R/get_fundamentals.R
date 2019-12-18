@@ -68,7 +68,7 @@ get_fundamentals <- function(RH, ticker, include_description = FALSE) {
     # Format
     fundamentals <- fundamentals %>%
       dplyr::mutate_at(c("open", "high", "low", "volume", "average_volume_2_weeks", "average_volume", "high_52_weeks",
-                         "dividend_yield", "low_52_weeks", "market_cap", "pe_ratio", "shares_outstanding"),
+                         "dividend_yield", "low_52_weeks", "market_cap", "pb_ratio", "pe_ratio", "shares_outstanding"),
                        as.numeric)
 
     return(fundamentals)
