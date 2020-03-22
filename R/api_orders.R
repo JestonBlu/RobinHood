@@ -16,11 +16,12 @@
 #' @param stop_price (number) if trigger = stop, enter stop price, otherwise leave blank
 #' @param quantity (int) number of shares you wish to transact
 #' @param side (string) "buy" or "sell"
+#' @param page_size (int) for get_order_history, refers to the number of historical records to return
 #' @import httr magrittr
 #' @export
 api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbol = NULL, type = NULL,
                        time_in_force = NULL, trigger = NULL, price = NULL, stop_price = NULL, quantity = NULL,
-                       side = NULL) {
+                       side = NULL, page_size = NULL) {
 
 
   if (action == "order") {
@@ -111,7 +112,7 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
 
   if (action == "history") {
 
-    url <- api_endpoints("orders")
+    url <- paste(api_endpoints("orders"), "?page_size=", page_size, sep = "")
     token <- paste("Bearer", RH$tokens.access_token)
 
     # GET call

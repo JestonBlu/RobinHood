@@ -4,8 +4,17 @@
 \alias{place_order}
 \title{Place a buy or sell order against your RobinHood account}
 \usage{
-place_order(RH, symbol, type, time_in_force, trigger, price,
-  stop_price = NA, quantity, side)
+place_order(
+  RH,
+  symbol,
+  type,
+  time_in_force,
+  trigger,
+  price,
+  stop_price = NA,
+  quantity,
+  side
+)
 }
 \arguments{
 \item{RH}{object of class RobinHood}

@@ -4,9 +4,18 @@
 \alias{api_orders_crypto}
 \title{RobinHood API: Orders Crypto}
 \usage{
-api_orders_crypto(RH, action, order_id = NULL, cancel_url = NULL,
-  currency_pair_id = NULL, type = NULL, time_in_force = NULL,
-  price = NULL, quantity = NULL, side = NULL)
+api_orders_crypto(
+  RH,
+  action,
+  order_id = NULL,
+  cancel_url = NULL,
+  currency_pair_id = NULL,
+  type = NULL,
+  time_in_force = NULL,
+  price = NULL,
+  quantity = NULL,
+  side = NULL
+)
 }
 \arguments{
 \item{RH}{object of class RobinHood}

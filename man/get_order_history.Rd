@@ -4,10 +4,12 @@
 \alias{get_order_history}
 \title{Download all available order history for your RobinHood account}
 \usage{
-get_order_history(RH)
+get_order_history(RH, page_size = 1000)
 }
 \arguments{
 \item{RH}{object of class RobinHood}
+
+\item{page_size}{(int) number of historical records to fetch}
 }
 \description{
 Download all available order history for your RobinHood account
