@@ -4,9 +4,21 @@
 \alias{api_orders}
 \title{RobinHood API: Orders}
 \usage{
-api_orders(RH, action, order_url = NULL, instrument_id = NULL,
-  symbol = NULL, type = NULL, time_in_force = NULL, trigger = NULL,
-  price = NULL, stop_price = NULL, quantity = NULL, side = NULL)
+api_orders(
+  RH,
+  action,
+  order_url = NULL,
+  instrument_id = NULL,
+  symbol = NULL,
+  type = NULL,
+  time_in_force = NULL,
+  trigger = NULL,
+  price = NULL,
+  stop_price = NULL,
+  quantity = NULL,
+  side = NULL,
+  page_size = NULL
+)
 }
 \arguments{
 \item{RH}{object of class RobinHood}
@@ -32,6 +44,8 @@ api_orders(RH, action, order_url = NULL, instrument_id = NULL,
 \item{quantity}{(int) number of shares you wish to transact}
 
 \item{side}{(string) "buy" or "sell"}
+
+\item{page_size}{(int) for get_order_history, refers to the number of historical records to return}
 }
 \description{
 Backend function called by place_order(), get_order_status(), cancel_order(). Issues a buy/sell order or

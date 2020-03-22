@@ -1,6 +1,7 @@
 #' Download all available order history for your RobinHood account
 #'
 #' @param RH object of class RobinHood
+#' @param page_size (int) number of historical records to fetch
 #' @import httr jsonlite magrittr lubridate
 #' @export
 #' @examples
@@ -10,13 +11,13 @@
 #'
 #' get_order_history(RH)
 #'}
-get_order_history <- function(RH) {
+get_order_history <- function(RH, page_size = 1000) {
 
     # Check if RH is valid
     check_rh(RH)
 
     # Get Order History
-    order_history <- api_orders(RH, action = "history")
+    order_history <- api_orders(RH, action = "history", page_size = page_size)
 
     # Get symbol to attach to output
     symbol <- as.character()

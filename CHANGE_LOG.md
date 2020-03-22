@@ -1,3 +1,10 @@
+## 1.2.4
+
+#### Clean up
+  - added `page_size = 1000` as the default parameter for `get_order_history()`
+
+-----------------------------------------------------------------------------------------------------------------------------
+
 ## 1.2.3
   - `get_tickers()`: fixed an issue where `get_tickers(RH, fundamentals = TRUE)` would return an error when a tickers fundamental data is empty
 
