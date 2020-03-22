@@ -1,5 +1,8 @@
 ## 1.2.4
 
+#### Bug Fixes
+  - fixed quantity check in `place_order_crypto()` so that it allows fractional share purchases
+
 #### Clean up
   - added `page_size = 1000` as the default parameter for `get_order_history()`
 

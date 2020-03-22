@@ -13,7 +13,7 @@ place_order_crypto(RH, symbol, type, time_in_force, price, quantity, side)
 
 \item{type}{(string) "market" or "limit"}
 
-\item{time_in_force}{(string) Good For Day ("gfd"), Good Till Canceled ("gtc"), Immediate or Cancel ("ioc"), or Opening ("opg")}
+\item{time_in_force}{(string) Good Till Canceled ("gtc"), Immediate or Cancel ("ioc"), or Opening ("opg")}
 
 \item{price}{(number) the price you are willing to sell or buy at}
 
@@ -33,7 +33,7 @@ RH <- RobinHood("username", "password")
 x <- place_order_crypto(RH = RH,
                        symbol = "DOGE",        # Ticker symbol
                        type = "market",        # Type of market order (market, limit)
-                       time_in_force = "gfd",  # Time period (gfd: good for day)
+                       time_in_force = "gtc",  # Time period (gfd: good for day)
                        price = .003,           # The highest price you are willing to pay
                        quantity = 500,         # Number of shares you want
                        side = "buy")           # buy or sell
