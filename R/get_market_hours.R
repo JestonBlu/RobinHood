@@ -49,17 +49,17 @@ get_market_hours <- function(RH, market_date = NULL) {
       market_hours <- rbind(market_hours, x)
     }
 
-  # Keep relevant columns
+    # Keep relevant columns
     markets <- markets[, c("name", "acronym", "city", "website", "timezone")]
-    market_hours <- market_hours[, c("opens_at", "closes_at",
-                                     "extended_opens_at", "extended_closes_at",
-                                     "is_open", "date")]
+    market_hours <- market_hours[, c("opens_at", "closes_at", "extended_opens_at",
+                                     "extended_closes_at", "is_open", "date")]
 
-    # Adjust time format
-    market_hours$opens_at <- strftime(lubridate::ymd_hms(market_hours$opens_at), format = "%H:%M:%S")
-    market_hours$closes_at <- strftime(lubridate::ymd_hms(market_hours$closes_at), format = "%H:%M:%S")
-    market_hours$extended_opens_at <- strftime(lubridate::ymd_hms(market_hours$extended_opens_at), format = "%H:%M:%S")
-    market_hours$extended_closes_at <- strftime(lubridate::ymd_hms(market_hours$extended_closes_at), format = "%H:%M:%S")
+    # Format time
+    market_hours %>%
+      mutate(opens_at = strftime(lubridate::ymd_hms(opens_at), format = "%H:%M:%S"),
+             closes_at = strftime(lubridate::ymd_hms(closes_at), format = "%H:%M:%S"),
+             extended_opens_at = strftime(lubridate::ymd_hms(extended_opens_at), format = "%H:%M:%S"),
+             extended_closes_at = strftime(lubridate::ymd_hms(extended_closes_at), format = "%H:%M:%S"))
 
     markets <- cbind(markets, market_hours)
 
