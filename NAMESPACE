@@ -3,6 +3,7 @@
 export(RobinHood)
 export(api_accounts)
 export(api_accounts_crypto)
+export(api_ach)
 export(api_currency_pairs)
 export(api_endpoints)
 export(api_fundamentals)
