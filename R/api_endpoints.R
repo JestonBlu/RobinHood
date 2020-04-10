@@ -21,6 +21,7 @@ api_endpoints <- function(endpoint, source = "equity") {
     option_instruments = "options/instruments",
     orders             = "orders/",
     portfolios         = "portfolios/",
+    positions          = "positions/",
     quotes             = "quotes/?symbols=",
     tags               = "midlands/tags/tag/",
     instruments        = "instruments/",
