@@ -56,10 +56,8 @@ get_market_hours <- function(RH, market_date = NULL) {
 
     # Format time
     market_hours %>%
-      dplyr::mutate(opens_at = strftime(lubridate::ymd_hms(opens_at), format = "%H:%M:%S"),
-                    closes_at = strftime(lubridate::ymd_hms(closes_at), format = "%H:%M:%S"),
-                    extended_opens_at = strftime(lubridate::ymd_hms(extended_opens_at), format = "%H:%M:%S"),
-                    extended_closes_at = strftime(lubridate::ymd_hms(extended_closes_at), format = "%H:%M:%S"))
+    dplyr::mutate_at(c("opens_at", "closes_at", "extended_opens_at", "extended_closes_at"),
+                     function(x) strftime(lubridate::ymd_hms(x), format = "%H:%M:%S"))
 
     markets <- cbind(markets, market_hours)
 
