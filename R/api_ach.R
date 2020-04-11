@@ -3,12 +3,12 @@
 #' Backend function for interacting and getting data on linked bank accounts.
 #'
 #' @param RH object of class RobinHood
-#' @param action (string) one of "history", "accounts", "schedules", "transfer"
+#' @param action (string) one of "transfers", "relationships", "schedules"
 #' @import httr magrittr
 #' @export
 api_ach <- function(RH, action) {
 
-  if (action == "history") {
+  if (action == "transfers") {
 
     # URL and token
     url <- api_endpoints("ach_transfers")
@@ -34,7 +34,7 @@ api_ach <- function(RH, action) {
 
   }
 
-  if (action == "accounts") {
+  if (action == "relationships") {
 
     # URL and token
     url <- api_endpoints("ach_relationships")

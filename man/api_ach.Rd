@@ -9,7 +9,7 @@ api_ach(RH, action)
 \arguments{
 \item{RH}{object of class RobinHood}
 
-\item{action}{(string) one of "history", "accounts", "schedules"}
+\item{action}{(string) one of "transfers", "relationships", "schedules"}
 }
 \description{
 Backend function for interacting and getting data on linked bank accounts.
