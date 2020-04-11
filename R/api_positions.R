@@ -8,7 +8,7 @@
 api_positions <- function(RH) {
 
   # URL and token
-  url <- RH$url.positions
+  url <- api_endpoints("positions")
   token <- paste("Bearer", RH$tokens.access_token)
 
   # GET call

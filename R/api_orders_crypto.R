@@ -97,16 +97,15 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
 
   # Get Order History
   if (action == "history") {
-
     # URL and token
     url <- api_endpoints("orders_crypto", source = "crypto")
     token <- paste("Bearer", RH$tokens.access_token)
 
     # GET call
     dta <- GET(url,
-        add_headers("Accept" = "application/json",
-                    "Content-Type" = "application/json",
-                    "Authorization" = token))
+               add_headers("Accept" = "application/json",
+                           "Content-Type" = "application/json",
+                           "Authorization" = token))
 
     # format return
     dta <- mod_json(dta, "fromJSON")
@@ -116,31 +115,33 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
     executions <- data.frame()
 
     # Loop through executions
-    for (i in 1:length(dta$executions)) {
-      x <- data.frame(dta$executions[i])
-
-      if (nrow(x) == 0) {
-        x <- data.frame(effective_price = NA, id = NA, quantity = NA, timestamp = NA)
-      }
-
-      executions <- rbind(executions, x)
-    }
+    # for (i in 1:length(dta$executions)) {
+    #   x <- data.frame(dta$executions[i])
+    #
+    #   if (nrow(x) == 0) {
+    #     x <- data.frame(effective_price = NA, id = NA, quantity = NA, timestamp = NA)
+    #   }
+    #
+    #   executions <- rbind(executions, x)
+    # }
 
     # Rename Columns
-    colnames(executions) <- c("exec_effective_price", "exec_id", "exec_quantity", "exec_timestamp")
+    #colnames(executions) <- c("exec_effective_price", "exec_id", "exec_quantity", "exec_timestamp")
 
     # Combine executions with the rest of order history
-    dta <- cbind(dta, executions)
+    # dta <- cbind(dta, executions)
 
     # Reformat columns
     dta <- dta %>%
-      dplyr::mutate_at(c("created_at", "last_transaction_at", "updated_at", "exec_timestamp"), lubridate::ymd_hms) %>%
-      dplyr::mutate_at(c("cumulative_quantity", "price", "quantity", "rounded_executed_notional", "exec_effective_price",
-                  "exec_quantity"), as.numeric)
+      dplyr::mutate_at(c("created_at", "last_transaction_at", "updated_at"), lubridate::ymd_hms) %>%
+      dplyr::mutate_at(c("cumulative_quantity", "price", "quantity", "rounded_executed_notional"), as.numeric)
+
+    # , "exec_timestamp"
+    # , "exec_effective_price", "exec_quantity"
 
     # Remove
     dta <- dta[, !names(dta) %in% "executions"]
-
+    
     return(dta)
 
   }
