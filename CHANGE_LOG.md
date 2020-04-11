@@ -1,7 +1,8 @@
 ## 1.2.5
 
 #### Bug Fixes
-  - Fixed an API change that broke `get_positions()` 
+  - Fixed an API change that broke `get_positions()`
+  - Fixed an API change that broke `get_order_history_crypto()`
 
 -----------------------------------------------------------------------------------------------------------------------------
 
