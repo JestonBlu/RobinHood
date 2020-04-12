@@ -115,7 +115,7 @@ get_ach <- function(RH, action, status_url = NULL) {
 
   if (action == "status") {
 
-    dta <- api_ach(RH, action, status_url)
+    dta <- api_ach(RH, action, status_url = status_url)
 
   }
 
