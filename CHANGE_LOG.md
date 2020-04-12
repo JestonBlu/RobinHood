@@ -1,3 +1,12 @@
+
+## 1.3
+
+#### New Features
+  - Added `get_ach()`, `place_ach_transfer()`, `cancel_ach_transfer()` which allows transfers between linked bank accounts and RobinHood
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+
 ## 1.2.5
 
 #### Bug Fixes
