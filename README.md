@@ -1,5 +1,5 @@
 ![Travis-CI](https://travis-ci.org/JestonBlu/RobinHood.svg?branch=master)
-![Dev Version](https://img.shields.io/badge/github-1.2.5-blue.svg)
+![Dev Version](https://img.shields.io/badge/github-1.3-blue.svg)
 ![CRAN Version](http://www.r-pkg.org/badges/version/RobinHood?color=blue)
 ![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/RobinHood)
 
@@ -28,7 +28,7 @@ Haven't signed up for a RobinHood account yet? Use my **[referral link](https://
 - [x] Get market open/close hours
 - [x] Search investments by popular tag
 - [x] Calculate historical account balance
-- [] Get options market data
+- [ ] Get options market data
 - [ ] Get options contracts
 
 ## Crypto Features
@@ -85,6 +85,22 @@ get_portfolios(RH, interval = "day", span = "3month")
 # $ close_market_value   : num  0 4.07 4.14 4.27 17.52 ...
 # $ net_return           : num  0 0.0001 0 0.0002 0.0094 0.0002 0 -0.0003 0.0005 0.0015 ...
 # $ session              : chr  "reg" "reg" "reg" "reg" ...
+
+## Interact with your linked bank accounts
+get_ach(RH, action = "transfers")          # Returns historical bank transfers
+get_ach(RH, action = "relationships")      # Info on your linked bank accounts
+get_ach(RH, action = "schedules")          # Info on scheduled deposits
+
+# Place a one time bank transfer
+x = place_ach_transfer(RH, action = "deposit", amount = 2, transfer_url = transfer_url)
+
+# Get status of a transfer
+get_ach(RH, action = "status", status_url = x$status_url)
+
+# Cancel a pending transfer
+cancel_ach_transfer(RH, cancel_url = x$cancel_url)
+
+
 ```
 
 
