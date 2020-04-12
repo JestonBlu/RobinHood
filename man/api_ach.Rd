@@ -4,12 +4,16 @@
 \alias{api_ach}
 \title{RobinHood API: ACH}
 \usage{
-api_ach(RH, action)
+api_ach(RH, action, status_url = NULL, cancel_url = NULL)
 }
 \arguments{
 \item{RH}{object of class RobinHood}
 
-\item{action}{(string) one of "transfers", "relationships", "schedules"}
+\item{action}{(string) one of "transfers", "relationships", "schedules", "status", "cancel"}
+
+\item{status_url}{(string) URL returned by place_ach_transfer()}
+
+\item{cancel_url}{(string) URL returned by place_ach_transfer()}
 }
 \description{
 Backend function for interacting and getting data on linked bank accounts.

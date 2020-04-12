@@ -1,12 +1,14 @@
 #' Get ACH data from your RobinHood linked bank accounts
 #'
 #' @param RH object of class RobinHood
-#' @param action (string) one of "transfers", "relationships", "schedules"
+#' @param action (string) one of "transfers", "relationships", "schedules", "status"
+#' @param status_url (string) URL returned by place_ach_transfer()
 #' @import httr magrittr
 #' @export
-get_ach <- function(RH, action) {
+get_ach <- function(RH, action, status_url = NULL) {
 
-  dta <- api_ach(RH, action)
+  # Check for correctly spelled action
+  if (!action %in% c("transfers", "relationships", "schedules", "status")) stop("Invalid action")
 
   # Get tranfer history
   if (action == "transfers") {
@@ -49,6 +51,7 @@ get_ach <- function(RH, action) {
 
   }
 
+
   # Get linked bank accounts
   if (action == "relationships") {
 
@@ -59,13 +62,15 @@ get_ach <- function(RH, action) {
     dta <- dta %>%
       dplyr::select(c("bank_routing_number", "bank_account_number", "bank_account_type", "verified", "withdrawal_limit",
                       "state", "bank_account_holder_name","bank_account_nickname", "created_at", "unlinked_at",
-                      "document_request", "verify_micro_deposits")) %>%
+                      "document_request", "verify_micro_deposits", "url")) %>%
       dplyr::mutate_at(c("created_at", "unlinked_at"), lubridate::ymd_hms) %>%
-      dplyr::mutate_at(c("withdrawal_limit"), as.numeric)
+      dplyr::mutate_at(c("withdrawal_limit"), as.numeric) %>%
+      dplyr::rename("transfer_url" = "url")
 
     # Shorten names
     colnames(dta) <- gsub("bank_", "", names(dta))
   }
+
 
   # Get schedeuled transfers
   if (action == "schedules") {
@@ -107,6 +112,12 @@ get_ach <- function(RH, action) {
                       "last_attempt_date", "created_at", "updated_at"))
   }
 
+
+  if (action == "status") {
+
+    dta <- api_ach(RH, action, status_url)
+
+  }
 
   return(dta)
 

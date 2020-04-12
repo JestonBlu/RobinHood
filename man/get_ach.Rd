@@ -4,12 +4,14 @@
 \alias{get_ach}
 \title{Get ACH data from your RobinHood linked bank accounts}
 \usage{
-get_ach(RH, action)
+get_ach(RH, action, status_url = NULL)
 }
 \arguments{
 \item{RH}{object of class RobinHood}
 
-\item{action}{(string) one of "transfers", "relationships", "schedules"}
+\item{action}{(string) one of "transfers", "relationships", "schedules", "status"}
+
+\item{status_url}{(string) URL returned by place_ach_transfer()}
 }
 \description{
 Get ACH data from your RobinHood linked bank accounts
