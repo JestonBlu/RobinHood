@@ -22,6 +22,9 @@ api_quote <- function(RH, symbols_url) {
   dta <- mod_json(dta, "fromJSON")
   dta <- as.data.frame(dta$results)
 
+  # Check if api did not return any results
+  if (nrow(dta) == 0) stop("Symbol not found")
+
   dta <- dta %>%
   dplyr::mutate_at(c("ask_price", "bid_price", "last_trade_price",
                      "last_extended_hours_trade_price",
