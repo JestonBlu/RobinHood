@@ -10,8 +10,8 @@ place_ach_transfer <- function(RH, action, amount, transfer_url) {
 
   if(!action %in% c("deposit", "withdraw")) stop("Invalid action")
 
-  dta <- api_ach(RH, action, amount, transfer_url = transfer_url)
+  ach_order <- api_ach(RH, action, amount, transfer_url = transfer_url)
 
-  return(dta)
+  return(ach_order)
 
   }

@@ -3,7 +3,7 @@
 #' Returns a list of order information given a buy/sell order url returned from place_order().
 #'
 #' @param RH object of class RobinHood
-#' @param order_url (string) url of order returned from place_order
+#' @param status_url (string) url of order returned from place_order
 #' @param limit_output (logical) return limited info on the order (default TRUE)
 #' @import httr magrittr
 #' @export
@@ -22,23 +22,25 @@
 #'                  quantity = 1,           # Number of shares you want
 #'                  side = "buy")           # buy or sell
 #'
-#' get_order_status(RH, x$url)
+#' get_order_status(RH, x$status_url)
 #'}
-get_order_status <- function(RH, order_url, limit_output = TRUE) {
+get_order_status <- function(RH, status_url, limit_output = TRUE) {
 
     # Check if RH is valid
     check_rh(RH)
 
     # Get Order Status
-    order_status <- api_orders(RH, action = "status", order_url)
+    order_status <- api_orders(RH, action = "status", status_url = status_url)
 
     # Give addition order details if requested
     if (limit_output == TRUE) {
       order_status <- list(updated_at = order_status$updated_at,
-                          time_in_force = order_status$time_in_force,
-                          state = order_status$state,
-                          type = order_status$type,
-                          executions = order_status$executions)
+                           time_in_force = order_status$time_in_force,
+                           state = order_status$state,
+                           type = order_status$type,
+                           executions = order_status$executions,
+                           status_url = order_status$status_url,
+                           cancel_url = order_status$cancel_url)
                         }
 
      return(order_status)

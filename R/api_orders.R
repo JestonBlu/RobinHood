@@ -6,7 +6,8 @@
 #'
 #' @param RH object of class RobinHood
 #' @param action (string) one of "order", "status", "cancel", or "history"
-#' @param order_url (string) action is "status" or "cancel", only order_url is required
+#' @param status_url (string) if action = "status", status_url is required (output from place_order())
+#' @param cancel_url (string) if action = "cancel", cancel_url is required (output from place_order())
 #' @param instrument_id (string) URL of the instrument_id
 #' @param symbol (string) Ticket symbol you are attempting to buy or sell
 #' @param type (string) "market" or "limit"
@@ -19,7 +20,7 @@
 #' @param page_size (int) for get_order_history, refers to the number of historical records to return
 #' @import httr magrittr
 #' @export
-api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbol = NULL, type = NULL,
+api_orders <- function(RH, action, status_url = NULL, cancel_url = NULL, instrument_id = NULL, symbol = NULL, type = NULL,
                        time_in_force = NULL, trigger = NULL, price = NULL, stop_price = NULL, quantity = NULL,
                        side = NULL, page_size = NULL) {
 
@@ -56,6 +57,9 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
     dta <- mod_json(dta, "fromJSON")
     dta <- as.list(dta)
 
+    # Rename URLs
+    names(dta)[names(dta) %in% c("url", "cancel")] <- c("status_url", "cancel_url")
+
     dta$updated_at <-  lubridate::ymd_hms(dta$updated_at)
     dta$last_transaction_at <-  lubridate::ymd_hms(dta$last_transaction_at)
     dta$created_at <-  lubridate::ymd_hms(dta$created_at)
@@ -71,43 +75,43 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
 
   }
 
+
   if (action == "status") {
 
-    # URL and token
-    url <- order_url
+    # Token
     token <- paste("Bearer", RH$tokens.access_token)
 
     # GET call
-    dta <- GET(url,
-        add_headers("Accept" = "application/json",
-                    "Content-Type" = "application/json",
-                    "Authorization" = token))
+    dta <- GET(status_url,
+               add_headers("Accept" = "application/json",
+                          "Content-Type" = "application/json",
+                          "Authorization" = token))
 
     # format return
     dta <- mod_json(dta, "fromJSON")
     dta <- as.list(dta)
 
-    return(dta)
+    # Rename urls
+    names(dta)[names(dta) %in% c("url", "cancel")] <- c("status_url", "cancel_url")
+
   }
+
 
   if (action == "cancel") {
 
-    # URL and token
-    url <- order_url
+    # Token
     token <- paste("Bearer", RH$tokens.access_token)
 
     # GET call
-    dta <- POST(url,
+    dta <- POST(cancel_url,
         add_headers("Accept" = "application/json",
                     "Content-Type" = "application/json",
                     "Authorization" = token))
 
-    # format return
+    # Format return
     dta <- mod_json(dta, "fromJSON")
 
-    return(dta)
   }
-
 
 
   if (action == "history") {
@@ -125,9 +129,9 @@ api_orders <- function(RH, action, order_url = NULL, instrument_id = NULL, symbo
     dta <- mod_json(dta, "fromJSON")
     dta <- as.data.frame(dta$results)
 
-    return(dta)
-
-
   }
+
+  return(dta)
+
 
 }

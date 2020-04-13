@@ -7,7 +7,8 @@
 api_orders(
   RH,
   action,
-  order_url = NULL,
+  status_url = NULL,
+  cancel_url = NULL,
   instrument_id = NULL,
   symbol = NULL,
   type = NULL,
@@ -25,7 +26,9 @@ api_orders(
 
 \item{action}{(string) one of "order", "status", "cancel", or "history"}
 
-\item{order_url}{(string) action is "status" or "cancel", only order_url is required}
+\item{status_url}{(string) if action = "status", status_url is required (output from place_order())}
+
+\item{cancel_url}{(string) if action = "cancel", cancel_url is required (output from place_order())}
 
 \item{instrument_id}{(string) URL of the instrument_id}
 

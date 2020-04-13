@@ -143,10 +143,7 @@ api_ach <- function(RH, action, amount = NULL, status_url = NULL, cancel_url = N
                 add_headers("Accept" = "application/json",
                             "Content-Type" = "application/json",
                             "Authorization" = token)) %>%
-      content(type = "json") %>%
-      rawToChar() %>%
-      jsonlite::fromJSON() %>%
-      as.list()
+                mod_json("fromJSON")
   }
 
 

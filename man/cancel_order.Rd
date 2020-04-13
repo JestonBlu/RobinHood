@@ -4,12 +4,12 @@
 \alias{cancel_order}
 \title{Cancel an existing order on RobinHood}
 \usage{
-cancel_order(RH, order_url)
+cancel_order(RH, cancel_url)
 }
 \arguments{
 \item{RH}{object of class RobinHood}
 
-\item{order_url}{(string) cancel url returned from place_order()}
+\item{cancel_url}{(string) cancel url returned from place_order()}
 }
 \description{
 Send a cancel signal for a particular order to RobinHood. You will need to retain the buy/sell order url returned from place_order.
@@ -30,6 +30,6 @@ x <- place_order(RH = RH,
                  side = "buy")           # buy or sell
 
 # Cancel the order, should also generate an email confirmation
-cancel_order(RH, x$cancel)
+cancel_order(RH, x$cancel_url)
 }
 }

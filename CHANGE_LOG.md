@@ -2,7 +2,13 @@
 ## 1.3
 
 #### New Features
-  - Added `get_ach()`, `place_ach_transfer()`, `cancel_ach_transfer()` which allows transfers between linked bank accounts and RobinHood
+  - (GH-50) Added `get_ach()`, `place_ach_transfer()`, `cancel_ach_transfer()` which allows transfers between linked bank accounts and RobinHood
+
+#### Clean up
+  - (GH-85) Made cancel_url, status_url consistent across equity, crypto, and ach orders (crypto status requires an ID instead of staus_url so it has been left alone)
+  - Cleaned up old comments
+  - Fixed bad example code references
+  - Fixed date format warning on `get_quote()`
 
 
 -----------------------------------------------------------------------------------------------------------------------------

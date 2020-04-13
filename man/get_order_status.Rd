@@ -4,12 +4,12 @@
 \alias{get_order_status}
 \title{Get a current status of an order on RobinHood}
 \usage{
-get_order_status(RH, order_url, limit_output = TRUE)
+get_order_status(RH, status_url, limit_output = TRUE)
 }
 \arguments{
 \item{RH}{object of class RobinHood}
 
-\item{order_url}{(string) url of order returned from place_order}
+\item{status_url}{(string) url of order returned from place_order}
 
 \item{limit_output}{(logical) return limited info on the order (default TRUE)}
 }
@@ -31,6 +31,6 @@ x <- place_order(RH = RH,
                  quantity = 1,           # Number of shares you want
                  side = "buy")           # buy or sell
 
-get_order_status(RH, x$url)
+get_order_status(RH, x$status_url)
 }
 }
