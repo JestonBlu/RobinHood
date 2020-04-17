@@ -4,6 +4,7 @@
 #'
 #' @param RH object of class RobinHood
 #' @param market_date (string) date in the form 'yyyy-mm-dd', default today
+#' @param tz (string) one of timezone returned by OlsonNames(), defaults to local
 #' @import httr magrittr
 #' @export
 #' @examples
@@ -13,7 +14,7 @@
 #'
 #' get_market_hours(RH)
 #'}
-get_market_hours <- function(RH, market_date = NULL) {
+get_market_hours <- function(RH, market_date = NULL, tz = Sys.timezone()) {
 
     # Check if RH is valid
     check_rh(RH)
@@ -51,13 +52,15 @@ get_market_hours <- function(RH, market_date = NULL) {
 
     # Keep relevant columns
     markets <- markets[, c("name", "acronym", "city", "website", "timezone")]
-    market_hours <- market_hours[, c("opens_at", "closes_at", "extended_opens_at",
-                                     "extended_closes_at", "is_open", "date")]
+    market_hours <- market_hours[, c("opens_at", "closes_at", "extended_opens_at", "extended_closes_at", "is_open", "date")]
+
+    # Overwrite timezone to match local or input
+    markets$timezone <- tz
 
     # Format time
-    market_hours %>%
-    dplyr::mutate_at(c("opens_at", "closes_at", "extended_opens_at", "extended_closes_at"),
-                     function(x) strftime(lubridate::ymd_hms(x), format = "%H:%M:%S"))
+    market_hours <- market_hours %>%
+      dplyr::mutate_at(c("opens_at", "closes_at", "extended_opens_at", "extended_closes_at"),
+                       function(x) lubridate::with_tz(lubridate::ymd_hms(x), tzone = tz))
 
     markets <- cbind(markets, market_hours)
 

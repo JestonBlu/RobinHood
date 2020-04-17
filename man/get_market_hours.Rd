@@ -4,12 +4,14 @@
 \alias{get_market_hours}
 \title{Get open market hours}
 \usage{
-get_market_hours(RH, market_date = NULL)
+get_market_hours(RH, market_date = NULL, tz = Sys.timezone())
 }
 \arguments{
 \item{RH}{object of class RobinHood}
 
 \item{market_date}{(string) date in the form 'yyyy-mm-dd', default today}
+
+\item{tz}{(string) one of timezone returned by OlsonNames(), defaults to local}
 }
 \description{
 Get a list of markets available on RobinHood with trading hours for a specific date.

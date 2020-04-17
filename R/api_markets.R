@@ -22,11 +22,14 @@ api_markets <- function(RH, markets_url, type = "df") {
   dta <- mod_json(dta, "fromJSON")
 
   if (type == "df") {
+
     # Returns market information
     dta <- as.data.frame(dta$results)
     return(dta)
+
   }
   if (type == "list") {
+
     # Returns market hours
     dta$closes_at <- lubridate::ymd_hms(dta$closes_at)
     dta$extended_opens_at <- lubridate::ymd_hms(dta$extended_opens_at)
@@ -36,4 +39,5 @@ api_markets <- function(RH, markets_url, type = "df") {
 
     return(dta)
   }
+
 }
