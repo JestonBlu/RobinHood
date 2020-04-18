@@ -2,7 +2,7 @@
 ## 1.3.1
 
 #### Clean up
-  - (GH-86) `get_market_hours()` by default returned times in UTC. The default format has been changed to the local users timezone. The timezone column now also reflects the timezone of the actual time, not the time zone of the exchange which comes from RobinHood.
+  - (GH-86) `get_market_hours()`, `get_historicals()` by default returned times in UTC. The default format has been changed to the local users timezone. The timezone column now also reflects the timezone of the actual time, not the time zone of the exchange which comes from RobinHood.
 
 -----------------------------------------------------------------------------------------------------------------------------
 
