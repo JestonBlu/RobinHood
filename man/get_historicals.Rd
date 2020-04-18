@@ -4,7 +4,7 @@
 \alias{get_historicals}
 \title{Get historical price history from RobinHood}
 \usage{
-get_historicals(RH, symbol, interval, span)
+get_historicals(RH, symbol, interval, span, tz = Sys.timezone())
 }
 \arguments{
 \item{RH}{object of class RobinHood}
@@ -14,6 +14,8 @@ get_historicals(RH, symbol, interval, span)
 \item{interval}{(string) Interval of time to aggregate to (examples: hour, day, week, month)}
 
 \item{span}{(string) Period of time you are interested in (examples: day, week, month, year)}
+
+\item{tz}{(string) timezone returned by OlsonNames() (eg: "America/Chicago")}
 }
 \description{
 Returns a data frame of historical price history for a given symbol.
