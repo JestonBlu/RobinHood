@@ -27,7 +27,7 @@ api_option_positions <- function(RH) {
                      as.numeric) %>%
     dplyr::mutate_at(c("created_at", "updated_at"), lubridate::ymd_hms)
 
-  option_positions <- option_positions[option_positions$quantity > 0, ]
+  # dta <- dta[dta$quantity > 0, ]
 
-  return(option_positions)
+  return(dta)
 }

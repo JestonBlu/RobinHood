@@ -20,17 +20,10 @@ api_option_instruments <- function(RH, option_instrument_url) {
   dta <- mod_json(dta, "fromJSON")
   dta <- as.data.frame(dta)
 
-  if (dta$type == "call") {
-
-    colnames(dta)[13:15] = c("cutoff_price", "below_tick", "above_tick")
-
-    dta$issue_date <- lubridate::ymd(dta$issue_date)
-    dta$strike_price <- as.numeric(dta$strike_price)
-    dta$expiration_date <- lubridate::ymd(dta$expiration_date)
-    dta$created_at <- lubridate::ymd_hms(dta$created_at)
-    dta$updated_at <- lubridate::ymd_hms(dta$updated_at)
-
-  }
+  dta <- dta %>%
+    mutate_at(c("issue_date", "expiration_date"), lubridate::ymd) %>%
+    mutate_at(c("created_at", "updated_at"), lubridate::ymd_hms) %>%
+    mutate_at("strike_price", as.numeric)
 
   return(dta)
 }
