@@ -31,12 +31,14 @@ place_order(
 
 \item{stop_price}{(number) if trigger = stop, enter stop price, otherwise leave blank}
 
-\item{quantity}{(int) number of shares you wish to transact}
+\item{quantity}{(int) number of shares you wish to transact, must be a whole number}
 
 \item{side}{(string) "buy" or "sell"}
 }
 \description{
-Place a buy or sell order against your RobinHood account
+**Note**: Price cannot extend beyond 2 decimals
+**Note**: Quantity must be a whole number
+**Note**: Price * Quantity > $0.01
 }
 \examples{
 \dontrun{
