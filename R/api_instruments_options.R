@@ -4,7 +4,7 @@
 #' @param option_instrument_url (string) url
 #' @import httr magrittr
 #' @export
-api_option_instruments <- function(RH, option_instrument_url) {
+api_instruments_options <- function(RH, option_instrument_url) {
 
   # URL and token
   url <- option_instrument_url
@@ -21,9 +21,9 @@ api_option_instruments <- function(RH, option_instrument_url) {
   dta <- as.data.frame(dta)
 
   dta <- dta %>%
-    mutate_at(c("issue_date", "expiration_date"), lubridate::ymd) %>%
-    mutate_at(c("created_at", "updated_at"), lubridate::ymd_hms) %>%
-    mutate_at("strike_price", as.numeric)
+    dplyr::mutate_at(c("strike_price"), function(x) as.numeric(as.character(x))) %>%
+    dplyr::mutate_at(c("issue_date", "expiration_date"), lubridate::ymd) %>%
+    dplyr::mutate_at(c("created_at", "updated_at"), lubridate::ymd_hms)
 
   return(dta)
 }
