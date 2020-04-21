@@ -1,5 +1,9 @@
 #' Place a buy or sell order against your RobinHood account
 #'
+#' **Note**: Price cannot extend beyond 2 decimals
+#' **Note**: Quantity must be a whole number
+#' **Note**: Price * Quantity > $0.01
+#'
 #' @param RH object of class RobinHood
 #' @param symbol (string) Ticket symbol you are attempting to buy or sell
 #' @param type (string) "market" or "limit"
@@ -7,7 +11,7 @@
 #' @param trigger (string) "immediate" or "stop"
 #' @param price (number) the price you are willing to sell or buy at
 #' @param stop_price (number) if trigger = stop, enter stop price, otherwise leave blank
-#' @param quantity (int) number of shares you wish to transact
+#' @param quantity (int) number of shares you wish to transact, must be a whole number
 #' @param side (string) "buy" or "sell"
 #' @import httr magrittr
 #' @export

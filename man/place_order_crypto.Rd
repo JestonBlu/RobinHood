@@ -17,12 +17,13 @@ place_order_crypto(RH, symbol, type, time_in_force, price, quantity, side)
 
 \item{price}{(number) the price you are willing to sell or buy at}
 
-\item{quantity}{(int) number of shares you wish to transact}
+\item{quantity}{(number) number of shares you wish to transact}
 
 \item{side}{(string) "buy" or "sell"}
 }
 \description{
-Place a crypto currency buy or sell order against your RobinHood account
+**Note**: Price and Quantity can both extend beyone 2 decimals
+**Note**: Price * Quantity > $0.01
 }
 \examples{
 \dontrun{
