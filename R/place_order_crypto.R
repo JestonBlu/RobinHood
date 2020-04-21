@@ -1,11 +1,14 @@
 #' Place a crypto currency buy or sell order against your RobinHood account
 #'
+#' **Note**: Price and Quantity can both extend beyone 2 decimals
+#' **Note**: Price * Quantity > $0.01
+#'
 #' @param RH object of class RobinHood
 #' @param symbol (string) Ticket symbol you are attempting to buy or sell
 #' @param type (string) "market" or "limit"
 #' @param time_in_force (string) Good Till Canceled ("gtc"), Immediate or Cancel ("ioc"), or Opening ("opg")
 #' @param price (number) the price you are willing to sell or buy at
-#' @param quantity (int) number of shares you wish to transact
+#' @param quantity (number) number of shares you wish to transact
 #' @param side (string) "buy" or "sell"
 #' @import httr magrittr
 #' @export
