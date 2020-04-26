@@ -75,8 +75,8 @@ get_positions_options <- function(RH, trim_pending = TRUE) {
 
     options <- options %>%
       dplyr::select(c("chain_symbol", "option_type", "state", "strike_price", "average_price", "quantity",
-                      "trade_value_multiplier", "last_trade_price", "current_value", "rhs_tradability",
-                      "tradability", "type", "created_at", "updated_at"))
+                      "trade_value_multiplier", "last_trade_price", "current_value", "rhs_tradability", "tradability",
+                      "type", "created_at", "updated_at"))
 
   } else {
 
@@ -85,8 +85,7 @@ get_positions_options <- function(RH, trim_pending = TRUE) {
                       "trade_value_multiplier", "last_trade_price", "current_value", "pending_buy_quantity",
                       "pending_expired_quantity", "pending_expiration_quantity", "pending_exercise_quantity",
                       "pending_assignment_quantity", "pending_sell_quantity", "intraday_quantity",
-                      "intraday_average_open_price", "rhs_tradability", "tradability", "type",
-                      "created_at", "updated_at"))
+                      "intraday_average_open_price", "rhs_tradability", "tradability", "type", "created_at", "updated_at"))
   }
 
   return(options)

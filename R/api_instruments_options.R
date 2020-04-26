@@ -16,7 +16,7 @@ api_instruments_options <- function(RH, option_instrument_url) {
                          "Content-Type" = "application/json",
                          "Authorization" = token))
 
-  # format return
+  # Format return
   dta <- mod_json(dta, "fromJSON")
   dta <- as.data.frame(dta)
 
@@ -24,6 +24,6 @@ api_instruments_options <- function(RH, option_instrument_url) {
     dplyr::mutate_at(c("strike_price"), function(x) as.numeric(as.character(x))) %>%
     dplyr::mutate_at(c("issue_date", "expiration_date"), lubridate::ymd) %>%
     dplyr::mutate_at(c("created_at", "updated_at"), lubridate::ymd_hms)
-
+    
   return(dta)
 }

@@ -4,12 +4,14 @@
 \alias{api_marketdata}
 \title{RobinHood API: Fundamentals}
 \usage{
-api_marketdata(RH, instrument_id)
+api_marketdata(RH, instrument, type = "instrument_id")
 }
 \arguments{
 \item{RH}{object of class RobinHood}
 
-\item{instrument_id}{(string) a single instrument_id}
+\item{instrument}{(string) a single instrument_id or multiple instrument_urls}
+
+\item{type}{(string) one of instrument_id or instrument_url}
 }
 \description{
 Returns a dataframe of quantitative market information for a particular option instrument

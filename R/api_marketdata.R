@@ -3,12 +3,17 @@
 #' Returns a dataframe of quantitative market information for a particular option instrument
 #'
 #' @param RH object of class RobinHood
-#' @param instrument_id (string) a single instrument_id
+#' @param instrument (string) a single instrument_id or multiple instrument_urls
+#' @param type (string) one of instrument_id or instrument_url
 #' @import httr magrittr
 #' @export
-api_marketdata <- function(RH, instrument_id) {
+api_marketdata <- function(RH, instrument, type = "instrument_id") {
 
-  url <- paste(api_endpoints("marketdata_options"), instrument_id, "/", sep = "")
+  if (type == "instrument_id") {
+    url <- paste(api_endpoints("marketdata_options"), instrument, "/", sep = "")
+  } else {
+    url <- paste(api_endpoints("marketdata_options"), "?instruments=", instrument, sep = "")
+  }
 
   # Token
   token <- paste("Bearer", RH$tokens.access_token)
@@ -21,7 +26,13 @@ api_marketdata <- function(RH, instrument_id) {
 
   # Format return
   dta <- mod_json(dta, "fromJSON")
-  dta <- as.data.frame(dta)
+
+
+  if (type == "instrument_id") {
+    dta <- as.data.frame(dta)
+  } else {
+    dta <- as.data.frame(dta$results)
+  }
 
   # Reformat columns
   dta <- dta %>%
@@ -29,7 +40,8 @@ api_marketdata <- function(RH, instrument_id) {
                        "low_price", "mark_price", "high_fill_rate_buy_price", "high_fill_rate_sell_price",
                        "low_fill_rate_buy_price", "low_fill_rate_sell_price", "chance_of_profit_long",
                        "chance_of_profit_short", "delta", "gamma", "implied_volatility", "rho", "theta", "vega"),
-                       function(x) as.numeric(as.character(x)))
+                     function(x) as.numeric(as.character(x)))
 
   return(dta)
+
 }

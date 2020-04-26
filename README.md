@@ -16,7 +16,6 @@ Haven't signed up for a RobinHood account yet? Use my **[referral link](https://
 - [x] Account data
 - [x] Add and remove investments on your watchlist
 - [x] Execute ACH transfers
-- [ ] 2 factor authentication
 
 ## Equity Features
 - [x] Get current holdings
@@ -28,8 +27,8 @@ Haven't signed up for a RobinHood account yet? Use my **[referral link](https://
 - [x] Get market open/close hours
 - [x] Search investments by popular tag
 - [x] Calculate historical account balance
-- [ ] Get options market data
-- [ ] Get options contracts
+- [x] Get options market data
+- [x] Get options positions
 
 ## Crypto Features
 - [x] Get current holdings
