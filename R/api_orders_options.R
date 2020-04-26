@@ -25,6 +25,7 @@ api_orders_options <- function(RH) {
                      as.numeric) %>%
     dplyr::mutate_at(c("created_at", "updated_at"), lubridate::ymd_hms)
 
+  # Only return options you current own
   dta <- dta[dta$quantity > 0, ]
 
   return(dta)

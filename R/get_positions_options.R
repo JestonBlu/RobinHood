@@ -24,45 +24,71 @@ get_positions_options <- function(RH, trim_pending = TRUE) {
 
   options_instruments <- data.frame()
 
-  # Look through option instruments to pull additional columns
+  # Loop through option instruments to pull additional columns
   for (i in x) {
     y <- api_instruments_options(RH, i)
 
     y <- y %>%
-      select(c("url", "type", "state", "strike_price", "rhs_tradability", "tradability")) %>%
-      rename(c("option_type" = "type",
-              "option" = "url"))
+      dplyr::select(c("url", "type", "state", "strike_price", "rhs_tradability", "tradability")) %>%
+      dplyr::rename(c("option_type" = "type", "option" = "url"))
 
     options_instruments <- rbind(options_instruments, y)
   }
 
+
   # Join with option positions
-  options <- inner_join(options, options_instruments, by = "option")
+  options$option <- as.character(options$option)
+  options_instruments$option <- as.character(options_instruments$option)
+  options <- dplyr::inner_join(options, options_instruments, by = "option")
+
+
+
+  ####################################################
+  # Loop through option instruments to pull market data
+
+  x <- gsub("https://api.robinhood.com/options/instruments/", "", options$option)
+  x <- gsub("/", "", x)
+
+  option_market_data <- data.frame()
+
+  for (i in x) {
+    y <- api_marketdata(RH, i)
+
+    option_market_data <- rbind(option_market_data, y)
+
+  }
+
+  option_market_data <- option_market_data %>%
+    dplyr::rename("option" = "instrument") %>%
+    dplyr::mutate_at("option", as.character)
+
+  # Join with options
+  options <- dplyr::inner_join(options, option_market_data, by = "option")
+
+  # Create market value
+  options$current_value <- options$trade_value_multiplier * options$last_trade_price
+
+  ###################################################
 
   # Trim columns
   if (trim_pending == TRUE) {
 
     options <- options %>%
       dplyr::select(c("chain_symbol", "option_type", "state", "strike_price", "average_price", "quantity",
-                      "trade_value_multiplier", "rhs_tradability", "tradability", "type", "created_at", "updated_at")) %>%
-      dplyr::mutate_at(c("average_price", "quantity", "trade_value_multiplier", "strike_price"), as.numeric) %>%
-      dplyr::mutate_at(c("created_at", "updated_at"), lubridate::ymd_hms)
+                      "trade_value_multiplier", "last_trade_price", "current_value", "rhs_tradability",
+                      "tradability", "type", "created_at", "updated_at"))
 
-    } else {
+  } else {
 
-      options <- options %>%
+    options <- options %>%
       dplyr::select(c("chain_symbol", "option_type", "state", "strike_price", "average_price", "quantity",
-                      "trade_value_multiplier", "pending_buy_quantity", "pending_expired_quantity",
-                      "pending_expiration_quantity", "pending_exercise_quantity", "pending_assignment_quantity",
-                      "pending_sell_quantity", "intraday_quantity", "intraday_average_open_price", "rhs_tradability",
-                      "tradability", "type", "created_at", "updated_at")) %>%
-      dplyr::mutate_at(c("average_price", "quantity", "trade_value_multiplier", "pending_buy_quantity",
-                         "pending_expired_quantity", "pending_expiration_quantity", "pending_exercise_quantity",
-                         "pending_assignment_quantity", "pending_sell_quantity", "intraday_quantity",
-                         "intraday_average_open_price", "strike_price"), as.numeric) %>%
-      dplyr::mutate_at(c("created_at", "updated_at"), lubridate::ymd_hms)
-    }
+                      "trade_value_multiplier", "last_trade_price", "current_value", "pending_buy_quantity",
+                      "pending_expired_quantity", "pending_expiration_quantity", "pending_exercise_quantity",
+                      "pending_assignment_quantity", "pending_sell_quantity", "intraday_quantity",
+                      "intraday_average_open_price", "rhs_tradability", "tradability", "type",
+                      "created_at", "updated_at"))
+  }
 
   return(options)
 
-  }
+}
