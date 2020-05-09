@@ -25,6 +25,9 @@ api_contracts <- function(RH, chain_symbol, type) {
   dta <- mod_json(dta, "fromJSON")
   dta <- as.data.frame(dta$results)
 
+  # If returns no rows, no options exist
+  if (nrow(dta) == 0) stop("No active contracts exist")
+
   # Format ticks
   dta$above_tick <- as.numeric(dta$min_ticks$above_tick)
   dta$below_tick <- as.numeric(dta$min_ticks$below_tick)
