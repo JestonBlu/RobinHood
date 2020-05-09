@@ -36,7 +36,7 @@ get_contracts <- function(RH, chain_symbol, type, detail = FALSE) {
     x <- seq(i * 50 - 49, i * 50)
 
     # Get urls
-    instruments <- as.character(na.omit(contracts$url[x]))
+    instruments <- as.character(stats::na.omit(contracts$url[x]))
     instruments <- paste(instruments, collapse = ",")
 
     intr_market_data <- api_marketdata(RH, instruments, type = "insturment_url")
