@@ -1,5 +1,5 @@
 ![Travis-CI](https://travis-ci.org/JestonBlu/RobinHood.svg?branch=master)
-![Dev Version](https://img.shields.io/badge/github-1.3.2-blue.svg)
+![Dev Version](https://img.shields.io/badge/github-1.4-blue.svg)
 ![CRAN Version](http://www.r-pkg.org/badges/version/RobinHood?color=blue)
 ![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/RobinHood)
 
@@ -16,7 +16,6 @@ Haven't signed up for a RobinHood account yet? Use my **[referral link](https://
 - [x] Account data
 - [x] Add and remove investments on your watchlist
 - [x] Execute ACH transfers
-- [ ] 2 factor authentication
 
 ## Equity Features
 - [x] Get current holdings
@@ -28,8 +27,8 @@ Haven't signed up for a RobinHood account yet? Use my **[referral link](https://
 - [x] Get market open/close hours
 - [x] Search investments by popular tag
 - [x] Calculate historical account balance
-- [ ] Get options market data
-- [ ] Get options contracts
+- [x] Get options market data
+- [x] Get options positions
 
 ## Crypto Features
 - [x] Get current holdings

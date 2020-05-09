@@ -1,11 +1,11 @@
 #' RobinHood API: Option Contract Positions
 #'
-#' Backend function called by get_contract_positions(). Returns a data frame of owned options contracts.
+#' Backend function called by get_positions_options(). Returns a data frame of owned options contracts.
 #'
 #' @param RH object of class RobinHood
 #' @import httr magrittr
 #' @export
-api_option_positions <- function(RH) {
+api_positions_options <- function(RH) {
 
   # URL and token
   url <- api_endpoints("option_positions")
@@ -27,7 +27,7 @@ api_option_positions <- function(RH) {
                      as.numeric) %>%
     dplyr::mutate_at(c("created_at", "updated_at"), lubridate::ymd_hms)
 
-  option_positions <- option_positions[option_positions$quantity > 0, ]
+  dta <- dta[dta$quantity > 0, ]
 
-  return(option_positions)
+  return(dta)
 }
