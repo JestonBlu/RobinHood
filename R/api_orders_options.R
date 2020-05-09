@@ -15,7 +15,7 @@
 #' @export
 api_orders_options <- function(RH, action, status_url = NULL, cancel_url = NULL, quantity = NULL,
                                direction = NULL, stop_price = NULL, type = NULL, time_in_force = NULL,
-                               trigger = NULL, side = NULL, option_id = NULL) {
+                               side = NULL, option_id = NULL) {
 
   # URL and token
   url <- api_endpoints("option_orders")
