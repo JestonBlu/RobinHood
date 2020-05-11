@@ -23,21 +23,23 @@ api_orders_options <- function(RH, action, status_url = NULL, cancel_url = NULL,
 
 
   if (action == "history") {
-      # GET call
-      dta <- GET(url,
-                 add_headers("Accept" = "application/json",
-                             "Content-Type" = "application/json",
-                             "Authorization" = token))
+    # GET call
+    dta <- GET(url,
+               add_headers("Accept" = "application/json",
+                           "Content-Type" = "application/json",
+                           "Authorization" = token))
 
-      # format return
-      dta <- mod_json(dta, "fromJSON")
-      dta <- as.data.frame(dta$results)
+    # format return
+    dta <- mod_json(dta, "fromJSON")
+    dta <- as.data.frame(dta$results)
 
-      dta <- dta %>%
-        dplyr::mutate_at(c("intraday_average_open_price", "intraday_quantity", "average_price", "trade_value_multiplier",
-                           "pending_expired_quantity", "pending_buy_quantity", "pending_sell_quantity", "quantity"),
-                         as.numeric) %>%
-        dplyr::mutate_at(c("created_at", "updated_at"), lubridate::ymd_hms)
+    dta <- dta %>%
+      dplyr::select(c("chain_symbol", "direction", "price", "premium", "processed_premium", "quantity", "processed_quantity",
+                      "state", "time_in_force", "trigger", "type", "opening_strategy", "closing_strategy", "created_at",
+                      "updated_at", "id")) %>%
+      dplyr::mutate_at(c("price", "premium", "processed_premium", "quantity", "processed_quantity"), as.numeric) %>%
+      dplyr::mutate_at(c("created_at", "updated_at"), lubridate::ymd_hms)
+
 
   }
 
