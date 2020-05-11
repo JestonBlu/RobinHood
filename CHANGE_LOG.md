@@ -1,4 +1,16 @@
 
+## 1.4
+
+#### New features
+  - Added functions for trading options:
+    - `get_positions_options()`: gets your owned options contracts
+    - `get_contracts()`: get current open contracts
+    - `place_order_options()`: plan a buy order on a contract
+    - `get_order_status_options()`: check the status of an existing order
+    - `cancel_order_options()`: cancel an existing order
+
+-----------------------------------------------------------------------------------------------------------------------------
+
 ## 1.3.1
 
 #### Clean up
