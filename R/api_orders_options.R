@@ -40,7 +40,6 @@ api_orders_options <- function(RH, action, status_url = NULL, cancel_url = NULL,
       dplyr::mutate_at(c("price", "premium", "processed_premium", "quantity", "processed_quantity"), as.numeric) %>%
       dplyr::mutate_at(c("created_at", "updated_at"), lubridate::ymd_hms)
 
-
   }
 
 

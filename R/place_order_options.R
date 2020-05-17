@@ -36,12 +36,14 @@ place_order_options <- function(RH, option_id, direction, side, quantity, stop_p
     # Limit orders should contain a price
     if (type != "limit") stop("Only limit orders are supported")
     if (type == "limit" & is.null(stop_price)) stop("Limit orders must contain a price")
+    if (!direction %in% c("debit", "credit")) stop("direction must be 'debit' or 'credit'")
 
     # Place an order
     orders <- api_orders_options(RH = RH,
                                  option_id = option_id,
                                  direction = direction,
                                  side = side,
+                                 quantity = quantity,
                                  stop_price = stop_price,
                                  type = type,
                                  time_in_force = time_in_force,

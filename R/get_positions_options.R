@@ -41,7 +41,7 @@ get_positions_options <- function(RH, trim_pending = TRUE) {
   options_instruments$option <- as.character(options_instruments$option)
   options <- dplyr::inner_join(options, options_instruments, by = "option")
 
-
+  if (nrow(options) == 0) stop("You dont have any open positions")
 
   ####################################################
   # Loop through option instruments to pull market data
