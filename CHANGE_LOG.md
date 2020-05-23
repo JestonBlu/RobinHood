@@ -9,6 +9,9 @@
     - `get_order_status_options()`: check the status of an existing order
     - `cancel_order_options()`: cancel an existing order
 
+#### Bug Fixes
+  - Fixed an issue where get fundamental returned the entire vector of symbols in every row, now its one symbol per row
+
 -----------------------------------------------------------------------------------------------------------------------------
 
 ## 1.3.1

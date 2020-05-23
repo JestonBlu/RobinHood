@@ -63,6 +63,9 @@ get_fundamentals <- function(RH, ticker, include_description = FALSE) {
     fundamentals <- fundamentals[, !names(fundamentals) %in% c("description", "instrument")]
   }
 
+  # Add the symbol vector back, not part of api_fundamentals
+  fundamentals <- cbind(symbol, fundamentals)
+
   # Format
   fundamentals <- fundamentals %>%
     dplyr::mutate_at(c("open", "high", "low", "volume", "average_volume_2_weeks", "average_volume", "high_52_weeks",
