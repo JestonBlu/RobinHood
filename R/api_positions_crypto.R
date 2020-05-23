@@ -21,7 +21,7 @@ api_positions_crypto <- function(RH) {
   dta <- mod_json(dta, "fromJSON")
   dta <- as.list(dta$results)
 
-  # Create data.frame with output
+#  # Create data.frame with output
   dta_qty <- data.frame(
     currency_code = dta$currency$code,
     name          = dta$currency$name,
@@ -53,6 +53,9 @@ api_positions_crypto <- function(RH) {
 
   # Rename currency_code to symbol
   colnames(dta_qty)[1] <- "symbol"
+
+  # Only return positions you currently own
+  dta_qty <- dta_qty[dta_qty$quantity > 0, ]
 
   return(dta_qty)
 }

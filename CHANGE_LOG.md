@@ -12,6 +12,9 @@
 #### Bug Fixes
   - Fixed an issue where get fundamental returned the entire vector of symbols in every row, now its one symbol per row
 
+#### Clean up
+  - `api_positions()` now only returns positions you still own
+
 -----------------------------------------------------------------------------------------------------------------------------
 
 ## 1.3.1
