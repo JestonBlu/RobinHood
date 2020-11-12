@@ -1,0 +1,8 @@
+pandoc: 2.7.3
+pkgdown: 1.6.1
+pkgdown_sha: ~
+articles:
+  getting_started: getting_started.html
+  passwords: passwords.html
+last_built: 2020-11-12T04:28Z
+

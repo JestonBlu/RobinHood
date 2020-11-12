@@ -11,3 +11,6 @@ CHANGE_LOG.md
 .deploy_dir
 ^Dockerfile$
 ^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
