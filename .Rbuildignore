@@ -6,6 +6,7 @@
 LICENSE
 tests/
 README.md
+NEWS.md
 API_RETURNS.md
 CHANGE_LOG.md
 .deploy_dir
@@ -14,3 +15,4 @@ CHANGE_LOG.md
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+vignettes/*
