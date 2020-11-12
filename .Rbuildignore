@@ -15,4 +15,4 @@ CHANGE_LOG.md
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
-vignettes/*
+vignettes/

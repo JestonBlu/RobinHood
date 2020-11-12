@@ -1,13 +1,8 @@
-
 ---
 title: "Getting Started"
 description: >
   Getting started with the core functions
 output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Getting Started}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
 ---
 
 
