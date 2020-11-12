@@ -30,6 +30,14 @@ reference:
     - get_tag
     - get_tickers
     - get_user
+    - logout
+    - mod_json
+    - place_ach_transfer
+    - place_order
+    - place_order_crypto
+    - place_order_options
+    - watchlist
+
 
   - title: "Backend API Functions"
     desc: "Backend API functions"
