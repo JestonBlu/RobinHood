@@ -5,7 +5,7 @@
 #'
 #' @param username (string) account email address
 #' @param password (string) password
-#' @param mfa_code (string) mfa_code provided by your authentication app (required if mfa is enabled) 
+#' @param mfa_code (string) mfa_code provided by your authentication app (required if mfa is enabled)
 #' @import httr magrittr
 #' @export
 #' @examples
@@ -15,7 +15,7 @@
 RobinHood <- function(username, password, mfa_code = NULL) {
 
     # Login to RobinHood, returns RobinHood object with access tokens
-    RH <- api_login(username, password)
+    RH <- api_login(username, password, mfa_code)
 
     # Get account data for the main purpose of returning the position url
     accounts <- api_accounts(RH)

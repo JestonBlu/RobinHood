@@ -13,8 +13,7 @@ api_login <- function(username, password, mfa_code = NULL) {
   RH <- list(
     # APIs
     api_grant_type = "password",
-    api_client_id = "c82SH0WZOsabOXGP2sxqcj34FxkvfnWRZBKlBjFS",
-    device_token = "51fe3104-408f-40ee-af98-239c3080ac07"
+    api_client_id = "c82SH0WZOsabOXGP2sxqcj34FxkvfnWRZBKlBjFS"
   )
 
   # Parameters
