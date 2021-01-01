@@ -4,7 +4,7 @@
 \alias{api_login}
 \title{RobinHood API: Login}
 \usage{
-api_login(username, password, mfa_code = NULL)
+api_login(username, password, mfa_code)
 }
 \arguments{
 \item{username}{(string) RobinHood username}

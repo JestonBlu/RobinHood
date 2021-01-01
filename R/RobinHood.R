@@ -14,6 +14,9 @@
 #'}
 RobinHood <- function(username, password, mfa_code = NULL) {
 
+    # Dealing with nulls inside functions
+    mfa_code = ifelse(is.null(mfa_code), "000000", mfa_code)
+
     # Login to RobinHood, returns RobinHood object with access tokens
     RH <- api_login(username, password, mfa_code)
 

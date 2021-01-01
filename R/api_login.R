@@ -7,7 +7,7 @@
 #' @param mfa_code (string) Provided by your authentication app
 #' @import httr jsonlite magrittr
 #' @export
-api_login <- function(username, password, mfa_code = NULL) {
+api_login <- function(username, password, mfa_code) {
 
   # Storage for api data
   RH <- list(
@@ -42,7 +42,7 @@ api_login <- function(username, password, mfa_code = NULL) {
   )
 
   # If MFA is enabled ask for a code to be submitted from the auth app
-  if (RH$tokens.mfa_required == TRUE & RH$tokens.mfa_type == "app") {
+  if (RH$tokens.mfa_required == TRUE & RH$tokens.mfa_type == "app" & mfa_code != "000000") {
 
     # POST call
     dta <- POST(url, body = list(mfa_code = mfa_code)) %>%
