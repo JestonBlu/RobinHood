@@ -73,7 +73,7 @@ It is a required input for every other function in the package." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">RobinHood</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5</span>
       </span>
     </div>
 
@@ -81,7 +81,7 @@ It is a required input for every other function in the package." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -110,7 +110,7 @@ It is a required input for every other function in the package." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/JestonBlu/RobinHood/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -137,18 +137,22 @@ It is a required input for every other function in the package." />
 It is a required input for every other function in the package.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>RobinHood</span><span class='op'>(</span><span class='va'>username</span>, <span class='va'>password</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>RobinHood</span><span class='op'>(</span><span class='va'>username</span>, <span class='va'>password</span>, mfa_code <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>username</th>
-      <td><p>user name or email</p></td>
+      <td><p>(string) account email address</p></td>
     </tr>
     <tr>
       <th>password</th>
-      <td><p>password</p></td>
+      <td><p>(string) password</p></td>
+    </tr>
+    <tr>
+      <th>mfa_code</th>
+      <td><p>(string) mfa_code provided by your authentication app (required if mfa is enabled)</p></td>
     </tr>
     </table>
 

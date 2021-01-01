@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">RobinHood</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.5</span>
       </span>
     </div>
 
@@ -40,7 +40,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -69,7 +69,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/JestonBlu/RobinHood/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -83,8 +83,7 @@
 
       
 
-      </header><script src="getting_started_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="getting_started_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="getting_started_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="getting_started_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Getting Started</h1>
@@ -105,7 +104,10 @@
 
 <span class="co"># Establishes a connection with your account and generates an oauth2 token</span>
 <span class="co"># Returns a list style object of relevant API keys and IDs needed to interact with your account</span>
-<span class="va">RH</span> <span class="op">=</span> <span class="fu"><a href="../reference/RobinHood.html">RobinHood</a></span><span class="op">(</span>username <span class="op">=</span> <span class="st">"username"</span>, password <span class="op">=</span> <span class="st">"password"</span><span class="op">)</span></code></pre></div>
+<span class="va">RH</span> <span class="op">=</span> <span class="fu"><a href="../reference/RobinHood.html">RobinHood</a></span><span class="op">(</span>username <span class="op">=</span> <span class="st">"user@email.com"</span>, password <span class="op">=</span> <span class="st">"password"</span><span class="op">)</span>
+
+<span class="co"># If you have MFA enabled</span>
+<span class="va">RH</span> <span class="op">=</span> <span class="fu"><a href="../reference/RobinHood.html">RobinHood</a></span><span class="op">(</span>username <span class="op">=</span> <span class="st">"user@email.com"</span>, password <span class="op">=</span> <span class="st">"password"</span>, mfa_code <span class="op">=</span> <span class="st">"provided-by-auth-app"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="user-and-account-info" class="section level2">
 <h2 class="hasAnchor">
