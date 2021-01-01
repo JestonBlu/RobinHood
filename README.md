@@ -17,6 +17,7 @@ Haven't signed up for a RobinHood account yet? Use my **[referral link](https://
 - [x] Account data
 - [x] Add and remove investments on your watchlist
 - [x] Execute ACH transfers
+- [x] MFA enabled
 
 ## Equity Features
 - [x] Get current holdings

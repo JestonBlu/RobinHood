@@ -4,12 +4,14 @@
 \alias{RobinHood}
 \title{RobinHood Account Authentication}
 \usage{
-RobinHood(username, password)
+RobinHood(username, password, mfa_code = NULL)
 }
 \arguments{
-\item{username}{user name or email}
+\item{username}{(string) account email address}
 
-\item{password}{password}
+\item{password}{(string) password}
+
+\item{mfa_code}{(string) mfa_code provided by your authentication app (required if mfa is enabled)}
 }
 \description{
 This function returns an object of S3 class RobinHood and establishes a connection to a RobinHood account.
