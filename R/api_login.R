@@ -4,15 +4,17 @@
 #' required by all other functions.
 #' @param username (string) RobinHood username
 #' @param password (string) RobinHood password
+#' @param mfa_code (string) Provided by your authentication app
 #' @import httr jsonlite magrittr
 #' @export
-api_login <- function(username, password) {
+api_login <- function(username, password, mfa_code = NULL) {
 
   # Storage for api data
   RH <- list(
     # APIs
     api_grant_type = "password",
-    api_client_id = "c82SH0WZOsabOXGP2sxqcj34FxkvfnWRZBKlBjFS"
+    api_client_id = "c82SH0WZOsabOXGP2sxqcj34FxkvfnWRZBKlBjFS",
+    device_token = "51fe3104-408f-40ee-af98-239c3080ac07"
   )
 
   # Parameters
@@ -35,8 +37,24 @@ api_login <- function(username, password) {
           # User tokens and ids
           tokens = list(
             access_token = dta$access_token,
-            refresh_token = dta$refresh_token)
+            refresh_token = dta$refresh_token,
+            mfa_required = dta$mfa_required,
+            mfa_type = dta$mfa_type)
   )
+
+  # If MFA is enabled ask for a code to be submitted from the auth app
+  if (RH$tokens.mfa_required == TRUE & RH$tokens.mfa_type == "app") {
+
+    # POST call
+    dta <- POST(url, body = list(mfa_code = mfa_code)) %>%
+      content(type = "json") %>%
+      rawToChar() %>%
+      jsonlite::fromJSON() %>%
+      as.list()
+
+    RH$tokens.access_token = dta$access_token
+    RH$tokens.refresh_token = dta$refresh_token
+  }
 
   return(RH)
 }

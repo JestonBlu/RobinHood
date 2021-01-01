@@ -4,12 +4,14 @@
 \alias{api_login}
 \title{RobinHood API: Login}
 \usage{
-api_login(username, password)
+api_login(username, password, mfa_code = NULL)
 }
 \arguments{
 \item{username}{(string) RobinHood username}
 
 \item{password}{(string) RobinHood password}
+
+\item{mfa_code}{(string) Provided by your authentication app}
 }
 \description{
 Backend function called by RobinHood(). Returns a list like object of class RobinHood which stores tokens

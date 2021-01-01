@@ -18,7 +18,10 @@ library(RobinHood)
 
 # Establishes a connection with your account and generates an oauth2 token
 # Returns a list style object of relevant API keys and IDs needed to interact with your account
-RH = RobinHood(username = "username", password = "password")
+RH = RobinHood(username = "user@email.com", password = "password")
+
+# If you have MFA enabled
+RH = RobinHood(username = "user@email.com", password = "password", mfa_code = "provided-by-auth-app")
 ```
 
 

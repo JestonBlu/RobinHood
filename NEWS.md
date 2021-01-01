@@ -3,6 +3,13 @@ title: "NEWS"
 
 ---
 
+# RobinHood 1.5
+
+## New Features
+  - MFA is now enabled via the `RobinHood(username, password, mfa_code)` function. Use your authentication app to input your code. This is optional and only required if you have enabled MFA on your RobinHood account.
+
+-------------------------------------------------------------------------------
+
 # RobinHood 1.4
 
 ## New features
@@ -19,14 +26,14 @@ title: "NEWS"
 ## Clean up
   - `api_positions()` now only returns positions you still own
 
------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 # RobinHood 1.3.1
 
 ## Clean up
   - (GH-86) `get_market_hours()`, `get_historicals()` by default returned times in UTC. The default format has been changed to the local users timezone. The timezone column now also reflects the timezone of the actual time, not the time zone of the exchange which comes from RobinHood.
 
------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 # RobinHood 1.3
 
@@ -40,7 +47,7 @@ title: "NEWS"
   - Fixed date format warning on `get_quote()`
 
 
------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 # RobinHood 1.2.5
 
@@ -48,7 +55,7 @@ title: "NEWS"
   - Fixed an API change that broke `get_positions()`
   - Fixed an API change that broke `get_order_history_crypto()`
 
------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 # RobinHood 1.2.4
 
@@ -58,7 +65,7 @@ title: "NEWS"
 ## Clean up
   - added `page_size = 1000` as the default parameter for `get_order_history()`
 
------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 # RobinHood 1.2.3
   - `get_tickers()`: fixed an issue where `get_tickers(RH, fundamentals = TRUE)` would return an error when a tickers fundamental data is empty
@@ -73,7 +80,7 @@ title: "NEWS"
   - `logout()`: fixed broken api
 
 
------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 # RobinHood 1.2
 
@@ -91,14 +98,14 @@ title: "NEWS"
   - Fixed bad date format in `api_accounts`
   - Improved comments in code
 
------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 # RobinHood 1.0.7
 
 ## Bug fixes
   - fixed a change to the upstream login api
 
------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 # RobinHood 1.0.6
 
@@ -109,7 +116,7 @@ title: "NEWS"
   - `get_historicals()` now returns prices formatted as numeric
   - `get_fundamentals()` now returns as a data frame instead of a list
 
------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 
 # RobinHood 1.0.5
 
