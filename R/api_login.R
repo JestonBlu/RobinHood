@@ -42,7 +42,7 @@ api_login <- function(username, password, mfa_code) {
   )
 
   # If MFA is enabled ask for a code to be submitted from the auth app
-  if (RH$tokens.mfa_required == TRUE & RH$tokens.mfa_type == "app" & mfa_code != "000000") {
+  if (length(RH) == 2 & mfa_code != "000000") {
 
     # POST call
     dta <- POST(url, body = list(mfa_code = mfa_code)) %>%
