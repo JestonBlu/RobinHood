@@ -30,6 +30,7 @@ get_fundamentals <- function(RH, ticker, include_description = FALSE) {
     high                   = NA,
     low                    = NA,
     volume                 = NA,
+    market_date            = NA,
     average_volume_2_weeks = NA,
     average_volume         = NA,
     high_52_weeks          = NA,
@@ -48,14 +49,12 @@ get_fundamentals <- function(RH, ticker, include_description = FALSE) {
     sector                 = NA,
     industry               = NA,
     num_employees          = NA,
-    year_founded           = NA,
-    symbol                 = symbol
+    year_founded           = NA
   )
 
   # If the return all is empty then assign the NA dataframe
   if (nrow(fundamentals) == 0) {
     fundamentals <- x
-    fundamentals$symbol <- symbol
   }
 
   # Remove the long description field
@@ -68,9 +67,9 @@ get_fundamentals <- function(RH, ticker, include_description = FALSE) {
 
   # Format
   fundamentals <- fundamentals %>%
-    dplyr::mutate_at(c("open", "high", "low", "volume", "average_volume_2_weeks", "average_volume", "high_52_weeks",
-                       "dividend_yield", "float", "low_52_weeks", "market_cap", "pb_ratio", "pe_ratio",
-                       "shares_outstanding"),
+    dplyr::mutate_at(c("open", "high", "low", "volume", "average_volume_2_weeks",
+                       "average_volume", "high_52_weeks", "dividend_yield", "float",
+                       "low_52_weeks", "market_cap", "pb_ratio", "pe_ratio", "shares_outstanding"),
                      as.numeric)
 
   return(fundamentals)

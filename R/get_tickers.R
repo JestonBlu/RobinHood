@@ -29,25 +29,25 @@ get_tickers <- function(RH, add_fundamentals = FALSE) {
     # If fundamentals are requested
     if (add_fundamentals == TRUE) {
 
-        # Create string of symbols to get fundamentals on
-        symbols <- tickers$symbol
+      # Create string of symbols to get fundamentals on
+      symbols <- tickers$symbol
 
-        # Stopwatch
-        start_time <- proc.time()
+      # Stopwatch
+      start_time <- proc.time()
 
-        cat("Getting additional investment fundamentals...")
+      cat("Getting additional investment fundamentals...")
 
-        fundamentals <- data.frame()
+      fundamentals <- data.frame()
 
-        # Get fundamentals on each symbol, with a 1 second delay every 50 calls
-        for (i in 1:length(symbols)) {
-            x <- get_fundamentals(RH, symbols[i])
-            fundamentals <- rbind(fundamentals, x)
+      # Get fundamentals on each symbol, with a 1 second delay every 50 calls
+      for (i in 1:length(symbols)) {
+        x <- get_fundamentals(RH, symbols[i])
+        fundamentals <- rbind(fundamentals, x)
 
-            if (i %in% seq(0, 15000, 50)) {
-                profvis::pause(1)
-            }
+        if (i %in% seq(0, 15000, 50)) {
+          profvis::pause(1)
         }
+      }
 
       # Stopwatch
       end_time <- proc.time() - start_time
