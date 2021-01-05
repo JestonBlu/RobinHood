@@ -3,6 +3,13 @@ title: "NEWS"
 
 ---
 
+# RobinHood 1.51
+
+## New Bug Fixes
+  - `get_tickers()`: no longer fails when call returns no info about a given equity symbol
+  
+-------------------------------------------------------------------------------
+
 # RobinHood 1.5
 
 ## New Features
