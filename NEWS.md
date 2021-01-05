@@ -7,7 +7,8 @@ title: "NEWS"
 
 ## New Bug Fixes
   - `get_tickers()`: no longer fails when call returns no info about a given equity symbol
-  
+  - `get_positions_crypto()`: no longer fails when you have a position in a single crypto only
+
 -------------------------------------------------------------------------------
 
 # RobinHood 1.5

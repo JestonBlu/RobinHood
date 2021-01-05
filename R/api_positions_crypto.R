@@ -37,10 +37,9 @@ api_positions_crypto <- function(RH) {
   dta_cost <- dta$cost_bases
   cost <- c()
 
-  for (i in 1:(length(dta_cost) - 1)) {
+  for (i in 1:length(dta_cost)) {
     x <- dta_cost[[i]]
-    cost <- c(cost, x$direct_cost_basis
-    )
+    cost <- c(cost, x$direct_cost_basis)
   }
 
   dta_qty$cost_bases <- cost
