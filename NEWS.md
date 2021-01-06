@@ -6,9 +6,12 @@ title: "NEWS"
 # RobinHood 1.5.1
 
 ## New Bug Fixes
-  - (GH-108) `get_tickers()`: no longer fails when call returns no info about a given equity symbol
-  - (GH-110) `get_positions_crypto()`: no longer fails when you have a position in a single crypto only
-  - (GH-103) `get_positions()`: now returns a message when no positions are found
+  - `(GH-108)` `get_tickers()`: no longer fails when call returns no info about a given equity symbol
+  - `(GH-110)` `get_positions_crypto()`: no longer fails when you have a position in a single crypto only
+  - `(GH-103)` `get_positions()`: now returns a message when no positions are found
+
+## Clean up
+  - `(GH-101)` `place_order()`: no longer prevents you from trading fractional shares
 
 -------------------------------------------------------------------------------
 
