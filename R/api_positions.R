@@ -21,6 +21,11 @@ api_positions <- function(RH) {
   dta <- mod_json(dta, "fromJSON")
   dta <- as.data.frame(dta$results)
 
+  # Stop if data.frame is empty (no positions)
+  if (nrow(dta) == 0) {
+    stop("No positions found")
+  }
+
   dta <- dta %>%
     dplyr::mutate_at(c("shares_held_for_stock_grants", "pending_average_buy_price",
                        "shares_held_for_options_events", "intraday_average_buy_price",
