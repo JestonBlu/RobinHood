@@ -6,12 +6,12 @@ title: "NEWS"
 # RobinHood 1.5.1
 
 ## New Bug Fixes
-  - `(GH-108)` `get_tickers()`: no longer fails when call returns no info about a given equity symbol
-  - `(GH-110)` `get_positions_crypto()`: no longer fails when you have a position in a single crypto only
-  - `(GH-103)` `get_positions()`: now returns a message when no positions are found
+  - [(GH-108)](https://github.com/JestonBlu/RobinHood/issues/108) `get_tickers()`: no longer fails when call returns no info about a given equity symbol
+  - [(GH-110)](https://github.com/JestonBlu/RobinHood/issues/110) `get_positions_crypto()`: no longer fails when you have a position in a single crypto only
+  - [(GH-103)](https://github.com/JestonBlu/RobinHood/issues/103) `get_positions()`: now returns a message when no positions are found
 
 ## Clean up
-  - `(GH-101)` `place_order()`: no longer prevents you from trading fractional shares
+  - [(GH-101)](https://github.com/JestonBlu/RobinHood/issues/101) `place_order()`: no longer prevents you from trading fractional shares
 
 -------------------------------------------------------------------------------
 
@@ -43,17 +43,17 @@ title: "NEWS"
 # RobinHood 1.3.1
 
 ## Clean up
-  - (GH-86) `get_market_hours()`, `get_historicals()` by default returned times in UTC. The default format has been changed to the local users timezone. The timezone column now also reflects the timezone of the actual time, not the time zone of the exchange which comes from RobinHood.
+  - [(GH-86)](https://github.com/JestonBlu/RobinHood/issues/86) `get_market_hours()`, `get_historicals()` by default returned times in UTC. The default format has been changed to the local users timezone. The timezone column now also reflects the timezone of the actual time, not the time zone of the exchange which comes from RobinHood.
 
 -------------------------------------------------------------------------------
 
 # RobinHood 1.3
 
 ## New Features
-  - (GH-50) Added `get_ach()`, `place_ach_transfer()`, `cancel_ach_transfer()` which allows transfers between linked bank accounts and RobinHood
+  - [(GH-50)](https://github.com/JestonBlu/RobinHood/issues/50) Added `get_ach()`, `place_ach_transfer()`, `cancel_ach_transfer()` which allows transfers between linked bank accounts and RobinHood
 
 ## Clean up
-  - (GH-85) Made cancel_url, status_url consistent across equity, crypto, and ach orders (crypto status requires an ID instead of staus_url so it has been left alone)
+  - [(GH-85)](https://github.com/JestonBlu/RobinHood/issues/85) Made cancel_url, status_url consistent across equity, crypto, and ach orders (crypto status requires an ID instead of staus_url so it has been left alone)
   - Cleaned up old comments
   - Fixed bad example code references
   - Fixed date format warning on `get_quote()`
