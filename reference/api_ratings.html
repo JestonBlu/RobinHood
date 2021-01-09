@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>RobinHood API: Logout — api_logout • RobinHood</title>
+<title>RobinHood API: Analyst ratings — api_ratings • RobinHood</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="RobinHood API: Logout — api_logout" />
-<meta property="og:description" content="Backend function called by logout(). Sends a logout call and disables your oauth2 token." />
+<meta property="og:title" content="RobinHood API: Analyst ratings — api_ratings" />
+<meta property="og:description" content="Backend function called by get_ratings() to get analyst rating from RobinHood" />
 
 
 
@@ -126,16 +126,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>RobinHood API: Logout</h1>
-    <small class="dont-index">Source: <a href='https://github.com/JestonBlu/RobinHood/blob/master/R/api_logout.R'><code>R/api_logout.R</code></a></small>
-    <div class="hidden name"><code>api_logout.Rd</code></div>
+    <h1>RobinHood API: Analyst ratings</h1>
+    <small class="dont-index">Source: <a href='https://github.com/JestonBlu/RobinHood/blob/master/R/api_ratings.R'><code>R/api_ratings.R</code></a></small>
+    <div class="hidden name"><code>api_ratings.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Backend function called by logout(). Sends a logout call and disables your oauth2 token.</p>
+    <p>Backend function called by get_ratings() to get analyst rating from RobinHood</p>
     </div>
 
-    <pre class="usage"><span class='fu'>api_logout</span><span class='op'>(</span><span class='va'>RH</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>api_ratings</span><span class='op'>(</span><span class='va'>RH</span>, <span class='va'>symbol</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -143,6 +143,10 @@
     <tr>
       <th>RH</th>
       <td><p>object of class RobinHood</p></td>
+    </tr>
+    <tr>
+      <th>symbol</th>
+      <td><p>(string)</p></td>
     </tr>
     </table>
 
