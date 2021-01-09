@@ -27,6 +27,7 @@ reference:
     - get_positions_options
     - get_quote
     - get_quote_crypto
+    - get_ratings
     - get_tag
     - get_tickers
     - get_user
@@ -66,6 +67,7 @@ reference:
     - api_positions_options
     - api_quote
     - api_quote_crypto
+    - api_ratings
     - api_tag
     - api_tickers
     - api_user
