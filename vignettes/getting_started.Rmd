@@ -86,10 +86,10 @@ get_positions_crypto(RH)
 ```
 
 
-## Funadmentals, Quotes, and Historicals
+## Funadmentals, Quotes, Historicals, and Analyst Ratings
 ```r
 # Get instrument fundamentals
-get_fundamentals(RH, 'CAT')
+get_fundamentals(RH, "CAT")
 
 # Structure
 # $ open                  : num 135
@@ -125,7 +125,7 @@ get_quote_crypto(RH, symbol = "ETC")
 #    ETC  6.698958  6.684054   6.691506      7.006     6.257     6.4935 38310780
 
 # Get historical prices
-get_historicals(RH, 'CAT', interval = '30minute', span = 'day')    # Every 30 minutes for the current day
+get_historicals(RH, "CAT", interval = "30minute", span = "day")    # Every 30 minutes for the current day
 
 #  begins_at open_price close_price high_price  low_price   volume session interpolated
 # 2019-02-25     140.99      137.47     142.55     135.27 22995597     reg        FALSE
@@ -133,9 +133,28 @@ get_historicals(RH, 'CAT', interval = '30minute', span = 'day')    # Every 30 mi
 # 2019-03-11     131.91      132.67     134.53     131.59 23201154     reg        FALSE
 # 2019-03-18     132.70      129.77     135.71     129.49 19314924     reg        FALSE
 
-get_historicals(RH, 'CAT', interval = 'day',      span = 'week')   # Every day for the current week
-get_historicals(RH, 'CAT', interval = 'week',     span = '3month') # Every week for the last 3 months
-get_historicals(RH, 'CAT', interval = 'month',    span = 'year')   # Every month for the current year
+get_historicals(RH, "CAT", interval = "day",      span = "week")   # Every day for the current week
+get_historicals(RH, "CAT", interval = "week",     span = "3month") # Every week for the last 3 months
+get_historicals(RH, "CAT", interval = "month",    span = "year")   # Every month for the current year
+
+# Get analyst ratings
+get_ratings(RH, symbol = "CAT")
+
+# $buy_percent
+# 0.4615385
+#
+# $summary
+#   num_buy_ratings num_hold_ratings num_sell_ratings
+#                12               13                1
+#
+# $comments
+#           published_at type text
+# 2021-01-02T00:43:10Z  buy Caterpillar’s dealer network is remarkably strong; owners of Caterpillar...
+# 2021-01-02T00:43:10Z sell Chinese competitors may take market share through aggressive pricing and...
+# 2021-01-02T00:43:10Z sell urrent operating margins may be unsustainable and represent peak cycle...
+# 2021-01-02T00:43:10Z sell Caterpillar participates in highly cyclical industries, which will...
+# 2021-01-02T00:43:10Z  buy Management has shown an ability to improve operating margins through...
+# 2021-01-02T00:43:10Z  buy Many of the segments in which Caterpillar operates are currently below...
 
 ```
 
@@ -305,7 +324,6 @@ get_tag(RH, tag = "100-most-popular")
 
 ## Watchlist
 ```r
-# Watchlist commands, currently creating and removing watchlists isn't working
 watchlist(RH, action = 'get')
 # [1] "Default"
 
@@ -315,6 +333,6 @@ watchlist(RH, action = 'get', watchlist = 'Default')
 watchlist(RH, action = 'add', watchlist = 'Default', ticker = "CAT")
 # "Instrument added to watchlist"
 
-watchlist(RH, action = 'delete', watchlist = 'Default', ticker = 'CAT')
+watchlist(RH, action = 'delete', watchlist = 'Default', ticker = "CAT")
 # "Instrument removed from watchlist"
 ```
