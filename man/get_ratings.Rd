@@ -19,6 +19,6 @@ Get analyst raings for a given equity symbol from RobinHood
 # Login in to your RobinHood account
 RH <- RobinHood("username", "password")
 
-get_ratings(RH)
+get_ratings(RH, symbol = "CAT")
 }
 }

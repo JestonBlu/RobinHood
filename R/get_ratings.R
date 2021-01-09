@@ -9,7 +9,7 @@
 #' # Login in to your RobinHood account
 #' RH <- RobinHood("username", "password")
 #'
-#' get_ratings(RH)
+#' get_ratings(RH, symbol = "CAT")
 #'}
 get_ratings <- function(RH, symbol) {
 
