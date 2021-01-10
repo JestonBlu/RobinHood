@@ -27,8 +27,21 @@ RH = RobinHood(username = "user@email.com", password = "password", mfa_code = "p
 
 ## User and Account Info
 ```r
-# Get user info (see api_user for a list of fields)
+# Get basic user info
 get_user(RH)
+
+# $ url           : chr
+# $ id            : chr
+# $ id_info       : chr
+# $ username      : chr
+# $ email         : chr
+# $ email_verified: logi
+# $ first_name    : chr
+# $ last_name     : chr
+# $ origin        :List of 1
+ # ..$ locality: chr
+# $ profile_name  : chr
+# $ created_at    : POSIXct[1:1]
 
 # Get account info (see api_accounts for a list of fields)
 get_accounts(RH)
@@ -55,7 +68,7 @@ get_ach(RH, action = "transfers")          # Returns historical bank transfers
 get_ach(RH, action = "relationships")      # Info on your linked bank accounts
 get_ach(RH, action = "schedules")          # Info on scheduled deposits
 
-# Place a one time bank transfer
+# Place a one time bank transfer (transfer_url comes from get_ach(RH, action = "relationships"))
 x = place_ach_transfer(RH, action = "deposit", amount = 2, transfer_url = transfer_url)
 
 # Get status of a transfer
@@ -63,8 +76,6 @@ get_ach(RH, action = "status", status_url = x$status_url)
 
 # Cancel a pending transfer
 cancel_ach_transfer(RH, cancel_url = x$cancel_url)
-
-
 ```
 
 

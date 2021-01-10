@@ -169,12 +169,12 @@
 <span class="co">#    DOGE         Dogecoin     3261         8.09      10.01     -1.92 2019-07-15 21:08:19</span>
 <span class="co">#     ETC Ethereum Classic       10        66.97      39.30     27.67 2019-02-01 00:23:40</span></code></pre></div>
 </div>
-<div id="funadmentals-quotes-and-historicals" class="section level2">
+<div id="funadmentals-quotes-historicals-and-analyst-ratings" class="section level2">
 <h2 class="hasAnchor">
-<a href="#funadmentals-quotes-and-historicals" class="anchor"></a>Funadmentals, Quotes, and Historicals</h2>
+<a href="#funadmentals-quotes-historicals-and-analyst-ratings" class="anchor"></a>Funadmentals, Quotes, Historicals, and Analyst Ratings</h2>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Get instrument fundamentals</span>
-<span class="fu"><a href="../reference/get_fundamentals.html">get_fundamentals</a></span><span class="op">(</span><span class="va">RH</span>, <span class="st">'CAT'</span><span class="op">)</span>
+<span class="fu"><a href="../reference/get_fundamentals.html">get_fundamentals</a></span><span class="op">(</span><span class="va">RH</span>, <span class="st">"CAT"</span><span class="op">)</span>
 
 <span class="co"># Structure</span>
 <span class="co"># $ open                  : num 135</span>
@@ -210,7 +210,7 @@
 <span class="co">#    ETC  6.698958  6.684054   6.691506      7.006     6.257     6.4935 38310780</span>
 
 <span class="co"># Get historical prices</span>
-<span class="fu"><a href="../reference/get_historicals.html">get_historicals</a></span><span class="op">(</span><span class="va">RH</span>, <span class="st">'CAT'</span>, interval <span class="op">=</span> <span class="st">'30minute'</span>, span <span class="op">=</span> <span class="st">'day'</span><span class="op">)</span>    <span class="co"># Every 30 minutes for the current day</span>
+<span class="fu"><a href="../reference/get_historicals.html">get_historicals</a></span><span class="op">(</span><span class="va">RH</span>, <span class="st">"CAT"</span>, interval <span class="op">=</span> <span class="st">"30minute"</span>, span <span class="op">=</span> <span class="st">"day"</span><span class="op">)</span>    <span class="co"># Every 30 minutes for the current day</span>
 
 <span class="co">#  begins_at open_price close_price high_price  low_price   volume session interpolated</span>
 <span class="co"># 2019-02-25     140.99      137.47     142.55     135.27 22995597     reg        FALSE</span>
@@ -218,9 +218,28 @@
 <span class="co"># 2019-03-11     131.91      132.67     134.53     131.59 23201154     reg        FALSE</span>
 <span class="co"># 2019-03-18     132.70      129.77     135.71     129.49 19314924     reg        FALSE</span>
 
-<span class="fu"><a href="../reference/get_historicals.html">get_historicals</a></span><span class="op">(</span><span class="va">RH</span>, <span class="st">'CAT'</span>, interval <span class="op">=</span> <span class="st">'day'</span>,      span <span class="op">=</span> <span class="st">'week'</span><span class="op">)</span>   <span class="co"># Every day for the current week</span>
-<span class="fu"><a href="../reference/get_historicals.html">get_historicals</a></span><span class="op">(</span><span class="va">RH</span>, <span class="st">'CAT'</span>, interval <span class="op">=</span> <span class="st">'week'</span>,     span <span class="op">=</span> <span class="st">'3month'</span><span class="op">)</span> <span class="co"># Every week for the last 3 months</span>
-<span class="fu"><a href="../reference/get_historicals.html">get_historicals</a></span><span class="op">(</span><span class="va">RH</span>, <span class="st">'CAT'</span>, interval <span class="op">=</span> <span class="st">'month'</span>,    span <span class="op">=</span> <span class="st">'year'</span><span class="op">)</span>   <span class="co"># Every month for the current year</span></code></pre></div>
+<span class="fu"><a href="../reference/get_historicals.html">get_historicals</a></span><span class="op">(</span><span class="va">RH</span>, <span class="st">"CAT"</span>, interval <span class="op">=</span> <span class="st">"day"</span>,      span <span class="op">=</span> <span class="st">"week"</span><span class="op">)</span>   <span class="co"># Every day for the current week</span>
+<span class="fu"><a href="../reference/get_historicals.html">get_historicals</a></span><span class="op">(</span><span class="va">RH</span>, <span class="st">"CAT"</span>, interval <span class="op">=</span> <span class="st">"week"</span>,     span <span class="op">=</span> <span class="st">"3month"</span><span class="op">)</span> <span class="co"># Every week for the last 3 months</span>
+<span class="fu"><a href="../reference/get_historicals.html">get_historicals</a></span><span class="op">(</span><span class="va">RH</span>, <span class="st">"CAT"</span>, interval <span class="op">=</span> <span class="st">"month"</span>,    span <span class="op">=</span> <span class="st">"year"</span><span class="op">)</span>   <span class="co"># Every month for the current year</span>
+
+<span class="co"># Get analyst ratings</span>
+<span class="fu"><a href="../reference/get_ratings.html">get_ratings</a></span><span class="op">(</span><span class="va">RH</span>, symbol <span class="op">=</span> <span class="st">"CAT"</span><span class="op">)</span>
+
+<span class="co"># $buy_percent</span>
+<span class="co"># 0.4615385</span>
+<span class="co">#</span>
+<span class="co"># $summary</span>
+<span class="co">#   num_buy_ratings num_hold_ratings num_sell_ratings</span>
+<span class="co">#                12               13                1</span>
+<span class="co">#</span>
+<span class="co"># $comments</span>
+<span class="co">#           published_at type text</span>
+<span class="co"># 2021-01-02T00:43:10Z  buy Caterpillar’s dealer network is remarkably strong; owners of Caterpillar...</span>
+<span class="co"># 2021-01-02T00:43:10Z sell Chinese competitors may take market share through aggressive pricing and...</span>
+<span class="co"># 2021-01-02T00:43:10Z sell urrent operating margins may be unsustainable and represent peak cycle...</span>
+<span class="co"># 2021-01-02T00:43:10Z sell Caterpillar participates in highly cyclical industries, which will...</span>
+<span class="co"># 2021-01-02T00:43:10Z  buy Management has shown an ability to improve operating margins through...</span>
+<span class="co"># 2021-01-02T00:43:10Z  buy Many of the segments in which Caterpillar operates are currently below...</span></code></pre></div>
 </div>
 <div id="orders" class="section level2">
 <h2 class="hasAnchor">
@@ -389,8 +408,7 @@
 <h2 class="hasAnchor">
 <a href="#watchlist" class="anchor"></a>Watchlist</h2>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Watchlist commands, currently creating and removing watchlists isn't working</span>
-<span class="fu"><a href="../reference/watchlist.html">watchlist</a></span><span class="op">(</span><span class="va">RH</span>, action <span class="op">=</span> <span class="st">'get'</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/watchlist.html">watchlist</a></span><span class="op">(</span><span class="va">RH</span>, action <span class="op">=</span> <span class="st">'get'</span><span class="op">)</span>
 <span class="co"># [1] "Default"</span>
 
 <span class="fu"><a href="../reference/watchlist.html">watchlist</a></span><span class="op">(</span><span class="va">RH</span>, action <span class="op">=</span> <span class="st">'get'</span>, watchlist <span class="op">=</span> <span class="st">'Default'</span><span class="op">)</span>
@@ -399,7 +417,7 @@
 <span class="fu"><a href="../reference/watchlist.html">watchlist</a></span><span class="op">(</span><span class="va">RH</span>, action <span class="op">=</span> <span class="st">'add'</span>, watchlist <span class="op">=</span> <span class="st">'Default'</span>, ticker <span class="op">=</span> <span class="st">"CAT"</span><span class="op">)</span>
 <span class="co"># "Instrument added to watchlist"</span>
 
-<span class="fu"><a href="../reference/watchlist.html">watchlist</a></span><span class="op">(</span><span class="va">RH</span>, action <span class="op">=</span> <span class="st">'delete'</span>, watchlist <span class="op">=</span> <span class="st">'Default'</span>, ticker <span class="op">=</span> <span class="st">'CAT'</span><span class="op">)</span>
+<span class="fu"><a href="../reference/watchlist.html">watchlist</a></span><span class="op">(</span><span class="va">RH</span>, action <span class="op">=</span> <span class="st">'delete'</span>, watchlist <span class="op">=</span> <span class="st">'Default'</span>, ticker <span class="op">=</span> <span class="st">"CAT"</span><span class="op">)</span>
 <span class="co"># "Instrument removed from watchlist"</span></code></pre></div>
 </div>
   </div>
