@@ -113,8 +113,21 @@
 <h2 class="hasAnchor">
 <a href="#user-and-account-info" class="anchor"></a>User and Account Info</h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Get user info (see api_user for a list of fields)</span>
+<code class="sourceCode R"><span class="co"># Get basic user info</span>
 <span class="fu"><a href="../reference/get_user.html">get_user</a></span><span class="op">(</span><span class="va">RH</span><span class="op">)</span>
+
+<span class="co"># $ url           : chr</span>
+<span class="co"># $ id            : chr</span>
+<span class="co"># $ id_info       : chr</span>
+<span class="co"># $ username      : chr</span>
+<span class="co"># $ email         : chr</span>
+<span class="co"># $ email_verified: logi</span>
+<span class="co"># $ first_name    : chr</span>
+<span class="co"># $ last_name     : chr</span>
+<span class="co"># $ origin        :List of 1</span>
+ <span class="co"># ..$ locality: chr</span>
+<span class="co"># $ profile_name  : chr</span>
+<span class="co"># $ created_at    : POSIXct[1:1]</span>
 
 <span class="co"># Get account info (see api_accounts for a list of fields)</span>
 <span class="fu"><a href="../reference/get_accounts.html">get_accounts</a></span><span class="op">(</span><span class="va">RH</span><span class="op">)</span>
@@ -141,15 +154,14 @@
 <span class="fu"><a href="../reference/get_ach.html">get_ach</a></span><span class="op">(</span><span class="va">RH</span>, action <span class="op">=</span> <span class="st">"relationships"</span><span class="op">)</span>      <span class="co"># Info on your linked bank accounts</span>
 <span class="fu"><a href="../reference/get_ach.html">get_ach</a></span><span class="op">(</span><span class="va">RH</span>, action <span class="op">=</span> <span class="st">"schedules"</span><span class="op">)</span>          <span class="co"># Info on scheduled deposits</span>
 
-<span class="co"># Place a one time bank transfer</span>
+<span class="co"># Place a one time bank transfer (transfer_url comes from get_ach(RH, action = "relationships"))</span>
 <span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="../reference/place_ach_transfer.html">place_ach_transfer</a></span><span class="op">(</span><span class="va">RH</span>, action <span class="op">=</span> <span class="st">"deposit"</span>, amount <span class="op">=</span> <span class="fl">2</span>, transfer_url <span class="op">=</span> <span class="va">transfer_url</span><span class="op">)</span>
 
 <span class="co"># Get status of a transfer</span>
 <span class="fu"><a href="../reference/get_ach.html">get_ach</a></span><span class="op">(</span><span class="va">RH</span>, action <span class="op">=</span> <span class="st">"status"</span>, status_url <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">status_url</span><span class="op">)</span>
 
 <span class="co"># Cancel a pending transfer</span>
-<span class="fu"><a href="../reference/cancel_ach_transfer.html">cancel_ach_transfer</a></span><span class="op">(</span><span class="va">RH</span>, cancel_url <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">cancel_url</span><span class="op">)</span>
-</code></pre></div>
+<span class="fu"><a href="../reference/cancel_ach_transfer.html">cancel_ach_transfer</a></span><span class="op">(</span><span class="va">RH</span>, cancel_url <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">cancel_url</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="investment-positions" class="section level2">
 <h2 class="hasAnchor">
