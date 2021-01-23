@@ -1,4 +1,4 @@
-#' RobinHood API: Fundamentals
+#' RobinHood API: Market Data
 #'
 #' Returns a dataframe of quantitative market information for a particular option instrument
 #'

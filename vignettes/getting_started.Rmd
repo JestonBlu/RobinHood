@@ -340,7 +340,7 @@ get_tag(RH, tag = "100-most-popular")
 #   finance
 #   cap-weighted
 #   investment-trust-or-fund
-#   upcomnig-earnings
+#   upcoming-earnings
 #   china
 #   healthcare
 #   technology
@@ -351,7 +351,7 @@ get_tag(RH, tag = "100-most-popular")
 #   energy
 #   finance
 #   entertainment
-#   
+#
 
 ```
 
