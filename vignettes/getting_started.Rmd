@@ -329,7 +329,30 @@ get_market_hours(RH)
 # You can identify instruments by popular tags
 get_tag(RH, tag = "100-most-popular")
 
-#  [1] "AAPL"  "GE"    "ACB"   "F"     "CRON"  "MSFT"  "FB" ...
+#  [1] "AAPL" "GE" "ACB" "F" "CRON" "MSFT" "FB" ...
+
+# Known Tags
+#
+#   top-movers
+#   etf
+#   100-most-popular
+#   mutual-fund
+#   finance
+#   cap-weighted
+#   investment-trust-or-fund
+#   upcomnig-earnings
+#   china
+#   healthcare
+#   technology
+#   hospitality
+#   banking
+#   automotive
+#   agriculture
+#   energy
+#   finance
+#   entertainment
+#   
+
 ```
 
 
