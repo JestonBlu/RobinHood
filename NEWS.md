@@ -13,6 +13,7 @@ title: "NEWS"
   - [(GH-110)](https://github.com/JestonBlu/RobinHood/issues/110) `get_positions_crypto()`: no longer fails when you have a position in a single crypto only
   - [(GH-103)](https://github.com/JestonBlu/RobinHood/issues/103) `get_positions()`: now returns a message when no positions are found
   - [(GH-111)](https://github.com/JestonBlu/RobinHood/issues/103) `api_marketdata()`: fixed dataframe conversion error (@fouslim)
+  - [(GH-113)](https://github.com/JestonBlu/RobinHood/issues/113) `watchlist()`: fixed broken function due to api change
 
 ## Clean up
   - [(GH-101)](https://github.com/JestonBlu/RobinHood/issues/101) `place_order()`: no longer prevents you from trading fractional shares

@@ -2,7 +2,7 @@
 % Please edit documentation in R/api_marketdata.R
 \name{api_marketdata}
 \alias{api_marketdata}
-\title{RobinHood API: Fundamentals}
+\title{RobinHood API: Market Data}
 \usage{
 api_marketdata(RH, instrument, type = "instrument_id")
 }

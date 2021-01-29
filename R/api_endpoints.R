@@ -33,7 +33,7 @@ api_endpoints <- function(endpoint, source = "equity") {
     token              = "oauth2/token/",
     revoke_token       = "oauth2/revoke_token/",
     user               = "user/",
-    watchlist          = "watchlists/",
+    watchlist          = "midlands/lists/",
     # Nummus endpoints
     url_nummus         = "https://nummus.robinhood.com/",
     accounts_crypto    = "accounts/",

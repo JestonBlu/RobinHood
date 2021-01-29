@@ -16,6 +16,10 @@ api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
   url <- watchlist_url
   token <- paste("Bearer", RH$tokens.access_token)
 
+  # URL and token
+  url <- watchlist_url
+  token <- paste("Bearer", RH$tokens.access_token)
+
   # Send a command to delete a watchlist or instrument from a watchlist
   if (delete == TRUE) {
 
@@ -30,7 +34,7 @@ api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
 
   }
 
-  # Send a command to create a watchlist
+  # Get all watchlists
   if (delete == FALSE & detail == FALSE) {
 
     # GET call

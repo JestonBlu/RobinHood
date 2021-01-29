@@ -34,32 +34,33 @@ watchlist <- function(RH, action, watchlist = "", ticker = "") {
     base_watchlist_url <- api_endpoints("watchlist")
 
     # Get watchlist urls
-    current_watchlist <- api_watchlist(RH, base_watchlist_url)
+    current_watchlist <- api_watchlist(RH, paste(base_watchlist_url, "default/", sep = "", collapse = ""))
 
     # Checks for invalid inputs
     if (action == "add" & watchlist == "") cat("Watchlist can't be null, maybe you wanted Default?")
-    if (action == "add" & watchlist != "" & ticker == "") cat("Creating a watchlist is currently disabled, use the Default watchlist")
+    #if (action == "add" & watchlist != "" & ticker == "") cat("Creating a watchlist is currently disabled, use the Default watchlist")
     if (action == "delete" & watchlist == "") cat("Watchlist cant be null")
-    if (action == "delete" & watchlist != "" & ticker == "") cat("Deleting a watchlist is currently disabled")
+    #if (action == "delete" & watchlist != "" & ticker == "") cat("Deleting a watchlist is currently disabled")
 
 
     # If no watchlist submitted, return a vector of watchlists
     if (action == "get" & watchlist == "") {
-      wl <- current_watchlist$results$name
+      wl <- current_watchlist$results$display_name
       return(wl)
     }
 
     # If watchlist is not null, return instruments in the watchlist
     if (action == "get" & watchlist != "") {
-      watchlist_url <- paste(base_watchlist_url, watchlist, "/?cursor=$cursor", sep = "", collapse = "")
+
+      # Get watchlist ids
+      current_watchlist <- current_watchlist$results
+      watchlist_id <- current_watchlist[current_watchlist$display_name == watchlist, "id"]
+
+      watchlist_url <- paste(base_watchlist_url, "items/?list_id=", watchlist_id, sep = "", collapse = "")
       instruments <- api_watchlist(RH, watchlist_url, detail = FALSE)
-      instrument_id <- instruments$results$instrument
-      wl <- c()
-      for (i in 1:length(instrument_id)) {
-        x <- api_instruments(RH, instrument_url = instrument_id[i])
-        x <- x$symbol
-        wl <- c(wl, x)
-      }
+
+      wl <- instruments$results$symbol
+
       return(wl)
     }
 
