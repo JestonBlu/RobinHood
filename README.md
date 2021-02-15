@@ -1,3 +1,4 @@
+![Project Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 ![Travis-CI](https://travis-ci.org/JestonBlu/RobinHood.svg?branch=master) &nbsp;
 ![pkgdown](https://github.com/JestonBlu/RobinHood/workflows/pkgdown/badge.svg?branch=master) &nbsp;
 ![Dev Version](https://img.shields.io/badge/github-1.6-blue.svg) &nbsp;
