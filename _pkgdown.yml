@@ -8,7 +8,6 @@ reference:
     - cancel_order
     - cancel_order_crypto
     - cancel_order_options
-    - check_rh
     - get_accounts
     - get_ach
     - get_contracts
@@ -32,7 +31,6 @@ reference:
     - get_tickers
     - get_user
     - logout
-    - mod_json
     - place_ach_transfer
     - place_order
     - place_order_crypto
@@ -72,3 +70,10 @@ reference:
     - api_tickers
     - api_user
     - api_watchlist
+
+
+  - title: "Backend Utility Functions"
+    desc: "Backend utility functions"
+  - contents:
+    - check_rh
+    - mod_json
