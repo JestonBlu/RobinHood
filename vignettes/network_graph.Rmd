@@ -1,0 +1,214 @@
+---
+title: "Function Network Graph"
+description: >
+  A force directed graph highlighting the links between functions
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Function Network Graph}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+Functions in RobinHood are organized into 3 basic groups:
+
+  - **Core** functions are what users will interact with
+  - **API** functions are the backend functions that interact with a RobinHood connection
+  - **Utility** functions are used in the background for integrity checks and convenience
+
+The following force directed graphs display **core** and **API** functions in order to show the dependencies across functions. This might be helpful if you are wanting to understand the overall organization of the package and understand how the **API** functions support the **core** functions.
+
+For those curious how I made these plots I used the [ggnet2](https://briatte.github.io/ggnet/) package.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.height = 8, fig.width = 12, warnings = FALSE, message = FALSE, comment = NA)
+```
+
+
+```{r data, echo=FALSE}
+library(igraph)
+library(GGally)
+#library(intergraph)
+#library(network)
+#library(sna)
+
+nodes <- data.frame()
+nodes <- rbind(nodes, data.frame(func = "api_accounts",              type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_accounts_crypto",       type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_ach",                   type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_contracts",             type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_currency_pairs",        type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_endpoints",             type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_fundamentals",          type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_historicals",           type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_instruments",           type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_instruments_options",   type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_login",                 type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_logout",                type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_marketdata",            type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_markets",               type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_orders",                type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_orders_crypto",         type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_orders_options",        type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_portfolios",            type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_portfolios_crypto",     type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_positions",             type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_positions_crypto",      type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_positions_options",     type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_quote",                 type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_quote_crypto",          type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_ratings",               type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_tag",                   type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_tickers",               type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_user",                  type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_watchlist",             type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "cancel_ach_transfer",       type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "cancel_order",              type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "cancel_order_crypto",       type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "cancel_order_options",      type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_accounts",              type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_ach",                   type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_contracts",             type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_fundamentals",          type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_historicals",           type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_market_hours",          type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_order_history",         type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_order_history_crypto",  type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_order_history_options", type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_order_status",          type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_order_status_crypto",   type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_order_status_options",  type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_portfolios",            type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_positions",             type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_positions_crypto",      type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_positions_options",     type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_quote",                 type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_quote_crypto",          type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_ratings",               type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_tag",                   type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_tickers",               type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_user",                  type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "logout",                    type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "place_ach_transfer",        type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "place_order",               type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "place_order_crypto",        type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "place_order_options",       type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "RobinHood",                 type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "watchlist",                 type = "Core",    category = ""))
+
+edges <- data.frame()
+edges <- rbind(edges, data.frame(from = "api_accounts", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "api_accounts_crypto", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "api_ach", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "api_contracts", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "api_currency_pairs", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "api_fundamentals", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "api_instruments", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "api_login", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "api_logout", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "api_marketdata", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "api_orders_crypto", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "api_orders_options", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "api_orders", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "api_marketdata", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "api_portfolios_crypto", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "api_portfolios_crypto", to = "api_accounts_crypto", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "api_positions_crypto", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "api_positions_options", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "api_positions", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "api_ratings", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "api_tag", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "api_tickers", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "api_user", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "cancel_ach_transfer", to = "api_ach", api_action = "PUT"))
+edges <- rbind(edges, data.frame(from = "cancel_order_crypto", to = "api_orders_crypto", api_action = "PUT"))
+edges <- rbind(edges, data.frame(from = "cancel_order_options", to = "api_orders_options", api_action = "PUT"))
+edges <- rbind(edges, data.frame(from = "cancel_order", to = "api_orders", api_action = "PUT"))
+edges <- rbind(edges, data.frame(from = "get_accounts", to = "api_accounts", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_ach", to = "api_ach", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_contracts", to = "api_contracts", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_contracts", to = "api_marketdata", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_fundamentals", to = "api_fundamentals", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_historicals", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "get_historicals", to = "api_historicals", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_market_hours", to = "api_markets", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_market_hours", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "get_order_history_crypto", to = "api_orders_crypto", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_order_history_crypto", to = "api_currency_pairs", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_order_history_options", to = "api_orders_options", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_order_history", to = "api_orders", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_order_history", to = "api_instruments", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_order_status_crypto", to = "api_orders_crypto", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_order_status_options", to = "api_orders", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_order_status", to = "api_orders", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_portfolios", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "get_portfolios", to = "api_portfolios", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_positions_crypto", to = "api_positions_crypto", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_positions_options", to = "api_positions_options", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_positions_options", to = "api_instruments_options", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_positions_options", to = "api_marketdata", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_positions", to = "api_positions", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_positions", to = "api_instruments", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_positions", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "get_positions", to = "api_quote", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_quote_crypto", to = "api_currency_pairs", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_quote_crypto", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "get_quote_crypto", to = "api_quote_crypto", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_quote", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "get_quote", to = "api_quote", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_ratings", to = "api_ratings", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_tag", to = "api_tag", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_tag", to = "api_instruments", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_tickers", to = "api_tickers", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_tickers", to = "get_fundamentals", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_user", to = "api_user", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "logout", to = "api_logout", api_action = "POST"))
+edges <- rbind(edges, data.frame(from = "place_ach_transfer", to = "api_ach", api_action = "POST"))
+edges <- rbind(edges, data.frame(from = "place_order_crypto", to = "api_currency_pairs", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "place_order_crypto", to = "api_orders_crypto", api_action = "POST"))
+edges <- rbind(edges, data.frame(from = "place_order_options", to = "api_orders_options", api_action = "POST"))
+edges <- rbind(edges, data.frame(from = "place_order", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "place_order", to = "api_quote", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "place_order", to = "api_orders", api_action = "POST"))
+edges <- rbind(edges, data.frame(from = "RobinHood", to = "api_login", api_action = "POST"))
+edges <- rbind(edges, data.frame(from = "RobinHood", to = "api_accounts", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "watchlist", to = "api_endpoints", api_action = "None"))
+edges <- rbind(edges, data.frame(from = "watchlist", to = "api_watchlist", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "watchlist", to = "api_fundamentals", api_action = "Mixed"))
+edges <- rbind(edges, data.frame(from = "api_orders_crypto", to = "api_accounts_crypto", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "api_portfolios_crypto", to = "api_accounts_crypto", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "api_ratings", to = "api_instruments", api_action = "GET"))
+
+```
+
+## Full Network
+
+```{r complete_network}
+
+g <- simplify(graph_from_data_frame(edges, vertices = nodes))
+
+ggnet2(g, size = 0, color = "type", edge.lty = "dashed", layout.exp = .15) +
+  geom_point(aes(x = x, y = y), color = "grey15", size = 7) +
+  geom_text(aes(label = label, x = x, y = y, color = color), size = 3) +
+  scale_color_brewer(type = "qual", palette = 4, guide = FALSE) +
+  theme(panel.background = element_rect(fill = "grey15"))
+
+
+```
+
+## Simplified Network with Endpoints Connection Removed
+
+```{r simplified_network}
+
+edges2 = subset(edges, api_action != 'None')
+
+g2 <- simplify(graph_from_data_frame(edges2, vertices = nodes))
+
+ggnet2(g2, size = 0, color = "type", edge.lty = "dashed", layout.exp = .15) +
+  geom_point(aes(x = x, y = y), color = "grey15", size = 7) +
+  geom_text(aes(label = label, x = x, y = y, color = color), size = 3) +
+  scale_color_brewer(type = "qual", palette = 4, guide = FALSE) +
+  theme(panel.background = element_rect(fill = "grey15"))
+
+
+
+```
