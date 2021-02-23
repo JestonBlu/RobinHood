@@ -1,3 +1,20 @@
+# Nav bar customization
+navbar:
+  structure:
+    left:  [home, intro, reference, articles, news]
+    right: [github]
+  components:
+    intro:
+      text: Getting Started
+      href: articles/getting_started.html
+    articles:
+      text: Additional Docs
+      menu:
+        - text: Special Characters in Passwords
+          href: articles/passwords.html
+        - text: Function Relationship Plots
+          href: articles/network_graph.html
+
 reference:
   - title: "Core Functions"
     desc: >
@@ -36,8 +53,6 @@ reference:
     - place_order_crypto
     - place_order_options
     - watchlist
-
-
   - title: "Backend API Functions"
     desc: "Backend API functions"
   - contents:
@@ -70,8 +85,6 @@ reference:
     - api_tickers
     - api_user
     - api_watchlist
-
-
   - title: "Backend Utility Functions"
     desc: "Backend utility functions"
   - contents:

@@ -18,6 +18,11 @@ title: "NEWS"
 ## Clean up
   - [(GH-101)](https://github.com/JestonBlu/RobinHood/issues/101) `place_order()`: no longer prevents you from trading fractional shares
 
+
+## Documentation
+  - Updated layout of site
+  - Added network plots displaying how functions are linked within the package
+
 -------------------------------------------------------------------------------
 
 # RobinHood 1.5
