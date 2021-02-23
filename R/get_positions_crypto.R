@@ -40,10 +40,12 @@ get_positions_crypto <- function(RH) {
     # Calculate extended values
     positions$market_value <- round(positions$mark_price * positions$quantity, 2)
     positions$gain_loss <- round(positions$market_value - positions$cost_bases, 2)
+    positions$average_price <- round(positions$market_value / positions$quantity, 2)
 
     # Reorder columns
     positions <- positions[, c("symbol", "name", "quantity", "market_value",
-                               "cost_bases", "gain_loss", "created_at")]
+                               "average_price", "cost_bases", "gain_loss",
+                               "created_at")]
 
     return(positions)
   }

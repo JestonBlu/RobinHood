@@ -7,6 +7,7 @@ title: "NEWS"
 
 ## New Features
   - [(GH-74)](https://github.com/JestonBlu/RobinHood/issues/74) `get_ratings()`: returns analyst rating and comments for a particular instrument
+  - [(GH-117)](https://github.com/JestonBlu/RobinHood/issues/117) `get_positions_crypto()`: added `average_price` field
 
 ## Bug Fixes
   - [(GH-108)](https://github.com/JestonBlu/RobinHood/issues/108) `get_tickers()`: no longer fails when call returns no info about a given equity symbol
@@ -17,6 +18,11 @@ title: "NEWS"
 
 ## Clean up
   - [(GH-101)](https://github.com/JestonBlu/RobinHood/issues/101) `place_order()`: no longer prevents you from trading fractional shares
+
+
+## Documentation
+  - Updated layout of site
+  - Added network plots displaying how functions are linked within the package
 
 -------------------------------------------------------------------------------
 

@@ -124,7 +124,7 @@ get_fundamentals(RH, "CAT")
 # $ year_founded          : int 1925
 
 # Get quotes
-get_quote(RH, ticker = c("CAT", "GE"), limit_output = TRUE)
+get_quote(RH, symbol = c("CAT", "GE"), limit_output = TRUE)
 
 #  symbol last_trade_price last_trade_price_source
 #     CAT           131.66            consolidated
