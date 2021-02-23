@@ -3,6 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   getting_started: getting_started.html
+  network_graph: network_graph.html
   passwords: passwords.html
-last_built: 2021-02-22T03:01Z
+last_built: 2021-02-23T04:01Z
 
