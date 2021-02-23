@@ -25,14 +25,12 @@ knitr::opts_chunk$set(echo = FALSE, fig.height = 8, fig.width = 12, warnings = F
 
 
 ```{r data, echo=FALSE}
-install.packages(c("igraph", "GGally", "network"))
 
 library(igraph)
 library(GGally)
 library(network)
 #library(intergraph)
-#library(network)
-#library(sna)
+library(sna)
 
 nodes <- data.frame()
 nodes <- rbind(nodes, data.frame(func = "api_accounts",              type = "API",     category = ""))
