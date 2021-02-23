@@ -13,9 +13,8 @@ Imports:
   magrittr,
   dplyr,
   httr,
-  uuid
-Suggests:
-  igraph, 
+  uuid,
+  igraph,
   GGally
 License: GPL-3
 URL: https://github.com/JestonBlu/RobinHood
