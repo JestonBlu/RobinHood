@@ -18,7 +18,7 @@ title: "NEWS"
 
 ## Clean up
   - [(GH-101)](https://github.com/JestonBlu/RobinHood/issues/101) `place_order()`: no longer prevents you from trading fractional shares
-
+  - [(GH-114)](https://github.com/JestonBlu/RobinHood/issues/114) `get_positions_crypto()` swapped out `average_price` for `mark_price`, eliminating rounding errors
 
 ## Documentation
   - Updated layout of site

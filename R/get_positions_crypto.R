@@ -38,13 +38,17 @@ get_positions_crypto <- function(RH) {
     positions <- dplyr::inner_join(positions, crypto_quotes, by = "symbol")
 
     # Calculate extended values
-    positions$market_value <- round(positions$mark_price * positions$quantity, 2)
-    positions$gain_loss <- round(positions$market_value - positions$cost_bases, 2)
-    positions$average_price <- round(positions$market_value / positions$quantity, 2)
+    positions$market_value <- positions$mark_price * positions$quantity
+    positions$gain_loss <- positions$market_value - positions$cost_bases
+
+
+    # Round calculated values
+    positions$market_value <- round(positions$market_value, 2)
+    positions$gain_loss <- round(positions$gain_loss, 2)
 
     # Reorder columns
     positions <- positions[, c("symbol", "name", "quantity", "market_value",
-                               "average_price", "cost_bases", "gain_loss",
+                               "mark_price", "cost_bases", "gain_loss",
                                "created_at")]
 
     return(positions)
