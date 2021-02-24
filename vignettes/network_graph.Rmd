@@ -26,8 +26,6 @@ knitr::opts_chunk$set(echo = FALSE, fig.height = 8, fig.width = 12, warnings = F
 
 ```{r data, echo=FALSE}
 
-install.packages(c("igraph", "GGally", "network", "sna", "intergraph"))
-
 library(igraph)
 library(GGally)
 library(network)
