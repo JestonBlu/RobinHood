@@ -1,6 +1,6 @@
 #' Get historical crypto price history from RobinHood
 #'
-#' Returns a data frame of historical crypto price history for a given symbol.
+#' Returns a data frame of historical crypto price history for a given symbol. Note that not all combinations of interval/span and bounds will return results. Spans that go beyond day (week, month, year) will not return results for certain bounds values (trading, extended). The function should return a message if you specify a combination of inputs that returns no results.
 #'
 #' @param RH object of class RobinHood
 #' @param symbol (string) ticker symbol of crypto (BTC, ETH, ETC)
@@ -15,8 +15,10 @@
 #' # Login in to your RobinHood account
 #' RH <- RobinHood("username", "password")
 #'
-#' get_historicals_crypto(RH = RH, symbol = "ETC", interval = "day", bounds = "extended",
-#'                        span = "month")
+#' get_historicals_crypto(RH, symbol = "ETC", interval = "5minute", span = "day", bounds = 'regular')
+#' get_historicals_crypto(RH, symbol = "ETC", interval = "5minute", span = "day", bounds = 'trading')
+#' get_historicals_crypto(RH, symbol = "ETC", interval = "5minute", span = "day", bounds = 'extended')
+#' get_historicals_crypto(RH, symbol = "ETC", interval = "5minute", span = "day", bounds = '24_7')
 #'
 #'}
 get_historicals_crypto <- function(RH, symbol, interval, span, bounds, tz = Sys.timezone()) {
@@ -39,18 +41,13 @@ get_historicals_crypto <- function(RH, symbol, interval, span, bounds, tz = Sys.
 
   historicals <- api_historicals_crypto(RH, url)
 
-  # If interval is hour or minute, then adjust timezone to local or user override
-  if (length(grep("hour|minute", x = interval)) == 1) {
+  # Certain combinations of interval/span and bounds do not always return results
+  # Return a message if the data frame returned is empty
+  if (nrow(historicals) == 0) return(cat("You may have used a bounds value that didnt return results"))
 
-    historicals <- historicals %>%
+  # Adjust timezone to local or user override
+  historicals <- historicals %>%
       dplyr::mutate_at("begins_at", function(x) lubridate::with_tz(lubridate::ymd_hms(x), tzone = tz))
-
-  } else {
-
-    historicals <- historicals %>%
-      dplyr::mutate_at("begins_at", lubridate::ymd)
-
-  }
 
   return(historicals)
 

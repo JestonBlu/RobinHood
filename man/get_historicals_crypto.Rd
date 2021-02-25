@@ -20,15 +20,17 @@ get_historicals_crypto(RH, symbol, interval, span, bounds, tz = Sys.timezone())
 \item{tz}{(string) timezone returned by OlsonNames() (eg: "America/Chicago")}
 }
 \description{
-Returns a data frame of historical crypto price history for a given symbol.
+Returns a data frame of historical crypto price history for a given symbol. Note that not all combinations of interval/span and bounds will return results. Spans that go beyond day (week, month, year) will not return results for certain bounds values (trading, extended). The function should return a message if you specify a combination of inputs that returns no results.
 }
 \examples{
 \dontrun{
 # Login in to your RobinHood account
 RH <- RobinHood("username", "password")
 
-get_historicals_crypto(RH = RH, symbol = "ETC", interval = "day", bounds = "extended",
-                       span = "month")
+get_historicals_crypto(RH, symbol = "ETC", interval = "5minute", span = "day", bounds = 'regular')
+get_historicals_crypto(RH, symbol = "ETC", interval = "5minute", span = "day", bounds = 'trading')
+get_historicals_crypto(RH, symbol = "ETC", interval = "5minute", span = "day", bounds = 'extended')
+get_historicals_crypto(RH, symbol = "ETC", interval = "5minute", span = "day", bounds = '24_7')
 
 }
 }

@@ -185,21 +185,6 @@ edges <- rbind(edges, data.frame(from = "get_historicals_crypto", to = "api_curr
 
 ```
 
-## Full Network
-
-```{r complete_network}
-
-g <- simplify(graph_from_data_frame(edges, vertices = nodes))
-
-ggnet2(g, size = 0, color = "type", edge.lty = "dashed", layout.exp = .15) +
-  geom_point(aes(x = x, y = y), color = "grey15", size = 7) +
-  geom_text(aes(label = label, x = x, y = y, color = color), size = 3) +
-  scale_color_brewer(type = "qual", palette = 4, guide = FALSE) +
-  theme(panel.background = element_rect(fill = "grey15"))
-
-
-```
-
 ## Simplified Network with Endpoints Connection Removed
 
 ```{r simplified_network}
@@ -208,6 +193,7 @@ edges2 = subset(edges, api_action != 'None')
 
 g2 <- simplify(graph_from_data_frame(edges2, vertices = nodes))
 
+set.seed(1)
 ggnet2(g2, size = 0, color = "type", edge.lty = "dashed", layout.exp = .15) +
   geom_point(aes(x = x, y = y), color = "grey15", size = 7) +
   geom_text(aes(label = label, x = x, y = y, color = color), size = 3) +
@@ -217,3 +203,21 @@ ggnet2(g2, size = 0, color = "type", edge.lty = "dashed", layout.exp = .15) +
 
 
 ```
+
+
+## Full Network
+
+```{r complete_network}
+
+g <- simplify(graph_from_data_frame(edges, vertices = nodes))
+
+set.seed(1)
+ggnet2(g, size = 0, color = "type", edge.lty = "dashed", layout.exp = .15) +
+  geom_point(aes(x = x, y = y), color = "grey15", size = 7) +
+  geom_text(aes(label = label, x = x, y = y, color = color), size = 3) +
+  scale_color_brewer(type = "qual", palette = 4, guide = FALSE) +
+  theme(panel.background = element_rect(fill = "grey15"))
+
+
+```
+
