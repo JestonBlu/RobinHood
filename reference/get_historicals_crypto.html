@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get historical price history from RobinHood — get_historicals • RobinHood</title>
+<title>Get historical crypto price history from RobinHood — get_historicals_crypto • RobinHood</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Get historical price history from RobinHood — get_historicals" />
-<meta property="og:description" content="Returns a data frame of historical price history for a given symbol." />
+<meta property="og:title" content="Get historical crypto price history from RobinHood — get_historicals_crypto" />
+<meta property="og:description" content="Returns a data frame of historical crypto price history for a given symbol." />
 
 
 
@@ -129,16 +129,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get historical price history from RobinHood</h1>
-    <small class="dont-index">Source: <a href='https://github.com/JestonBlu/RobinHood/blob/master/R/get_historicals.R'><code>R/get_historicals.R</code></a></small>
-    <div class="hidden name"><code>get_historicals.Rd</code></div>
+    <h1>Get historical crypto price history from RobinHood</h1>
+    <small class="dont-index">Source: <a href='https://github.com/JestonBlu/RobinHood/blob/master/R/get_historicals_crypto.R'><code>R/get_historicals_crypto.R</code></a></small>
+    <div class="hidden name"><code>get_historicals_crypto.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Returns a data frame of historical price history for a given symbol.</p>
+    <p>Returns a data frame of historical crypto price history for a given symbol.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_historicals</span><span class='op'>(</span><span class='va'>RH</span>, <span class='va'>symbol</span>, <span class='va'>interval</span>, <span class='va'>span</span>, tz <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/timezones.html'>Sys.timezone</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_historicals_crypto</span><span class='op'>(</span><span class='va'>RH</span>, <span class='va'>symbol</span>, <span class='va'>interval</span>, <span class='va'>span</span>, <span class='va'>bounds</span>, tz <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/timezones.html'>Sys.timezone</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -149,7 +149,7 @@
     </tr>
     <tr>
       <th>symbol</th>
-      <td><p>(string) Stock symbol to query, single symbol only</p></td>
+      <td><p>(string) ticker symbol of crypto (BTC, ETH, ETC)</p></td>
     </tr>
     <tr>
       <th>interval</th>
@@ -158,6 +158,10 @@
     <tr>
       <th>span</th>
       <td><p>(string) Period of time you are interested in (examples: day, week, month, year)</p></td>
+    </tr>
+    <tr>
+      <th>bounds</th>
+      <td><p>(string) One of regular (6 hours), trading (9 hours), extended (16 hours), 24_7</p></td>
     </tr>
     <tr>
       <th>tz</th>
@@ -171,7 +175,8 @@
 <span class='co'># Login in to your RobinHood account</span>
 <span class='va'>RH</span> <span class='op'>&lt;-</span> <span class='fu'><a href='RobinHood.html'>RobinHood</a></span><span class='op'>(</span><span class='st'>"username"</span>, <span class='st'>"password"</span><span class='op'>)</span>
 
-<span class='fu'>get_historicals</span><span class='op'>(</span>RH <span class='op'>=</span> <span class='va'>RH</span>, symbol <span class='op'>=</span> <span class='st'>"CAT"</span>, interval <span class='op'>=</span> <span class='st'>"day"</span>, span <span class='op'>=</span> <span class='st'>"month"</span><span class='op'>)</span>
+<span class='fu'>get_historicals_crypto</span><span class='op'>(</span>RH <span class='op'>=</span> <span class='va'>RH</span>, symbol <span class='op'>=</span> <span class='st'>"ETC"</span>, interval <span class='op'>=</span> <span class='st'>"day"</span>, bounds <span class='op'>=</span> <span class='st'>"extended"</span>,
+                       span <span class='op'>=</span> <span class='st'>"month"</span><span class='op'>)</span>
 
 <span class='op'>}</span>
 </div></pre>
