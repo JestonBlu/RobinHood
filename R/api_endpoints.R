@@ -17,6 +17,7 @@ api_endpoints <- function(endpoint, source = "equity") {
     forex              = "marketdata/forex/quotes/",
     fundamentals       = "fundamentals/?symbols=",
     historicals        = "quotes/historicals/",
+    historicals_crypto = "marketdata/forex/historicals/",
     markets            = "markets/",
     marketdata_options = "marketdata/options/",
     options            = "options/",

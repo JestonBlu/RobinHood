@@ -8,6 +8,7 @@ title: "NEWS"
 ## New Features
   - [(GH-74)](https://github.com/JestonBlu/RobinHood/issues/74) `get_ratings()`: returns analyst rating and comments for a particular instrument
   - [(GH-117)](https://github.com/JestonBlu/RobinHood/issues/117) `get_positions_crypto()`: added average_price field
+  - [(GH-116)](https://github.com/JestonBlu/RobinHood/issues/116) New function `get_historicals_crypto()` (@jgQuantScripts)
 
 ## Bug Fixes
   - [(GH-108)](https://github.com/JestonBlu/RobinHood/issues/108) `get_tickers()`: no longer fails when call returns no info about a given equity symbol
@@ -19,6 +20,7 @@ title: "NEWS"
 ## Clean up
   - [(GH-101)](https://github.com/JestonBlu/RobinHood/issues/101) `place_order()`: no longer prevents you from trading fractional shares
   - [(GH-114)](https://github.com/JestonBlu/RobinHood/issues/114) `get_positions_crypto()` swapped out `average_price` for `mark_price`, eliminating rounding errors
+  - Fixed various documentation typos
 
 ## Documentation
   - Updated layout of site

@@ -20,12 +20,21 @@ api_currency_pairs <- function(RH) {
   # Format return
   dta <- mod_json(dta, "fromJSON")
   dta <- as.list(dta$results)
-
+  
+  # ID is used for quotes and orders
+  # Asset ID is used for historicals
   dta <- data.frame(
     id = dta$id,
     name = dta$name,
     symbol = dta$symbol,
-    tradability = dta$tradability
+    tradability = dta$tradability,
+    asset_code = dta$asset_currency$code,
+    asset_name = dta$asset_currency$name,
+    max_order_size = dta$max_order_size,
+    min_order_size = dta$min_order_size,
+    min_order_price_increment = dta$min_order_price_increment,
+    min_order_quantity_increment = dta$min_order_quantity_increment
+    
   )
 
   return(dta)

@@ -41,6 +41,7 @@ nodes <- rbind(nodes, data.frame(func = "api_currency_pairs",        type = "API
 nodes <- rbind(nodes, data.frame(func = "api_endpoints",             type = "API",     category = ""))
 nodes <- rbind(nodes, data.frame(func = "api_fundamentals",          type = "API",     category = ""))
 nodes <- rbind(nodes, data.frame(func = "api_historicals",           type = "API",     category = ""))
+nodes <- rbind(nodes, data.frame(func = "api_historicals_crypto",    type = "API",     category = ""))
 nodes <- rbind(nodes, data.frame(func = "api_instruments",           type = "API",     category = ""))
 nodes <- rbind(nodes, data.frame(func = "api_instruments_options",   type = "API",     category = ""))
 nodes <- rbind(nodes, data.frame(func = "api_login",                 type = "API",     category = ""))
@@ -95,6 +96,7 @@ nodes <- rbind(nodes, data.frame(func = "place_order_crypto",        type = "Cor
 nodes <- rbind(nodes, data.frame(func = "place_order_options",       type = "Core",    category = ""))
 nodes <- rbind(nodes, data.frame(func = "RobinHood",                 type = "Core",    category = ""))
 nodes <- rbind(nodes, data.frame(func = "watchlist",                 type = "Core",    category = ""))
+nodes <- rbind(nodes, data.frame(func = "get_historicals_crypto",    type = "Core",    category = ""))
 
 edges <- data.frame()
 edges <- rbind(edges, data.frame(from = "api_accounts", to = "api_endpoints", api_action = "None"))
@@ -178,6 +180,8 @@ edges <- rbind(edges, data.frame(from = "watchlist", to = "api_fundamentals", ap
 edges <- rbind(edges, data.frame(from = "api_orders_crypto", to = "api_accounts_crypto", api_action = "GET"))
 edges <- rbind(edges, data.frame(from = "api_portfolios_crypto", to = "api_accounts_crypto", api_action = "GET"))
 edges <- rbind(edges, data.frame(from = "api_ratings", to = "api_instruments", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_historicals_crypto", to = "api_historicals_crypto", api_action = "GET"))
+edges <- rbind(edges, data.frame(from = "get_historicals_crypto", to = "api_currency_pairs", api_action = "GET"))
 
 ```
 

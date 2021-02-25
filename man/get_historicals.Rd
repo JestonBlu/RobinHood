@@ -25,7 +25,7 @@ Returns a data frame of historical price history for a given symbol.
 # Login in to your RobinHood account
 RH <- RobinHood("username", "password")
 
-get_historicals (RH = RH, symbol = "CAT", interval = "day", span = "month")
+get_historicals(RH = RH, symbol = "CAT", interval = "day", span = "month")
 
 }
 }

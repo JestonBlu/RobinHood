@@ -14,7 +14,7 @@
 #' # Login in to your RobinHood account
 #' RH <- RobinHood("username", "password")
 #'
-#' get_historicals (RH = RH, symbol = "CAT", interval = "day", span = "month")
+#' get_historicals(RH = RH, symbol = "CAT", interval = "day", span = "month")
 #'
 #'}
 get_historicals <- function(RH, symbol, interval, span, tz = Sys.timezone()) {

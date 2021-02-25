@@ -30,6 +30,7 @@ reference:
     - get_contracts
     - get_fundamentals
     - get_historicals
+    - get_historicals_crypto
     - get_market_hours
     - get_order_history
     - get_order_history_crypto
@@ -64,6 +65,7 @@ reference:
     - api_endpoints
     - api_fundamentals
     - api_historicals
+    - api_historicals_crypto
     - api_instruments
     - api_instruments_options
     - api_login
