@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Get historical crypto price history from RobinHood — get_historicals_crypto" />
-<meta property="og:description" content="Returns a data frame of historical crypto price history for a given symbol." />
+<meta property="og:description" content="Returns a data frame of historical crypto price history for a given symbol. Note that not all combinations of interval/span and bounds will return results. Spans that go beyond day (week, month, year) will not return results for certain bounds values (trading, extended). The function should return a message if you specify a combination of inputs that returns no results." />
 
 
 
@@ -135,7 +135,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Returns a data frame of historical crypto price history for a given symbol.</p>
+    <p>Returns a data frame of historical crypto price history for a given symbol. Note that not all combinations of interval/span and bounds will return results. Spans that go beyond day (week, month, year) will not return results for certain bounds values (trading, extended). The function should return a message if you specify a combination of inputs that returns no results.</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_historicals_crypto</span><span class='op'>(</span><span class='va'>RH</span>, <span class='va'>symbol</span>, <span class='va'>interval</span>, <span class='va'>span</span>, <span class='va'>bounds</span>, tz <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/timezones.html'>Sys.timezone</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
@@ -175,8 +175,10 @@
 <span class='co'># Login in to your RobinHood account</span>
 <span class='va'>RH</span> <span class='op'>&lt;-</span> <span class='fu'><a href='RobinHood.html'>RobinHood</a></span><span class='op'>(</span><span class='st'>"username"</span>, <span class='st'>"password"</span><span class='op'>)</span>
 
-<span class='fu'>get_historicals_crypto</span><span class='op'>(</span>RH <span class='op'>=</span> <span class='va'>RH</span>, symbol <span class='op'>=</span> <span class='st'>"ETC"</span>, interval <span class='op'>=</span> <span class='st'>"day"</span>, bounds <span class='op'>=</span> <span class='st'>"extended"</span>,
-                       span <span class='op'>=</span> <span class='st'>"month"</span><span class='op'>)</span>
+<span class='fu'>get_historicals_crypto</span><span class='op'>(</span><span class='va'>RH</span>, symbol <span class='op'>=</span> <span class='st'>"ETC"</span>, interval <span class='op'>=</span> <span class='st'>"5minute"</span>, span <span class='op'>=</span> <span class='st'>"day"</span>, bounds <span class='op'>=</span> <span class='st'>'regular'</span><span class='op'>)</span>
+<span class='fu'>get_historicals_crypto</span><span class='op'>(</span><span class='va'>RH</span>, symbol <span class='op'>=</span> <span class='st'>"ETC"</span>, interval <span class='op'>=</span> <span class='st'>"5minute"</span>, span <span class='op'>=</span> <span class='st'>"day"</span>, bounds <span class='op'>=</span> <span class='st'>'trading'</span><span class='op'>)</span>
+<span class='fu'>get_historicals_crypto</span><span class='op'>(</span><span class='va'>RH</span>, symbol <span class='op'>=</span> <span class='st'>"ETC"</span>, interval <span class='op'>=</span> <span class='st'>"5minute"</span>, span <span class='op'>=</span> <span class='st'>"day"</span>, bounds <span class='op'>=</span> <span class='st'>'extended'</span><span class='op'>)</span>
+<span class='fu'>get_historicals_crypto</span><span class='op'>(</span><span class='va'>RH</span>, symbol <span class='op'>=</span> <span class='st'>"ETC"</span>, interval <span class='op'>=</span> <span class='st'>"5minute"</span>, span <span class='op'>=</span> <span class='st'>"day"</span>, bounds <span class='op'>=</span> <span class='st'>'24_7'</span><span class='op'>)</span>
 
 <span class='op'>}</span>
 </div></pre>
