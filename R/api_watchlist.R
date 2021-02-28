@@ -16,10 +16,6 @@ api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
   url <- watchlist_url
   token <- paste("Bearer", RH$tokens.access_token)
 
-  # URL and token
-  url <- watchlist_url
-  token <- paste("Bearer", RH$tokens.access_token)
-
   # Delete a watchlist or instrument
   if (delete == TRUE) {
 
@@ -43,7 +39,7 @@ api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
                            "Content-Type" = "application/json",
                            "Authorization" = token))
 
-    dta <- mod_json(dta, "fromJSON")
+    dta <- mod_json(dta, "fromJSON")$results
 
   }
 
