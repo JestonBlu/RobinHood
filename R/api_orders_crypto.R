@@ -97,6 +97,7 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
 
   # Get Order History
   if (action == "history") {
+    
     # URL and token
     url <- api_endpoints("orders_crypto", source = "crypto")
     token <- paste("Bearer", RH$tokens.access_token)
@@ -109,21 +110,36 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
 
     # format return
     dta <- mod_json(dta, "fromJSON")
-    dta <- as.data.frame(dta$results)
+    output <- as.data.frame(dta$results)
 
-    # Extract executions and combine with main extraction
-    executions <- data.frame()
+    # Cycle through the pages
+    while (length(dta$`next`) > 0) {
+
+      # URL
+      url <- dta$`next`
+
+      # GET call
+      dta <- GET(url,
+                 add_headers("Accept" = "application/json",
+                             "Content-Type" = "application/json",
+                             "Authorization" = token))
+
+      # Format return
+      dta <- mod_json(dta, "fromJSON")
+
+      output <- rbind(output, dta$results)
+
+      profvis::pause(.25)
+    }
 
     # Reformat columns
-    dta <- dta %>%
+    dta <- output %>%
       dplyr::mutate_at(c("created_at", "last_transaction_at", "updated_at"), lubridate::ymd_hms) %>%
       dplyr::mutate_at(c("cumulative_quantity", "price", "quantity", "rounded_executed_notional"), as.numeric)
 
-    # , "exec_timestamp"
-    # , "exec_effective_price", "exec_quantity"
-
     # Remove
     dta <- dta[, !names(dta) %in% "executions"]
+
 
     return(dta)
 

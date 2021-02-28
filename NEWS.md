@@ -13,6 +13,7 @@ title: "NEWS"
 ## Bug Fixes
   - [(GH-108)](https://github.com/JestonBlu/RobinHood/issues/108) `get_tickers()`: no longer fails when call returns no info about a given equity symbol
   - [(GH-110)](https://github.com/JestonBlu/RobinHood/issues/110) `get_positions_crypto()`: no longer fails when you have a position in a single crypto only
+  - [(GH-115)](https://github.com/JestonBlu/RobinHood/issues/115) `get_order_history_crypto()`: no longer limits you to the last 75 records
   - [(GH-103)](https://github.com/JestonBlu/RobinHood/issues/103) `get_positions()`: now returns a message when no positions are found
   - [(GH-111)](https://github.com/JestonBlu/RobinHood/issues/103) `api_marketdata()`: fixed dataframe conversion error (@fouslim)
   - [(GH-113)](https://github.com/JestonBlu/RobinHood/issues/113) `watchlist()`: fixed broken function due to api change
@@ -20,6 +21,7 @@ title: "NEWS"
 ## Clean up
   - [(GH-101)](https://github.com/JestonBlu/RobinHood/issues/101) `place_order()`: no longer prevents you from trading fractional shares
   - [(GH-114)](https://github.com/JestonBlu/RobinHood/issues/114) `get_positions_crypto()` swapped out `average_price` for `mark_price`, eliminating rounding errors
+  - `get_order_history_crypto()`: USD references have been stripped out of `name` and `symbol`, should look cleaner now
   - Fixed various documentation typos
 
 ## Documentation
