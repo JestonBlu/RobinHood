@@ -1,12 +1,14 @@
-#' Get historical price options from RobinHood
+#' Get historical options from RobinHood
 #'
-#' Returns a data frame of historical price options for a given symbol.
+#' Returns a data frame of historical options for a given symbol, strike price, and expiration date.
 #'
 #' @param RH object of class RobinHood
-#' @param symbol (string) Stock symbol to query, single symbol only
-#' @param interval (string) Interval of time to aggregate to (examples: hour, day, week, month)
-#' @param span (string) Period of time you are interested in (examples: day, week, month, year)
-#' @param tz (string) timezone returned by OlsonNames() (eg: "America/Chicago")
+#' @param chain_symbol (string) stock symbol
+#' @param type (string) one of ("put", "call")
+#' @param strike_price (numeric) strike price
+#' @param expiration_date (string) expiration date (YYYY-MM-DD)
+#' @param interval (string) one of ("5minute", "10minute", "hour", "day", "week")
+#' @param span (string) one of ("day", "week", "month")
 #' @import httr magrittr
 #' @export
 #' @examples
@@ -14,38 +16,34 @@
 #' # Login in to your RobinHood account
 #' RH <- RobinHood("username", "password")
 #'
-#' get_historicals(RH = RH, symbol = "CAT", interval = "day", span = "month")
+#' get_historicals_options(RH = RH, chain_symbol = "AAPL", interval = "10minute", type = "call",
+#'                         expiration_date = "2021-03-12", strike_price = 122)
 #'
 #'}
-get_historicals <- function(RH, symbol, interval, span, tz = Sys.timezone()) {
+get_historicals_options <- function(RH, chain_symbol, type, strike_price, expiration_date,
+                                    interval = NULL, span = NULL) {
 
-    # Check if RH is valid
-    check_rh(RH)
+  # Check if RH is valid
+  check_rh(RH)
 
-    # Call the historical price position endpoint
-    historicals_url <- api_endpoints("historicals")
+  historicals <- api_historicals_options(RH, chain_symbol = chain_symbol,
+                                         type = type,
+                                         strike_price = strike_price,
+                                         expiration_date = expiration_date,
+                                         interval = interval,
+                                         span = span)
 
-    # Create the api url
-    body <- paste("symbols=", symbol,
-                  "&interval=", interval,
-                  "&span=", span,
-                  sep = "")
+  # Add columns for strike + symbol + expiration + type
+  historicals$strike_price  <- strike_price
+  historicals$expiration_date  <- expiration_date
+  historicals$type  <- type
+  historicals$chain_symbol <- chain_symbol
 
-    # Call the historical api for price history
-    historicals <- api_historicals(RH, historicals_url, body)
+  # Reorder columns
+  historicals <- historicals %>%
+    dplyr::select("chain_symbol", "type", "expiration_date", "strike_price", "open_price", "close_price",
+                  "low_price", "high_price", "volume", "begins_at", "session", "interpolated")
 
-    # If interval is hour or minute, then adjust timezone to local or user override
-    if (length(grep("hour|minute", x = interval)) == 1) {
+  return(historicals)
 
-      historicals <- historicals %>%
-        dplyr::mutate_at("begins_at", function(x) lubridate::with_tz(lubridate::ymd_hms(x), tzone = tz))
-
-    } else {
-
-      historicals <- historicals %>%
-        dplyr::mutate_at("begins_at", lubridate::ymd)
-
-    }
-
-    return(historicals)
   }

@@ -1,7 +1,18 @@
 ---
 title: "NEWS"
 
----
+# RobinHood 1.6.1
+
+## New Features
+  - [(GH-123)](https://github.com/JestonBlu/RobinHood/issues/123) `api_historicals_options()`: (@jgQuantScripts)
+  - [(GH-123)](https://github.com/JestonBlu/RobinHood/issues/123) `get_historicals_options()`: (@jgQuantScripts)
+
+## Bug Fixes
+
+## Clean up
+
+
+-------------------------------------------------------------------------------
 
 # RobinHood 1.6
 
