@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>RobinHood API: Option Contract Instruments — api_instruments_options • RobinHood</title>
+<title>RobinHood API: Option Contracts — api_instruments_options • RobinHood</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="RobinHood API: Option Contract Instruments — api_instruments_options" />
-<meta property="og:description" content="RobinHood API: Option Contract Instruments" />
+<meta property="og:title" content="RobinHood API: Option Contracts — api_instruments_options" />
+<meta property="og:description" content="Backend function or retrieving option contracts." />
 
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">RobinHood</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6.1</span>
       </span>
     </div>
 
@@ -129,16 +129,26 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>RobinHood API: Option Contract Instruments</h1>
+    <h1>RobinHood API: Option Contracts</h1>
     <small class="dont-index">Source: <a href='https://github.com/JestonBlu/RobinHood/blob/master/R/api_instruments_options.R'><code>R/api_instruments_options.R</code></a></small>
     <div class="hidden name"><code>api_instruments_options.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>RobinHood API: Option Contract Instruments</p>
+    <p>Backend function or retrieving option contracts.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>api_instruments_options</span><span class='op'>(</span><span class='va'>RH</span>, <span class='va'>option_instrument_url</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>api_instruments_options</span><span class='op'>(</span>
+  <span class='va'>RH</span>,
+  method <span class='op'>=</span> <span class='st'>"url"</span>,
+  option_instrument_url <span class='op'>=</span> <span class='cn'>NULL</span>,
+  chain_symbol <span class='op'>=</span> <span class='cn'>NULL</span>,
+  type <span class='op'>=</span> <span class='cn'>NULL</span>,
+  state <span class='op'>=</span> <span class='cn'>NULL</span>,
+  strike_price <span class='op'>=</span> <span class='cn'>NULL</span>,
+  tradability <span class='op'>=</span> <span class='cn'>NULL</span>,
+  expiration_date <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -148,8 +158,36 @@
       <td><p>object of class RobinHood</p></td>
     </tr>
     <tr>
+      <th>method</th>
+      <td><p>(string) one of ("url", "symbol")</p></td>
+    </tr>
+    <tr>
       <th>option_instrument_url</th>
-      <td><p>(string) url</p></td>
+      <td><p>(string) direct url for an option contract</p></td>
+    </tr>
+    <tr>
+      <th>chain_symbol</th>
+      <td><p>(string) stock symbol</p></td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td><p>(string) one of ("put", "call")</p></td>
+    </tr>
+    <tr>
+      <th>state</th>
+      <td><p>(string) one of ("active", "inactive")</p></td>
+    </tr>
+    <tr>
+      <th>strike_price</th>
+      <td><p>(numeric) strike price</p></td>
+    </tr>
+    <tr>
+      <th>tradability</th>
+      <td><p>(string) one of ("tradable", "untradable")</p></td>
+    </tr>
+    <tr>
+      <th>expiration_date</th>
+      <td><p>(string) expiration date ("YYYY-MM-DD")</p></td>
     </tr>
     </table>
 

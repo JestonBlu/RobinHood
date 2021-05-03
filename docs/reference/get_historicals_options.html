@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get a quote from RobinHood — get_quote • RobinHood</title>
+<title>Get historical options from RobinHood — get_historicals_options • RobinHood</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Get a quote from RobinHood — get_quote" />
-<meta property="og:description" content="Get a quote from RobinHood" />
+<meta property="og:title" content="Get historical options from RobinHood — get_historicals_options" />
+<meta property="og:description" content="Returns a data frame of historical options for a given symbol, strike price, and expiration date." />
 
 
 
@@ -129,31 +129,55 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get a quote from RobinHood</h1>
-    <small class="dont-index">Source: <a href='https://github.com/JestonBlu/RobinHood/blob/master/R/get_quote.R'><code>R/get_quote.R</code></a></small>
-    <div class="hidden name"><code>get_quote.Rd</code></div>
+    <h1>Get historical options from RobinHood</h1>
+    <small class="dont-index">Source: <a href='https://github.com/JestonBlu/RobinHood/blob/master/R/get_historicals_options.R'><code>R/get_historicals_options.R</code></a></small>
+    <div class="hidden name"><code>get_historicals_options.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get a quote from RobinHood</p>
+    <p>Returns a data frame of historical options for a given symbol, strike price, and expiration date.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_quote</span><span class='op'>(</span><span class='va'>RH</span>, <span class='va'>symbol</span>, limit_output <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_historicals_options</span><span class='op'>(</span>
+  <span class='va'>RH</span>,
+  <span class='va'>chain_symbol</span>,
+  <span class='va'>type</span>,
+  <span class='va'>strike_price</span>,
+  <span class='va'>expiration_date</span>,
+  interval <span class='op'>=</span> <span class='cn'>NULL</span>,
+  span <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>RH</th>
-      <td><p>object class RobinHood</p></td>
+      <td><p>object of class RobinHood</p></td>
     </tr>
     <tr>
-      <th>symbol</th>
-      <td><p>(string) of ticker symbols</p></td>
+      <th>chain_symbol</th>
+      <td><p>(string) stock symbol</p></td>
     </tr>
     <tr>
-      <th>limit_output</th>
-      <td><p>(logical) if TRUE (default) return less quote detail</p></td>
+      <th>type</th>
+      <td><p>(string) one of ("put", "call")</p></td>
+    </tr>
+    <tr>
+      <th>strike_price</th>
+      <td><p>(numeric) strike price</p></td>
+    </tr>
+    <tr>
+      <th>expiration_date</th>
+      <td><p>(string) expiration date (YYYY-MM-DD)</p></td>
+    </tr>
+    <tr>
+      <th>interval</th>
+      <td><p>(string) one of ("5minute", "10minute", "hour", "day", "week")</p></td>
+    </tr>
+    <tr>
+      <th>span</th>
+      <td><p>(string) one of ("day", "week", "month")</p></td>
     </tr>
     </table>
 
@@ -163,7 +187,9 @@
 <span class='co'># Login in to your RobinHood account</span>
 <span class='va'>RH</span> <span class='op'>&lt;-</span> <span class='fu'><a href='RobinHood.html'>RobinHood</a></span><span class='op'>(</span><span class='st'>"username"</span>, <span class='st'>"password"</span><span class='op'>)</span>
 
-<span class='fu'>get_quote</span><span class='op'>(</span><span class='va'>RH</span>, <span class='st'>"IR"</span><span class='op'>)</span>
+<span class='fu'>get_historicals_options</span><span class='op'>(</span>RH <span class='op'>=</span> <span class='va'>RH</span>, chain_symbol <span class='op'>=</span> <span class='st'>"AAPL"</span>, interval <span class='op'>=</span> <span class='st'>"10minute"</span>, type <span class='op'>=</span> <span class='st'>"call"</span>,
+                        expiration_date <span class='op'>=</span> <span class='st'>"2021-03-12"</span>, strike_price <span class='op'>=</span> <span class='fl'>122</span><span class='op'>)</span>
+
 <span class='op'>}</span>
 </div></pre>
   </div>
