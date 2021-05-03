@@ -2,15 +2,39 @@
 % Please edit documentation in R/api_instruments_options.R
 \name{api_instruments_options}
 \alias{api_instruments_options}
-\title{RobinHood API: Option Contract Instruments}
+\title{RobinHood API: Option Contracts}
 \usage{
-api_instruments_options(RH, option_instrument_url)
+api_instruments_options(
+  RH,
+  method = "url",
+  option_instrument_url = NULL,
+  chain_symbol = NULL,
+  type = NULL,
+  state = NULL,
+  strike_price = NULL,
+  tradability = NULL,
+  expiration_date = NULL
+)
 }
 \arguments{
 \item{RH}{object of class RobinHood}
 
-\item{option_instrument_url}{(string) url}
+\item{method}{(string) one of ("url", "symbol")}
+
+\item{option_instrument_url}{(string) direct url for an option contract}
+
+\item{chain_symbol}{(string) stock symbol}
+
+\item{type}{(string) one of ("put", "call")}
+
+\item{state}{(string) one of ("active", "inactive")}
+
+\item{strike_price}{(numeric) strike price}
+
+\item{tradability}{(string) one of ("tradable", "untradable")}
+
+\item{expiration_date}{(string) expiration date ("YYYY-MM-DD")}
 }
 \description{
-RobinHood API: Option Contract Instruments
+Backend function or retrieving option contracts.
 }
