@@ -40,9 +40,7 @@
 
 
 <meta property="og:title" content="Place a buy or sell order against your RobinHood account — place_order" />
-<meta property="og:description" content="**Note**: Price cannot extend beyond 2 decimals
-**Note**: Quantity must be a whole number
-**Note**: Price * Quantity &amp;gt; $0.01" />
+<meta property="og:description" content="Place a buy or sell order against your RobinHood account" />
 
 
 
@@ -137,9 +135,7 @@
     </div>
 
     <div class="ref-description">
-    <p>**Note**: Price cannot extend beyond 2 decimals
-**Note**: Quantity must be a whole number
-**Note**: Price * Quantity &gt; $0.01</p>
+    <p>Place a buy or sell order against your RobinHood account</p>
     </div>
 
     <pre class="usage"><span class='fu'>place_order</span><span class='op'>(</span>
@@ -148,7 +144,7 @@
   <span class='va'>type</span>,
   <span class='va'>time_in_force</span>,
   <span class='va'>trigger</span>,
-  <span class='va'>price</span>,
+  price <span class='op'>=</span> <span class='cn'>NA</span>,
   stop_price <span class='op'>=</span> <span class='cn'>NA</span>,
   <span class='va'>quantity</span>,
   <span class='va'>side</span>
@@ -179,7 +175,7 @@
     </tr>
     <tr>
       <th>price</th>
-      <td><p>(number) the price you are willing to sell or buy at</p></td>
+      <td><p>(number) the price you are willing to sell or buy at (max 2 decimals) (Note: P * Q &gt; 0.01)</p></td>
     </tr>
     <tr>
       <th>stop_price</th>
@@ -187,7 +183,7 @@
     </tr>
     <tr>
       <th>quantity</th>
-      <td><p>(int) number of shares you wish to transact, must be a whole number</p></td>
+      <td><p>(int) number of shares you wish to transact (&gt; 0) (Note: P * Q &gt; 0.01)</p></td>
     </tr>
     <tr>
       <th>side</th>
@@ -198,18 +194,35 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'># ***************** ATTENTION *****************</span>
+<span class='co'>#   - Price cannot extend beyond 2 decimals</span>
+<span class='co'>#   - Quantity must be a whole number</span>
+<span class='co'>#   - Price * Quantity &gt; $0.01</span>
+<span class='co'>#   - Stop triggers requires stop_price &gt; 0</span>
+<span class='co'># ***************** ATTENTION *****************</span>
+
 <span class='co'># Login in to your RobinHood account</span>
 <span class='va'>RH</span> <span class='op'>&lt;-</span> <span class='fu'><a href='RobinHood.html'>RobinHood</a></span><span class='op'>(</span><span class='st'>"username"</span>, <span class='st'>"password"</span><span class='op'>)</span>
 
 <span class='co'># Place an order, should generate an email confirmation</span>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>place_order</span><span class='op'>(</span>RH <span class='op'>=</span> <span class='va'>RH</span>,
-                 symbol <span class='op'>=</span> <span class='st'>"GE"</span>,          <span class='co'># Ticker symbol you want to trade</span>
-                 type <span class='op'>=</span> <span class='st'>"market"</span>,        <span class='co'># Type of market order (market, limit)</span>
-                 time_in_force <span class='op'>=</span> <span class='st'>"gfd"</span>,  <span class='co'># Time period the order is good for (gfd: good for day)</span>
-                 trigger <span class='op'>=</span> <span class='st'>"immediate"</span>,  <span class='co'># Trigger or delay order</span>
-                 price <span class='op'>=</span> <span class='fl'>8.96</span>,           <span class='co'># The highest price you are willing to pay</span>
-                 quantity <span class='op'>=</span> <span class='fl'>1</span>,           <span class='co'># Number of shares you want</span>
-                 side <span class='op'>=</span> <span class='st'>"buy"</span><span class='op'>)</span>           <span class='co'># buy or sell</span>
+<span class='fu'>place_order</span><span class='op'>(</span>RH <span class='op'>=</span> <span class='va'>RH</span>,
+            symbol <span class='op'>=</span> <span class='st'>"GE"</span>,          <span class='co'># Ticker symbol you want to trade</span>
+            type <span class='op'>=</span> <span class='st'>"market"</span>,        <span class='co'># Type of market order (market, limit)</span>
+            time_in_force <span class='op'>=</span> <span class='st'>"gfd"</span>,  <span class='co'># Time period the order is good for (gfd: good for day)</span>
+            trigger <span class='op'>=</span> <span class='st'>"immediate"</span>,  <span class='co'># Trigger or delay order</span>
+            price <span class='op'>=</span> <span class='fl'>8.96</span>,           <span class='co'># The highest price you are willing to pay</span>
+            quantity <span class='op'>=</span> <span class='fl'>1</span>,           <span class='co'># Number of shares you want</span>
+            side <span class='op'>=</span> <span class='st'>"buy"</span><span class='op'>)</span>           <span class='co'># buy or sell</span>
+
+<span class='co'># Stop loss example</span>
+<span class='fu'>place_order</span><span class='op'>(</span><span class='va'>RH</span>,
+            symbol<span class='op'>=</span><span class='st'>"ABC"</span>,
+            type <span class='op'>=</span> <span class='st'>'market'</span>,
+            trigger <span class='op'>=</span> <span class='st'>'stop'</span>,
+            stop_price <span class='op'>=</span> <span class='fl'>100</span>,
+            time_in_force <span class='op'>=</span> <span class='st'>"gtc"</span>,  <span class='co'># Good till close</span>
+            quantity <span class='op'>=</span> <span class='fl'>10</span>,
+            side <span class='op'>=</span> <span class='st'>'sell'</span><span class='op'>)</span>
 <span class='op'>}</span>
 </div></pre>
   </div>

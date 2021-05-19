@@ -10,7 +10,7 @@ place_order(
   type,
   time_in_force,
   trigger,
-  price,
+  price = NA,
   stop_price = NA,
   quantity,
   side
@@ -27,32 +27,47 @@ place_order(
 
 \item{trigger}{(string) "immediate" or "stop"}
 
-\item{price}{(number) the price you are willing to sell or buy at}
+\item{price}{(number) the price you are willing to sell or buy at (max 2 decimals) (Note: P * Q > 0.01)}
 
 \item{stop_price}{(number) if trigger = stop, enter stop price, otherwise leave blank}
 
-\item{quantity}{(int) number of shares you wish to transact, must be a whole number}
+\item{quantity}{(int) number of shares you wish to transact (> 0) (Note: P * Q > 0.01)}
 
 \item{side}{(string) "buy" or "sell"}
 }
 \description{
-**Note**: Price cannot extend beyond 2 decimals
-**Note**: Quantity must be a whole number
-**Note**: Price * Quantity > $0.01
+Place a buy or sell order against your RobinHood account
 }
 \examples{
 \dontrun{
+# ***************** ATTENTION *****************
+#   - Price cannot extend beyond 2 decimals
+#   - Quantity must be a whole number
+#   - Price * Quantity > $0.01
+#   - Stop triggers requires stop_price > 0
+# ***************** ATTENTION *****************
+
 # Login in to your RobinHood account
 RH <- RobinHood("username", "password")
 
 # Place an order, should generate an email confirmation
-x <- place_order(RH = RH,
-                 symbol = "GE",          # Ticker symbol you want to trade
-                 type = "market",        # Type of market order (market, limit)
-                 time_in_force = "gfd",  # Time period the order is good for (gfd: good for day)
-                 trigger = "immediate",  # Trigger or delay order
-                 price = 8.96,           # The highest price you are willing to pay
-                 quantity = 1,           # Number of shares you want
-                 side = "buy")           # buy or sell
+place_order(RH = RH,
+            symbol = "GE",          # Ticker symbol you want to trade
+            type = "market",        # Type of market order (market, limit)
+            time_in_force = "gfd",  # Time period the order is good for (gfd: good for day)
+            trigger = "immediate",  # Trigger or delay order
+            price = 8.96,           # The highest price you are willing to pay
+            quantity = 1,           # Number of shares you want
+            side = "buy")           # buy or sell
+
+# Stop loss example
+place_order(RH,
+            symbol="ABC",
+            type = 'market',
+            trigger = 'stop',
+            stop_price = 100,
+            time_in_force = "gtc",  # Good till close
+            quantity = 10,
+            side = 'sell')
 }
 }

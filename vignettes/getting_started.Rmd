@@ -211,6 +211,16 @@ x = place_order(RH            = RH,
 # $ average_price            : num
 # $ quantity                 : num
 
+# Stop loss example
+place_order(RH,
+            symbol="ABC",
+            type = 'market',
+            trigger = 'stop',
+            stop_price = 100,
+            time_in_force = "gtc",     # Good till close
+            quantity = 10,
+            side = 'sell')
+
 # Crypto works the same way
 x = place_order_crypto(RH,
                        symbol        = "DOGE",

@@ -299,6 +299,16 @@
 <span class="co"># $ average_price            : num</span>
 <span class="co"># $ quantity                 : num</span>
 
+<span class="co"># Stop loss example</span>
+<span class="fu"><a href="../reference/place_order.html">place_order</a></span><span class="op">(</span><span class="va">RH</span>,
+            symbol<span class="op">=</span><span class="st">"ABC"</span>,
+            type <span class="op">=</span> <span class="st">'market'</span>,
+            trigger <span class="op">=</span> <span class="st">'stop'</span>,
+            stop_price <span class="op">=</span> <span class="fl">100</span>,
+            time_in_force <span class="op">=</span> <span class="st">"gtc"</span>,     <span class="co"># Good till close</span>
+            quantity <span class="op">=</span> <span class="fl">10</span>,
+            side <span class="op">=</span> <span class="st">'sell'</span><span class="op">)</span>
+
 <span class="co"># Crypto works the same way</span>
 <span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="../reference/place_order_crypto.html">place_order_crypto</a></span><span class="op">(</span><span class="va">RH</span>,
                        symbol        <span class="op">=</span> <span class="st">"DOGE"</span>,

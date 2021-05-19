@@ -10,7 +10,9 @@ title: "NEWS"
 ## Bug Fixes
 
 ## Clean up
-
+  - [(GH-122)](https://github.com/JestonBlu/RobinHood/issues/122): `place_order()`: added default parameter value `price = NA` (@kmohammadi6)
+## Documentation
+  - [(GH-122)](https://github.com/JestonBlu/RobinHood/issues/122): `place_order()`: added stop loss example (@kmohammadi6)
 
 -------------------------------------------------------------------------------
 
