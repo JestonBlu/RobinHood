@@ -38,8 +38,8 @@ place_order_crypto <- function(RH, symbol, type, time_in_force, price, quantity,
     if (!side %in% c("buy", "sell")) stop("side must be 'buy' or 'sell'")
 
     # Convert NAs to NULL and numeric to character
-    quantity <- as.character(quantity)
-    price <- as.character(price)
+    # quantity <- as.character(quantity)
+    # price <- as.character(price)
 
     # Given a symbol, return the crypto id
     currency_pair_id <- api_currency_pairs(RH)

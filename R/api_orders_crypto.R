@@ -97,7 +97,7 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
 
   # Get Order History
   if (action == "history") {
-    
+
     # URL and token
     url <- api_endpoints("orders_crypto", source = "crypto")
     token <- paste("Bearer", RH$tokens.access_token)

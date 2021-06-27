@@ -346,7 +346,6 @@ get_tag(RH, tag = "100-most-popular")
 #   top-movers
 #   etf
 #   100-most-popular
-#   mutual-fund
 #   finance
 #   cap-weighted
 #   investment-trust-or-fund
