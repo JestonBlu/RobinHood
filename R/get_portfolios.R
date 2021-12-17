@@ -52,10 +52,12 @@ get_portfolios <- function(RH, interval = NULL, span = NULL) {
 
       # Get porfolio value for the specific span and interval
       portfolio_url <- paste(api_endpoints("portfolios"),
-                            "/historicals/?account_number=", account_number,
-                            "&interval=", interval,
-                            "&span=", span,
-                            sep = "")
+                             "historicals/", account_number,
+                             "/?account_number=", account_number,
+                             "&bounds=24_7",
+                             "&interval=", interval,
+                             "&span=", span,
+                             sep = "")
 
       portfolios <- api_portfolios(RH, portfolio_url)
 
