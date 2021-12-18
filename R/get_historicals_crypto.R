@@ -24,10 +24,10 @@
 get_historicals_crypto <- function(RH, symbol, interval, span, bounds, tz = Sys.timezone()) {
 
   # Check if RH is valid
-  check_rh(RH)
+  RobinHood::check_rh(RH)
 
   # Get Crypto ID for historicals
-  currency_id <- api_currency_pairs(RH)
+  currency_id <- RobinHood::api_currency_pairs(RH)
   currency_id <- currency_id[currency_id$asset_code == symbol, "id"]
 
   body <- paste("/?symbol", symbol,
@@ -37,9 +37,9 @@ get_historicals_crypto <- function(RH, symbol, interval, span, bounds, tz = Sys.
                 sep = "")
 
   # url to get historical data
-  url <- paste(api_endpoints("historicals_crypto"), currency_id, body, sep = "")
+  url <- paste(RobinHood::api_endpoints("historicals_crypto"), currency_id, body, sep = "")
 
-  historicals <- api_historicals_crypto(RH, url)
+  historicals <- RobinHood::api_historicals_crypto(RH, url)
 
   # Certain combinations of interval/span and bounds do not always return results
   # Return a message if the data frame returned is empty
