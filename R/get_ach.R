@@ -14,7 +14,7 @@ get_ach <- function(RH, action, status_url = NULL) {
   if (action == "transfers") {
 
     # Get call
-    dta <- api_ach(RH, action)
+    dta <- RobinHood::api_ach(RH, action)
 
     # Select and format
     dta <- dta %>%
@@ -25,14 +25,14 @@ get_ach <- function(RH, action, status_url = NULL) {
       dplyr::mutate_at(c("amount", "fees"), as.numeric)
 
     # Strip out the URL from the bank account ID
-    dta$ach_relationship <- gsub(api_endpoints("ach_relationships"), "", dta$ach_relationship)
+    dta$ach_relationship <- gsub(RobinHood::api_endpoints("ach_relationships"), "", dta$ach_relationship)
     dta$ach_relationship <- gsub("/", "", dta$ach_relationship)
 
     # Rename columns
     colnames(dta)[names(dta) %in% c("expected_landing_datetime", "ach_relationship")] = c("expected_landing", "id")
 
     # Get Bank account name
-    dta_relationships <- api_ach(RH, action = 'relationships')
+    dta_relationships <- RobinHood::api_ach(RH, action = "relationships")
 
     # Pull only the columns needed
     dta_relationships <- dta_relationships %>%
@@ -56,7 +56,7 @@ get_ach <- function(RH, action, status_url = NULL) {
   if (action == "relationships") {
 
     # Get call
-    dta <- api_ach(RH, action)
+    dta <- RobinHood::api_ach(RH, action)
 
     # Clean up ordering and format
     dta <- dta %>%
@@ -76,7 +76,7 @@ get_ach <- function(RH, action, status_url = NULL) {
   if (action == "schedules") {
 
     # Get call
-    dta <- api_ach(RH, action)
+    dta <- RobinHood::api_ach(RH, action)
 
     # Check if the data frame is empty
     if (nrow(dta) == 0) stop("You have no schedules")
@@ -89,11 +89,11 @@ get_ach <- function(RH, action, status_url = NULL) {
       dplyr::mutate_at(c("amount"), as.numeric)
 
     # Get bank id
-    dta$ach_relationship <- gsub(api_endpoints("ach_relationships"), "", dta$ach_relationship)
+    dta$ach_relationship <- gsub(RobinHood::api_endpoints("ach_relationships"), "", dta$ach_relationship)
     dta$ach_relationship <- gsub("/", "", dta$ach_relationship)
 
     # Get Bank account name
-    dta_relationships <- api_ach(RH, action = 'relationships')
+    dta_relationships <- RobinHood::api_ach(RH, action = "relationships")
 
     # Pull only the columns needed
     dta_relationships <- dta_relationships %>%
@@ -115,7 +115,7 @@ get_ach <- function(RH, action, status_url = NULL) {
 
   if (action == "status") {
 
-    dta <- api_ach(RH, action, status_url = status_url)
+    dta <- RobinHood::api_ach(RH, action, status_url = status_url)
 
   }
 
