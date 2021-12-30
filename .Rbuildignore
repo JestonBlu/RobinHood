@@ -16,3 +16,4 @@ CHANGE_LOG.md
 ^docs$
 ^pkgdown$
 vignettes/
+.vscode/

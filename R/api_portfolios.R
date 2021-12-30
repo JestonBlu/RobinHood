@@ -20,7 +20,7 @@ api_portfolios <- function(RH, portfolio_url) {
                            "Authorization" = token))
 
     # format return
-    dta <- mod_json(dta, "fromJSON")
+    dta <- RobinHood::mod_json(dta, "fromJSON")
     dta <- as.data.frame(dta$results)
 
     dta <- dta %>%
@@ -41,7 +41,7 @@ api_portfolios <- function(RH, portfolio_url) {
                            "Authorization" = token))
 
     # format return
-    dta <- mod_json(dta, "fromJSON")
+    dta <- RobinHood::mod_json(dta, "fromJSON")
     dta <- as.data.frame(dta$equity_historicals)
 
     dta <- dta %>%

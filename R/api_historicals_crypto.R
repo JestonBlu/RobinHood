@@ -18,7 +18,7 @@ api_historicals_crypto <- function(RH, url) {
                          "Authorization" = token))
 
   # Format return
-  dta <- mod_json(dta, "fromJSON")
+  dta <- RobinHood::mod_json(dta, "fromJSON")
   dta <- as.data.frame(dta$data_points)
 
   return(dta)

@@ -18,18 +18,18 @@
 get_portfolios <- function(RH, interval = NULL, span = NULL) {
 
     # Check if RH is valid
-    check_rh(RH)
+    RobinHood::check_rh(RH)
 
     # Get account number
-    account_number <- api_accounts(RH)
+    account_number <- RobinHood::api_accounts(RH)
     account_number <- account_number$account_number
 
     # If no span or interval given, return current day value
     if (is.null(interval) | is.null(span)) {
 
         # Call portfolio api
-        portfolio_url <- api_endpoints("portfolios")
-        portfolios <- api_portfolios(RH, portfolio_url)
+        portfolio_url <- RobinHood::api_endpoints("portfolios")
+        portfolios <- RobinHood::api_portfolios(RH, portfolio_url)
 
         # Reorder columns
         portfolios <- portfolios[, c("start_date",
@@ -52,12 +52,14 @@ get_portfolios <- function(RH, interval = NULL, span = NULL) {
 
       # Get porfolio value for the specific span and interval
       portfolio_url <- paste(api_endpoints("portfolios"),
-                            "/historicals/?account_number=", account_number,
-                            "&interval=", interval,
-                            "&span=", span,
-                            sep = "")
+                             "historicals/", account_number,
+                             "/?account_number=", account_number,
+                             "&bounds=24_7",
+                             "&interval=", interval,
+                             "&span=", span,
+                             sep = "")
 
-      portfolios <- api_portfolios(RH, portfolio_url)
+      portfolios <- RobinHood::api_portfolios(RH, portfolio_url)
 
       # Reorder columns
       portfolios <- portfolios[, c("begins_at",

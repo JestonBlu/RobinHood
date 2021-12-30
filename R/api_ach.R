@@ -15,7 +15,7 @@ api_ach <- function(RH, action, amount = NULL, status_url = NULL, cancel_url = N
   if (action == "transfers") {
 
     # URL and token
-    url <- api_endpoints("ach_transfers")
+    url <- RobinHood::api_endpoints("ach_transfers")
     token <- paste("Bearer", RH$tokens.access_token)
 
     # GET call
@@ -25,7 +25,7 @@ api_ach <- function(RH, action, amount = NULL, status_url = NULL, cancel_url = N
                            "Authorization" = token))
 
     # format return
-    dta <- mod_json(dta, "fromJSON")
+    dta <- RobinHood::mod_json(dta, "fromJSON")
     dta <- as.data.frame(dta$results)
 
     dta <- dta %>%
@@ -41,7 +41,7 @@ api_ach <- function(RH, action, amount = NULL, status_url = NULL, cancel_url = N
   if (action == "relationships") {
 
     # URL and token
-    url <- api_endpoints("ach_relationships")
+    url <- RobinHood::api_endpoints("ach_relationships")
     token <- paste("Bearer", RH$tokens.access_token)
 
     # GET call
@@ -51,7 +51,7 @@ api_ach <- function(RH, action, amount = NULL, status_url = NULL, cancel_url = N
                            "Authorization" = token))
 
     # format return
-    dta <- mod_json(dta, "fromJSON")
+    dta <- RobinHood::mod_json(dta, "fromJSON")
     dta <- as.data.frame(dta$results)
 
     dta <- dta %>%
@@ -68,7 +68,7 @@ api_ach <- function(RH, action, amount = NULL, status_url = NULL, cancel_url = N
   if (action == "schedules") {
 
     # URL and token
-    url <- api_endpoints("ach_schedules")
+    url <- RobinHood::api_endpoints("ach_schedules")
     token <- paste("Bearer", RH$tokens.access_token)
 
     # GET call
@@ -78,8 +78,13 @@ api_ach <- function(RH, action, amount = NULL, status_url = NULL, cancel_url = N
                            "Authorization" = token))
 
     # format return
-    dta <- mod_json(dta, "fromJSON")
+    dta <- RobinHood::mod_json(dta, "fromJSON")
     dta <- as.data.frame(dta$results)
+
+    # if no schedules found
+    if (length(dta) == 0) {
+      stop("No schedules returned")
+    }
 
     dta <- dta %>%
       dplyr::mutate_at(c("id", "ach_relationship", "frequency", "url"), as.character) %>%
@@ -149,7 +154,7 @@ api_ach <- function(RH, action, amount = NULL, status_url = NULL, cancel_url = N
 
   if (action %in% c("deposit", "withdraw")) {
     # URL and token
-    url <- api_endpoints("ach_transfers")
+    url <- RobinHood::api_endpoints("ach_transfers")
     token <- paste("Bearer", RH$tokens.access_token)
 
     # Body of call
