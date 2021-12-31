@@ -20,6 +20,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -32,18 +34,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">RobinHood</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/getting_started.html">Getting Started</a>
 </li>
@@ -71,7 +67,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/JestonBlu/RobinHood/">
+  <a href="https://github.com/JestonBlu/RobinHood/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -92,18 +88,18 @@
       <h1 data-toc-skip>Getting Started</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/JestonBlu/RobinHood/blob/master/vignettes/getting_started.Rmd"><code>vignettes/getting_started.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/JestonBlu/RobinHood/blob/HEAD/vignettes/getting_started.Rmd" class="external-link"><code>vignettes/getting_started.Rmd</code></a></small>
       <div class="hidden name"><code>getting_started.Rmd</code></div>
 
     </div>
 
     
     
-<div id="establish-a-connection-to-robinhood" class="section level2">
-<h2 class="hasAnchor">
-<a href="#establish-a-connection-to-robinhood" class="anchor"></a>Establish a connection to RobinHood</h2>
+<div class="section level2">
+<h2 id="establish-a-connection-to-robinhood">Establish a connection to RobinHood<a class="anchor" aria-label="anchor" href="#establish-a-connection-to-robinhood"></a>
+</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/JestonBlu/RobinHood">RobinHood</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/JestonBlu/RobinHood" class="external-link">RobinHood</a></span><span class="op">)</span>
 
 <span class="co"># Establishes a connection with your account and generates an oauth2 token</span>
 <span class="co"># Returns a list style object of relevant API keys and IDs needed to interact with your account</span>
@@ -112,9 +108,9 @@
 <span class="co"># If you have MFA enabled</span>
 <span class="va">RH</span> <span class="op">=</span> <span class="fu"><a href="../reference/RobinHood.html">RobinHood</a></span><span class="op">(</span>username <span class="op">=</span> <span class="st">"user@email.com"</span>, password <span class="op">=</span> <span class="st">"password"</span>, mfa_code <span class="op">=</span> <span class="st">"provided-by-auth-app"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="user-and-account-info" class="section level2">
-<h2 class="hasAnchor">
-<a href="#user-and-account-info" class="anchor"></a>User and Account Info</h2>
+<div class="section level2">
+<h2 id="user-and-account-info">User and Account Info<a class="anchor" aria-label="anchor" href="#user-and-account-info"></a>
+</h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Get basic user info</span>
 <span class="fu"><a href="../reference/get_user.html">get_user</a></span><span class="op">(</span><span class="va">RH</span><span class="op">)</span>
@@ -166,9 +162,9 @@
 <span class="co"># Cancel a pending transfer</span>
 <span class="fu"><a href="../reference/cancel_ach_transfer.html">cancel_ach_transfer</a></span><span class="op">(</span><span class="va">RH</span>, cancel_url <span class="op">=</span> <span class="va">x</span><span class="op">$</span><span class="va">cancel_url</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="investment-positions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#investment-positions" class="anchor"></a>Investment Positions</h2>
+<div class="section level2">
+<h2 id="investment-positions">Investment Positions<a class="anchor" aria-label="anchor" href="#investment-positions"></a>
+</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Returns a data frame of stock ownership positions</span>
 <span class="fu"><a href="../reference/get_positions.html">get_positions</a></span><span class="op">(</span><span class="va">RH</span><span class="op">)</span>
@@ -184,9 +180,9 @@
 <span class="co">#    DOGE         Dogecoin     3261         8.09      10.01     -1.92 2019-07-15 21:08:19</span>
 <span class="co">#     ETC Ethereum Classic       10        66.97      39.30     27.67 2019-02-01 00:23:40</span></code></pre></div>
 </div>
-<div id="funadmentals-quotes-historicals-and-analyst-ratings" class="section level2">
-<h2 class="hasAnchor">
-<a href="#funadmentals-quotes-historicals-and-analyst-ratings" class="anchor"></a>Funadmentals, Quotes, Historicals, and Analyst Ratings</h2>
+<div class="section level2">
+<h2 id="funadmentals-quotes-historicals-and-analyst-ratings">Funadmentals, Quotes, Historicals, and Analyst Ratings<a class="anchor" aria-label="anchor" href="#funadmentals-quotes-historicals-and-analyst-ratings"></a>
+</h2>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Get instrument fundamentals</span>
 <span class="fu"><a href="../reference/get_fundamentals.html">get_fundamentals</a></span><span class="op">(</span><span class="va">RH</span>, <span class="st">"CAT"</span><span class="op">)</span>
@@ -213,7 +209,7 @@
 <span class="co"># $ year_founded          : int 1925</span>
 
 <span class="co"># Get quotes</span>
-<span class="fu"><a href="../reference/get_quote.html">get_quote</a></span><span class="op">(</span><span class="va">RH</span>, symbol <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"CAT"</span>, <span class="st">"GE"</span><span class="op">)</span>, limit_output <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="../reference/get_quote.html">get_quote</a></span><span class="op">(</span><span class="va">RH</span>, symbol <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"CAT"</span>, <span class="st">"GE"</span><span class="op">)</span>, limit_output <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 
 <span class="co">#  symbol last_trade_price last_trade_price_source</span>
 <span class="co">#     CAT           131.66            consolidated</span>
@@ -256,9 +252,9 @@
 <span class="co"># 2021-01-02T00:43:10Z  buy Management has shown an ability to improve operating margins through...</span>
 <span class="co"># 2021-01-02T00:43:10Z  buy Many of the segments in which Caterpillar operates are currently below...</span></code></pre></div>
 </div>
-<div id="orders" class="section level2">
-<h2 class="hasAnchor">
-<a href="#orders" class="anchor"></a>Orders</h2>
+<div class="section level2">
+<h2 id="orders">Orders<a class="anchor" aria-label="anchor" href="#orders"></a>
+</h2>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Place Order, should generate an email</span>
 <span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="../reference/place_order.html">place_order</a></span><span class="op">(</span>RH            <span class="op">=</span> <span class="va">RH</span>,
@@ -298,6 +294,16 @@
 <span class="co"># $ position                 : chr</span>
 <span class="co"># $ average_price            : num</span>
 <span class="co"># $ quantity                 : num</span>
+
+<span class="co"># Stop loss example</span>
+<span class="fu"><a href="../reference/place_order.html">place_order</a></span><span class="op">(</span><span class="va">RH</span>,
+            symbol<span class="op">=</span><span class="st">"ABC"</span>,
+            type <span class="op">=</span> <span class="st">'market'</span>,
+            trigger <span class="op">=</span> <span class="st">'stop'</span>,
+            stop_price <span class="op">=</span> <span class="fl">100</span>,
+            time_in_force <span class="op">=</span> <span class="st">"gtc"</span>,     <span class="co"># Good till close</span>
+            quantity <span class="op">=</span> <span class="fl">10</span>,
+            side <span class="op">=</span> <span class="st">'sell'</span><span class="op">)</span>
 
 <span class="co"># Crypto works the same way</span>
 <span class="va">x</span> <span class="op">=</span> <span class="fu"><a href="../reference/place_order_crypto.html">place_order_crypto</a></span><span class="op">(</span><span class="va">RH</span>,
@@ -385,9 +391,9 @@
 <span class="co"># $ time_in_force       : chr</span>
 <span class="co"># $ type                : chr</span></code></pre></div>
 </div>
-<div id="market-hours" class="section level2">
-<h2 class="hasAnchor">
-<a href="#market-hours" class="anchor"></a>Market Hours</h2>
+<div class="section level2">
+<h2 id="market-hours">Market Hours<a class="anchor" aria-label="anchor" href="#market-hours"></a>
+</h2>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Get market hours for a specific date</span>
 <span class="fu"><a href="../reference/get_market_hours.html">get_market_hours</a></span><span class="op">(</span><span class="va">RH</span><span class="op">)</span>
@@ -410,9 +416,9 @@
 <span class="co"># 6          08:00:00           17:00:00    TRUE 2019-01-17</span>
 <span class="co"># 7          08:00:00           17:00:00    TRUE 2019-01-17</span></code></pre></div>
 </div>
-<div id="tags" class="section level2">
-<h2 class="hasAnchor">
-<a href="#tags" class="anchor"></a>Tags</h2>
+<div class="section level2">
+<h2 id="tags">Tags<a class="anchor" aria-label="anchor" href="#tags"></a>
+</h2>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># You can identify instruments by popular tags</span>
 <span class="fu"><a href="../reference/get_tag.html">get_tag</a></span><span class="op">(</span><span class="va">RH</span>, tag <span class="op">=</span> <span class="st">"100-most-popular"</span><span class="op">)</span>
@@ -424,7 +430,6 @@
 <span class="co">#   top-movers</span>
 <span class="co">#   etf</span>
 <span class="co">#   100-most-popular</span>
-<span class="co">#   mutual-fund</span>
 <span class="co">#   finance</span>
 <span class="co">#   cap-weighted</span>
 <span class="co">#   investment-trust-or-fund</span>
@@ -441,9 +446,9 @@
 <span class="co">#   entertainment</span>
 <span class="co">#</span></code></pre></div>
 </div>
-<div id="watchlist" class="section level2">
-<h2 class="hasAnchor">
-<a href="#watchlist" class="anchor"></a>Watchlist</h2>
+<div class="section level2">
+<h2 id="watchlist">Watchlist<a class="anchor" aria-label="anchor" href="#watchlist"></a>
+</h2>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/watchlist.html">watchlist</a></span><span class="op">(</span><span class="va">RH</span>, action <span class="op">=</span> <span class="st">'get'</span><span class="op">)</span>
 <span class="co"># [1] "Default"</span>
@@ -470,11 +475,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Joseph Blubaugh.</p>
+  <p></p>
+<p>Developed by Joseph Blubaugh.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -482,6 +489,8 @@
 
   
 
+
+  
 
   </body>
 </html>

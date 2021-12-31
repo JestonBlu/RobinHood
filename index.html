@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">RobinHood</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.2</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="articles/getting_started.html">Getting Started</a>
 </li>
@@ -70,7 +66,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/JestonBlu/RobinHood/">
+  <a href="https://github.com/JestonBlu/RobinHood/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -88,17 +84,17 @@
       </header><div class="row">
   <div class="contents col-md-9">
 
-<p><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status">   <img src="https://travis-ci.org/JestonBlu/RobinHood.svg?branch=master" alt="Travis-CI">   <img src="https://github.com/JestonBlu/RobinHood/workflows/pkgdown/badge.svg?branch=master" alt="pkgdown">   <img src="https://img.shields.io/badge/github-1.6-blue.svg" alt="Dev Version">   <img src="http://www.r-pkg.org/badges/version/RobinHood?color=blue" alt="CRAN Version">   <img src="http://cranlogs.r-pkg.org/badges/grand-total/RobinHood" alt="CRAN Downloads">  </p>
-<div id="robinhood" class="section level2">
-<h2 class="hasAnchor">
-<a href="#robinhood" class="anchor"></a>RobinHood</h2>
+<p><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status">   <img src="https://travis-ci.org/JestonBlu/RobinHood.svg?branch=master" alt="Travis-CI">   <img src="https://github.com/JestonBlu/RobinHood/workflows/pkgdown/badge.svg?branch=master" alt="pkgdown">   <img src="https://img.shields.io/badge/github-1.6.2-blue.svg" alt="Dev Version">   <img src="http://www.r-pkg.org/badges/version/RobinHood?color=blue" alt="CRAN Version">   <img src="http://cranlogs.r-pkg.org/badges/grand-total/RobinHood" alt="CRAN Downloads">  </p>
+<div class="section level2">
+<h2 id="robinhood">RobinHood<a class="anchor" aria-label="anchor" href="#robinhood"></a>
+</h2>
 <p>This is package is designed to help you execute trading programs in R.</p>
-<p><strong><a href="https://robinhood.com">RobinHood</a></strong> is a no commission trading platform intended to bring investing to the masses. It is a great place to experiment with different trading strategies on a minimal investment because your trades will not be eaten up by commission fees.</p>
-<p>Haven’t signed up for a RobinHood account yet? Use my <strong><a href="https://share.robinhood.com/josephb5278">referral link</a></strong>. We both get a free share of stock!</p>
+<p><strong><a href="https://robinhood.com" class="external-link">RobinHood</a></strong> is a no commission trading platform intended to bring investing to the masses. It is a great place to experiment with different trading strategies on a minimal investment because your trades will not be eaten up by commission fees.</p>
+<p>Haven’t signed up for a RobinHood account yet? Use my <strong><a href="https://share.robinhood.com/josephb5278" class="external-link">referral link</a></strong>. We both get a free share of stock!</p>
 </div>
-<div id="account-features" class="section level2">
-<h2 class="hasAnchor">
-<a href="#account-features" class="anchor"></a>Account Features</h2>
+<div class="section level2">
+<h2 id="account-features">Account Features<a class="anchor" aria-label="anchor" href="#account-features"></a>
+</h2>
 <ul>
 <li>
 <input type="checkbox" disabled checked>
@@ -114,9 +110,9 @@ Execute ACH transfers</li>
 MFA enabled</li>
 </ul>
 </div>
-<div id="equity-features" class="section level2">
-<h2 class="hasAnchor">
-<a href="#equity-features" class="anchor"></a>Equity Features</h2>
+<div class="section level2">
+<h2 id="equity-features">Equity Features<a class="anchor" aria-label="anchor" href="#equity-features"></a>
+</h2>
 <ul>
 <li>
 <input type="checkbox" disabled checked>
@@ -156,9 +152,9 @@ Get options positions</li>
 Get analyst ratings</li>
 </ul>
 </div>
-<div id="crypto-features" class="section level2">
-<h2 class="hasAnchor">
-<a href="#crypto-features" class="anchor"></a>Crypto Features</h2>
+<div class="section level2">
+<h2 id="crypto-features">Crypto Features<a class="anchor" aria-label="anchor" href="#crypto-features"></a>
+</h2>
 <ul>
 <li>
 <input type="checkbox" disabled checked>
@@ -178,12 +174,12 @@ Get order status</li>
 </ul>
 <p><strong>Note:</strong> A key difference between the CRAN version and the Github version is that the API functions are exported and available to call directly. This is intended primarily to help with development and bug fixes. In the CRAN version, all API functions are not exported and instead are called behind the scenes.</p>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># CRAN version</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"RobinHood"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"RobinHood"</span><span class="op">)</span>
 
 <span class="co"># Development version</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"jestonblu/RobinHood"</span><span class="op">)</span></code></pre></div>
@@ -193,37 +189,49 @@ Get order status</li>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=RobinHood">https://​cloud.r-project.org/​package=RobinHood</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/JestonBlu/RobinHood/">https://​github.com/​JestonBlu/​RobinHood/​</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=RobinHood" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/JestonBlu/RobinHood/" class="external-link">Browse source code</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
+<li><a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing RobinHood</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Joseph Blubaugh <br><small class="roles"> Maintainer </small>  </li>
 </ul>
 </div>
+
+
 
   </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Joseph Blubaugh.</p>
+  <p></p>
+<p>Developed by Joseph Blubaugh.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -231,6 +239,8 @@ Get order status</li>
 
   
 
+
+  
 
   </body>
 </html>
