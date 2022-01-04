@@ -78,10 +78,6 @@ get_ach <- function(RH, action, status_url = NULL) {
     # Get call
     dta <- RobinHood::api_ach(RH, action)
 
-    # Check if the data frame is empty
-    if (nrow(dta) == 0) stop("You have no schedules")
-
-
     # Clean up format
     dta <- dta %>%
       dplyr::mutate_at(c("next_deposit_date", "last_attempt_date"), lubridate::ymd) %>%
