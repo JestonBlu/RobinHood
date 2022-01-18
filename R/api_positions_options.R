@@ -5,10 +5,10 @@
 #' @param RH object of class RobinHood
 #' @import httr magrittr
 #' @export
-api_positions_options <- function(RH) {
+api_positions_options <- function(RH) { # nolint
 
   # URL and token
-  url <- api_endpoints("option_positions")
+  url <- RobinHood::api_endpoints("option_positions")
   token <- paste("Bearer", RH$tokens.access_token)
 
   # GET call
@@ -18,7 +18,7 @@ api_positions_options <- function(RH) {
                          "Authorization" = token))
 
   # format return
-  dta <- mod_json(dta, "fromJSON")
+  dta <- RobinHood::mod_json(dta, "fromJSON")
   dta <- as.data.frame(dta$results)
 
   dta <- dta %>%

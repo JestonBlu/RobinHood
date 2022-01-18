@@ -1,6 +1,14 @@
 ---
 title: "NEWS"
 
+# RobinHood 1.6.2
+
+## Bug Fixes
+  - [(GH-139)](https://github.com/JestonBlu/RobinHood/issues/139) `get_positions_options()`, `get_contracts()`: fixed api change (@fouslim, @SwingBotScripts)
+
+
+-------------------------------------------------------------------------------
+
 # RobinHood 1.6.1
 
 ## New Features

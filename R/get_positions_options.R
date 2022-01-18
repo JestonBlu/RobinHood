@@ -11,13 +11,13 @@
 #'
 #' get_positions_options(RH)
 #'}
-get_positions_options <- function(RH, trim_pending = TRUE) {
+get_positions_options <- function(RH, trim_pending = TRUE) { # nolint
 
   # Check if RH is valid
-  check_rh(RH)
+  RobinHood::check_rh(RH)
 
   # Options postions
-  options <- api_positions_options(RH)
+  options <- RobinHood::api_positions_options(RH)
 
   # Get option type, loop through URL
   x <- unique(options$option)
@@ -26,7 +26,7 @@ get_positions_options <- function(RH, trim_pending = TRUE) {
 
   # Loop through option instruments to pull additional columns
   for (i in x) {
-    y <- api_instruments_options(RH, i)
+    y <- RobinHood::api_instruments_options(RH, method = "url", option_instrument_url = i)
 
     y <- y %>%
       dplyr::select(c("url", "type", "state", "strike_price", "rhs_tradability", "tradability")) %>%
@@ -39,7 +39,8 @@ get_positions_options <- function(RH, trim_pending = TRUE) {
   # Join with option positions
   options$option <- as.character(options$option)
   options_instruments$option <- as.character(options_instruments$option)
-  options <- dplyr::inner_join(options, options_instruments, by = "option")
+  options <- dplyr::inner_join(options, options_instruments, by = "option") %>%
+    dplyr::select(-c("updated_at"))
 
   if (nrow(options) == 0) stop("You dont have any open positions")
 
@@ -52,7 +53,7 @@ get_positions_options <- function(RH, trim_pending = TRUE) {
   option_market_data <- data.frame()
 
   for (i in x) {
-    y <- api_marketdata(RH, i)
+    y <- RobinHood::api_marketdata(RH, i)
 
     option_market_data <- rbind(option_market_data, y)
 
