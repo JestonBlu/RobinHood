@@ -13,7 +13,7 @@
 #' @param expiration_date (string) expiration date ("YYYY-MM-DD")
 #' @import httr magrittr
 #' @export
-api_instruments_options <- function(RH, method = "url", option_instrument_url = NULL,
+api_instruments_options <- function(RH, method = "url", option_instrument_url = NULL, # nolint
                                     chain_symbol = NULL, type = NULL, state = NULL,
                                     strike_price = NULL, tradability = NULL,
                                     expiration_date = NULL) {
@@ -31,7 +31,7 @@ api_instruments_options <- function(RH, method = "url", option_instrument_url = 
                            "Authorization" = token))
 
     # Format return
-    dta <- mod_json(dta, "fromJSON")
+    dta <- RobinHood::mod_json(dta, "fromJSON")
     dta <- as.data.frame(dta)
 
     # Format output
@@ -64,7 +64,7 @@ api_instruments_options <- function(RH, method = "url", option_instrument_url = 
                            "Authorization" = token))
 
     # Format return
-    dta <- mod_json(dta, "fromJSON")
+    dta <- RobinHood::mod_json(dta, "fromJSON")
     output <- as.data.frame(dta$results)
 
     output <- cbind(output[, names(output) != "min_ticks"],
@@ -83,7 +83,7 @@ api_instruments_options <- function(RH, method = "url", option_instrument_url = 
                              "Authorization" = token))
 
       # Format return
-      dta <- mod_json(dta, "fromJSON")
+      dta <- RobinHood::mod_json(dta, "fromJSON")
 
       dta2 <- dta$results
 

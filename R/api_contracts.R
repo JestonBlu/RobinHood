@@ -8,7 +8,7 @@
 api_contracts <- function(RH, chain_symbol, type) {
 
   # URL and token
-  url <- paste(api_endpoints(endpoint = "option_instruments"),
+  url <- paste(RobinHood::api_endpoints(endpoint = "option_instruments"),
                "?state=active",
                "&type=", type,
                "&chain_symbol=", chain_symbol, sep = "")
@@ -22,7 +22,7 @@ api_contracts <- function(RH, chain_symbol, type) {
                          "Authorization" = token))
 
   # format return
-  dta <- mod_json(dta, "fromJSON")
+  dta <- RobinHood::mod_json(dta, "fromJSON")
   dta <- as.data.frame(dta$results)
 
   # If returns no rows, no options exist
