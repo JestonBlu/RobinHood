@@ -202,7 +202,7 @@ set.seed(1)
 ggnet2(g2, size = 0, color = "type", edge.lty = "dashed", layout.exp = .15) +
   geom_point(aes(x = x, y = y), color = "grey15", size = 7) +
   geom_text(aes(label = label, x = x, y = y, color = color), size = 3) +
-  scale_color_brewer(type = "qual", palette = 4, guide = FALSE) +
+  scale_color_brewer(type = "qual", palette = 4, guide = "none") +
   theme(panel.background = element_rect(fill = "grey15"))
 
 
@@ -220,7 +220,7 @@ set.seed(1)
 ggnet2(g, size = 0, color = "type", edge.lty = "dashed", layout.exp = .15) +
   geom_point(aes(x = x, y = y), color = "grey15", size = 7) +
   geom_text(aes(label = label, x = x, y = y, color = color), size = 3) +
-  scale_color_brewer(type = "qual", palette = 4, guide = FALSE) +
+  scale_color_brewer(type = "qual", palette = 4, guide = "none") +
   theme(panel.background = element_rect(fill = "grey15"))
 
 
