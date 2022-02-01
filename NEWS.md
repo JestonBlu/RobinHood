@@ -2,6 +2,13 @@
 title: "NEWS"
 ---
 
+# RobinHood 1.6.3
+
+## Bug Fixes
+  - [(GH-141)](https://github.com/JestonBlu/RobinHood/issues/141) `get_positions_options()` Column state doesn't exist #141 (@fouslim)
+
+-------------------------------------------------------------------------------
+
 # RobinHood 1.6.2
 
 ## Bug Fixes

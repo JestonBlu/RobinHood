@@ -40,7 +40,7 @@ get_positions_options <- function(RH, trim_pending = TRUE) { # nolint
   options$option <- as.character(options$option)
   options_instruments$option <- as.character(options_instruments$option)
   options <- dplyr::inner_join(options, options_instruments, by = "option") %>%
-    dplyr::select(-c("updated_at"))
+    dplyr::select(-c("updated_at", "state"))
 
   if (nrow(options) == 0) stop("You dont have any open positions")
 
