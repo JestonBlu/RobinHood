@@ -1,3 +1,7 @@
+template:
+  params:
+    ganalytics: G-KTSZ0VFE7M
+
 # Nav bar customization
 navbar:
   structure:
