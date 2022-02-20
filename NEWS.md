@@ -2,6 +2,13 @@
 title: "NEWS"
 ---
 
+# RobinHood 1.6.4
+
+## Bug Fixes
+  - [(GH-99)](https://github.com/JestonBlu/RobinHood/issues/99) `RobinHood()` issues with tbl_vars
+
+-------------------------------------------------------------------------------
+
 # RobinHood 1.6.3
 
 ## Bug Fixes
