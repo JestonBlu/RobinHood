@@ -46,7 +46,7 @@
 place_order <- function(RH, symbol, type, time_in_force, trigger, price = NA, stop_price = NA, quantity, side) {
 
     # Check if RH is valid
-    check_rh(RH)
+    RobinHood::check_rh(RH)
 
     # Set up error checks
     if (!type %in% c("market", "limit")) stop("type must be 'market' or 'limit'")
@@ -60,23 +60,23 @@ place_order <- function(RH, symbol, type, time_in_force, trigger, price = NA, st
 
 
     # Given a symbol, return the instrument_id
-    instrument_url <- paste(api_endpoints(endpoint = "quotes"), symbol, sep = "")
-    instrument <- api_quote(RH, instrument_url)
+    instrument_url <- paste(RobinHood::api_endpoints(endpoint = "quotes"), symbol, sep = "")
+    instrument <- RobinHood::api_quote(RH, instrument_url)
     instrument_id <- instrument$instrument
 
 
     # Place an order
-    orders <- api_orders(RH = RH,
-                         action = "order",
-                         instrument_id = instrument_id,
-                         symbol = symbol,
-                         type = type,
-                         time_in_force = time_in_force,
-                         trigger = trigger,
-                         price = price,
-                         stop_price = stop_price,
-                         quantity = quantity,
-                         side = side)
+    orders <- RobinHood::api_orders(RH = RH,
+                                    action = "order",
+                                    instrument_id = instrument_id,
+                                    symbol = symbol,
+                                    type = type,
+                                    time_in_force = time_in_force,
+                                    trigger = trigger,
+                                    price = price,
+                                    stop_price = stop_price,
+                                    quantity = quantity,
+                                    side = side)
 
     return(orders)
 }
