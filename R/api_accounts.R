@@ -22,7 +22,7 @@ api_accounts <- function(RH) {
   dta <- as.list(dta$results)
 
   # Reformat margin balances
-  if (length(dta$margin_balances > 1)) {
+  if (length(dta$margin_balances) > 1) {
     dta$margin_balances <- dta$margin_balances %>%
       dplyr::mutate_at(
         c("gold_equity_requirement", "outstanding_interest", "cash_held_for_options_collateral",
