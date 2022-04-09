@@ -1,9 +1,9 @@
-pandoc: 2.14.2
+pandoc: 2.17.1.1
 pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   getting_started: getting_started.html
   network_graph: network_graph.html
   passwords: passwords.html
-last_built: 2022-02-21T14:25Z
+last_built: 2022-04-05T17:04Z
 
