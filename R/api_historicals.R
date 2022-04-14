@@ -18,7 +18,14 @@ api_historicals <- function(RH, historicals_url, body) {
              add_headers("Accept" = "application/json",
                          "Content-Type" = "application/json",
                          "Authorization" = token))
-
+  
+  # Check response
+  if (dta$status != 200) {
+    if (dta$status == 400) {
+      stop("HTTPS error 400 - Bad Request")}
+    else {
+      stop("Unknown error with HTTPS request")}}
+  
   # Format return
   dta <- mod_json(dta, "fromJSON")
   dta <- as.data.frame(dta$results$historicals)
