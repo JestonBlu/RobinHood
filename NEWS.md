@@ -5,7 +5,8 @@ title: "NEWS"
 # RobinHood 1.6.4
 
 ## Bug Fixes
-  - [(GH-99)](https://github.com/JestonBlu/RobinHood/issues/99) `RobinHood()` issues with tbl_vars
+  - [(GH-99)](https://github.com/JestonBlu/RobinHood/issues/99) `RobinHood()` issues with tbl_vars 
+  - [(GH-146)](https://github.com/JestonBlu/RobinHood/issues/146) `RobinHood()` issues with tbl_vars (@JanLauGe)
 
 -------------------------------------------------------------------------------
 
