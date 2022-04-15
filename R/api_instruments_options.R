@@ -29,7 +29,8 @@ api_instruments_options <- function(RH, method = "url", option_instrument_url = 
                add_headers("Accept" = "application/json",
                            "Content-Type" = "application/json",
                            "Authorization" = token))
-
+    httr::stop_for_status(df)
+    
     # Format return
     dta <- RobinHood::mod_json(dta, "fromJSON")
     dta <- as.data.frame(dta)
@@ -62,7 +63,8 @@ api_instruments_options <- function(RH, method = "url", option_instrument_url = 
                add_headers("Accept" = "application/json",
                            "Content-Type" = "application/json",
                            "Authorization" = token))
-
+    httr::stop_for_status(df)
+    
     # Format return
     dta <- RobinHood::mod_json(dta, "fromJSON")
     output <- as.data.frame(dta$results)
@@ -81,7 +83,8 @@ api_instruments_options <- function(RH, method = "url", option_instrument_url = 
                  add_headers("Accept" = "application/json",
                              "Content-Type" = "application/json",
                              "Authorization" = token))
-
+      httr::stop_for_status(df)
+      
       # Format return
       dta <- RobinHood::mod_json(dta, "fromJSON")
 
