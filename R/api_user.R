@@ -13,8 +13,7 @@ api_user <- function(RH) {
 
   # GET call
   dta <- GET(url, add_headers("Accept" = "application/json", "Authorization" = token))
-  httr::stop_for_status(df)
-  
+
   # format return
   dta <- mod_json(dta, "fromJSON")
   dta <- as.list(dta)

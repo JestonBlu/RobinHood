@@ -29,8 +29,7 @@ api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
                            "Content-Type" = "application/json",
                            "Authorization" = token),
                config(customrequest = "DELETE"))
-    httr::stop_for_status(df)
-    
+
     dta <- rawToChar(dta$content)
 
   }
@@ -43,8 +42,7 @@ api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
                add_headers("Accept" = "application/json",
                            "Content-Type" = "application/json",
                            "Authorization" = token))
-    httr::stop_for_status(df)
-    
+
     dta <- mod_json(dta, "fromJSON")
 
   }

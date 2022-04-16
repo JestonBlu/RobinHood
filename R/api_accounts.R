@@ -16,7 +16,6 @@ api_accounts <- function(RH) {
              add_headers("Accept" = "application/json",
                          "Content-Type" = "application/json",
                          "Authorization" = token))
-  httr::stop_for_status(df)
 
   # Format return
   dta <- RobinHood::mod_json(dta, "fromJSON")

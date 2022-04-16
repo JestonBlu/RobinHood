@@ -16,8 +16,7 @@ api_historicals_crypto <- function(RH, url) {
              add_headers("Accept" = "application/json",
                          "Content-Type" = "application/json",
                          "Authorization" = token))
-  httr::stop_for_status(df)
-  
+
   # Format return
   dta <- RobinHood::mod_json(dta, "fromJSON")
   dta <- as.data.frame(dta$data_points)
