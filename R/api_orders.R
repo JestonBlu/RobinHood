@@ -86,7 +86,8 @@ api_orders <- function(RH, action, status_url = NULL, cancel_url = NULL, instrum
                add_headers("Accept" = "application/json",
                           "Content-Type" = "application/json",
                           "Authorization" = token))
-
+    httr::stop_for_status(df)
+    
     # format return
     dta <- mod_json(dta, "fromJSON")
     dta <- as.list(dta)
@@ -102,12 +103,13 @@ api_orders <- function(RH, action, status_url = NULL, cancel_url = NULL, instrum
     # Token
     token <- paste("Bearer", RH$tokens.access_token)
 
-    # GET call
+    # POST call
     dta <- POST(cancel_url,
         add_headers("Accept" = "application/json",
                     "Content-Type" = "application/json",
                     "Authorization" = token))
-
+    httr::stop_for_status(df)
+    
     # Format return
     dta <- mod_json(dta, "fromJSON")
 
@@ -124,7 +126,8 @@ api_orders <- function(RH, action, status_url = NULL, cancel_url = NULL, instrum
         add_headers("Accept" = "application/json",
                     "Content-Type" = "application/json",
                     "Authorization" = token))
-
+    httr::stop_for_status(df)
+    
     # format return
     dta <- mod_json(dta, "fromJSON")
     dta <- as.data.frame(dta$results)

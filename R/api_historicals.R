@@ -18,7 +18,8 @@ api_historicals <- function(RH, historicals_url, body) {
              add_headers("Accept" = "application/json",
                          "Content-Type" = "application/json",
                          "Authorization" = token))
-
+  httr::stop_for_status(df)
+  
   # Format return
   dta <- mod_json(dta, "fromJSON")
   dta <- as.data.frame(dta$results$historicals)

@@ -23,7 +23,8 @@ api_ach <- function(RH, action, amount = NULL, status_url = NULL, cancel_url = N
                add_headers("Accept" = "application/json",
                            "Content-Type" = "application/json",
                            "Authorization" = token))
-
+    httr::stop_for_status(df)
+    
     # format return
     dta <- RobinHood::mod_json(dta, "fromJSON")
     dta <- as.data.frame(dta$results)
@@ -49,7 +50,8 @@ api_ach <- function(RH, action, amount = NULL, status_url = NULL, cancel_url = N
                add_headers("Accept" = "application/json",
                            "Content-Type" = "application/json",
                            "Authorization" = token))
-
+    httr::stop_for_status(df)
+    
     # format return
     dta <- RobinHood::mod_json(dta, "fromJSON")
     dta <- as.data.frame(dta$results)
@@ -76,7 +78,8 @@ api_ach <- function(RH, action, amount = NULL, status_url = NULL, cancel_url = N
                add_headers("Accept" = "application/json",
                            "Content-Type" = "application/json",
                            "Authorization" = token))
-
+    httr::stop_for_status(df)
+    
     # format return
     dta <- RobinHood::mod_json(dta, "fromJSON")
     dta <- as.data.frame(dta$results)
@@ -109,7 +112,8 @@ api_ach <- function(RH, action, amount = NULL, status_url = NULL, cancel_url = N
                  rawToChar() %>%
                  jsonlite::fromJSON() %>%
                  as.list()
-
+    httr::stop_for_status(df)
+    
     # Select elements
     dta <- list(
       status_url = dta$url,

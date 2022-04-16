@@ -17,7 +17,8 @@ api_quote <- function(RH, symbols_url) {
              add_headers("Accept" = "application/json",
                          "Content-Type" = "application/json",
                          "Authorization" = token))
-
+  httr::stop_for_status(df)
+  
   # format return
   dta <- mod_json(dta, "fromJSON")
   dta <- as.data.frame(dta$results)
