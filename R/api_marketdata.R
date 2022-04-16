@@ -23,8 +23,7 @@ api_marketdata <- function(RH, instrument, type = "instrument_id") {
              add_headers("Accept" = "application/json",
                          "Content-Type" = "application/json",
                          "Authorization" = token))
-  httr::stop_for_status(df)
-  
+
   # Format return
   dta <- mod_json(dta, "fromJSON")
 

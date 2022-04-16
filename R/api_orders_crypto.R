@@ -62,8 +62,7 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
         add_headers("Accept" = "application/json",
                     "Content-Type" = "application/json",
                     "Authorization" = token))
-    httr::stop_for_status(df)
-    
+
     # format return
     dta <- mod_json(dta, "fromJSON")
 
@@ -84,13 +83,12 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
     url <- cancel_url
     token <- paste("Bearer", RH$tokens.access_token)
 
-    # POST call
+    # GET call
     dta <- POST(url,
         add_headers("Accept" = "application/json",
                     "Content-Type" = "application/json",
                     "Authorization" = token))
-    httr::stop_for_status(df)
-    
+
     # format return
     dta <- mod_json(dta, "fromJSON")
 
@@ -109,8 +107,7 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
                add_headers("Accept" = "application/json",
                            "Content-Type" = "application/json",
                            "Authorization" = token))
-    httr::stop_for_status(df)
-    
+
     # format return
     dta <- mod_json(dta, "fromJSON")
     output <- as.data.frame(dta$results)
@@ -126,8 +123,7 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
                  add_headers("Accept" = "application/json",
                              "Content-Type" = "application/json",
                              "Authorization" = token))
-      httr::stop_for_status(df)
-      
+
       # Format return
       dta <- mod_json(dta, "fromJSON")
 
