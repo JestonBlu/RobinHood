@@ -32,7 +32,8 @@ api_historicals_options <- function(RH, chain_symbol, type, strike_price, expira
              add_headers("Accept" = "application/json",
                          "Content-Type" = "application/json",
                          "Authorization" = token))
-
+  httr::stop_for_status(dta)
+  
   # Format return
   dta <- mod_json(dta, "fromJSON")
 
