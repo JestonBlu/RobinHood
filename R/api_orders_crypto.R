@@ -38,7 +38,8 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
                             "Content-Type" = "application/json",
                             "Authorization" = paste("Bearer", RH$tokens.access_token)),
                 body = mod_json(detail, type = "toJSON"))
-
+    httr::stop_for_status(dta)
+    
     dta <- mod_json(dta, type = "fromJSON")
 
     dta$cumulative_quantity <- as.numeric(dta$cumulative_quantity)
@@ -62,7 +63,8 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
         add_headers("Accept" = "application/json",
                     "Content-Type" = "application/json",
                     "Authorization" = token))
-
+    httr::stop_for_status(dta)
+    
     # format return
     dta <- mod_json(dta, "fromJSON")
 
@@ -88,7 +90,8 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
         add_headers("Accept" = "application/json",
                     "Content-Type" = "application/json",
                     "Authorization" = token))
-
+    httr::stop_for_status(dta)
+    
     # format return
     dta <- mod_json(dta, "fromJSON")
 
@@ -107,7 +110,8 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
                add_headers("Accept" = "application/json",
                            "Content-Type" = "application/json",
                            "Authorization" = token))
-
+    httr::stop_for_status(dta)
+    
     # format return
     dta <- mod_json(dta, "fromJSON")
     output <- as.data.frame(dta$results)
@@ -123,7 +127,8 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
                  add_headers("Accept" = "application/json",
                              "Content-Type" = "application/json",
                              "Authorization" = token))
-
+      httr::stop_for_status(dta)
+      
       # Format return
       dta <- mod_json(dta, "fromJSON")
 

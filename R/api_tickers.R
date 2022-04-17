@@ -22,7 +22,8 @@ api_tickers <- function(RH) {
              add_headers("Accept" = "application/json",
                          "Content-Type" = "application/json",
                          "Authorization" = token))
-
+  httr::stop_for_status(dta)
+  
   # Format return
   dta <- mod_json(dta, "fromJSON")
 
@@ -39,7 +40,8 @@ api_tickers <- function(RH) {
                add_headers("Accept" = "application/json",
                            "Content-Type" = "application/json",
                            "Authorization" = token))
-
+    httr::stop_for_status(dta)
+    
     # Format return
     dta <- mod_json(dta, "fromJSON")
 

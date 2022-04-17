@@ -18,7 +18,8 @@ api_portfolios <- function(RH, portfolio_url) {
                add_headers("Accept" = "application/json",
                            "Content-Type" = "application/json",
                            "Authorization" = token))
-
+    httr::stop_for_status(dta)
+    
     # format return
     dta <- RobinHood::mod_json(dta, "fromJSON")
     dta <- as.data.frame(dta$results)
@@ -39,7 +40,8 @@ api_portfolios <- function(RH, portfolio_url) {
                add_headers("Accept" = "application/json",
                            "Content-Type" = "application/json",
                            "Authorization" = token))
-
+    httr::stop_for_status(dta)
+    
     # format return
     dta <- RobinHood::mod_json(dta, "fromJSON")
     dta <- as.data.frame(dta$equity_historicals)
