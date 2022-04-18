@@ -13,10 +13,10 @@
 get_order_history_options <- function(RH) {
 
     # Check if RH is valid
-    check_rh(RH)
+    RobinHood::check_rh(RH)
 
     # Get Order History
-    order_history <- api_orders_options(RH, action = "history")
+    order_history <- RobinHood::api_orders_options(RH, action = "history")
 
     return(order_history)
 }

@@ -13,10 +13,10 @@
 get_positions_crypto <- function(RH) {
 
     # Check if RH is valid
-    check_rh(RH)
+    RobinHood::check_rh(RH)
 
     # Get current positions
-    positions <- api_positions_crypto(RH)
+    positions <- RobinHood::api_positions_crypto(RH)
 
     if (nrow(positions) == 0)  {
       return(cat("You have no current positions"))
@@ -29,7 +29,7 @@ get_positions_crypto <- function(RH) {
 
     # For each instrument id, get stocker symbols and names
     for (i in currency_codes) {
-      x <- get_quote_crypto(RH, symbol = i)
+      x <- RobinHood::get_quote_crypto(RH, symbol = i)
       x <- x[, c("symbol", "mark_price")]
       crypto_quotes <- rbind(crypto_quotes, x)
     }

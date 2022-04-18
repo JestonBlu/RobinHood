@@ -5,3 +5,5 @@
 /tests*
 .vscode
 docs
+/renv
+renv.lock

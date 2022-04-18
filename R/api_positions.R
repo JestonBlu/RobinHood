@@ -8,7 +8,7 @@
 api_positions <- function(RH) {
 
   # URL and token
-  url <- api_endpoints("positions")
+  url <- RobinHood::api_endpoints("positions")
   token <- paste("Bearer", RH$tokens.access_token)
 
   # GET call
@@ -17,9 +17,9 @@ api_positions <- function(RH) {
                          "Content-Type" = "application/json",
                          "Authorization" = token))
   httr::stop_for_status(dta)
-  
+
   # Format return
-  dta <- mod_json(dta, "fromJSON")
+  dta <- RobinHood::mod_json(dta, "fromJSON")
   dta <- as.data.frame(dta$results)
 
   # Stop if data.frame is empty (no positions)

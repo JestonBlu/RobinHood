@@ -6,7 +6,7 @@
 #' @export
 cancel_ach_transfer <- function(RH, cancel_url) {
 
-  cancel_ach <- api_ach(RH, action = "cancel", cancel_url = cancel_url)
+  cancel_ach <- RobinHood::api_ach(RH, action = "cancel", cancel_url = cancel_url)
 
   if (length(cancel_ach) == 0) cat("Transfer Canceled \n")
 

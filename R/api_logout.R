@@ -16,9 +16,9 @@ api_logout <- function(RH) {
   # URL
   url <- paste(api_endpoints("revoke_token"), detail, sep = "")
 
-  dta <- POST(url)
+  dta <- httr::POST(url)
   httr::stop_for_status(dta)
-  
+
   dta <- dta %>%
     content(type = "json") %>%
     rawToChar()

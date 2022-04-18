@@ -13,16 +13,16 @@
 get_order_history_crypto <- function(RH) {
 
     # Check if RH is valid
-    check_rh(RH)
+    RobinHood::check_rh(RH)
 
     # Get Order History
-    order_history <- api_orders_crypto(RH, action = "history")
+    order_history <- RobinHood::api_orders_crypto(RH, action = "history")
 
     # Get currency symbol
-    currency_pairs <- api_currency_pairs(RH)
+    currency_pairs <- RobinHood::api_currency_pairs(RH)
 
     # Adjust names for join
-    colnames(currency_pairs)[1] = "currency_pair_id"
+    colnames(currency_pairs)[1] <- "currency_pair_id"
 
     # Force join to be character so R doesnt give a warning
     currency_pairs$currency_pair_id <- as.character(currency_pairs$currency_pair_id)
@@ -39,7 +39,7 @@ get_order_history_crypto <- function(RH) {
 
     # Adjust factor levels it doesn't show factors not in the join
     order_history <- order_history %>%
-      dplyr::mutate_at(c("name","symbol"), as.character)
+      dplyr::mutate_at(c("name", "symbol"), as.character)
 
     # Sort by date
     order_history <- order_history[order(order_history$created_at, decreasing = TRUE), ]

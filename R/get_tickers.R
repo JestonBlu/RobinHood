@@ -16,10 +16,10 @@
 get_tickers <- function(RH, add_fundamentals = FALSE) {
 
     # Check if RH is valid
-    check_rh(RH)
+    RobinHood::check_rh(RH)
 
     # Call the tickers api to retrieve all stock symbols
-    tickers <- api_tickers(RH)
+    tickers <- RobinHood::api_tickers(RH)
 
     # limit columns and only return tradeable symbols
     tickers <- tickers[, c("symbol", "rhs_tradability", "country", "name", "state", "list_date")]
@@ -41,7 +41,7 @@ get_tickers <- function(RH, add_fundamentals = FALSE) {
 
       # Get fundamentals on each symbol, with a 1 second delay every 50 calls
       for (i in 1:length(symbols)) {
-        x <- get_fundamentals(RH, symbols[i])
+        x <- RobinHood::get_fundamentals(RH, symbols[i])
         fundamentals <- rbind(fundamentals, x)
 
         if (i %in% seq(0, 15000, 50)) {

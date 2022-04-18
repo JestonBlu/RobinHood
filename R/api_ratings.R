@@ -10,17 +10,18 @@ api_ratings <- function(RH, symbol) {
 
   # URL and token
   token <- paste("Bearer", RH$tokens.access_token)
-  instrument_id <- api_instruments(RH, symbol)
+  instrument_id <- RobinHood::api_instruments(RH, symbol)
   instrument_id <- instrument_id$results$id
 
-  url <- paste(api_endpoints("ratings"), instrument_id, sep = "")
+  url <- paste(RobinHood::api_endpoints("ratings"), instrument_id, sep = "")
 
   # GET call
-  dta <- GET(url, add_headers("Accept" = "application/json", "Authorization" = token))
+  dta <- GET(url,
+    add_headers("Accept" = "application/json", "Authorization" = token))
   httr::stop_for_status(dta)
-  
+
   # format return
-  dta <- mod_json(dta, "fromJSON")
+  dta <- RobinHood::mod_json(dta, "fromJSON")
   dta <- as.list(dta$results)
 
   dta <- list(

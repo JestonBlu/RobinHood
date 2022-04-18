@@ -26,10 +26,10 @@
 get_order_status_options <- function(RH, status_url) {
 
     # Check if RH is valid
-    check_rh(RH)
+    RobinHood::check_rh(RH)
 
     # Get Order Status
-    order_status <- api_orders(RH, action = "status", status_url = status_url)
+    order_status <- RobinHood::api_orders(RH, action = "status", status_url = status_url)
 
     return(order_status)
 }

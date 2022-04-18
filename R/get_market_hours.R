@@ -17,23 +17,23 @@
 get_market_hours <- function(RH, market_date = NULL, tz = Sys.timezone()) {
 
     # Check if RH is valid
-    check_rh(RH)
+    RobinHood::check_rh(RH)
 
     # If no date is provided, use todays date
-    if (is.null(market_date)) market_date <- suppressWarnings(today())
+    if (is.null(market_date)) market_date <- suppressWarnings(lubridate::today())
 
     # Get market information
-    markets <- api_markets(RH, api_endpoints("markets"))
+    markets <- RobinHood::api_markets(RH, RobinHood::api_endpoints("markets"))
 
     # Replace url with the overidden date
-    market_hours_url <- gsub(suppressWarnings(today()), market_date, markets$todays_hours)
+    market_hours_url <- gsub(suppressWarnings(lubridate::today()), market_date, markets$todays_hours)
 
     # Empty data frame to collect results
     market_hours <- data.frame()
 
     for (i in market_hours_url) {
 
-        x <- api_markets(RH, i, type = "list")
+        x <- RobinHood::api_markets(RH, i, type = "list")
 
         # Look for nulls and replace with NA
         if (length(x$closes_at) == 0) x$closes_at <- NA

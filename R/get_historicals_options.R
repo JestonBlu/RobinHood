@@ -24,7 +24,7 @@ get_historicals_options <- function(RH, chain_symbol, type, strike_price, expira
                                     interval = NULL, span = NULL) {
 
   # Check if RH is valid
-  check_rh(RH)
+  RobinHood::check_rh(RH)
 
   historicals <- api_historicals_options(RH, chain_symbol = chain_symbol,
                                          type = type,
@@ -34,9 +34,9 @@ get_historicals_options <- function(RH, chain_symbol, type, strike_price, expira
                                          span = span)
 
   # Add columns for strike + symbol + expiration + type
-  historicals$strike_price  <- strike_price
-  historicals$expiration_date  <- expiration_date
-  historicals$type  <- type
+  historicals$strike_price <- strike_price
+  historicals$expiration_date <- expiration_date
+  historicals$type <- type
   historicals$chain_symbol <- chain_symbol
 
   # Reorder columns

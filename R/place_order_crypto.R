@@ -29,7 +29,7 @@
 place_order_crypto <- function(RH, symbol, type, time_in_force, price, quantity, side) {
 
     # Check if RH is valid
-    check_rh(RH)
+    RobinHood::check_rh(RH)
 
     # Set up error checks
     if (!type %in% c("market", "limit")) stop("type must be 'market' or 'limit'")
@@ -37,12 +37,8 @@ place_order_crypto <- function(RH, symbol, type, time_in_force, price, quantity,
     if (quantity < 0) stop("quantity must be > 0")
     if (!side %in% c("buy", "sell")) stop("side must be 'buy' or 'sell'")
 
-    # Convert NAs to NULL and numeric to character
-    # quantity <- as.character(quantity)
-    # price <- as.character(price)
-
     # Given a symbol, return the crypto id
-    currency_pair_id <- api_currency_pairs(RH)
+    currency_pair_id <- RobinHood::api_currency_pairs(RH)
 
     # Clean up currency symbol
     currency_pair_id$symbol <- gsub(x = currency_pair_id$symbol, pattern = "-.*", replacement = "")

@@ -14,10 +14,10 @@
 get_quote_crypto <- function(RH, symbol) {
 
     # Check if RH is valid
-    check_rh(RH)
+    RobinHood::check_rh(RH)
 
     # Get IDs for cryptocurrency
-    currency_pairs <- api_currency_pairs(RH)
+    currency_pairs <- RobinHood::api_currency_pairs(RH)
 
     # Adjust symbol to require only the crypto symbol rather than the -USD addition
     symbol <- paste(symbol, "-USD", sep = "")
@@ -31,10 +31,10 @@ get_quote_crypto <- function(RH, symbol) {
     currency <- as.character(currency_pairs[currency_pairs$symbol == symbol, "id"])
 
     # Quotes URL
-    quote_url <- paste(api_endpoints(endpoint = "forex"), currency, "/", sep = "")
+    quote_url <- paste(RobinHood::api_endpoints(endpoint = "forex"), currency, "/", sep = "")
 
     # Get last price
-    quotes <- api_quote_crypto(RH, quote_url)
+    quotes <- RobinHood::api_quote_crypto(RH, quote_url)
 
     return(quotes)
 

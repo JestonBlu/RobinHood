@@ -9,7 +9,7 @@
 api_tag <- function(RH, tag) {
 
   # URL and token
-  url <- paste(api_endpoints("tags"), tag, "/", sep = "", collapse = "")
+  url <- paste(RobinHood::api_endpoints("tags"), tag, "/", sep = "", collapse = "")
   token <- paste("Bearer", RH$tokens.access_token)
 
   # GET call
@@ -18,9 +18,9 @@ api_tag <- function(RH, tag) {
                          "Content-Type" = "application/json",
                          "Authorization" = token))
   httr::stop_for_status(dta)
-  
+
   # format return
-  dta <- mod_json(dta, "fromJSON")
+  dta <- RobinHood::mod_json(dta, "fromJSON")
   dta <- as.character(dta$instruments)
 
   return(dta)

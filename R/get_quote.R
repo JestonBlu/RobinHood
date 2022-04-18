@@ -15,23 +15,24 @@
 get_quote <- function(RH, symbol, limit_output = TRUE) {
 
     # Check if RH is valid
-    check_rh(RH)
+    RobinHood::check_rh(RH)
 
     # Get latest quote
     quote <- paste(symbol, collapse = ",")
 
     # Quotes URL
-    quote_url <- paste(api_endpoints(endpoint = "quotes"), quote, sep = "")
+    quote_url <- paste(RobinHood::api_endpoints(endpoint = "quotes"), quote, sep = "")
 
     # Get last price
-    quotes <- api_quote(RH, quote_url)
+    quotes <- RobinHood::api_quote(RH, quote_url)
 
     # Trim output
     quotes <- quotes[, !names(quotes) %in% c("instrument")]
 
     if (limit_output == TRUE) {
 
-        quotes <- quotes %>% dplyr::select(c("symbol", "last_trade_price"))
+        quotes <- quotes %>%
+            dplyr::select(c("symbol", "last_trade_price"))
 
     } else {
 

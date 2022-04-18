@@ -6,13 +6,18 @@
 mod_json <- function(x, type) {
 
   if (type == "toJSON") {
-    x <- x %>% jsonlite::toJSON()
+    x <- x %>% 
+      jsonlite::toJSON()
+
     x <- substr(x, 2, nchar(x) - 1)
+
     return(x)
   }
 
   if (type == "fromJSON") {
+
     x <- jsonlite::fromJSON(rawToChar(x$content))
+
     return(x)
   }
 

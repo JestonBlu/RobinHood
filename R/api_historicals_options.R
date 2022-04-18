@@ -33,9 +33,9 @@ api_historicals_options <- function(RH, chain_symbol, type, strike_price, expira
                          "Content-Type" = "application/json",
                          "Authorization" = token))
   httr::stop_for_status(dta)
-  
+
   # Format return
-  dta <- mod_json(dta, "fromJSON")
+  dta <- RobinHood::mod_json(dta, "fromJSON")
 
   dta <- dta$data_points
 

@@ -27,9 +27,9 @@
 #'}
 cancel_order_options <- function(RH, cancel_url) {
 
-  check_rh(RH)
+  RobinHood::check_rh(RH)
 
-  order_status <- api_orders_options(RH, action = "cancel", cancel_url = cancel_url)
+  order_status <- RobinHood::api_orders_options(RH, action = "cancel", cancel_url = cancel_url)
 
   if (length(order_status) == 0) cat("Order Canceled")
 

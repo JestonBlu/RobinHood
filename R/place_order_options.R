@@ -30,7 +30,7 @@
 place_order_options <- function(RH, option_id, direction, side, quantity, stop_price = NULL, type = "limit", time_in_force) {
 
     # Check if RH is valid
-    check_rh(RH)
+    RobinHood::check_rh(RH)
 
     # Check inputs
     # Limit orders should contain a price
@@ -39,15 +39,15 @@ place_order_options <- function(RH, option_id, direction, side, quantity, stop_p
     if (!direction %in% c("debit", "credit")) stop("direction must be 'debit' or 'credit'")
 
     # Place an order
-    orders <- api_orders_options(RH = RH,
-                                 option_id = option_id,
-                                 direction = direction,
-                                 side = side,
-                                 quantity = quantity,
-                                 stop_price = stop_price,
-                                 type = type,
-                                 time_in_force = time_in_force,
-                                 action = "order")
+    orders <- RobinHood::api_orders_options(RH = RH,
+                                            option_id = option_id,
+                                            direction = direction,
+                                            side = side,
+                                            quantity = quantity,
+                                            stop_price = stop_price,
+                                            type = type,
+                                            time_in_force = time_in_force,
+                                            action = "order")
 
     return(orders)
 }

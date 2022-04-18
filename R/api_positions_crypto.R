@@ -8,7 +8,7 @@
 api_positions_crypto <- function(RH) {
 
   # URL and token
-  url <- api_endpoints("holdings_crypto", source = "crypto")
+  url <- RobinHood::api_endpoints("holdings_crypto", source = "crypto")
   token <- paste("Bearer", RH$tokens.access_token)
 
   # GET call
@@ -17,9 +17,9 @@ api_positions_crypto <- function(RH) {
                          "Content-Type" = "application/json",
                          "Authorization" = token))
   httr::stop_for_status(dta)
-  
+
   # format return
-  dta <- mod_json(dta, "fromJSON")
+  dta <- RobinHood::mod_json(dta, "fromJSON")
   dta <- as.list(dta$results)
 
 #  # Create data.frame with output

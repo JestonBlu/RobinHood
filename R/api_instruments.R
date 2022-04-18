@@ -10,7 +10,7 @@
 api_instruments <- function(RH, symbol = NULL, instrument_url = NULL) {
 
   if (is.null(instrument_url) == TRUE) {
-    url <- paste(api_endpoints("instruments"), "?symbol=", symbol, sep = "")
+    url <- paste(RobinHood::api_endpoints("instruments"), "?symbol=", symbol, sep = "")
   } else {
     url <- instrument_url
   }
@@ -23,9 +23,9 @@ api_instruments <- function(RH, symbol = NULL, instrument_url = NULL) {
                          "Content-Type" = "application/json",
                          "Authorization" = token))
   httr::stop_for_status(dta)
-  
+
   # Format return
-  dta <- mod_json(dta, "fromJSON")
+  dta <- RobinHood::mod_json(dta, "fromJSON")
   dta <- as.list(dta)
 
   dta$margin_initial_ratio <- as.numeric(dta$margin_initial_ratio)

@@ -13,10 +13,10 @@
 get_user <- function(RH) {
 
     # Check if RH is valid
-    check_rh(RH)
+    RobinHood::check_rh(RH)
 
     # Get request from user information API
-    user <- api_user(RH)
+    user <- RobinHood::api_user(RH)
     user$created_at <-  lubridate::ymd_hms(user$created_at)
 
     return(user)

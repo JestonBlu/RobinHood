@@ -17,7 +17,7 @@ api_positions_options <- function(RH) { # nolint
                          "Content-Type" = "application/json",
                          "Authorization" = token))
   httr::stop_for_status(dta)
-  
+
   # format return
   dta <- RobinHood::mod_json(dta, "fromJSON")
   dta <- as.data.frame(dta$results)

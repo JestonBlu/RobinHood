@@ -8,7 +8,7 @@
 api_currency_pairs <- function(RH) {
 
   # URL and token
-  url <- api_endpoints("currency_pairs", "crypto")
+  url <- RobinHood::api_endpoints("currency_pairs", "crypto")
   token <- paste("Bearer", RH$tokens.access_token)
 
   # GET call
@@ -17,11 +17,11 @@ api_currency_pairs <- function(RH) {
                          "Content-Type" = "application/json",
                          "Authorization" = token))
   httr::stop_for_status(dta)
-  
+
   # Format return
-  dta <- mod_json(dta, "fromJSON")
+  dta <- RobinHood::mod_json(dta, "fromJSON")
   dta <- as.list(dta$results)
-  
+
   # ID is used for quotes and orders
   # Asset ID is used for historicals
   dta <- data.frame(
@@ -35,7 +35,7 @@ api_currency_pairs <- function(RH) {
     min_order_size = dta$min_order_size,
     min_order_price_increment = dta$min_order_price_increment,
     min_order_quantity_increment = dta$min_order_quantity_increment
-    
+
   )
 
   return(dta)

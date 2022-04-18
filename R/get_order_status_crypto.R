@@ -26,10 +26,10 @@
 get_order_status_crypto <- function(RH, order_id) {
 
     # Check if RH is valid
-    check_rh(RH)
+    RobinHood::check_rh(RH)
 
     # Get Order Status
-    order_status <- api_orders_crypto(RH, action = "status", order_id)
+    order_status <- RobinHood::api_orders_crypto(RH, action = "status", order_id)
 
     order_status <- order_status[c("created_at", "cumulative_quantity", "executions", "last_transaction_at", "price",
                                    "quantity", "rounded_executed_notional", "side", "state", "time_in_force", "type",

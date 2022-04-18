@@ -15,10 +15,10 @@
 logout <- function(RH) {
 
     # Check if RH is valid
-    check_rh(RH)
+    RobinHood::check_rh(RH)
 
     # API request to revoke token
-    x <- api_logout(RH)
+    x <- RobinHood::api_logout(RH)
 
     if (x == "") {
       cat("Logout Sucessful")

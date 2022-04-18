@@ -18,9 +18,9 @@ api_markets <- function(RH, markets_url, type = "df") {
                          "Content-Type" = "application/json",
                          "Authorization" = token))
   httr::stop_for_status(dta)
-  
+
   # format return
-  dta <- mod_json(dta, "fromJSON")
+  dta <- RobinHood::mod_json(dta, "fromJSON")
 
   if (type == "df") {
 

@@ -18,10 +18,10 @@ RobinHood <- function(username, password, mfa_code = NULL) {
     mfa_code <- ifelse(is.null(mfa_code), "000000", mfa_code)
 
     # Login to RobinHood, returns RobinHood object with access tokens
-    RH <- api_login(username, password, mfa_code)
+    RH <- RobinHood::api_login(username, password, mfa_code)
 
     # Get account data for the main purpose of returning the position url
-    accounts <- api_accounts(RH)
+    accounts <- RobinHood::api_accounts(RH)
     url_account_id <- accounts$url
 
     # Return object

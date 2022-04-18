@@ -20,10 +20,10 @@
 get_historicals <- function(RH, symbol, interval, span, tz = Sys.timezone()) {
 
     # Check if RH is valid
-    check_rh(RH)
+    RobinHood::check_rh(RH)
 
     # Call the historical price position endpoint
-    historicals_url <- api_endpoints("historicals")
+    historicals_url <- RobinHood::api_endpoints("historicals")
 
     # Create the api url
     body <- paste("symbols=", symbol,
@@ -32,7 +32,7 @@ get_historicals <- function(RH, symbol, interval, span, tz = Sys.timezone()) {
                   sep = "")
 
     # Call the historical api for price history
-    historicals <- api_historicals(RH, historicals_url, body)
+    historicals <- RobinHood::api_historicals(RH, historicals_url, body)
 
     # If interval is hour or minute, then adjust timezone to local or user override
     if (length(grep("hour|minute", x = interval)) == 1) {

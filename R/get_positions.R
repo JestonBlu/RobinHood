@@ -14,10 +14,10 @@
 get_positions <- function(RH, limit_output = TRUE) {
 
     # Check if RH is valid
-    check_rh(RH)
+    RobinHood::check_rh(RH)
 
     # Get current positions
-    positions <- api_positions(RH)
+    positions <- RobinHood::api_positions(RH)
 
     if (nrow(positions) == 0)  {
       return(cat("You have no current positions"))
@@ -29,7 +29,7 @@ get_positions <- function(RH, limit_output = TRUE) {
 
     # For each instrument id, get stocker symbols and names
     for (i in 1:length(instrument_id)) {
-      instrument <- api_instruments(RH, instrument_url = instrument_id[i])
+      instrument <- RobinHood::api_instruments(RH, instrument_url = instrument_id[i])
 
       # If any simple names are blank, use full name
       x <- data.frame(simple_name = ifelse(is.null(instrument$simple_name),
@@ -47,10 +47,10 @@ get_positions <- function(RH, limit_output = TRUE) {
     symbols <- paste(as.character(positions$symbol), collapse = ",")
 
     # Quotes URL
-    symbols_url <- paste(api_endpoints(endpoint = "quotes"), symbols, sep = "")
+    symbols_url <- paste(RobinHood::api_endpoints(endpoint = "quotes"), symbols, sep = "")
 
     # Get last price
-    quotes <- api_quote(RH, symbols_url)
+    quotes <- RobinHood::api_quote(RH, symbols_url)
     quotes <- quotes[, c("last_trade_price", "symbol")]
 
     # Combine quotes with positions
@@ -60,8 +60,8 @@ get_positions <- function(RH, limit_output = TRUE) {
     positions <- positions[, !names(positions) %in% c("account", "url", "instrument")]
 
     # Convert timestamp
-    positions$updated_at <-  lubridate::ymd_hms(positions$updated_at)
-    positions$created_at <-  lubridate::ymd_hms(positions$created_at)
+    positions$updated_at <- lubridate::ymd_hms(positions$updated_at)
+    positions$created_at <- lubridate::ymd_hms(positions$created_at)
 
     # Adjust data types
     positions$quantity <- as.numeric(positions$quantity)

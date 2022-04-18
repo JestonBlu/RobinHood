@@ -25,9 +25,9 @@ api_login <- function(username, password, mfa_code) {
   url <- paste(api_endpoints("token"), detail, sep = "")
 
   # POST call
-  dta <- POST(url)
+  dta <- httr::POST(url)
   httr::stop_for_status(dta)
-  
+
   dta <- dta %>%
     content(type = "json") %>%
     rawToChar() %>%
@@ -48,9 +48,9 @@ api_login <- function(username, password, mfa_code) {
   if (length(dta) == 2 & mfa_code != "000000") {
 
     # POST call
-    dta <- POST(url, body = list(mfa_code = mfa_code))
+    dta <- httr::POST(url, body = list(mfa_code = mfa_code))
     httr::stop_for_status(dta)
-    
+
     dta <- dta %>%
       content(type = "json") %>%
       rawToChar() %>%

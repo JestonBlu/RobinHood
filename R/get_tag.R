@@ -16,16 +16,16 @@
 get_tag <- function(RH, tag) {
 
     # Check if RH is valid
-    check_rh(RH)
+    RobinHood::check_rh(RH)
 
     # Get a list of instrument IDs for a particular tag
-    instrument_id <- api_tag(RH, tag)
+    instrument_id <- RobinHood::api_tag(RH, tag)
 
     # Use instrument IDs to get the ticker symbol and name
     instruments <- c()
 
     for (i in instrument_id) {
-      instrument <- api_instruments(RH, instrument_url = i)
+      instrument <- RobinHood::api_instruments(RH, instrument_url = i)
       x <- ifelse(is.null(instrument$symbol), "", instrument$symbol)
       instruments <- c(instruments, x)
     }

@@ -22,7 +22,8 @@ get_contracts <- function(RH, chain_symbol, type, detail = FALSE) {
   contracts <- RobinHood::api_contracts(RH, chain_symbol, type)
 
   # Remove conflicting updated_at
-  contracts <- contracts %>% dplyr::select(-c("updated_at"))
+  contracts <- contracts %>%
+    dplyr::select(-c("updated_at"))
 
   # Get market data on contracts, split up calls into 50 instruments at a time
   market_data <- data.frame()

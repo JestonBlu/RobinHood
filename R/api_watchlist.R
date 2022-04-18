@@ -30,7 +30,7 @@ api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
                            "Authorization" = token),
                config(customrequest = "DELETE"))
     httr::stop_for_status(dta)
-    
+
     dta <- rawToChar(dta$content)
 
   }
@@ -44,8 +44,8 @@ api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
                            "Content-Type" = "application/json",
                            "Authorization" = token))
     httr::stop_for_status(dta)
-    
-    dta <- mod_json(dta, "fromJSON")
+
+    dta <- RobinHood::mod_json(dta, "fromJSON")
 
   }
 
@@ -59,9 +59,8 @@ api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
                             "Authorization" = token),
                 body = mod_json(detail, "toJSON"))
     httr::stop_for_status(dta)
-    
 
-    dta <- mod_json(dta, "fromJSON")
+    dta <- RobinHood::mod_json(dta, "fromJSON")
 
   }
 

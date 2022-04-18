@@ -10,7 +10,7 @@
 api_fundamentals <- function(RH, ticker) {
 
   # URL and token
-  url <- paste(api_endpoints("fundamentals"), ticker, collapse = ",", sep = "")
+  url <- paste(RobinHood::api_endpoints("fundamentals"), ticker, collapse = ",", sep = "")
   token <- paste("Bearer", RH$tokens.access_token)
 
   # GET call
@@ -19,9 +19,9 @@ api_fundamentals <- function(RH, ticker) {
                          "Content-Type" = "application/json",
                          "Authorization" = token))
   httr::stop_for_status(dta)
-  
+
   # Format return
-  dta <- mod_json(dta, "fromJSON")
+  dta <- RobinHood::mod_json(dta, "fromJSON")
   dta <- as.data.frame(dta$results)
 
   return(dta)

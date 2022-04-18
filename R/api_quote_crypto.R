@@ -18,9 +18,9 @@ api_quote_crypto <- function(RH, symbols_url) {
                          "Content-Type" = "application/json",
                          "Authorization" = token))
   httr::stop_for_status(dta)
-  
+
   # format return
-  dta <- mod_json(dta, "fromJSON")
+  dta <- RobinHood::mod_json(dta, "fromJSON")
   dta <- as.data.frame(dta)
 
   # Convert numeric columns from character, have to convert from factor first

@@ -14,10 +14,10 @@
 get_ratings <- function(RH, symbol) {
 
     # Check if RH is valid
-    check_rh(RH)
+    RobinHood::check_rh(RH)
 
     # Get request from user information API
-    ratings <- api_ratings(RH, symbol)
+    ratings <- RobinHood::api_ratings(RH, symbol)
 
     return(ratings)
 }

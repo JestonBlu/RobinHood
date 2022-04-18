@@ -28,20 +28,17 @@
 watchlist <- function(RH, action, watchlist = "", ticker = "") {
 
     # Check if RH is valid
-    check_rh(RH)
+    RobinHood::check_rh(RH)
 
     # Get starting watchlist url
-    base_watchlist_url <- api_endpoints("watchlist")
+    base_watchlist_url <- RobinHood::api_endpoints("watchlist")
 
     # Get watchlist urls
-    current_watchlist <- api_watchlist(RH, paste(base_watchlist_url, "default/", sep = "", collapse = ""))
+    current_watchlist <- RobinHood::api_watchlist(RH, paste(base_watchlist_url, "default/", sep = "", collapse = ""))
 
     # Checks for invalid inputs
     if (action == "add" & watchlist == "") cat("Watchlist can't be null, maybe you wanted Default?")
-    #if (action == "add" & watchlist != "" & ticker == "") cat("Creating a watchlist is currently disabled, use the Default watchlist")
     if (action == "delete" & watchlist == "") cat("Watchlist cant be null")
-    #if (action == "delete" & watchlist != "" & ticker == "") cat("Deleting a watchlist is currently disabled")
-
 
     # If no watchlist submitted, return a vector of watchlists
     if (action == "get" & watchlist == "") {
@@ -57,7 +54,7 @@ watchlist <- function(RH, action, watchlist = "", ticker = "") {
       watchlist_id <- current_watchlist[current_watchlist$display_name == watchlist, "id"]
 
       watchlist_url <- paste(base_watchlist_url, "items/?list_id=", watchlist_id, sep = "", collapse = "")
-      instruments <- api_watchlist(RH, watchlist_url, detail = FALSE)
+      instruments <- RobinHood::api_watchlist(RH, watchlist_url, detail = FALSE)
 
       wl <- instruments$results$symbol
 
@@ -68,19 +65,19 @@ watchlist <- function(RH, action, watchlist = "", ticker = "") {
     if (action == "add" & watchlist != "" & ticker != "") {
       watchlist_url <- paste(base_watchlist_url, watchlist, "/bulk_add/", sep = "", collapse = "")
       detail = data.frame(symbols = ticker)
-      wl <- api_watchlist(RH, watchlist_url, detail)
+      wl <- RobinHood::api_watchlist(RH, watchlist_url, detail)
       if (length(wl)  > 0) cat("Instrument added to watchlist")
       if (length(wl) == 0) cat("Instrument is already in your watchlist")
     }
 
     # Delete tickers from a watchlist
     if (action == "delete" & watchlist != "" & ticker != "") {
-      fundamentals <- api_fundamentals(RH, ticker)
+      fundamentals <- RobinHood::api_fundamentals(RH, ticker)
       # get instrument and strip out everything before the id
       instrument_id <- fundamentals$instrument
       instrument_id <- gsub("https://api.robinhood.com/instruments/", "", instrument_id)
       watchlist_url <- paste(base_watchlist_url, watchlist, "/", instrument_id, sep = "", collapse = "")
-      wl <- api_watchlist(RH, watchlist_url, delete = TRUE)
+      wl <- RobinHood::api_watchlist(RH, watchlist_url, delete = TRUE)
       if (wl == "") cat("Instrument removed from watchlist")
     }
   }

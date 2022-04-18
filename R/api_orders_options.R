@@ -18,7 +18,7 @@ api_orders_options <- function(RH, action, status_url = NULL, cancel_url = NULL,
                                side = NULL, option_id = NULL) {
 
   # URL and token
-  url <- api_endpoints("option_orders")
+  url <- RobinHood::api_endpoints("option_orders")
   token <- paste("Bearer", RH$tokens.access_token)
 
 
@@ -29,9 +29,9 @@ api_orders_options <- function(RH, action, status_url = NULL, cancel_url = NULL,
                            "Content-Type" = "application/json",
                            "Authorization" = token))
     httr::stop_for_status(dta)
-    
+
     # format return
-    dta <- mod_json(dta, "fromJSON")
+    dta <- RobinHood::mod_json(dta, "fromJSON")
     dta <- as.data.frame(dta$results)
 
     dta <- dta %>%
@@ -50,7 +50,7 @@ api_orders_options <- function(RH, action, status_url = NULL, cancel_url = NULL,
     ref_id <- uuid::UUIDgenerate()
 
     # Option URL
-    option <- paste(api_endpoints("option_instruments"), option_id, "/", sep = "")
+    option <- paste(RobinHood::api_endpoints("option_instruments"), option_id, "/", sep = "")
 
     # Generate body of the put call
     detail <- data.frame(account = RH$url.account_id,
@@ -70,10 +70,10 @@ api_orders_options <- function(RH, action, status_url = NULL, cancel_url = NULL,
                        position_effect = "open",
                        ratio_quantity = 1)
 
-    detail <- mod_json(detail, "toJSON")
+    detail <- RobinHood::mod_json(detail, "toJSON")
     detail <- substr(detail, 1, nchar(detail) - 1)
 
-    legs <- mod_json(legs, "toJSON")
+    legs <- RobinHood::mod_json(legs, "toJSON")
 
     # Structure of the detail required special formatting
     detail <- jsonlite::prettify(paste(detail, ', "legs": [', legs, ']}'))
@@ -85,8 +85,8 @@ api_orders_options <- function(RH, action, status_url = NULL, cancel_url = NULL,
                             "Authorization" = token),
                 body = detail)
     httr::stop_for_status(dta)
-    
-    dta <- mod_json(dta, "fromJSON")
+
+    dta <- RobinHood::mod_json(dta, "fromJSON")
     dta <- as.list(dta)
 
     # Formatting return
@@ -114,9 +114,9 @@ api_orders_options <- function(RH, action, status_url = NULL, cancel_url = NULL,
                             "Content-Type" = "application/json",
                             "Authorization" = token))
     httr::stop_for_status(dta)
-    
+
     # Format return
-    dta <- mod_json(dta, "fromJSON")
+    dta <- RobinHood::mod_json(dta, "fromJSON")
 
   }
 
@@ -129,9 +129,9 @@ api_orders_options <- function(RH, action, status_url = NULL, cancel_url = NULL,
                            "Content-Type" = "application/json",
                            "Authorization" = token))
     httr::stop_for_status(dta)
-    
+
     # Format return
-    dta <- mod_json(dta, "fromJSON")
+    dta <- RobinHood::mod_json(dta, "fromJSON")
     dta <- as.list(dta)
 
   }

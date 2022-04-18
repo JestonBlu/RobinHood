@@ -10,9 +10,9 @@
 api_marketdata <- function(RH, instrument, type = "instrument_id") {
 
   if (type == "instrument_id") {
-    url <- paste(api_endpoints("marketdata_options"), instrument, "/", sep = "")
+    url <- paste(RobinHood::api_endpoints("marketdata_options"), instrument, "/", sep = "")
   } else {
-    url <- paste(api_endpoints("marketdata_options"), "?instruments=", instrument, sep = "")
+    url <- paste(RobinHood::api_endpoints("marketdata_options"), "?instruments=", instrument, sep = "")
   }
 
   # Token
@@ -24,9 +24,9 @@ api_marketdata <- function(RH, instrument, type = "instrument_id") {
                          "Content-Type" = "application/json",
                          "Authorization" = token))
   httr::stop_for_status(dta)
-  
+
   # Format return
-  dta <- mod_json(dta, "fromJSON")
+  dta <- RobinHood::mod_json(dta, "fromJSON")
 
 
   if (type == "instrument_id") {
@@ -50,7 +50,7 @@ api_marketdata <- function(RH, instrument, type = "instrument_id") {
                       function(x) as.numeric(as.character(x))) %>%
     dplyr::mutate_at(c("previous_close_date"), lubridate::ymd) %>%
     dplyr::mutate_at(c("updated_at"), lubridate::ymd_hms)
-                      
+
 
   return(dta)
 

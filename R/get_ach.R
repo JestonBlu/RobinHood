@@ -29,7 +29,7 @@ get_ach <- function(RH, action, status_url = NULL) {
     dta$ach_relationship <- gsub("/", "", dta$ach_relationship)
 
     # Rename columns
-    colnames(dta)[names(dta) %in% c("expected_landing_datetime", "ach_relationship")] = c("expected_landing", "id")
+    colnames(dta)[names(dta) %in% c("expected_landing_datetime", "ach_relationship")] <- c("expected_landing", "id")
 
     # Get Bank account name
     dta_relationships <- RobinHood::api_ach(RH, action = "relationships")
@@ -61,7 +61,7 @@ get_ach <- function(RH, action, status_url = NULL) {
     # Clean up ordering and format
     dta <- dta %>%
       dplyr::select(c("bank_routing_number", "bank_account_number", "bank_account_type", "verified", "withdrawal_limit",
-                      "state", "bank_account_holder_name","bank_account_nickname", "created_at", "unlinked_at",
+                      "state", "bank_account_holder_name", "bank_account_nickname", "created_at", "unlinked_at",
                       "document_request", "verify_micro_deposits", "url")) %>%
       dplyr::mutate_at(c("created_at", "unlinked_at"), lubridate::ymd_hms) %>%
       dplyr::mutate_at(c("withdrawal_limit"), as.numeric) %>%

@@ -27,10 +27,10 @@
 get_order_status <- function(RH, status_url, limit_output = TRUE) {
 
     # Check if RH is valid
-    check_rh(RH)
+    RobinHood::check_rh(RH)
 
     # Get Order Status
-    order_status <- api_orders(RH, action = "status", status_url = status_url)
+    order_status <- RobinHood::api_orders(RH, action = "status", status_url = status_url)
 
     # Give addition order details if requested
     if (limit_output == TRUE) {

@@ -15,14 +15,14 @@
 get_fundamentals <- function(RH, ticker, include_description = FALSE) {
 
   # Check if RH is valid
-  check_rh(RH)
+  RobinHood::check_rh(RH)
 
   # Collapse tickers into a single string
   symbol <- ticker
   ticker <- paste(ticker, collapse = ",")
 
   # Investment fundamentals call
-  fundamentals <- api_fundamentals(RH, ticker)
+  fundamentals <- RobinHood::api_fundamentals(RH, ticker)
 
   # Empty dataframe for results
   x <- data.frame(
