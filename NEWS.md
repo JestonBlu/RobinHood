@@ -5,6 +5,8 @@ title: "NEWS"
 # RobinHood 1.6.5
   - [(GH-147)](https://github.com/JestonBlu/RobinHood/issues/99): Added HTTPS validation check to make cryptic errors less likely (@JanLauGe)
 
+-------------------------------------------------------------------------------
+
 # RobinHood 1.6.4
 
 ## Bug Fixes
