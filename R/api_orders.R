@@ -27,7 +27,7 @@ api_orders <- function(RH, action, status_url = NULL, cancel_url = NULL, instrum
 
   if (action == "order") {
 
-    url <- api_endpoints("orders")
+    url <- RobinHood::api_endpoints("orders")
     token <- paste("Bearer", RH$tokens.access_token)
 
     detail <- data.frame(account = RH$url.account_id,

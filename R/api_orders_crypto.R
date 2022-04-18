@@ -66,7 +66,7 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
     httr::stop_for_status(dta)
 
     # format return
-    dta <- mod_json(dta, "fromJSON")
+    dta <- RobinHood::mod_json(dta, "fromJSON")
 
     dta$cumulative_quantity <- as.numeric(dta$cumulative_quantity)
     dta$price <- as.numeric(dta$price)
@@ -93,7 +93,7 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
     httr::stop_for_status(dta)
 
     # format return
-    dta <- mod_json(dta, "fromJSON")
+    dta <- RobinHood::mod_json(dta, "fromJSON")
 
     return(dta)
   }
@@ -102,7 +102,7 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
   if (action == "history") {
 
     # URL and token
-    url <- api_endpoints("orders_crypto", source = "crypto")
+    url <- RobinHood::api_endpoints("orders_crypto", source = "crypto")
     token <- paste("Bearer", RH$tokens.access_token)
 
     # GET call
@@ -113,7 +113,7 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
     httr::stop_for_status(dta)
 
     # format return
-    dta <- mod_json(dta, "fromJSON")
+    dta <- RobinHood::mod_json(dta, "fromJSON")
     output <- as.data.frame(dta$results)
 
     # Cycle through the pages
@@ -130,7 +130,7 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
       httr::stop_for_status(dta)
 
       # Format return
-      dta <- mod_json(dta, "fromJSON")
+      dta <- RobinHood::mod_json(dta, "fromJSON")
 
       output <- rbind(output, dta$results)
 

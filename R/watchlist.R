@@ -64,7 +64,7 @@ watchlist <- function(RH, action, watchlist = "", ticker = "") {
     # Add a ticker to the named watchlist
     if (action == "add" & watchlist != "" & ticker != "") {
       watchlist_url <- paste(base_watchlist_url, watchlist, "/bulk_add/", sep = "", collapse = "")
-      detail = data.frame(symbols = ticker)
+      detail <- data.frame(symbols = ticker)
       wl <- RobinHood::api_watchlist(RH, watchlist_url, detail)
       if (length(wl)  > 0) cat("Instrument added to watchlist")
       if (length(wl) == 0) cat("Instrument is already in your watchlist")

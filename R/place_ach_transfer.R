@@ -8,9 +8,9 @@
 #' @export
 place_ach_transfer <- function(RH, action, amount, transfer_url) {
 
-  if(!action %in% c("deposit", "withdraw")) stop("Invalid action")
+  if (!action %in% c("deposit", "withdraw")) stop("Invalid action")
 
-  ach_order <- api_ach(RH, action, amount, transfer_url = transfer_url)
+  ach_order <- RobinHood::api_ach(RH, action, amount, transfer_url = transfer_url)
 
   return(ach_order)
 

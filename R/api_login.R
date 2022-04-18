@@ -22,7 +22,7 @@ api_login <- function(username, password, mfa_code) {
                   "&username=", username,
                   "&password=", password, sep = "")
 
-  url <- paste(api_endpoints("token"), detail, sep = "")
+  url <- paste(RobinHood::api_endpoints("token"), detail, sep = "")
 
   # POST call
   dta <- httr::POST(url)
@@ -57,8 +57,8 @@ api_login <- function(username, password, mfa_code) {
       jsonlite::fromJSON() %>%
       as.list()
 
-    RH$tokens.access_token = dta$access_token
-    RH$tokens.refresh_token = dta$refresh_token
+    RH$tokens.access_token <- dta$access_token
+    RH$tokens.refresh_token <- dta$refresh_token
   }
 
   return(RH)
