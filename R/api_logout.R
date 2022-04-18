@@ -14,7 +14,7 @@ api_logout <- function(RH) {
                   sep = "")
 
   # URL
-  url <- paste(api_endpoints("revoke_token"), detail, sep = "")
+  url <- paste(RobinHood::api_endpoints("revoke_token"), detail, sep = "")
 
   dta <- httr::POST(url)
   httr::stop_for_status(dta)

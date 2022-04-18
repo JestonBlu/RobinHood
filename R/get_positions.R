@@ -78,8 +78,8 @@ get_positions <- function(RH, limit_output = TRUE) {
     positions$intraday_quantity <- as.numeric(positions$intraday_quantity)
 
     # Calculate extended cost and value
-    positions$cost <- with(positions, average_buy_price * quantity)
-    positions$current_value <- with(positions, last_trade_price * quantity)
+    positions$cost <- positions$average_buy_price * positions$quantity
+    positions$current_value <- positions$last_trade_price * positions$quantity
 
     # Output Options
     if (limit_output == TRUE) {
