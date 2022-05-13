@@ -9,7 +9,7 @@
 api_ratings <- function(RH, symbol) {
 
   # URL and token
-  token <- paste("Bearer", RH$tokens.access_token)
+  token <- paste("Bearer", RH$api_response.access_token)
   instrument_id <- RobinHood::api_instruments(RH, symbol)
   instrument_id <- instrument_id$results$id
 

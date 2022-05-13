@@ -4,7 +4,7 @@
 \alias{RobinHood}
 \title{RobinHood Account Authentication}
 \usage{
-RobinHood(username, password, mfa_code = NULL)
+RobinHood(username, password, mfa_code)
 }
 \arguments{
 \item{username}{(string) account email address}

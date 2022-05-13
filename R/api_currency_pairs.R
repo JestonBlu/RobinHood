@@ -9,7 +9,7 @@ api_currency_pairs <- function(RH) {
 
   # URL and token
   url <- RobinHood::api_endpoints("currency_pairs", "crypto")
-  token <- paste("Bearer", RH$tokens.access_token)
+  token <- paste("Bearer", RH$api_response.access_token)
 
   # GET call
   dta <- GET(url,

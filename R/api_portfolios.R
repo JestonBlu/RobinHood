@@ -9,7 +9,7 @@
 api_portfolios <- function(RH, portfolio_url) {
 
   url <- portfolio_url
-  token <- paste("Bearer", RH$tokens.access_token)
+  token <- paste("Bearer", RH$api_response.access_token)
 
   if (url == api_endpoints("portfolios")) {
 

@@ -11,7 +11,7 @@ api_fundamentals <- function(RH, ticker) {
 
   # URL and token
   url <- paste(RobinHood::api_endpoints("fundamentals"), ticker, collapse = ",", sep = "")
-  token <- paste("Bearer", RH$tokens.access_token)
+  token <- paste("Bearer", RH$api_response.access_token)
 
   # GET call
   dta <- GET(url,

@@ -28,7 +28,7 @@ api_orders <- function(RH, action, status_url = NULL, cancel_url = NULL, instrum
   if (action == "order") {
 
     url <- RobinHood::api_endpoints("orders")
-    token <- paste("Bearer", RH$tokens.access_token)
+    token <- paste("Bearer", RH$api_response.access_token)
 
     detail <- data.frame(account = RH$url.account_id,
                          instrument = instrument_id,
@@ -80,7 +80,7 @@ api_orders <- function(RH, action, status_url = NULL, cancel_url = NULL, instrum
   if (action == "status") {
 
     # Token
-    token <- paste("Bearer", RH$tokens.access_token)
+    token <- paste("Bearer", RH$api_response.access_token)
 
     # GET call
     dta <- GET(status_url,
@@ -102,7 +102,7 @@ api_orders <- function(RH, action, status_url = NULL, cancel_url = NULL, instrum
   if (action == "cancel") {
 
     # Token
-    token <- paste("Bearer", RH$tokens.access_token)
+    token <- paste("Bearer", RH$api_response.access_token)
 
     # GET call
     dta <- POST(cancel_url,
@@ -120,7 +120,7 @@ api_orders <- function(RH, action, status_url = NULL, cancel_url = NULL, instrum
   if (action == "history") {
 
     url <- paste(RobinHood::api_endpoints("orders"), "?page_size=", page_size, sep = "")
-    token <- paste("Bearer", RH$tokens.access_token)
+    token <- paste("Bearer", RH$api_response.access_token)
 
     # GET call
     dta <- GET(url,

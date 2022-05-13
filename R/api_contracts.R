@@ -13,7 +13,7 @@ api_contracts <- function(RH, chain_symbol, type) {
                "&type=", type,
                "&chain_symbol=", chain_symbol, sep = "")
 
-  token <- paste("Bearer", RH$tokens.access_token)
+  token <- paste("Bearer", RH$api_response.access_token)
 
   # GET call
   dta <- GET(url,

@@ -14,11 +14,11 @@ api_watchlist <- function(RH, watchlist_url, detail = FALSE, delete = FALSE) {
 
   # URL and token
   url <- watchlist_url
-  token <- paste("Bearer", RH$tokens.access_token)
+  token <- paste("Bearer", RH$api_response.access_token)
 
   # URL and token
   url <- watchlist_url
-  token <- paste("Bearer", RH$tokens.access_token)
+  token <- paste("Bearer", RH$api_response.access_token)
 
   # Send a command to delete a watchlist or instrument from a watchlist
   if (delete == TRUE) {

@@ -10,7 +10,7 @@ api_quote <- function(RH, symbols_url) {
 
   # URL and token
   url <- symbols_url
-  token <- paste("Bearer", RH$tokens.access_token)
+  token <- paste("Bearer", RH$api_response.access_token)
 
   # GET call
   dta <- GET(url,

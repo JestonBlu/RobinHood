@@ -15,7 +15,7 @@ api_instruments <- function(RH, symbol = NULL, instrument_url = NULL) {
     url <- instrument_url
   }
 
-  token <- paste("Bearer", RH$tokens.access_token)
+  token <- paste("Bearer", RH$api_response.access_token)
 
   # GET call
   dta <- GET(url,

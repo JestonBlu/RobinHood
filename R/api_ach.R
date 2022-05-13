@@ -16,7 +16,7 @@ api_ach <- function(RH, action, amount = NULL, status_url = NULL, cancel_url = N
 
     # URL and token
     url <- RobinHood::api_endpoints("ach_transfers")
-    token <- paste("Bearer", RH$tokens.access_token)
+    token <- paste("Bearer", RH$api_response.access_token)
 
     # GET call
     dta <- GET(url,
@@ -43,7 +43,7 @@ api_ach <- function(RH, action, amount = NULL, status_url = NULL, cancel_url = N
 
     # URL and token
     url <- RobinHood::api_endpoints("ach_relationships")
-    token <- paste("Bearer", RH$tokens.access_token)
+    token <- paste("Bearer", RH$api_response.access_token)
 
     # GET call
     dta <- GET(url,
@@ -71,7 +71,7 @@ api_ach <- function(RH, action, amount = NULL, status_url = NULL, cancel_url = N
 
     # URL and token
     url <- RobinHood::api_endpoints("ach_schedules")
-    token <- paste("Bearer", RH$tokens.access_token)
+    token <- paste("Bearer", RH$api_response.access_token)
 
     # GET call
     dta <- GET(url,
@@ -101,7 +101,7 @@ api_ach <- function(RH, action, amount = NULL, status_url = NULL, cancel_url = N
   if (action == "status") {
 
     # Token
-    token <- paste("Bearer", RH$tokens.access_token)
+    token <- paste("Bearer", RH$api_response.access_token)
 
     # GET call
     dta <- GET(status_url,
@@ -146,7 +146,7 @@ api_ach <- function(RH, action, amount = NULL, status_url = NULL, cancel_url = N
   if (action == "cancel") {
 
     # Token
-    token <- paste("Bearer", RH$tokens.access_token)
+    token <- paste("Bearer", RH$api_response.access_token)
 
     dta <- POST(cancel_url,
                 add_headers("Accept" = "application/json",
@@ -161,7 +161,7 @@ api_ach <- function(RH, action, amount = NULL, status_url = NULL, cancel_url = N
   if (action %in% c("deposit", "withdraw")) {
     # URL and token
     url <- RobinHood::api_endpoints("ach_transfers")
-    token <- paste("Bearer", RH$tokens.access_token)
+    token <- paste("Bearer", RH$api_response.access_token)
 
     # Body of call
     detail <- data.frame(ach_relationship = transfer_url,

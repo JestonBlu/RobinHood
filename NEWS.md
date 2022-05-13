@@ -2,56 +2,52 @@
 title: "NEWS"
 ---
 
+# RobinHood 1.6.6
+  
+## Bug Fixes  
+  - [(GH-151)](https://github.com/JestonBlu/RobinHood/issues/151): Updated `api_login` to fix a change in the api
+    - Redesigned RH object, added more transparency in API return
+    - Temporarily disabled the non-MFA login method
+
+-------------------------------------------------------------------------------
 # RobinHood 1.6.5
+## Bug Fixes
   - [(GH-147)](https://github.com/JestonBlu/RobinHood/issues/99): Added HTTPS validation check to make cryptic errors less likely (@JanLauGe)
 
 -------------------------------------------------------------------------------
 
 # RobinHood 1.6.4
-
 ## Bug Fixes
   - [(GH-99)](https://github.com/JestonBlu/RobinHood/issues/99) `RobinHood()` issues with tbl_vars 
   - [(GH-146)](https://github.com/JestonBlu/RobinHood/issues/146) `RobinHood()` issues with tbl_vars (@JanLauGe)
 
 -------------------------------------------------------------------------------
-
 # RobinHood 1.6.3
-
 ## Bug Fixes
   - [(GH-141)](https://github.com/JestonBlu/RobinHood/issues/141) `get_positions_options()` Column state doesn't exist #141 (@fouslim)
 
 -------------------------------------------------------------------------------
-
 # RobinHood 1.6.2
-
 ## Bug Fixes
   - [(GH-139)](https://github.com/JestonBlu/RobinHood/issues/139) `get_positions_options()`, `get_contracts()`: fixed api change (@fouslim, @SwingBotScripts)
-
-
 -------------------------------------------------------------------------------
-
 # RobinHood 1.6.1
-
 ## New Features
   - [(GH-123)](https://github.com/JestonBlu/RobinHood/issues/123) `api_historicals_options()`: (@jgQuantScripts)
   - [(GH-123)](https://github.com/JestonBlu/RobinHood/issues/123) `get_historicals_options()`: (@jgQuantScripts)
 
 ## Bug Fixes
-
 ## Clean up
   - [(GH-122)](https://github.com/JestonBlu/RobinHood/issues/122): `place_order()`: added default parameter value `price = NA` (@kmohammadi6)
 ## Documentation
   - [(GH-122)](https://github.com/JestonBlu/RobinHood/issues/122): `place_order()`: added stop loss example (@kmohammadi6)
 
 -------------------------------------------------------------------------------
-
 # RobinHood 1.6
-
 ## New Features
   - [(GH-74)](https://github.com/JestonBlu/RobinHood/issues/74) `get_ratings()`: returns analyst rating and comments for a particular instrument
   - [(GH-117)](https://github.com/JestonBlu/RobinHood/issues/117) `get_positions_crypto()`: added average_price field
   - [(GH-116)](https://github.com/JestonBlu/RobinHood/issues/116) New function `get_historicals_crypto()` (@jgQuantScripts)
-
 ## Bug Fixes
   - [(GH-108)](https://github.com/JestonBlu/RobinHood/issues/108) `get_tickers()`: no longer fails when call returns no info about a given equity symbol
   - [(GH-110)](https://github.com/JestonBlu/RobinHood/issues/110) `get_positions_crypto()`: no longer fails when you have a position in a single crypto only
@@ -59,7 +55,6 @@ title: "NEWS"
   - [(GH-103)](https://github.com/JestonBlu/RobinHood/issues/103) `get_positions()`: now returns a message when no positions are found
   - [(GH-111)](https://github.com/JestonBlu/RobinHood/issues/103) `api_marketdata()`: fixed dataframe conversion error (@fouslim)
   - [(GH-113)](https://github.com/JestonBlu/RobinHood/issues/113) `watchlist()`: fixed broken function due to api change
-
 ## Clean up
   - [(GH-101)](https://github.com/JestonBlu/RobinHood/issues/101) `place_order()`: no longer prevents you from trading fractional shares
   - [(GH-114)](https://github.com/JestonBlu/RobinHood/issues/114) `get_positions_crypto()` swapped out `average_price` for `mark_price`, eliminating rounding errors

@@ -10,7 +10,7 @@ api_tag <- function(RH, tag) {
 
   # URL and token
   url <- paste(RobinHood::api_endpoints("tags"), tag, "/", sep = "", collapse = "")
-  token <- paste("Bearer", RH$tokens.access_token)
+  token <- paste("Bearer", RH$api_response.access_token)
 
   # GET call
   dta <- GET(url,

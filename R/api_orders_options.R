@@ -19,7 +19,7 @@ api_orders_options <- function(RH, action, status_url = NULL, cancel_url = NULL,
 
   # URL and token
   url <- RobinHood::api_endpoints("option_orders")
-  token <- paste("Bearer", RH$tokens.access_token)
+  token <- paste("Bearer", RH$api_response.access_token)
 
 
   if (action == "history") {
