@@ -10,7 +10,7 @@
 api_markets <- function(RH, markets_url, type = "df") {
 
   # URL and token
-  token <- paste("Bearer", RH$tokens.access_token)
+  token <- paste("Bearer", RH$api_response.access_token)
 
   # GET call
   dta <- GET(markets_url,

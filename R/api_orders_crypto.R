@@ -36,7 +36,7 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
     dta <- POST(url = api_endpoints("orders", "crypto"),
                 add_headers("Accept" = "application/json",
                             "Content-Type" = "application/json",
-                            "Authorization" = paste("Bearer", RH$tokens.access_token)),
+                            "Authorization" = paste("Bearer", RH$api_response.access_token)),
                 body = RobinHood::mod_json(detail, type = "toJSON"))
     httr::stop_for_status(dta)
 
@@ -56,7 +56,7 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
 
     # URL and token
     url <- paste(RobinHood::api_endpoints("orders", source = "crypto"), order_id, sep = "")
-    token <- paste("Bearer", RH$tokens.access_token)
+    token <- paste("Bearer", RH$api_response.access_token)
 
     # GET call
     dta <- GET(url,
@@ -83,7 +83,7 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
 
     # URL and token
     url <- cancel_url
-    token <- paste("Bearer", RH$tokens.access_token)
+    token <- paste("Bearer", RH$api_response.access_token)
 
     # GET call
     dta <- POST(url,
@@ -103,7 +103,7 @@ api_orders_crypto <- function(RH, action, order_id = NULL, cancel_url = NULL, cu
 
     # URL and token
     url <- RobinHood::api_endpoints("orders_crypto", source = "crypto")
-    token <- paste("Bearer", RH$tokens.access_token)
+    token <- paste("Bearer", RH$api_response.access_token)
 
     # GET call
     dta <- GET(url,

@@ -12,10 +12,7 @@
 #' \dontrun{
 #' RH <- RobinHood("username", "password")
 #'}
-RobinHood <- function(username, password, mfa_code = NULL) {
-
-    # Dealing with nulls inside functions
-    mfa_code <- ifelse(is.null(mfa_code), "000000", mfa_code)
+RobinHood <- function(username, password, mfa_code) {
 
     # Login to RobinHood, returns RobinHood object with access tokens
     RH <- RobinHood::api_login(username, password, mfa_code)
@@ -28,7 +25,7 @@ RobinHood <- function(username, password, mfa_code = NULL) {
     RH <- c(RH, url = list(account_id = url_account_id))
 
     # Check to see if connection was successful
-    if (is.null(RH$tokens.access_token)) {
+    if (is.null(RH$api_response.access_token)) {
         cat("Login not successful, check username and password.")
     }
 

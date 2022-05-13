@@ -25,7 +25,7 @@ api_historicals_options <- function(RH, chain_symbol, type, strike_price, expira
   url <- paste0(api_endpoints("historicals_options"), dta$id,
                               "/?interval=", interval,
                               "&span=", span)
-  token <- paste("Bearer", RH$tokens.access_token)
+  token <- paste("Bearer", RH$api_response.access_token)
 
   # GET call
   dta <- GET(url,

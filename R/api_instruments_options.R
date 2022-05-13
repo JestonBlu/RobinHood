@@ -22,7 +22,7 @@ api_instruments_options <- function(RH, method = "url", option_instrument_url = 
 
     # URL and token
     url <- option_instrument_url
-    token <- paste("Bearer", RH$tokens.access_token)
+    token <- paste("Bearer", RH$api_response.access_token)
 
     # GET call
     dta <- GET(url,
@@ -56,7 +56,7 @@ api_instruments_options <- function(RH, method = "url", option_instrument_url = 
                   "&tradability=", tradability,
                   "&strike_price=", strike_price)
 
-    token <- paste("Bearer", RH$tokens.access_token)
+    token <- paste("Bearer", RH$api_response.access_token)
 
     # GET call
     dta <- GET(url,

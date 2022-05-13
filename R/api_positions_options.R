@@ -9,7 +9,7 @@ api_positions_options <- function(RH) { # nolint
 
   # URL and token
   url <- RobinHood::api_endpoints("option_positions")
-  token <- paste("Bearer", RH$tokens.access_token)
+  token <- paste("Bearer", RH$api_response.access_token)
 
   # GET call
   dta <- GET(url,
