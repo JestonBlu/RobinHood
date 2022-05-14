@@ -15,7 +15,6 @@
 #' \dontrun{
 #' # ***************** ATTENTION *****************
 #' #   - Price cannot extend beyond 2 decimals
-#' #   - Quantity must be a whole number
 #' #   - Price * Quantity > $0.01
 #' #   - Stop triggers requires stop_price > 0
 #' # ***************** ATTENTION *****************
