@@ -2,6 +2,11 @@
 title: "NEWS"
 ---
 
+# RobinHood 1.6.7
+## Bug Fixes  
+  - [(GH-153)](https://github.com/JestonBlu/RobinHood/issues/153):  fixed broken link preventing placing orders from working
+
+-------------------------------------------------------------------------------
 # RobinHood 1.6.6
   
 ## Bug Fixes  
