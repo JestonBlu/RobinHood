@@ -8,7 +8,7 @@
 api_logout <- function(RH) {
 
   detail <- paste("?client_id=",
-                  RH$api_client_id,
+                  RH$api_request.client_id,
                   "&token=",
                   RH$tokens.refresh_token,
                   sep = "")

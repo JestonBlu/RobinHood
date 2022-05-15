@@ -40,7 +40,7 @@ api_orders <- function(RH, action, status_url = NULL, cancel_url = NULL, instrum
                          stop_price = stop_price,
                          quantity = quantity,
                          side = side,
-                         client_id = RH$api_client_id)
+                         client_id = RH$api_request.client_id)
 
     # If trigger = "stop" then stop_price must be included, otherwise it must be excluded
     if (trigger == "immediate") {
