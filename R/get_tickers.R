@@ -21,10 +21,10 @@ get_tickers <- function(RH, add_fundamentals = FALSE) {
     # Call the tickers api to retrieve all stock symbols
     tickers <- RobinHood::api_tickers(RH)
 
-    # limit columns and only return tradeable symbols
-    tickers <- tickers[, c("symbol", "rhs_tradability", "country", "name", "state", "list_date")]
-    tickers <- tickers[tickers$rhs_tradability == "tradable", ]
-
+    # limit columns and only return tradeable and searchable symbols
+    tickers <- tickers[
+        tickers$rhs_tradability == "tradable" & tickers$state == "active",
+        c("symbol", "country", "name", "list_date")]
 
     # If fundamentals are requested
     if (add_fundamentals == TRUE) {
