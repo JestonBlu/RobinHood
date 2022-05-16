@@ -2,6 +2,14 @@
 title: "NEWS"
 ---
 
+# RobinHood 1.6.8
+
+## Bug Fixes
+  - [(GH-150)](https://github.com/JestonBlu/RobinHood/issues/150):  HTTP 400 when `get_tickers(RH, add_fundamentals = TRUE)`
+    - unsearchable tickers on RH were causing the issue
+    - applied a filter to remove unsearchable symbols
+
+-------------------------------------------------------------------------------
 # RobinHood 1.6.7
 ## Bug Fixes  
   - [(GH-153)](https://github.com/JestonBlu/RobinHood/issues/153):  fixed broken link preventing placing orders from working
