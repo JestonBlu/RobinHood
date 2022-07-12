@@ -25,7 +25,7 @@ status or cancel the order."><!-- mathjax --><script src="https://cdnjs.cloudfla
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">RobinHood</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.9</span>
       </span>
     </div>
 
@@ -79,54 +79,81 @@ status or cancel the order.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">api_orders</span><span class="op">(</span>
-  <span class="va">RH</span>,
-  <span class="va">action</span>,
-  status_url <span class="op">=</span> <span class="cn">NULL</span>,
-  cancel_url <span class="op">=</span> <span class="cn">NULL</span>,
-  instrument_id <span class="op">=</span> <span class="cn">NULL</span>,
-  symbol <span class="op">=</span> <span class="cn">NULL</span>,
-  type <span class="op">=</span> <span class="cn">NULL</span>,
-  time_in_force <span class="op">=</span> <span class="cn">NULL</span>,
-  trigger <span class="op">=</span> <span class="cn">NULL</span>,
-  price <span class="op">=</span> <span class="cn">NULL</span>,
-  stop_price <span class="op">=</span> <span class="cn">NULL</span>,
-  quantity <span class="op">=</span> <span class="cn">NULL</span>,
-  side <span class="op">=</span> <span class="cn">NULL</span>,
-  page_size <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">api_orders</span><span class="op">(</span></span>
+<span>  <span class="va">RH</span>,</span>
+<span>  <span class="va">action</span>,</span>
+<span>  status_url <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  cancel_url <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  instrument_id <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  symbol <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  type <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  time_in_force <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  trigger <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  price <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  stop_price <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  quantity <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  side <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  page_size <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>RH</dt>
 <dd><p>object of class RobinHood</p></dd>
+
+
 <dt>action</dt>
 <dd><p>(string) one of "order", "status", "cancel", or "history"</p></dd>
+
+
 <dt>status_url</dt>
 <dd><p>(string) if action = "status", status_url is required (output from place_order())</p></dd>
+
+
 <dt>cancel_url</dt>
 <dd><p>(string) if action = "cancel", cancel_url is required (output from place_order())</p></dd>
+
+
 <dt>instrument_id</dt>
 <dd><p>(string) URL of the instrument_id</p></dd>
+
+
 <dt>symbol</dt>
 <dd><p>(string) Ticket symbol you are attempting to buy or sell</p></dd>
+
+
 <dt>type</dt>
 <dd><p>(string) "market" or "limit"</p></dd>
+
+
 <dt>time_in_force</dt>
 <dd><p>(string) Good For Day ("gfd"), Good Till Canceled ("gtc"), Immediate or Cancel ("ioc"), or Opening ("opg")</p></dd>
+
+
 <dt>trigger</dt>
 <dd><p>(string) "immediate" or "stop"</p></dd>
+
+
 <dt>price</dt>
 <dd><p>(number) the price you are willing to sell or buy at</p></dd>
+
+
 <dt>stop_price</dt>
 <dd><p>(number) if trigger = stop, enter stop price, otherwise leave blank</p></dd>
+
+
 <dt>quantity</dt>
 <dd><p>(int) number of shares you wish to transact</p></dd>
+
+
 <dt>side</dt>
 <dd><p>(string) "buy" or "sell"</p></dd>
+
+
 <dt>page_size</dt>
 <dd><p>(int) for get_order_history, refers to the number of historical records to return</p></dd>
+
 </dl></div>
 
   </div>
@@ -141,7 +168,7 @@ status or cancel the order.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

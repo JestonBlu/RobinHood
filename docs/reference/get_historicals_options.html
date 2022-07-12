@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">RobinHood</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.9</span>
       </span>
     </div>
 
@@ -75,45 +75,58 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_historicals_options</span><span class="op">(</span>
-  <span class="va">RH</span>,
-  <span class="va">chain_symbol</span>,
-  <span class="va">type</span>,
-  <span class="va">strike_price</span>,
-  <span class="va">expiration_date</span>,
-  interval <span class="op">=</span> <span class="cn">NULL</span>,
-  span <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_historicals_options</span><span class="op">(</span></span>
+<span>  <span class="va">RH</span>,</span>
+<span>  <span class="va">chain_symbol</span>,</span>
+<span>  <span class="va">type</span>,</span>
+<span>  <span class="va">strike_price</span>,</span>
+<span>  <span class="va">expiration_date</span>,</span>
+<span>  interval <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  span <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>RH</dt>
 <dd><p>object of class RobinHood</p></dd>
+
+
 <dt>chain_symbol</dt>
 <dd><p>(string) stock symbol</p></dd>
+
+
 <dt>type</dt>
 <dd><p>(string) one of ("put", "call")</p></dd>
+
+
 <dt>strike_price</dt>
 <dd><p>(numeric) strike price</p></dd>
+
+
 <dt>expiration_date</dt>
 <dd><p>(string) expiration date (YYYY-MM-DD)</p></dd>
+
+
 <dt>interval</dt>
 <dd><p>(string) one of ("5minute", "10minute", "hour", "day", "week")</p></dd>
+
+
 <dt>span</dt>
 <dd><p>(string) one of ("day", "week", "month")</p></dd>
+
 </dl></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># Login in to your RobinHood account</span></span>
-<span class="r-in"><span class="va">RH</span> <span class="op">&lt;-</span> <span class="fu"><a href="RobinHood.html">RobinHood</a></span><span class="op">(</span><span class="st">"username"</span>, <span class="st">"password"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">get_historicals_options</span><span class="op">(</span>RH <span class="op">=</span> <span class="va">RH</span>, chain_symbol <span class="op">=</span> <span class="st">"AAPL"</span>, interval <span class="op">=</span> <span class="st">"10minute"</span>, type <span class="op">=</span> <span class="st">"call"</span>,</span>
-<span class="r-in">                        expiration_date <span class="op">=</span> <span class="st">"2021-03-12"</span>, strike_price <span class="op">=</span> <span class="fl">122</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Login in to your RobinHood account</span></span></span>
+<span class="r-in"><span><span class="va">RH</span> <span class="op">&lt;-</span> <span class="fu"><a href="RobinHood.html">RobinHood</a></span><span class="op">(</span><span class="st">"username"</span>, <span class="st">"password"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">get_historicals_options</span><span class="op">(</span>RH <span class="op">=</span> <span class="va">RH</span>, chain_symbol <span class="op">=</span> <span class="st">"AAPL"</span>, interval <span class="op">=</span> <span class="st">"10minute"</span>, type <span class="op">=</span> <span class="st">"call"</span>,</span></span>
+<span class="r-in"><span>                        expiration_date <span class="op">=</span> <span class="st">"2021-03-12"</span>, strike_price <span class="op">=</span> <span class="fl">122</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -128,7 +141,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

@@ -16,7 +16,8 @@ api_login <- function(username, password, mfa_code) {
       grant_type = "password",
       client_id = "c82SH0WZOsabOXGP2sxqcj34FxkvfnWRZBKlBjFS",
       device_token = uuid::UUIDgenerate(),
-      scope = "internal"
+      scope = "internal",
+      al_pk = "7F867EDC-C71B-467F-B0A1-8DCBA5D4D2E3"
       ),
     api_response = list(
       access_token = "000",
@@ -26,8 +27,8 @@ api_login <- function(username, password, mfa_code) {
       scope = "000",
       mfa_code = "000",
       backup_code = "000"
+      )
     )
-  )
 
   # API call inputs
   headers <- c(
@@ -36,6 +37,7 @@ api_login <- function(username, password, mfa_code) {
   )
 
   body <- data.frame(
+    al_pk = RH$api_request.al_pk,
     device_token = RH$api_request.device_token,
     client_id = RH$api_request.client_id,
     grant_type = RH$api_request.grant_type,

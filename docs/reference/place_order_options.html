@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">RobinHood</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.9</span>
       </span>
     </div>
 
@@ -75,54 +75,69 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">place_order_options</span><span class="op">(</span>
-  <span class="va">RH</span>,
-  <span class="va">option_id</span>,
-  <span class="va">direction</span>,
-  <span class="va">side</span>,
-  <span class="va">quantity</span>,
-  stop_price <span class="op">=</span> <span class="cn">NULL</span>,
-  type <span class="op">=</span> <span class="st">"limit"</span>,
-  <span class="va">time_in_force</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">place_order_options</span><span class="op">(</span></span>
+<span>  <span class="va">RH</span>,</span>
+<span>  <span class="va">option_id</span>,</span>
+<span>  <span class="va">direction</span>,</span>
+<span>  <span class="va">side</span>,</span>
+<span>  <span class="va">quantity</span>,</span>
+<span>  stop_price <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"limit"</span>,</span>
+<span>  <span class="va">time_in_force</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>RH</dt>
 <dd><p>object of class RobinHood</p></dd>
+
+
 <dt>option_id</dt>
 <dd><p>(string) id returned from get_contracts()</p></dd>
+
+
 <dt>direction</dt>
 <dd><p>(string) one of "debit" or "credit"</p></dd>
+
+
 <dt>side</dt>
 <dd><p>(string) one of "buy" or "sell"</p></dd>
+
+
 <dt>quantity</dt>
 <dd><p>(integer) number of contracts to buy</p></dd>
+
+
 <dt>stop_price</dt>
 <dd><p>(numeric) stop price for a limit order</p></dd>
+
+
 <dt>type</dt>
 <dd><p>(string) "limit" or "market" (only limit is currently supported)</p></dd>
+
+
 <dt>time_in_force</dt>
 <dd><p>(string) Good Till Canceled ("gtc"), Immediate or Cancel ("ioc"), or Opening ("opg")</p></dd>
+
 </dl></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># Login in to your RobinHood account</span></span>
-<span class="r-in"><span class="va">RH</span> <span class="op">&lt;-</span> <span class="fu"><a href="RobinHood.html">RobinHood</a></span><span class="op">(</span><span class="st">"username"</span>, <span class="st">"password"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Place an options order, should generate an email confirmation</span></span>
-<span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">place_order_options</span><span class="op">(</span>RH <span class="op">=</span> <span class="va">RH</span>,</span>
-<span class="r-in">                       option_id <span class="op">=</span> <span class="st">"346e46af-380e-4052-a7c2-15748f0fc0ca"</span>,</span>
-<span class="r-in">                       direction <span class="op">=</span> <span class="st">"debit"</span>,   <span class="co"># one of "debit" or "credit"</span></span>
-<span class="r-in">                       side <span class="op">=</span> <span class="st">"buy"</span>,          <span class="co"># one of "buy" or "sell"</span></span>
-<span class="r-in">                       quantity <span class="op">=</span> <span class="fl">1</span>,          <span class="co"># number of contracts</span></span>
-<span class="r-in">                       stop_price <span class="op">=</span> <span class="fl">.01</span>,      <span class="co"># Time period (gfd: good for day)</span></span>
-<span class="r-in">                       type <span class="op">=</span> <span class="st">"limit"</span>,        <span class="co"># limit or market (only limit is currently supported)</span></span>
-<span class="r-in">                       time_in_force <span class="op">=</span> <span class="st">"gtc"</span><span class="op">)</span> <span class="co"># "gfd", "gtc", "ioc", "opg"</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Login in to your RobinHood account</span></span></span>
+<span class="r-in"><span><span class="va">RH</span> <span class="op">&lt;-</span> <span class="fu"><a href="RobinHood.html">RobinHood</a></span><span class="op">(</span><span class="st">"username"</span>, <span class="st">"password"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Place an options order, should generate an email confirmation</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">place_order_options</span><span class="op">(</span>RH <span class="op">=</span> <span class="va">RH</span>,</span></span>
+<span class="r-in"><span>                       option_id <span class="op">=</span> <span class="st">"346e46af-380e-4052-a7c2-15748f0fc0ca"</span>,</span></span>
+<span class="r-in"><span>                       direction <span class="op">=</span> <span class="st">"debit"</span>,   <span class="co"># one of "debit" or "credit"</span></span></span>
+<span class="r-in"><span>                       side <span class="op">=</span> <span class="st">"buy"</span>,          <span class="co"># one of "buy" or "sell"</span></span></span>
+<span class="r-in"><span>                       quantity <span class="op">=</span> <span class="fl">1</span>,          <span class="co"># number of contracts</span></span></span>
+<span class="r-in"><span>                       stop_price <span class="op">=</span> <span class="fl">.01</span>,      <span class="co"># Time period (gfd: good for day)</span></span></span>
+<span class="r-in"><span>                       type <span class="op">=</span> <span class="st">"limit"</span>,        <span class="co"># limit or market (only limit is currently supported)</span></span></span>
+<span class="r-in"><span>                       time_in_force <span class="op">=</span> <span class="st">"gtc"</span><span class="op">)</span> <span class="co"># "gfd", "gtc", "ioc", "opg"</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -137,7 +152,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>
