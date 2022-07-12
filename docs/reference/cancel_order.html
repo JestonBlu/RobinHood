@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">RobinHood</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.7</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.9</span>
       </span>
     </div>
 
@@ -75,36 +75,39 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">cancel_order</span><span class="op">(</span><span class="va">RH</span>, <span class="va">cancel_url</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cancel_order</span><span class="op">(</span><span class="va">RH</span>, <span class="va">cancel_url</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>RH</dt>
 <dd><p>object of class RobinHood</p></dd>
+
+
 <dt>cancel_url</dt>
 <dd><p>(string) cancel url returned from place_order()</p></dd>
+
 </dl></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># Login in to your RobinHood account</span></span>
-<span class="r-in"><span class="va">RH</span> <span class="op">&lt;-</span> <span class="fu"><a href="RobinHood.html">RobinHood</a></span><span class="op">(</span><span class="st">"username"</span>, <span class="st">"password"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Place an order, should generate an email confirmation</span></span>
-<span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="place_order.html">place_order</a></span><span class="op">(</span>RH <span class="op">=</span> <span class="va">RH</span>,</span>
-<span class="r-in">                 symbol <span class="op">=</span> <span class="st">"GE"</span>,          <span class="co"># Ticker symbol you want to trade</span></span>
-<span class="r-in">                 type <span class="op">=</span> <span class="st">"market"</span>,        <span class="co"># Type of market order</span></span>
-<span class="r-in">                 time_in_force <span class="op">=</span> <span class="st">"gfd"</span>,  <span class="co"># Time period the order is good for (gfd: good for day)</span></span>
-<span class="r-in">                 trigger <span class="op">=</span> <span class="st">"immediate"</span>,  <span class="co"># Trigger or delay order</span></span>
-<span class="r-in">                 price <span class="op">=</span> <span class="fl">8.96</span>,           <span class="co"># The highest price you are willing to pay</span></span>
-<span class="r-in">                 quantity <span class="op">=</span> <span class="fl">1</span>,           <span class="co"># Number of shares you want</span></span>
-<span class="r-in">                 side <span class="op">=</span> <span class="st">"buy"</span><span class="op">)</span>           <span class="co"># buy or sell</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Cancel the order, should also generate an email confirmation</span></span>
-<span class="r-in"><span class="fu">cancel_order</span><span class="op">(</span><span class="va">RH</span>, <span class="va">x</span><span class="op">$</span><span class="va">cancel_url</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Login in to your RobinHood account</span></span></span>
+<span class="r-in"><span><span class="va">RH</span> <span class="op">&lt;-</span> <span class="fu"><a href="RobinHood.html">RobinHood</a></span><span class="op">(</span><span class="st">"username"</span>, <span class="st">"password"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Place an order, should generate an email confirmation</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="place_order.html">place_order</a></span><span class="op">(</span>RH <span class="op">=</span> <span class="va">RH</span>,</span></span>
+<span class="r-in"><span>                 symbol <span class="op">=</span> <span class="st">"GE"</span>,          <span class="co"># Ticker symbol you want to trade</span></span></span>
+<span class="r-in"><span>                 type <span class="op">=</span> <span class="st">"market"</span>,        <span class="co"># Type of market order</span></span></span>
+<span class="r-in"><span>                 time_in_force <span class="op">=</span> <span class="st">"gfd"</span>,  <span class="co"># Time period the order is good for (gfd: good for day)</span></span></span>
+<span class="r-in"><span>                 trigger <span class="op">=</span> <span class="st">"immediate"</span>,  <span class="co"># Trigger or delay order</span></span></span>
+<span class="r-in"><span>                 price <span class="op">=</span> <span class="fl">8.96</span>,           <span class="co"># The highest price you are willing to pay</span></span></span>
+<span class="r-in"><span>                 quantity <span class="op">=</span> <span class="fl">1</span>,           <span class="co"># Number of shares you want</span></span></span>
+<span class="r-in"><span>                 side <span class="op">=</span> <span class="st">"buy"</span><span class="op">)</span>           <span class="co"># buy or sell</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Cancel the order, should also generate an email confirmation</span></span></span>
+<span class="r-in"><span><span class="fu">cancel_order</span><span class="op">(</span><span class="va">RH</span>, <span class="va">x</span><span class="op">$</span><span class="va">cancel_url</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -119,7 +122,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

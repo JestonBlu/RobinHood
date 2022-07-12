@@ -2,6 +2,14 @@
 title: "NEWS"
 ---
 
+# RobinHood 1.6.9
+
+## Bug Fixes
+  - [(GH-159)](https://github.com/JestonBlu/RobinHood/issues/159):  HTTP 400 bad request on api_login
+    - added static field `al_key` to `api_login` body request
+
+-------------------------------------------------------------------------------
+
 # RobinHood 1.6.8
 
 ## Bug Fixes
