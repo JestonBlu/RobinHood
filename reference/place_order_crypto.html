@@ -24,7 +24,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">RobinHood</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.9</span>
       </span>
     </div>
 
@@ -77,42 +77,55 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">place_order_crypto</span><span class="op">(</span><span class="va">RH</span>, <span class="va">symbol</span>, <span class="va">type</span>, <span class="va">time_in_force</span>, <span class="va">price</span>, <span class="va">quantity</span>, <span class="va">side</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">place_order_crypto</span><span class="op">(</span><span class="va">RH</span>, <span class="va">symbol</span>, <span class="va">type</span>, <span class="va">time_in_force</span>, <span class="va">price</span>, <span class="va">quantity</span>, <span class="va">side</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>RH</dt>
 <dd><p>object of class RobinHood</p></dd>
+
+
 <dt>symbol</dt>
 <dd><p>(string) Ticket symbol you are attempting to buy or sell</p></dd>
+
+
 <dt>type</dt>
 <dd><p>(string) "market" or "limit"</p></dd>
+
+
 <dt>time_in_force</dt>
 <dd><p>(string) Good Till Canceled ("gtc"), Immediate or Cancel ("ioc"), or Opening ("opg")</p></dd>
+
+
 <dt>price</dt>
 <dd><p>(number) the price you are willing to sell or buy at</p></dd>
+
+
 <dt>quantity</dt>
 <dd><p>(number) number of shares you wish to transact</p></dd>
+
+
 <dt>side</dt>
 <dd><p>(string) "buy" or "sell"</p></dd>
+
 </dl></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"><span class="co"># Login in to your RobinHood account</span></span>
-<span class="r-in"><span class="va">RH</span> <span class="op">&lt;-</span> <span class="fu"><a href="RobinHood.html">RobinHood</a></span><span class="op">(</span><span class="st">"username"</span>, <span class="st">"password"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Place an order, should generate an email confirmation</span></span>
-<span class="r-in"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">place_order_crypto</span><span class="op">(</span>RH <span class="op">=</span> <span class="va">RH</span>,</span>
-<span class="r-in">                       symbol <span class="op">=</span> <span class="st">"DOGE"</span>,        <span class="co"># Ticker symbol</span></span>
-<span class="r-in">                       type <span class="op">=</span> <span class="st">"market"</span>,        <span class="co"># Type of market order (market, limit)</span></span>
-<span class="r-in">                       time_in_force <span class="op">=</span> <span class="st">"gtc"</span>,  <span class="co"># Time period (gfd: good for day)</span></span>
-<span class="r-in">                       price <span class="op">=</span> <span class="fl">.003</span>,           <span class="co"># The highest price you are willing to pay</span></span>
-<span class="r-in">                       quantity <span class="op">=</span> <span class="fl">500</span>,         <span class="co"># Number of shares you want</span></span>
-<span class="r-in">                       side <span class="op">=</span> <span class="st">"buy"</span><span class="op">)</span>           <span class="co"># buy or sell</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Login in to your RobinHood account</span></span></span>
+<span class="r-in"><span><span class="va">RH</span> <span class="op">&lt;-</span> <span class="fu"><a href="RobinHood.html">RobinHood</a></span><span class="op">(</span><span class="st">"username"</span>, <span class="st">"password"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Place an order, should generate an email confirmation</span></span></span>
+<span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">place_order_crypto</span><span class="op">(</span>RH <span class="op">=</span> <span class="va">RH</span>,</span></span>
+<span class="r-in"><span>                       symbol <span class="op">=</span> <span class="st">"DOGE"</span>,        <span class="co"># Ticker symbol</span></span></span>
+<span class="r-in"><span>                       type <span class="op">=</span> <span class="st">"market"</span>,        <span class="co"># Type of market order (market, limit)</span></span></span>
+<span class="r-in"><span>                       time_in_force <span class="op">=</span> <span class="st">"gtc"</span>,  <span class="co"># Time period (gfd: good for day)</span></span></span>
+<span class="r-in"><span>                       price <span class="op">=</span> <span class="fl">.003</span>,           <span class="co"># The highest price you are willing to pay</span></span></span>
+<span class="r-in"><span>                       quantity <span class="op">=</span> <span class="fl">500</span>,         <span class="co"># Number of shares you want</span></span></span>
+<span class="r-in"><span>                       side <span class="op">=</span> <span class="st">"buy"</span><span class="op">)</span>           <span class="co"># buy or sell</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -127,7 +140,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>

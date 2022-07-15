@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">RobinHood</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.6.9</span>
       </span>
     </div>
 
@@ -75,45 +75,66 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">api_orders_options</span><span class="op">(</span>
-  <span class="va">RH</span>,
-  <span class="va">action</span>,
-  status_url <span class="op">=</span> <span class="cn">NULL</span>,
-  cancel_url <span class="op">=</span> <span class="cn">NULL</span>,
-  quantity <span class="op">=</span> <span class="cn">NULL</span>,
-  direction <span class="op">=</span> <span class="cn">NULL</span>,
-  stop_price <span class="op">=</span> <span class="cn">NULL</span>,
-  type <span class="op">=</span> <span class="cn">NULL</span>,
-  time_in_force <span class="op">=</span> <span class="cn">NULL</span>,
-  side <span class="op">=</span> <span class="cn">NULL</span>,
-  option_id <span class="op">=</span> <span class="cn">NULL</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">api_orders_options</span><span class="op">(</span></span>
+<span>  <span class="va">RH</span>,</span>
+<span>  <span class="va">action</span>,</span>
+<span>  status_url <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  cancel_url <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  quantity <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  direction <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  stop_price <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  type <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  time_in_force <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  side <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  option_id <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>RH</dt>
 <dd><p>object of class RobinHood</p></dd>
+
+
 <dt>action</dt>
 <dd><p>(string) one of "order", "status", "cancel", "history"</p></dd>
+
+
 <dt>status_url</dt>
 <dd><p>(string) if action = "status", status_url is required (output from place_order_options())</p></dd>
+
+
 <dt>cancel_url</dt>
 <dd><p>(string) if action = "cancel", cancel_url is required (output from place_order_options())</p></dd>
+
+
 <dt>quantity</dt>
 <dd><p>(int) number of contracts you want to buy</p></dd>
+
+
 <dt>direction</dt>
 <dd><p>(string) one of "debit" or "credit"</p></dd>
+
+
 <dt>stop_price</dt>
 <dd><p>(numeric) stop price on a limit order</p></dd>
+
+
 <dt>type</dt>
 <dd><p>(string) one of "limit" or "market"</p></dd>
+
+
 <dt>time_in_force</dt>
 <dd><p>(string) Good Till Canceled ("gtc"), Immediate or Cancel ("ioc"), or Opening ("opg")</p></dd>
+
+
 <dt>side</dt>
 <dd><p>(string) one of "buy" or "sell"</p></dd>
+
+
 <dt>option_id</dt>
 <dd><p>(string) id column returned by get_contracts()</p></dd>
+
 </dl></div>
 
   </div>
@@ -128,7 +149,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>
