@@ -18,11 +18,13 @@ title: "NEWS"
     - applied a filter to remove unsearchable symbols
 
 -------------------------------------------------------------------------------
+
 # RobinHood 1.6.7
 ## Bug Fixes  
   - [(GH-153)](https://github.com/JestonBlu/RobinHood/issues/153):  fixed broken link preventing placing orders from working
 
 -------------------------------------------------------------------------------
+
 # RobinHood 1.6.6
   
 ## Bug Fixes  
@@ -31,6 +33,7 @@ title: "NEWS"
     - Temporarily disabled the non-MFA login method
 
 -------------------------------------------------------------------------------
+
 # RobinHood 1.6.5
 ## Bug Fixes
   - [(GH-147)](https://github.com/JestonBlu/RobinHood/issues/99): Added HTTPS validation check to make cryptic errors less likely (@JanLauGe)
@@ -43,15 +46,19 @@ title: "NEWS"
   - [(GH-146)](https://github.com/JestonBlu/RobinHood/issues/146) `RobinHood()` issues with tbl_vars (@JanLauGe)
 
 -------------------------------------------------------------------------------
+
 # RobinHood 1.6.3
 ## Bug Fixes
   - [(GH-141)](https://github.com/JestonBlu/RobinHood/issues/141) `get_positions_options()` Column state doesn't exist #141 (@fouslim)
 
 -------------------------------------------------------------------------------
+
 # RobinHood 1.6.2
 ## Bug Fixes
   - [(GH-139)](https://github.com/JestonBlu/RobinHood/issues/139) `get_positions_options()`, `get_contracts()`: fixed api change (@fouslim, @SwingBotScripts)
+
 -------------------------------------------------------------------------------
+
 # RobinHood 1.6.1
 ## New Features
   - [(GH-123)](https://github.com/JestonBlu/RobinHood/issues/123) `api_historicals_options()`: (@jgQuantScripts)
@@ -64,6 +71,7 @@ title: "NEWS"
   - [(GH-122)](https://github.com/JestonBlu/RobinHood/issues/122): `place_order()`: added stop loss example (@kmohammadi6)
 
 -------------------------------------------------------------------------------
+
 # RobinHood 1.6
 ## New Features
   - [(GH-74)](https://github.com/JestonBlu/RobinHood/issues/74) `get_ratings()`: returns analyst rating and comments for a particular instrument
