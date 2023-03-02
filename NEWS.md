@@ -2,6 +2,13 @@
 title: "NEWS"
 ---
 
+# RobinHood 1.7.1
+
+## Bug Fixes
+  - [(GH-163)](https://github.com/JestonBlu/RobinHood/issues/163): `api_logout` updated api reference @zhangrz2023
+
+-------------------------------------------------------------------------------
+
 # RobinHood 1.6.9
 
 ## Bug Fixes
