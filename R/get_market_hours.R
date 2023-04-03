@@ -36,14 +36,17 @@ get_market_hours <- function(RH, market_date = NULL, tz = Sys.timezone()) {
         x <- RobinHood::api_markets(RH, i, type = "list")
 
         # Look for nulls and replace with NA
-        if (length(x$closes_at) == 0) x$closes_at <- NA
-        if (length(x$extended_opens_at) == 0) x$extended_opens_at <- NA
-        if (length(x$next_open_hours) == 0) x$next_open_hours <- NA
-        if (length(x$previous_open_hours) == 0) x$previous_open_hours <- NA
-        if (length(x$is_open) == 0) x$is_open <- NA
-        if (length(x$extended_closes_at) == 0) x$extended_closes_at <- NA
         if (length(x$date) == 0) x$date <- NA
+        if (length(x$is_open) == 0) x$is_open <- NA
         if (length(x$opens_at) == 0) x$opens_at <- NA
+        if (length(x$closes_at) == 0) x$closes_at <- NA
+        if (length(x$late_option_closes_at) == 0) x$late_option_closes_at <- NA
+        if (length(x$extended_opens_at) == 0) x$extended_opens_at <- NA
+        if (length(x$extended_closes_at) == 0) x$extended_closes_at <- NA
+        if (length(x$all_day_opens_at) == 0) x$all_day_opens_at <- NA
+        if (length(x$all_day_closes_at) == 0) x$all_day_closes_at <- NA
+        if (length(x$previous_open_hours) == 0) x$previous_open_hours <- NA
+        if (length(x$next_open_hours) == 0) x$next_open_hours <- NA
 
       x <- data.frame(x)
 

@@ -2,6 +2,13 @@
 title: "NEWS"
 ---
 
+# RobinHood 1.7.2
+
+## Bud Fixes
+ - [(GH-166)](https://github.com/JestonBlu/RobinHood/issues/166)
+   - fixed `get_market_hours()`
+
+-------------------------------------------------------------------------------
 # RobinHood 1.7.1
 
 ## Bug Fixes
