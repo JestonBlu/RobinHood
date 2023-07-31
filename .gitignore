@@ -4,4 +4,4 @@
 .Ruserdata
 /tests*
 .vscode
-docs
+/docs*
