@@ -1,7 +1,6 @@
 url: https://jestonblu.github.io/RobinHood/
 template:
   bootstrap: 5
-
 # Nav bar customization
 navbar:
   structure:
@@ -18,81 +17,20 @@ navbar:
           href: articles/passwords.html
         - text: Function Relationship Plots
           href: articles/network_graph.html
-
 reference:
   - title: "Core Functions"
-    desc: >
-      Core functions
+    desc: "Core functions"
   - contents:
     - RobinHood
-    - cancel_ach_transfer
-    - cancel_order
-    - cancel_order_crypto
-    - cancel_order_options
-    - get_accounts
-    - get_ach
-    - get_contracts
-    - get_fundamentals
-    - get_historicals
-    - get_historicals_crypto
-    - get_historicals_options
-    - get_market_hours
-    - get_order_history
-    - get_order_history_crypto
-    - get_order_history_options
-    - get_order_status
-    - get_order_status_crypto
-    - get_order_status_options
-    - get_portfolios
-    - get_positions
-    - get_positions_crypto
-    - get_positions_options
-    - get_quote
-    - get_quote_crypto
-    - get_ratings
-    - get_tag
-    - get_tickers
-    - get_user
     - logout
-    - place_ach_transfer
-    - place_order
-    - place_order_crypto
-    - place_order_options
     - watchlist
+    - starts_with("cancel")
+    - starts_with("get")
+    - starts_with("place")
   - title: "Backend API Functions"
     desc: "Backend API functions"
   - contents:
-    - api_accounts
-    - api_accounts_crypto
-    - api_ach
-    - api_contracts
-    - api_currency_pairs
-    - api_endpoints
-    - api_fundamentals
-    - api_historicals
-    - api_historicals_crypto
-    - api_historicals_options
-    - api_instruments
-    - api_instruments_options
-    - api_login
-    - api_logout
-    - api_marketdata
-    - api_markets
-    - api_orders
-    - api_orders_crypto
-    - api_orders_options
-    - api_portfolios
-    - api_portfolios_crypto
-    - api_positions
-    - api_positions_crypto
-    - api_positions_options
-    - api_quote
-    - api_quote_crypto
-    - api_ratings
-    - api_tag
-    - api_tickers
-    - api_user
-    - api_watchlist
+    - starts_with("api")
   - title: "Backend Utility Functions"
     desc: "Backend utility functions"
   - contents:
