@@ -1,5 +1,5 @@
 ![Project Status](https://www.repostatus.org/badges/latest/active.svg) &nbsp;
-![pkgdown](https://github.com/JestonBlu/RobinHood/pages-build-deployment/pkgdown/badge.svg?branch=master) &nbsp;
+![pkgdown](https://github.com/JestonBlu/RobinHood/pages-build-deployment/badge.svg?branch=master) &nbsp;
 ![Dev Version](https://img.shields.io/badge/github-1.7.1-blue.svg) &nbsp;
 ![CRAN Version](http://www.r-pkg.org/badges/version/RobinHood?color=blue) &nbsp;
 ![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/RobinHood) &nbsp;
