@@ -15,5 +15,5 @@ Imports:
   uuid,
   methods
 License: GPL-3
-URL: https://github.com/JestonBlu/RobinHood
+URL: https://github.com/JestonBlu/RobinHood, https://jestonblu.github.io/RobinHood/
 RoxygenNote: 7.2.3

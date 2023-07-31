@@ -1,6 +1,6 @@
+url: https://jestonblu.github.io/RobinHood/
 template:
-  params:
-    ganalytics: G-KTSZ0VFE7M
+  bootstrap: 5
 
 # Nav bar customization
 navbar:
