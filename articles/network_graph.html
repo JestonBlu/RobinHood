@@ -88,7 +88,7 @@
 
       
 
-      </header><script src="network_graph_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Function Network Graph</h1>
@@ -104,26 +104,38 @@
 <p>Functions in RobinHood are organized into 3 basic groups:</p>
 <ul>
 <li>
-<strong>Core</strong> functions are what users will interact with</li>
+<strong>Core</strong> functions are what users will interact
+with</li>
 <li>
-<strong>API</strong> functions are the backend functions that interact with a RobinHood connection</li>
+<strong>API</strong> functions are the backend functions that
+interact with a RobinHood connection</li>
 <li>
-<strong>Utility</strong> functions are used in the background for integrity checks and convenience</li>
+<strong>Utility</strong> functions are used in the background for
+integrity checks and convenience</li>
 </ul>
-<p>The following force directed graphs display <strong>core</strong> and <strong>API</strong> functions in order to show the dependencies across functions. This might be helpful if you are wanting to understand the overall organization of the package and understand how the <strong>API</strong> functions support the <strong>core</strong> functions.</p>
+<p>The following force directed graphs display <strong>core</strong> and
+<strong>API</strong> functions in order to show the dependencies across
+functions. This might be helpful if you are wanting to understand the
+overall organization of the package and understand how the
+<strong>API</strong> functions support the <strong>core</strong>
+functions.</p>
 <p>For those curious how I made these plots I used the <a href="https://briatte.github.io/ggnet/" class="external-link">ggnet2</a> package.</p>
-<pre><code>
-The downloaded binary packages are in
-    /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpkhIo2g/downloaded_packages</code></pre>
 <div class="section level2">
 <h2 id="simplified-network-with-endpoints-connection-removed">Simplified Network with Endpoints Connection Removed<a class="anchor" aria-label="anchor" href="#simplified-network-with-endpoints-connection-removed"></a>
 </h2>
-<p><img src="network_graph_files/figure-html/simplified_network-1.png" width="1152"></p>
+<p>```{r simplified_network # #edges2 = subset(edges, api_action !=
+‘None’) # #g2 &lt;- simplify(graph_from_data_frame(edges2, vertices =
+nodes)) # #set.seed(1) #ggnet2(g2, size = 0, color = “type”, edge.lty =
+“dashed”, layout.exp = .15) + # geom_point(aes(x = x, y = y), color =
+“grey15”, size = 7) + # geom_text(aes(label = label, x = x, y = y, color
+= color), size = 3) + # scale_color_brewer(type = “qual”, palette = 4,
+guide = “none”) + # theme(panel.background = element_rect(fill =
+“grey15”)) #</p>
+<p>```</p>
 </div>
 <div class="section level2">
 <h2 id="full-network">Full Network<a class="anchor" aria-label="anchor" href="#full-network"></a>
 </h2>
-<p><img src="network_graph_files/figure-html/complete_network-1.png" width="1152"></p>
 </div>
   </div>
 
