@@ -1,5 +1,5 @@
 ![Project Status](https://www.repostatus.org/badges/latest/active.svg) &nbsp;
-![Dev Version](https://img.shields.io/badge/github-1.7.1-blue.svg) &nbsp;
+![Dev Version](https://img.shields.io/badge/github-1.8.0-blue.svg) &nbsp;
 ![CRAN Version](http://www.r-pkg.org/badges/version/RobinHood?color=blue) &nbsp;
 ![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/RobinHood) &nbsp;
 
@@ -8,9 +8,6 @@
 This is package is designed to help you execute trading programs in R.
 
 **[RobinHood](https://robinhood.com)** is a no commission trading platform intended to bring investing to the masses. It is a great place to experiment with different trading strategies on a minimal investment because your trades will not be eaten up by commission fees.
-
-Haven't signed up for a RobinHood account yet? Use my **[referral link](https://share.robinhood.com/josephb5278)**. We both get a free share of stock!
-
 
 ## Account Features
 - [x] Account data

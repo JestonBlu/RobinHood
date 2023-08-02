@@ -40,12 +40,14 @@ api_orders <- function(RH, action, status_url = NULL, cancel_url = NULL, instrum
                          stop_price = stop_price,
                          quantity = quantity,
                          side = side,
-                         client_id = RH$api_request.client_id)
+                         client_id = RH$api_request.client_id,
+                         order_form_version = 4,
+                         ref_id = uuid::UUIDgenerate())
 
     # If trigger = "stop" then stop_price must be included, otherwise it must be excluded
     if (trigger == "immediate") {
       detail <- detail[, c("account", "instrument", "symbol", "type", "time_in_force",
-                          "trigger", "price", "quantity", "side", "client_id")]
+                          "trigger", "price", "quantity", "side", "client_id", "order_form_version", "ref_id")]
     }
 
     dta <- POST(url = url,

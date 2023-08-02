@@ -2,6 +2,13 @@
 title: "NEWS"
 ---
 
+# RobinHood 1.8.0
+
+## Bug Fixes
+  - [(GH-170)](https://github.com/JestonBlu/RobinHood/issues/170): `api_order` updated api
+
+-------------------------------------------------------------------------------
+
 # RobinHood 1.7.1
 
 ## Bug Fixes
