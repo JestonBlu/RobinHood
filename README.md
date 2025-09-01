@@ -1,4 +1,4 @@
-![Project Status](https://www.repostatus.org/badges/latest/active.svg) &nbsp;
+![Project Status](https://www.repostatus.org/badges/latest/inactive.svg) &nbsp;
 ![Dev Version](https://img.shields.io/badge/github-1.8.0-blue.svg) &nbsp;
 ![CRAN Version](http://www.r-pkg.org/badges/version/RobinHood?color=blue) &nbsp;
 ![CRAN Downloads](http://cranlogs.r-pkg.org/badges/grand-total/RobinHood) &nbsp;
